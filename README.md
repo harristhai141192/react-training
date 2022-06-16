@@ -165,10 +165,10 @@ This is not in the plan, trainees may want to read more about debugging tools, s
 - [Reactotron](https://github.com/infinitered/reactotron)
 
 ##### State Management #####
-- Redux
-  - Redux logger
-  - Redux DevTools
-- Mobx
+- [Redux](https://redux.js.org/)
+  - [Redux logger](https://github.com/LogRocket/redux-logger)
+  - [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [Mobx](https://mobx.js.org/)
 
 ##### React Component libraries #####
 
