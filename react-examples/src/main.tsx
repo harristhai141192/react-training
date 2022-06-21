@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { FunctionalComponent } from './components/function-component';
-import { Hello } from './components/rendering-components';
-import { ClassComponent } from './components/class-component';
-import { Person } from './components/extracting-component';
+import { FunctionalComponent } from './components/FunctionalComponent';
+import { Hello } from './components/RenderingComponent';
+import { ClassComponent } from './components/ClassComponent';
+import { Person } from './components/ExtractingComponent';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

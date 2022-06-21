@@ -1,4 +1,4 @@
-import { Person } from "./extracting-component";
+import { Person } from "./ExtractingComponent";
 
 export function User({information}: Person): JSX.Element {
   return (
