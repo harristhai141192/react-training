@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export type Person = {
+export type PersonType = {
   information: {
     name: string,
     age: number
@@ -9,7 +9,7 @@ export type Person = {
 }
 
 export function Person(): JSX.Element {
-  const person: Person = {
+  const person: PersonType = {
     information: {
       name: 'Thai Gia Bao',
       age: 30,
