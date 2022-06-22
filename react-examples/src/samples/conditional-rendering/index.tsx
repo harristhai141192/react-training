@@ -1,7 +1,3 @@
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
 function MissedGoal() {
 	return <h1>MISSED!</h1>;
 }
@@ -10,14 +6,13 @@ function MadeGoal() {
 	return <h1>GOAL!</h1>;
 }
 
-function Goal(props: any) {
-  const isGoal = props.isGoal;
-  if (isGoal) {
+export const isGoal = () => true
+export const isNotGoal = () => false
+
+export const Goal = (shoot: any) => {
+  const isGoal = shoot; 
+  if (isGoal == true) {    
     return <MadeGoal/>;
   }
   return <MissedGoal/>;
 }
-
-// @ts-expect-error
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Goal isGoal={false} />);
