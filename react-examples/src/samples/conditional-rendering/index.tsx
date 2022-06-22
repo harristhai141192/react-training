@@ -1,18 +1,18 @@
 function MissedGoal() {
-	return <h1>MISSED!</h1>;
+  return <h1>MISSED!</h1>;
 }
 
 function MadeGoal() {
-	return <h1>GOAL!</h1>;
+  return <h1>GOAL!</h1>;
 }
 
-export const isGoal = () => true
-export const isNotGoal = () => false
+export const isGoal = () => true;
+export const isNotGoal = () => false;
 
 export const Goal = (shoot: any) => {
-  const isGoal = shoot; 
-  if (isGoal == true) {    
-    return <MadeGoal/>;
+  const isGoal = shoot;
+  if (isGoal) {
+    return <MadeGoal />;
   }
-  return <MissedGoal/>;
-}
+    return <MissedGoal />;
+};

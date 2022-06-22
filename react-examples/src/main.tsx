@@ -9,7 +9,7 @@ import { Person } from './samples/components-and-props/ExtractingComponent';
 import { CountClick, Shoot } from './samples/handling-event/HandlingEvent';
 import { ListItems, numbers } from './samples/Lists/RenderingMultipleComponents';
 import { Goal } from './samples/conditional-rendering';
-import { isGoal } from './samples/conditional-rendering/index';
+import { isGoal, isNotGoal } from './samples/conditional-rendering/index';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
