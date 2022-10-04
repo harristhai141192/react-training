@@ -22,12 +22,5 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    camelcase: [
-      'warn',
-      {
-        properties: 'never',
-        ignoreDestructuring: true,
-      },
-    ],
   },
 };

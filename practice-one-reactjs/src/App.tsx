@@ -1,5 +1,4 @@
 function App() {
-  const abc;
   return (
     <div className='App'>
       <h1>Vite + React</h1>
