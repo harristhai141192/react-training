@@ -1,0 +1,30 @@
+/* Header CSS */
+.header {
+  background-color: var(--header-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  color: var(--header-font-color);
+}
+
+.header__logo {
+}
+
+.header__logo-img img {
+  width: 40px;
+  padding: 20px;
+}
+
+.elements {
+  flex-grow: 1;
+}
+
+.elements > * {
+  margin: 5px;
+}
+
+.menu-bar {
+  align-items: flex-end;
+  padding: 20PX;
+}

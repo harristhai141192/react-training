@@ -1,0 +1,10 @@
+@font-face {
+  font-family: DMSansMedium;
+  src: url(../src/assets/fonts/DMSans-Medium.woff);
+}
+
+:root {
+  --header-background-color: rgb(209,68,68);
+  --header-font-color: rgb(230,138,126);
+  --footer-font-color: #FFFFFF;
+}
