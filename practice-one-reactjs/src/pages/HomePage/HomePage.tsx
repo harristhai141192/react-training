@@ -6,16 +6,12 @@ import Header from '@components/Header';
 // Images
 import { PokemonLogo } from '@assets/index';
 
-const welcomeBar = () => {
-  return <p>Welcome to Pokedex</p>;
-};
+const welcomeBar = () => <p>Welcome to Pokedex</p>;
 
-const HomePage = () => {
-  return (
-    <Header headerLogo={PokemonLogo}>
-      <p>Welcome to Pokedex</p>
-    </Header>
-  );
-};
+const HomePage = () => (
+  <Header headerLogo={PokemonLogo} handleLogoClick={welcomeBar}>
+    <p>Welcome to Pokedex</p>
+  </Header>
+);
 
 export default HomePage;

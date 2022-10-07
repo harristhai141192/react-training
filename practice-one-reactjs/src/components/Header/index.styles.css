@@ -8,23 +8,20 @@
   color: var(--header-font-color);
 }
 
-.header__logo {
-}
-
-.header__logo-img img {
+.headerLogo-home {
   width: 40px;
   padding: 20px;
 }
 
-.elements {
+.pokemonElements {
   flex-grow: 1;
 }
 
-.elements > * {
+.pokemonElements > * {
   margin: 5px;
 }
 
-.menu-bar {
+.navBar {
   align-items: flex-end;
   padding: 20PX;
 }

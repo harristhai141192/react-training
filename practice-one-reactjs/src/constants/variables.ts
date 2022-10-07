@@ -1,4 +1,4 @@
-export const ELEMENT = [
+export const POKEMON_ELEMENTS = [
   {
     name: 'fire',
   },

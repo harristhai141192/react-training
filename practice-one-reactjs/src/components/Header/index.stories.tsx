@@ -21,9 +21,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   headerLogo: FireDragon,
-  children: (
-    <>
-      <p>Welcome to Pokedex</p>
-    </>
-  ),
+  children: <p>Welcome to Pokedex</p>,
 };

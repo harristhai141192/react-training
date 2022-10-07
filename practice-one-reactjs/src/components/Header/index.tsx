@@ -1,14 +1,14 @@
 // Libraries
-import React, { Children } from 'react';
+import React from 'react';
 
 // Components
 import { Button } from '@components/Button';
 
 // Styles
-import './index.css';
+import './index.styles.css';
 
 // constants
-import { ELEMENT } from '@constants/variables';
+import { POKEMON_ELEMENTS } from '@constants/variables';
 
 interface IHeaderProps {
   handleLogoClick?: () => void;
@@ -16,25 +16,22 @@ interface IHeaderProps {
   children?: React.ReactNode;
 }
 
-const Header = ({
-  handleLogoClick = () => {},
-  headerLogo = '',
-  children = <></>,
-}: IHeaderProps) => {
+const Header: React.FC<IHeaderProps> = ({ handleLogoClick, headerLogo = '', children }) => {
+  const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
+
   return (
     <div className='header'>
-      <div className='header__logo'>
-        <div className='header__logo-img'>
-          <img src={headerLogo} onClick={handleLogoClick} />
-        </div>
+      <div className='headerLogo'>
+        <img className='headerLogo-home' src={headerLogo} onClick={handleLogoClick} />
       </div>
-      <div className='elements'>
+      <div className='pokemonElements'>
         {/* RENDER ALL ELEMENTS AND SHOW UP TO NAVBAR */}
-        {ELEMENT.map((item, index) => {
-          return <Button label={item.name} key={`${item.name}${index}`} />;
+        {POKEMON_ELEMENTS.map((item) => {
+          console.log(generateKey(item.name));
+          return <Button label={item.name} key={generateKey(item.name)} />;
         })}
       </div>
-      <div className='menu-bar'>{children}</div>
+      <div className='navBar'>{children}</div>
     </div>
   );
 };
