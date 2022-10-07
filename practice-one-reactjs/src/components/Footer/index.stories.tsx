@@ -21,5 +21,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   labelName: FOOTER_DATA.links.labelName,
-  footerDescription: FOOTER_DATA.copyRight,
+  footerDescription: <>Copyright &#169; 2019</>,
 };

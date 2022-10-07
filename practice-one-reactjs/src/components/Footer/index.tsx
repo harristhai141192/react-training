@@ -6,7 +6,7 @@ import './index.styles.css';
 
 interface IFooterProps {
   labelName: string;
-  footerDescription: string;
+  footerDescription: React.ReactNode;
 }
 
 const Footer = ({ labelName = '', footerDescription = '' }: IFooterProps) => {
@@ -15,9 +15,7 @@ const Footer = ({ labelName = '', footerDescription = '' }: IFooterProps) => {
       <div className='footerLabel'>
         <p>{labelName}</p>
       </div>
-      <div className='footerDescription'>
-        <p>{footerDescription}</p>
-      </div>
+      <div className='footerDescription'>{footerDescription}</div>
     </div>
   );
 };

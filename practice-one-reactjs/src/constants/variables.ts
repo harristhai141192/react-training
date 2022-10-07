@@ -11,6 +11,5 @@ export const POKEMON_ELEMENTS = [
 ];
 
 export const FOOTER_DATA = {
-  copyRight: 'Copyright © 2019',
   links: { labelName: 'Pokedex' },
 };
