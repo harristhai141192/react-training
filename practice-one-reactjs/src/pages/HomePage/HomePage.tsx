@@ -9,7 +9,11 @@ import { PokemonLogo } from '@assets/index';
 const welcomeBar = () => <p>Welcome to Pokedex</p>;
 
 const HomePage = () => (
-  <Header headerLogo={PokemonLogo} handleLogoClick={welcomeBar}>
+  <Header
+    headerLogo={PokemonLogo}
+    handleLogoClick={welcomeBar}
+    headerLogoDescription='Pokedex Ball Logo'
+  >
     <p>Welcome to Pokedex</p>
   </Header>
 );

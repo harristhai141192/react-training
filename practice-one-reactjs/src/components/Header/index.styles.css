@@ -8,8 +8,7 @@
   color: var(--header-font-color);
 }
 
-.headerLogo-home {
-  width: 40px;
+.headerLogo {
   padding: 20px;
 }
 
