@@ -6,16 +6,17 @@ import './index.styles.css';
 
 interface IFooterProps {
   labelName: string;
-  footerDescription: React.ReactNode;
 }
 
-const Footer = ({ labelName = '', footerDescription = '' }: IFooterProps) => {
+const Footer = ({ labelName = '' }: IFooterProps) => {
   return (
     <div className='footer'>
       <div className='footerLabel'>
         <p>{labelName}</p>
       </div>
-      <div className='footerDescription'>{footerDescription}</div>
+      <div className='footerDescription'>
+        <p>Copyright &#169; 2019</p>
+      </div>
     </div>
   );
 };
