@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import { Button } from '@components/Button';
+import Button from '@components/Button';
 import Image from '@components/Image';
 
 // Styles
