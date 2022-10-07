@@ -6,7 +6,6 @@
 :root {
   --header-background-color: rgb(209,68,68);
   --header-font-color: rgb(230,138,126);
-  --footer-font-color: #FFFFFF;
   --primary-button-background-color: rgb(209,68,68);
   --secondary-button-background-color: rgb(108,117,125);
   --tertiary-button-background-color: rgb(255,255,255);
@@ -16,4 +15,7 @@
   --font-small: 12px;
   --font-medium: 14px;
   --font-large: 16px;
+  --footer-background-color: rgb(209,68,68);
+  --footer-font-color: #ffffff;
+  --font-size-label: 22px;
 }
