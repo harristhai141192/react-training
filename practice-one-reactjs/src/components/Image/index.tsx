@@ -1,9 +1,6 @@
 // Libraries
 import React from 'react';
 
-// Components
-import { Button } from '@components/Button';
-
 // Styles
 import './index.styles.css';
 
