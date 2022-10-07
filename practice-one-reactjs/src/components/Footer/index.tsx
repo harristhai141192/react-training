@@ -5,14 +5,14 @@ import React from 'react';
 import './index.styles.css';
 
 interface IFooterProps {
-  labelLogoName: string;
+  footerLogoName: string;
 }
 
-const Footer = ({ labelLogoName = '' }: IFooterProps) => {
+const Footer = ({ footerLogoName = '' }: IFooterProps) => {
   return (
     <div className='footer'>
       <div className='footerLabel'>
-        <h1 className='labelLogoName'>{labelLogoName}</h1>
+        <h1 className='footerLabelName'>{footerLogoName}</h1>
       </div>
       <div className='footerDescription'>
         <p>Copyright &#169; 2019</p>
