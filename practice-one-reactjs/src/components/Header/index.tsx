@@ -22,7 +22,12 @@ const Header: React.FC<IHeaderProps> = ({ handleLogoClick, headerLogo = '', chil
   return (
     <div className='header'>
       <div className='headerLogo'>
-        <img className='headerLogo-home' src={headerLogo} onClick={handleLogoClick} />
+        <img
+          className='headerLogoImage'
+          src={headerLogo}
+          onClick={handleLogoClick}
+          alt='Logo Pokemon Ball'
+        />
       </div>
       <div className='pokemonElements'>
         {/* RENDER ALL ELEMENTS AND SHOW UP TO NAVBAR */}
