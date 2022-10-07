@@ -20,5 +20,5 @@ const Template: ComponentStory<typeof Footer> = (args) => <Footer {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-  labelName: FOOTER_DATA.links.labelName,
+  labelLogoName: FOOTER_DATA.links.labelName,
 };

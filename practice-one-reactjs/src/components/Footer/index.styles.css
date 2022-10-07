@@ -13,10 +13,13 @@
   align-items: flex-start;
   margin-left: 20%;
   font-weight: bold;
-  font-size: var(--font-size-label);
 }
 
 .footerDescription {
   align-items: flex-end;
   margin-right: 20%;
+}
+
+.labelLogoName {
+  font-size: var(--font-size-label);
 }
