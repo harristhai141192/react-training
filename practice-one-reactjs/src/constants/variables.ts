@@ -9,7 +9,3 @@ export const POKEMON_ELEMENTS = [
     name: 'earth',
   },
 ];
-
-export const FOOTER_DATA = {
-  links: { labelName: 'Pokedex' },
-};

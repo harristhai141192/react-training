@@ -4,15 +4,11 @@ import React from 'react';
 // CSS
 import './index.styles.css';
 
-interface IFooterProps {
-  footerLogoName: string;
-}
-
-const Footer = ({ footerLogoName = '' }: IFooterProps) => {
+const Footer = () => {
   return (
     <div className='footer'>
       <div className='footerLabel'>
-        <h1 className='footerLabelName'>{footerLogoName}</h1>
+        <h1 className='footerLabelName'>Pokedex</h1>
       </div>
       <div className='footerDescription'>
         <p>Copyright &#169; 2019</p>

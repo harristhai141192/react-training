@@ -4,9 +4,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 // Components
 import Footer from '.';
 
-// Constants
-import { FOOTER_DATA } from '@constants/variables';
-
 // CSS
 import '../../index.css';
 
@@ -15,10 +12,8 @@ export default {
   component: Footer,
 } as ComponentMeta<typeof Footer>;
 
-const Template: ComponentStory<typeof Footer> = (args) => <Footer {...args} />;
+const Template: ComponentStory<typeof Footer> = () => <Footer />;
 
 export const Primary = Template.bind({});
 
-Primary.args = {
-  footerLogoName: FOOTER_DATA.links.labelName,
-};
+Primary.args = {};
