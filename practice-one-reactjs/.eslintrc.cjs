@@ -20,6 +20,12 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': [
+      'error',
+      {
+        allow: ['arrowFunctions'],
+      },
+    ],
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
   },
