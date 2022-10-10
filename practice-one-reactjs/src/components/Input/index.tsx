@@ -1,9 +1,8 @@
 // Libraries
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 // CSS
 import './index.styles.css';
-import { isError } from 'lodash';
 
 interface IInputProps {
   value?: string;
