@@ -27,6 +27,10 @@ export default defineConfig({
         find: '@pages',
         replacement: path.resolve(__dirname, 'src/pages'),
       },
+      {
+        find: '@mocks',
+        replacement: path.resolve(__dirname, 'src/mocks'),
+      },
     ],
   },
 });

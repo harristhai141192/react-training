@@ -1,1 +1,30 @@
 /* Card CSS */
+.pokemonCard {
+  display: flex;
+  flex-direction: row;
+  width: calc(100%/3);
+  max-width: 350px;
+  height: 70px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0px 0px 5px 1px lightgrey;
+  border-radius: 0.3em;
+}
+
+.pokemonPhoto {
+  display: flex;
+  flex-grow: 1;
+  align-self: center;
+  justify-content: center;
+}
+
+.pokemonDescription {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.pokemonCode {
+  color: grey;
+}
