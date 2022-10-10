@@ -29,7 +29,7 @@ export default defineConfig({
       },
       {
         find: '@mocks',
-        replacement: path.resolve(__dirname, 'src/mock'),
+        replacement: path.resolve(__dirname, 'src/mocks'),
       },
     ],
   },

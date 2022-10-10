@@ -21,7 +21,7 @@
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@pages/*": ["src/pages/*"],
-      "@mock/*": ["src/mocks/*"]
+      "@mocks/*": ["src/mocks/*"]
     }
   },
   "include": ["src"],

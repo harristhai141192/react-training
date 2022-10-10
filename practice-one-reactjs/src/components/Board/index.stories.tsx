@@ -6,7 +6,7 @@ import Board from '.';
 import Button from '@components/Button';
 
 // Mock data
-import tableData from '../../mocks/tableData';
+import tableData from '@mocks/tableData';
 
 // CSS
 import '../../index.css';
