@@ -1,0 +1,14 @@
+.textAreaLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.textAreaInput {
+  margin-top: 10px;
+  border: 1px solid lightgrey;
+}
+
+.labelRequired {
+  color: red;
+  margin-left: 3px;
+}
