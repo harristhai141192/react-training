@@ -2,7 +2,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 // Components
-import SelectInput from '.';
+import Select from '.';
 
 // Constants
 import { POKEMON_ELEMENTS } from '@constants/variables';
@@ -11,11 +11,11 @@ import { POKEMON_ELEMENTS } from '@constants/variables';
 import '../../index.css';
 
 export default {
-  title: 'Practice-One/SelectInput',
-  component: SelectInput,
-} as ComponentMeta<typeof SelectInput>;
+  title: 'Practice-One/Select',
+  component: Select,
+} as ComponentMeta<typeof Select>;
 
-const Template: ComponentStory<typeof SelectInput> = (args) => <SelectInput {...args} />;
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
 
 export const Default = Template.bind({});

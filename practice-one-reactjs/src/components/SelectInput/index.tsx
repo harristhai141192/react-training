@@ -4,7 +4,7 @@ import React from 'react';
 // CSS
 import './index.styles.css';
 
-interface ISelectInputProps {
+interface ISelectProps {
   name?: string;
   isDisabled?: boolean;
   labelName: string;
@@ -13,7 +13,7 @@ interface ISelectInputProps {
   onChange: () => void;
 }
 
-const SelectInput: React.FC<ISelectInputProps> = ({
+const Select: React.FC<ISelectProps> = ({
   name,
   isDisabled = false,
   labelName = '',
@@ -36,4 +36,4 @@ const SelectInput: React.FC<ISelectInputProps> = ({
   );
 };
 
-export default SelectInput;
+export default Select;
