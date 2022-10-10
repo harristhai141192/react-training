@@ -17,6 +17,7 @@ export default {
 } as ComponentMeta<typeof Board>;
 
 const Template: ComponentStory<typeof Board> = (args) => <Board {...args} />;
+const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
 
 export const Primary = Template.bind({});
 
@@ -24,17 +25,15 @@ Primary.args = {
   addButton: <Button label={'+ Add New Pokemon'} />,
   cardItem: (
     <>
-      <div className='card'>
-        {tableData.map((item) => {
-          return (
-            <>
-              <img src={item.photo} width='40' />
-              <p>{item.code}</p>
-              <p>{item.name}</p>
-            </>
-          );
-        })}
-      </div>
+      {tableData.map((item) => {
+        return (
+          <div className='card-item' key={generateKey(item.name)}>
+            <img src={item.photo} width='40' />
+            <p>{item.code}</p>
+            <p>{item.name}</p>
+          </div>
+        );
+      })}
     </>
   ),
 };
