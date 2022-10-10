@@ -1,0 +1,16 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.valueInput {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.labelRequired {
+  color: red;
+  margin-left: 3px;
+}

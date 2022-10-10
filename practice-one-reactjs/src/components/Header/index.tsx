@@ -34,7 +34,6 @@ const Header: React.FC<IHeaderProps> = ({
       <div className='pokemonElements'>
         {/* RENDER ALL ELEMENTS AND SHOW UP TO NAVBAR */}
         {POKEMON_ELEMENTS.map((item) => {
-          console.log(generateKey(item.name));
           return <Button label={item.name} key={generateKey(item.name)} />;
         })}
       </div>

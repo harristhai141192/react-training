@@ -1,11 +1,11 @@
 export const POKEMON_ELEMENTS = [
   {
-    name: 'fire',
+    name: 'Fire',
   },
   {
-    name: 'water',
+    name: 'Water',
   },
   {
-    name: 'earth',
+    name: 'Earth',
   },
 ];
