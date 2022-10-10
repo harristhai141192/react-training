@@ -4,8 +4,10 @@
 }
 
 .textAreaInput {
-  margin-top: 10px;
+  margin: 10px 0px;
   border: 1px solid lightgrey;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .labelRequired {
