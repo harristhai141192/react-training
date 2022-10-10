@@ -4,13 +4,25 @@
 }
 
 .valueInput {
-  margin-top: 10px;
+  margin: 10px 0px;
   padding: 10px;
   border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.valueInputError {
+  margin: 10px 0px;
+  padding: 10px;
+  border: 1px solid red;
   width: 100%;
 }
 
 .labelRequired {
   color: red;
   margin-left: 3px;
+}
+
+.errorText {
+  color: red;
+  font-weight: 600;
 }

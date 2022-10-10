@@ -4,9 +4,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 // Components
 import Input from '.';
 
-// Constants
-import { POKEMON_ELEMENTS } from '@constants/variables';
-
 // CSS
 import '../../index.css';
 
@@ -22,33 +19,22 @@ Default.args = {
   labelName: 'Pokemon name',
   type: 'text',
   placeholder: 'text',
-  selectInput: false,
+  error: false,
+  required: false,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  labelName: 'Pokemon name',
+  type: 'text',
+  placeholder: 'text',
+  error: true,
+  errorText: '(!) Error!',
+  required: true,
 };
 
 export const Upload = Template.bind({});
 Upload.args = {
   labelName: 'Pokemon Photo',
   type: 'file',
-  selectInput: false,
-};
-
-export const Select = Template.bind({});
-const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
-
-Select.args = {
-  labelName: 'Element Select',
-  placeholder: 'text',
-  selectInput: true,
-  required: false,
-  children: (
-    <>
-      {POKEMON_ELEMENTS.map((item) => {
-        return (
-          <option value={item.name} key={generateKey(item.name)}>
-            {item.name}
-          </option>
-        );
-      })}
-    </>
-  ),
 };

@@ -3,6 +3,7 @@ import React, { ChangeEvent } from 'react';
 
 // CSS
 import './index.styles.css';
+import { isError } from 'lodash';
 
 interface IInputProps {
   value?: string;
@@ -12,8 +13,8 @@ interface IInputProps {
   labelName: string;
   required?: boolean;
   type?: string;
-  selectInput: boolean;
-  children?: React.ReactNode;
+  error: boolean;
+  errorText?: string;
   onChange: () => void;
 }
 
@@ -24,9 +25,9 @@ const Input: React.FC<IInputProps> = ({
   isDisabled = false,
   labelName = '',
   type,
-  required = true,
-  selectInput = false,
-  children,
+  required = false,
+  error = false,
+  errorText,
   onChange = () => {},
 }) => {
   return (
@@ -37,39 +38,28 @@ const Input: React.FC<IInputProps> = ({
           {required && <span className='labelRequired'>*</span>}
         </div>
       </label>
-
-      {!selectInput ? (
-        // eslint-disable-next-line no-constant-condition
-        ({ type } = 'file' ? (
-          <input
-            name={name}
-            className='valueInput'
-            type={type}
-            value={value}
-            placeholder={placeholder}
-            disabled={isDisabled}
-            onChange={onChange}
-            required
-            multiple
-            accept='image/*'
-          />
-        ) : (
-          <input
-            name={name}
-            className='valueInput'
-            type={type}
-            value={value}
-            placeholder={placeholder}
-            disabled={isDisabled}
-            onChange={onChange}
-            required
-          />
-        ))
+      {!error ? (
+        <input
+          name={name}
+          className='valueInput'
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          disabled={isDisabled}
+          onChange={onChange}
+        />
       ) : (
-        <select name={name} className='valueInput'>
-          {children}
-        </select>
+        <input
+          name={name}
+          className='valueInputError'
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          disabled={isDisabled}
+          onChange={onChange}
+        />
       )}
+      {error && <span className='errorText'>{errorText}</span>}
     </>
   );
 };
