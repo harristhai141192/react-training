@@ -23,13 +23,13 @@ const Select: React.FC<ISelectProps> = ({
 }) => {
   return (
     <>
-      <label className='input'>
+      <label className='selectInput'>
         <div className='labelInput'>
           {labelName}
           {required && <span className='labelRequired'>*</span>}
         </div>
       </label>
-      <select name={name} className='valueInput' onChange={onChange} disabled={isDisabled}>
+      <select name={name} className='selectValueInput' onChange={onChange} disabled={isDisabled}>
         {children}
       </select>
     </>

@@ -4,6 +4,7 @@
   border-radius: 1.2em;
   cursor: pointer;
   display: inline-block;
+  margin-right: 10px;
 }
 
 .defaultButton:hover {
