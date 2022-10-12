@@ -5,16 +5,19 @@ import React from 'react';
 import './index.styles.css';
 
 interface IBoardProps {
-  addButton: React.ReactNode;
-  cardItem: React.ReactNode;
+  title?: string;
+  addButton?: React.ReactNode;
+  cardItem?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-const Board: React.FC<IBoardProps> = ({ addButton = <></>, cardItem = <></> }) => {
+const Board: React.FC<IBoardProps> = ({ title, addButton, cardItem, children }) => {
   return (
     <div className='pokedexBoard'>
+      {children}
       <div className='pokedexNavBoard'>
         <div className='boardName'>
-          <h2>Pokedex</h2>
+          <h2>{title}</h2>
         </div>
         <div className='addButton'>{addButton}</div>
       </div>

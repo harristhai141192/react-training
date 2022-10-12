@@ -14,12 +14,17 @@ interface IFormProps {
   formTitle: string;
   type1Children: React.ReactNode;
   type2Children?: React.ReactNode;
+  handleCreateButton?: () => void;
+  handleCancelButton?: () => void;
+  children?: React.ReactNode;
 }
 
 const Form: React.FC<IFormProps> = ({
   formTitle = '',
   type1Children = <></>,
   type2Children = <></>,
+  handleCreateButton,
+  handleCancelButton,
 }) => {
   return (
     <>
@@ -40,9 +45,20 @@ const Form: React.FC<IFormProps> = ({
         <Select labelName={'Type 2'} required={true} onChange={() => {}}>
           {type2Children}
         </Select>
-        <TextField labelName='Description' name={'addPokemonDescription'} onChange={() => {}} />
-        <Button type='primary' size='large' label={'Create'} />
-        <Button type='outlined' size='large' label={'Cancel'} />
+        <TextField
+          labelName='Description'
+          name={'addPokemonDescription'}
+          onChange={() => {}}
+          rows={2}
+        />
+        <Button
+          typeBtn='submit'
+          btnStyle='primary'
+          size='large'
+          label={'Save'}
+          onClick={handleCreateButton}
+        />
+        <Button btnStyle='outlined' size='large' label={'Cancel'} onClick={handleCancelButton} />
       </form>
     </>
   );

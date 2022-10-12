@@ -2,7 +2,8 @@ import React from 'react';
 import './index.styles.css';
 
 interface ButtonProps {
-  type?: 'primary' | 'secondary' | 'tertiary' | 'outlined';
+  typeBtn?: 'submit' | 'button' | 'reset';
+  btnStyle?: 'primary' | 'secondary' | 'tertiary' | 'outlined';
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
   label: string;
@@ -10,7 +11,8 @@ interface ButtonProps {
 }
 
 const Button = ({
-  type = 'primary',
+  typeBtn,
+  btnStyle = 'primary',
   size = 'medium',
   backgroundColor,
   label,
@@ -18,8 +20,8 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      type='button'
-      className={['defaultButton', `${type}`, `${size}`].join(' ')}
+      type={typeBtn}
+      className={['defaultButton', `${btnStyle}`, `${size}`].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
