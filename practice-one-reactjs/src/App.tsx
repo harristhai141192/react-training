@@ -1,5 +1,8 @@
 // Pages
-import HomePage from './pages/HomePage/HomePage';
+import Add from '@pages/add';
+import Edit from '@pages/edit';
+import Detail from '@pages/detail';
+import Home from '@pages/home';
 
 // CSS
 import './index.css';
@@ -7,12 +10,25 @@ import './index.css';
 // Components
 import ErrorBoundary from '@components/ErrorBoundary';
 
-function App() {
-  return (
-    <ErrorBoundary>
-      <HomePage />
-    </ErrorBoundary>
-  );
-}
+// Context
+import Route from './context/Route';
+
+const App = () => (
+  // Route path between pages and ErrorBoundary for avoiding the pages corrupted then throwing the issues
+  <ErrorBoundary>
+    <Route path={'/'}>
+      <Home />
+    </Route>
+    <Route path={'/add'}>
+      <Add />
+    </Route>
+    <Route path={'/edit'}>
+      <Edit />
+    </Route>
+    <Route path={'/detail'}>
+      <Detail />
+    </Route>
+  </ErrorBoundary>
+);
 
 export default App;

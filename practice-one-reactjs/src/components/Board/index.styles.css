@@ -6,7 +6,9 @@
     background-color: whitesmoke;
     border-radius: 0.5em;
     padding: 20px;
-    max-width: 800px;
+    max-width: 900px;
+    height: 670px;
+    margin: auto;
 }
 
 .pokedexNavBoard {

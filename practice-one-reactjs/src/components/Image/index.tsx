@@ -4,14 +4,14 @@ import React from 'react';
 // Styles
 import './index.styles.css';
 
-interface IImageProps {
+interface IProps {
   source: string;
   alt: string;
   width?: string;
   height?: string;
 }
 
-const Image: React.FC<IImageProps> = ({ source = '', alt = '', width, height }) => {
+const Image: React.FC<IProps> = ({ source = '', alt = '', width, height }) => {
   return <img src={source} alt={alt} width={width} height={height} />;
 };
 

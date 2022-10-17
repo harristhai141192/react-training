@@ -1,25 +1,29 @@
 import React from 'react';
 import './index.styles.css';
 
-interface ButtonProps {
-  type?: 'primary' | 'secondary' | 'tertiary' | 'outlined';
+interface IProps {
+  type?: 'submit' | 'button' | 'reset';
+  style?: 'primary' | 'secondary' | 'tertiary' | 'outlined';
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
   label: string;
+  className?: string;
   onClick?: () => void;
 }
 
 const Button = ({
-  type = 'primary',
+  type,
+  style = 'primary',
   size = 'medium',
   backgroundColor,
   label,
+  className,
   ...props
-}: ButtonProps) => {
+}: IProps) => {
   return (
     <button
-      type='button'
-      className={['defaultButton', `${type}`, `${size}`].join(' ')}
+      type={type}
+      className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
