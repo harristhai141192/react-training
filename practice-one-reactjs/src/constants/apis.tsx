@@ -1,5 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace API {
+  export enum URL {
+    BASE_URL = 'http://localhost:3001',
+  }
+
   export enum PATHS {
     POKEMON = 'pokemons',
   }

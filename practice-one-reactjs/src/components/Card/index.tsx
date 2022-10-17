@@ -7,16 +7,16 @@ import './index.styles.css';
 // Components
 import Image from '@components/Image';
 interface IProps {
-  items: {
-    code: string;
-    photo: string;
-    name: string;
-    description: string;
+  card: {
+    code?: string;
+    photo?: string;
+    name?: string;
+    description?: string;
   };
 }
 
 const Card: React.FC<IProps> = ({
-  items: { code = '', photo = '', name = '', description = '' },
+  card: { code = '', photo = '', name = '', description = '' },
 }) => {
   return (
     <div className='pokemonCard'>

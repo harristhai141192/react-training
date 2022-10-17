@@ -1,43 +1,62 @@
-// Libraries
-import React from 'react';
-
 // Constants
 import { API } from '@constants/apis';
 
-export default class ApiService<T> {
-  get = async (path: string): Promise<T[]> => {
-    const url = `${import.meta.env.VITE_BASE_URL_ENDPOINT}/${path}`;
-    const response = await fetch(url);
+// Models
+import { Pokemon } from '@models/pokemon';
 
-    return response.json();
-  };
+/**
+ * Get all the Pokemon in DB
+ * @param url - Init an URL of Pokemon
+ * @returns Pokemon List
+ */
+export const get = async <Pokemon,>(url: string): Promise<Pokemon> => {
+  const response = await fetch(url);
+  return response.json();
+};
 
-  post = async (path: string, data: T): Promise<T[]> => {
-    const url = `${import.meta.env.VITE_BASE_URL_ENDPOINT}/${path}`;
-    const response = await fetch(url, {
-      method: API.HTTP_METHODS.POST,
-      headers: API.HEADERS,
-      body: JSON.stringify(data),
-    });
+/**
+ * Adding a new Pokemon to DB
+ * @param url - Init an URL of Pokemon
+ * @param data - Init data for new Pokemon
+ * @returns
+ */
+export const post = async <Pokemon,>(url: string, data: Pokemon): Promise<Pokemon[]> => {
+  const response = await fetch(url, {
+    method: API.HTTP_METHODS.POST,
+    headers: API.HEADERS,
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
 
-    return response.json();
-  };
+/**
+ * Update a Pokemon in DB
+ * @param url - Init an URL of Pokemon
+ * @param id - Find a PokemonID that is in-charged
+ * @param data - Init a new data for the updated Pokemon
+ * @returns
+ */
+export const update = async (url: string, id: number, data: Pokemon): Promise<Pokemon> => {
+  const response = await fetch(url + `/${id}`, {
+    method: API.HTTP_METHODS.PATCH,
+    headers: API.HEADERS,
+    body: JSON.stringify(data),
+  });
 
-  delete = async (path: string): Promise<void> => {
-    const url = `${import.meta.env.VITE_BASE_URL_ENDPOINT}/${path}`;
-    await fetch(url, {
-      method: API.HTTP_METHODS.DELETE,
-      headers: API.HEADERS,
-    });
-  };
+  return await response.json();
+};
 
-  patch = async (path: string, data: T): Promise<T> => {
-    const url = `${import.meta.env.VITE_BASE_URL_ENDPOINT}/${path}`;
-    const response = await fetch(url, {
-      method: API.HTTP_METHODS.PATCH,
-      headers: API.HEADERS,
-      body: JSON.stringify(data),
-    });
-    return response.json();
-  };
-}
+/**
+ * Remove a Pokemon in DB
+ * @param url - Init an URL of Pokemon
+ * @param id - Find a PokemonID that is in-charged for delete
+ * @returns
+ */
+export const remove = async (url: string, id: string): Promise<void> => {
+  const response = await fetch(url + `/${id}`, {
+    method: API.HTTP_METHODS.DELETE,
+    headers: API.HEADERS,
+  });
+
+  return await response.json();
+};

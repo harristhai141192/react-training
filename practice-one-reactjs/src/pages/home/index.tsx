@@ -6,8 +6,12 @@ import Board from '@components/Board';
 
 // Mockdata
 import tableData from '@mocks/tableData';
+import { getPokemons } from '../../apis/pokemonApi';
+import { useEffect, useState } from 'react';
+import { Pokemon } from '@models/pokemon';
 
 const Home = () => {
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>();
   const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 
   const addPokemonLinkPage = (
@@ -16,12 +20,21 @@ const Home = () => {
     </Link>
   );
 
+  useEffect(() => {
+    async function getList() {
+      const pokemonList = await getPokemons();
+      setPokemonList(pokemonList);
+    }
+
+    getList();
+  }, []);
+
   const cardItem = (
     // Get all the item in mock data file
     <>
-      {tableData.map((item) => (
+      {pokemonList?.map((item) => (
         <Link key={generateKey(item.code)} href='/detail' className='toDetail'>
-          <Card items={item} />
+          <Card card={item} />
         </Link>
       ))}
     </>

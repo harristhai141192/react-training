@@ -29,6 +29,16 @@
       "description": "A Caterpie with Water element",
       "type1": "Walk",
       "type2": "Bug"
+    },
+    {
+      "id": "020",
+      "code": "020",
+      "name": "CATERIA",
+      "element": "Water",
+      "photo": "/src/assets/images/bulbasaur.png",
+      "description": "A Caterpie with Water element",
+      "type1": "Walk",
+      "type2": "Bug"
     }
   ]
 }

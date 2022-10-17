@@ -1,8 +1,8 @@
 // Libraries
-import React from 'react';
+import React, { SetStateAction } from 'react';
 
 // Helpers
-import ApiService from '@services/apiServices';
+import { get, post, update, remove } from '@services/apiServices';
 
 // Models
 import { Pokemon } from 'src/models/pokemon';
@@ -12,8 +12,7 @@ import { API } from '@constants/apis';
 
 // Get item from DB
 export const getPokemons = async (): Promise<Pokemon[]> => {
-  const pokemon = new ApiService<Pokemon>();
-  const pokemonList = await pokemon.get(API.PATHS.POKEMON);
+  const pokemonList: Pokemon[] = await get(`${API.URL.BASE_URL}/${API.PATHS.POKEMON}`);
 
   return pokemonList;
 };
