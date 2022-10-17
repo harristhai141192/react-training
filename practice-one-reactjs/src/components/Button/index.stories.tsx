@@ -15,25 +15,25 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: 'primary',
+  style: 'primary',
   label: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  type: 'secondary',
+  style: 'secondary',
   label: 'secondary',
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  type: 'tertiary',
+  style: 'tertiary',
   label: 'tertiary',
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
-  type: 'outlined',
+  style: 'outlined',
   label: 'outlined',
 };
 

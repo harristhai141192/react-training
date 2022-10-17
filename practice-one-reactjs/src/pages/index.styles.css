@@ -1,0 +1,44 @@
+.bodyHome {
+  background-color: var(--body-background-color);
+  padding: 50px;
+}
+
+.linkTextAddPage, .linkTextEditPage {
+  background-color: var(--primary-button-background-color);
+  color: var(--default-button-font-color);
+  padding: 10px 20px;
+  border-radius: 1em;
+}
+
+.linkToAddPage, .linkTextEditPage:link {
+  text-decoration: none;
+}
+
+.linkToAddPage :hover {
+  background-color: var(--secondary-button-background-color);
+  color: var(--default-button-font-color);
+  transition: 0.4s;
+}
+
+.linkTextHomePage, .linkBack {
+  text-decoration: none;
+  margin: 0px;
+  width: fit-content;
+}
+
+.linkTextHomePage :hover {
+  color: brown;
+}
+
+.linkTextHomePage, .linkBack:visited {
+  color: var(--secondary-button-font-color)
+}
+
+.toDetail {
+  width: 100%;
+  text-decoration: none;
+}
+
+.toDetail:visited {
+  color: black;
+}

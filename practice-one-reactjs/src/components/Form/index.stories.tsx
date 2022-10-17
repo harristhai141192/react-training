@@ -18,7 +18,7 @@ export default {
 const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />;
 
 export const Primary = Template.bind({});
-const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
+const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 
 Primary.args = {
   formTitle: 'Add New Pokemon',

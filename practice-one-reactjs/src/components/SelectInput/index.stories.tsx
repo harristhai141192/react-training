@@ -16,7 +16,7 @@ export default {
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
-const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
+const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 
 export const Default = Template.bind({});
 Default.args = {
