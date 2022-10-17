@@ -4,7 +4,7 @@ import React from 'react';
 // CSS
 import './index.styles.css';
 
-export interface ITextareaInputProps {
+export interface IProps {
   name: string;
   value?: string;
   labelName?: string;
@@ -28,7 +28,7 @@ const TextField = ({
   cols = 50,
   maxlength,
   onChange = () => {},
-}: ITextareaInputProps) => {
+}: IProps) => {
   return (
     <>
       <label className='textAreaLabel'>

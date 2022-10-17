@@ -1,14 +1,14 @@
 import React from 'react';
 import './index.styles.css';
 
-interface ILinkProps {
+interface IProps {
   className?: string;
   href?: string;
   children?: React.ReactNode;
 }
 
-const Link: React.FC<ILinkProps> = ({ className = '', href = '', children = <></> }) => {
-  const handleClick = (event: any) => {
+const Link: React.FC<IProps> = ({ className = '', href = '', children = <></> }) => {
+  const handleClick = (event: React.MouseEvent) => {
     event.preventDefault();
     window.history.pushState({}, '', href);
     const pathEvent = new PopStateEvent('popstate');

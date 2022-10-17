@@ -17,7 +17,7 @@ export default {
 } as ComponentMeta<typeof Board>;
 
 const Template: ComponentStory<typeof Board> = (args) => <Board {...args} />;
-const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
+const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 
 export const Primary = Template.bind({});
 

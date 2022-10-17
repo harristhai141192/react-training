@@ -11,20 +11,20 @@ import './index.styles.css';
 // constants
 import { POKEMON_ELEMENTS } from '@constants/variables';
 
-interface IHeaderProps {
+interface IProps {
   handleLogoClick?: () => void;
   headerLogo: string;
   headerLogoDescription: string;
   children?: React.ReactNode;
 }
 
-const Header: React.FC<IHeaderProps> = ({
+const Header: React.FC<IProps> = ({
   handleLogoClick,
   headerLogo = '',
   headerLogoDescription = '',
   children,
 }) => {
-  const generateKey = (e: string) => `${e}_${new Date().getTime()}`;
+  const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 
   return (
     <div className='header'>

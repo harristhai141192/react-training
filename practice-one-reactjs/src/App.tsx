@@ -14,6 +14,7 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import Route from './context/Route';
 
 const App = () => (
+  // Route path between pages and ErrorBoundary for avoiding the pages corrupted then throwing the issues
   <ErrorBoundary>
     <Route path={'/'}>
       <Home />

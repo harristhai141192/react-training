@@ -4,7 +4,7 @@ import React from 'react';
 // CSS
 import './index.styles.css';
 
-interface IInputProps {
+interface IProps {
   value?: string;
   name?: string;
   placeholder?: string;
@@ -17,7 +17,7 @@ interface IInputProps {
   onChange: () => void;
 }
 
-const Input: React.FC<IInputProps> = ({
+const Input: React.FC<IProps> = ({
   value,
   name,
   placeholder,
