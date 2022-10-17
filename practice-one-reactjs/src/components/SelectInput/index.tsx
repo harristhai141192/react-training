@@ -1,16 +1,21 @@
 // Libraries
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 // CSS
 import './index.styles.css';
+
+interface IListOptionProps {
+  value: string;
+  name: string;
+}
 
 interface IProps {
   name?: string;
   isDisabled?: boolean;
   labelName: string;
   required?: boolean;
-  children?: React.ReactNode;
-  onChange: () => void;
+  listOption: IListOptionProps[];
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Select: React.FC<IProps> = ({
@@ -18,8 +23,8 @@ const Select: React.FC<IProps> = ({
   isDisabled = false,
   labelName = '',
   required = true,
-  children,
-  onChange = () => {},
+  listOption,
+  onChange,
 }) => {
   return (
     <>
@@ -30,7 +35,13 @@ const Select: React.FC<IProps> = ({
         </div>
       </label>
       <select name={name} className='selectValueInput' onChange={onChange} disabled={isDisabled}>
-        {children}
+        {listOption.map((item) => {
+          return (
+            <option value={item.value} key={item.name}>
+              {item.name}
+            </option>
+          );
+        })}
       </select>
     </>
   );

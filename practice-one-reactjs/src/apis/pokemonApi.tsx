@@ -1,7 +1,7 @@
 // Libraries
-import React, { SetStateAction } from 'react';
+import React from 'react';
 
-// Helpers
+// Services
 import { get, post, update, remove } from '@services/apiServices';
 
 // Models
@@ -17,36 +17,45 @@ export const getPokemons = async (): Promise<Pokemon[]> => {
   return pokemonList;
 };
 
-// Delete an item from DB
-export const deletePokemon = async (id: string): Promise<void> => {
-  const url = `${API.PATHS.POKEMON}/${id}`;
-  const pokemonServices = new ApiService<Pokemon>();
+// // Delete an item from DB
+// export const deletePokemon = async (id: string): Promise<void> => {
+//   const url = `${API.PATHS.POKEMON}/${id}`;
+//   const pokemonServices = new ApiService<Pokemon>();
 
-  return pokemonServices.delete(url);
-};
+//   return pokemonServices.delete(url);
+// };
 
 // Add new item to DB
 export const newPokemon = async (data: Pokemon): Promise<void> => {
   const url = `${API.PATHS.POKEMON}`;
-  const pokemonServices = new ApiService<Pokemon>();
+  const addPokemon: Pokemon = new Pokemon({
+    id: `${new Date().getTime()}`,
+    code: data.code,
+    name: data.name,
+    element: data.element,
+    photo: data.photo,
+    description: data.description,
+    type1: data.type1,
+    type2: data.type2,
+  });
 
-  pokemonServices.post(url, data);
+  post(url, data);
 };
 
-// Update new item to DB
-export const updatePokemon = async (
-  id: string,
-  code: string,
-  name: string,
-  element: string,
-  photo: string,
-  description: string,
-  type1: string,
-  type2: string,
-): Promise<Pokemon> => {
-  const newData = { id, code, name, element, photo, description, type1, type2 } as Pokemon;
-  const pokemonServices = new ApiService<Pokemon>();
-  const newPokemon = pokemonServices.patch(`${API.PATHS.POKEMON}/${id}`, newData);
+// // Update new item to DB
+// export const updatePokemon = async (
+//   id: string,
+//   code: string,
+//   name: string,
+//   element: string,
+//   photo: string,
+//   description: string,
+//   type1: string,
+//   type2: string,
+// ): Promise<Pokemon> => {
+//   const newData = { id, code, name, element, photo, description, type1, type2 } as Pokemon;
+//   const pokemonServices = new ApiService<Pokemon>();
+//   const newPokemon = pokemonServices.patch(`${API.PATHS.POKEMON}/${id}`, newData);
 
-  return newPokemon;
-};
+//   return newPokemon;
+// };

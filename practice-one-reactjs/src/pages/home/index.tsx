@@ -5,14 +5,12 @@ import Layout from '@components/Layout';
 import Board from '@components/Board';
 
 // Mockdata
-import tableData from '@mocks/tableData';
-import { getPokemons } from '../../apis/pokemonApi';
 import { useEffect, useState } from 'react';
 import { Pokemon } from '@models/pokemon';
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>();
-  const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
+  const generateKey = (item: string | undefined) => `${item}_${new Date().getTime()}`;
 
   const addPokemonLinkPage = (
     <Link className='linkToAddPage' href='/add'>
@@ -22,7 +20,8 @@ const Home = () => {
 
   useEffect(() => {
     async function getList() {
-      const pokemonList = await getPokemons();
+      const getList = new Pokemon();
+      const pokemonList = await getList.getPokemons();
       setPokemonList(pokemonList);
     }
 

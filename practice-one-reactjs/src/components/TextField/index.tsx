@@ -1,5 +1,5 @@
 // Libarries
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 // CSS
 import './index.styles.css';
@@ -14,7 +14,7 @@ export interface IProps {
   rows?: number;
   cols?: number;
   maxlength?: number;
-  onChange: () => void;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextField = ({
@@ -27,7 +27,7 @@ const TextField = ({
   rows = 5,
   cols = 50,
   maxlength,
-  onChange = () => {},
+  onChange,
 }: IProps) => {
   return (
     <>

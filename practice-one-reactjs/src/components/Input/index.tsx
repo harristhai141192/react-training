@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 // CSS
 import './index.styles.css';
@@ -14,7 +14,7 @@ interface IProps {
   type?: string;
   error: boolean;
   errorText?: string;
-  onChange: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<IProps> = ({
@@ -27,7 +27,7 @@ const Input: React.FC<IProps> = ({
   required = false,
   error = false,
   errorText,
-  onChange = () => {},
+  onChange,
 }) => {
   return (
     <>
