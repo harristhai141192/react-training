@@ -6,12 +6,14 @@ import Board from '@components/Board';
 
 const Edit = () => (
   <Layout>
-    <Board>
-      <Link className='linkTextHomePage' href={'/'}>
-        <p className='linkTextHomePage'> &lArr; Go back</p>
-      </Link>
-      <Form formTitle='Edit Pokemon' />
-    </Board>
+    <div className='bodyHome'>
+      <Board>
+        <Link className='linkTextHomePage' href={'/'}>
+          <p className='linkTextHomePage'> &lArr; Go back</p>
+        </Link>
+        <Form formTitle='Edit Pokemon' />
+      </Board>
+    </div>
   </Layout>
 );
 

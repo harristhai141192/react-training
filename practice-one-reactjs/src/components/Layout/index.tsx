@@ -19,7 +19,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
   return (
     <div className='App'>
       <Header headerLogo={PokemonLogo} headerLogoDescription='Pokedex ball logo' />
-      <div className='bodyHome'>{children}</div>
+      {children}
       <Footer />
     </div>
   );

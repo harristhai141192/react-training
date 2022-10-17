@@ -29,7 +29,9 @@ const Home = () => {
 
   return (
     <Layout>
-      <Board title='Pokedex' addButton={addPokemonLinkPage} cardItem={cardItem} />
+      <div className='bodyHome'>
+        <Board title='Pokedex' addButton={addPokemonLinkPage} cardItem={cardItem} />
+      </div>
     </Layout>
   );
 };

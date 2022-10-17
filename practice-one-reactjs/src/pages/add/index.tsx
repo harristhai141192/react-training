@@ -6,12 +6,14 @@ import Board from '@components/Board';
 
 const Add = () => (
   <Layout>
-    <Board>
-      <Link className='linkTextHomePage' href='/'>
-        <p className='linkTextHomePage'> &lArr; Go back</p>
-      </Link>
-      <Form formTitle='Add New Pokemon' />
-    </Board>
+    <div className='bodyHome'>
+      <Board>
+        <Link className='linkTextHomePage' href='/'>
+          <p className='linkTextHomePage'> &lArr; Go back</p>
+        </Link>
+        <Form formTitle='Add New Pokemon' />
+      </Board>
+    </div>
   </Layout>
 );
 
