@@ -36,8 +36,12 @@ export const updatePokemon = async (
   code: string,
   name: string,
   element: string,
+  photo: string,
+  description: string,
+  type1: string,
+  type2: string,
 ): Promise<IPokemon> => {
-  const newData = { id, code, name, element } as IPokemon;
+  const newData = { id, code, name, element, photo, description, type1, type2 } as IPokemon;
   const pokemonServices = new ApiService<IPokemon>();
   const newPokemon = pokemonServices.patch(`${API.PATHS.POKEMON}/${id}`, newData);
 
