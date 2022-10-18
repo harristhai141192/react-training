@@ -20,8 +20,10 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-  cardCode: '012',
-  photo: FireDragon,
-  name: 'Charmander',
-  description: 'Smiling Pokemon Charmander',
+  card: {
+    code: '012',
+    photo: FireDragon,
+    name: 'Charmander',
+    description: 'Smiling Pokemon Charmander',
+  },
 };

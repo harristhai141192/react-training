@@ -68,7 +68,7 @@ const Add = () => {
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>
           <Form
-            formData={dataInput}
+            pokemonData={dataInput}
             handleOnChange={handleOnChangeInput}
             formTitle='Add New Pokemon'
             onFormSubmit={handleOnSubmit}

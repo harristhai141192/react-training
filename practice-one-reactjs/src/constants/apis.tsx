@@ -6,6 +6,7 @@ export namespace API {
 
   export enum PATHS {
     POKEMON = 'pokemons',
+    URL_POKEMON = 'http://localhost:3001/pokemons',
   }
 
   export enum HEADERS {

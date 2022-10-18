@@ -19,7 +19,6 @@ const Button = ({
   backgroundColor,
   label,
   className,
-  children,
   ...props
 }: IProps) => {
   return (
@@ -30,7 +29,6 @@ const Button = ({
       {...props}
     >
       {label}
-      {children}
     </button>
   );
 };

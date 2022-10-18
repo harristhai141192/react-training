@@ -7,14 +7,14 @@ import Input from '@components/Input';
 import Select from '@components/SelectInput';
 import TextField from '@components/TextField';
 import { IPokemonProps } from '@models/pokemon';
-import { POKEMON_TYPE1, POKEMON_TYPE2 } from '@constants/variables';
+import { POKEMON_ELEMENTS, POKEMON_TYPE } from '@constants/variables';
 
 // CSS
 import './index.styles.css';
 import Link from '@components/Link';
 
 interface IProps {
-  formData: IPokemonProps;
+  pokemonData: IPokemonProps;
   formTitle?: string;
   isEdit?: boolean;
   onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
@@ -26,7 +26,7 @@ interface IProps {
 
 const Form: React.FC<IProps> = ({
   formTitle,
-  formData,
+  pokemonData,
   isEdit,
   onFormSubmit,
   handleOnChange,
@@ -39,14 +39,14 @@ const Form: React.FC<IProps> = ({
       <form onSubmit={onFormSubmit}>
         <Input
           name='name'
-          value={formData.name || ''}
+          value={pokemonData.name || ''}
           labelName='Pokemon Name'
           error={false}
           required={true}
           onChange={handleOnChange}
         />
         <Input
-          value={formData.code || ''}
+          value={pokemonData.code || ''}
           name='code'
           labelName='Pokemon Number'
           type='number'
@@ -55,7 +55,7 @@ const Form: React.FC<IProps> = ({
           onChange={handleOnChange}
         />
         <Input
-          value={formData.photo || ''}
+          value={pokemonData.photo || ''}
           name='photo'
           labelName='Picture'
           type='text'
@@ -63,21 +63,21 @@ const Form: React.FC<IProps> = ({
           onChange={handleOnChange}
         />
         <Select
-          listOption={POKEMON_TYPE1}
+          listOption={POKEMON_ELEMENTS}
           name='element'
           labelName='Type 1'
           required={true}
           onChange={handleOnChangeSelect}
         />
         <Select
-          listOption={POKEMON_TYPE2}
+          listOption={POKEMON_TYPE}
           name='type2'
           labelName='Type 2'
           required={true}
           onChange={handleOnChangeSelect}
         />
         <TextField
-          value={formData.description}
+          value={pokemonData.description}
           labelName='pokemonDescription'
           name='description'
           onChange={handleOnChangeTextArea}

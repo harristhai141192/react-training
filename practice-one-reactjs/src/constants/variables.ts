@@ -1,18 +1,6 @@
 export const POKEMON_ELEMENTS = [
   {
     name: 'Fire',
-  },
-  {
-    name: 'Water',
-  },
-  {
-    name: 'Earth',
-  },
-];
-
-export const POKEMON_TYPE1 = [
-  {
-    name: 'Fire',
     value: 'fire',
   },
   {
@@ -25,7 +13,7 @@ export const POKEMON_TYPE1 = [
   },
 ];
 
-export const POKEMON_TYPE2 = [
+export const POKEMON_TYPE = [
   {
     name: 'fly',
     value: 'fly',

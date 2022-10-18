@@ -45,13 +45,11 @@ const Select: React.FC<IProps> = ({
         <option value='DEFAULT' disabled hidden>
           Choose here
         </option>
-        {listOption.map((item) => {
-          return (
-            <option value={item.value} key={generateKey(item.name)}>
-              {item.name}
-            </option>
-          );
-        })}
+        {listOption.map((item) => (
+          <option value={item.value} key={generateKey(item.name)}>
+            {item.name}
+          </option>
+        ))}
       </select>
     </>
   );

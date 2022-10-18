@@ -12,13 +12,13 @@ import { API } from '@constants/apis';
 
 // Get item from DB
 export const getPokemons = async (): Promise<IPokemonProps[]> => {
-  const pokemonList: IPokemonProps[] = await get(`${API.URL.BASE_URL}/${API.PATHS.POKEMON}`);
+  const pokemonList: IPokemonProps[] = await get(`${API.PATHS.URL_POKEMON}`);
 
   return pokemonList;
 };
 
 export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
-  const pokemon: IPokemonProps = await get(`${API.URL.BASE_URL}/${API.PATHS.POKEMON}/${id}`);
+  const pokemon: IPokemonProps = await get(`${API.PATHS.URL_POKEMON}/${id}`);
 
   return pokemon;
 };
@@ -34,7 +34,7 @@ export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
 
 // Add new item to DB
 export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> => {
-  const url = `${API.URL.BASE_URL}/${API.PATHS.POKEMON}`;
+  const url = `${API.PATHS.URL_POKEMON}`;
 
   return post(url, data);
 };
