@@ -7,8 +7,9 @@
   border-radius: 0.5em;
   padding: 20px;
   max-width: 900px;
-  height: 670px;
+  height: 720px;
   margin: auto;
+  overflow: scroll;
 }
 
 .pokedexNavBoard {
@@ -25,7 +26,6 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
   margin-top: 20px;
 }
 

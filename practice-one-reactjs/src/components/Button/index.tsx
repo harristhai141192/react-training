@@ -8,6 +8,7 @@ interface IProps {
   size?: 'small' | 'medium' | 'large';
   label: string;
   className?: string;
+  children?: React.ReactNode;
   onClick?: () => void;
 }
 
@@ -18,6 +19,7 @@ const Button = ({
   backgroundColor,
   label,
   className,
+  children,
   ...props
 }: IProps) => {
   return (
@@ -28,6 +30,7 @@ const Button = ({
       {...props}
     >
       {label}
+      {children}
     </button>
   );
 };

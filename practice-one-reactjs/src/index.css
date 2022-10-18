@@ -21,3 +21,7 @@
   --body-background-color: rgb(170,48,48);
   font-family: DMSansMedium;
 }
+
+body {
+  margin: 0px;
+}

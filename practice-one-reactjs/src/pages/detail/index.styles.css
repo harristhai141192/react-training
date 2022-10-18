@@ -7,17 +7,25 @@
   margin: 30px;
   background-color: rgba(221, 221, 221, 0.5);
   width: fit-content;
+  box-shadow: 0px 0px 2px 5px lightgrey;
+}
+
+.imagePokemonDetail > img {
+  max-width: 250px;
+  max-height: 250px;
 }
 
 .pokemonDetailNav{
   margin: 30px;
+  width: 100%;
 }
+
 .pokedexBoard {
   padding: 30px 50px;
 }
 
 .pokemonDetailName {
-  font-size: 36px;
+  font-size: 26px;
   margin: 0px;
   justify-content: space-between;
 }
@@ -27,14 +35,14 @@
   font-size: var(--font-small)
 }
 
-.typeBug {
+.typeElement {
   background-color: olivedrab;
   padding: 5px;
   border-radius: 0.5em;
   margin-right: 3px;
 }
 
-.typeWalk {
+.type2 {
   background-color: cornflowerblue;
   padding: 5px;
   border-radius: 0.5em;

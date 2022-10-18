@@ -11,10 +11,12 @@ import { POKEMON_TYPE1, POKEMON_TYPE2 } from '@constants/variables';
 
 // CSS
 import './index.styles.css';
+import Link from '@components/Link';
 
 interface IProps {
   formData: IPokemonProps;
   formTitle?: string;
+  isEdit?: boolean;
   onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
   handleOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleOnChangeSelect: (e: ChangeEvent<HTMLSelectElement>) => void;
@@ -25,8 +27,8 @@ interface IProps {
 const Form: React.FC<IProps> = ({
   formTitle,
   formData,
+  isEdit,
   onFormSubmit,
-  onFormCancel,
   handleOnChange,
   handleOnChangeSelect,
   handleOnChangeTextArea,
@@ -34,19 +36,18 @@ const Form: React.FC<IProps> = ({
   return (
     <>
       <h3 className='formTitle'>{formTitle}</h3>
-      {/* TODO: Handle On Change Btn for btn inside form component */}
       <form onSubmit={onFormSubmit}>
         <Input
-          name='pokemonName'
-          value={formData.name}
+          name='name'
+          value={formData.name || ''}
           labelName='Pokemon Name'
           error={false}
           required={true}
           onChange={handleOnChange}
         />
         <Input
-          value={formData.code}
-          name='pokemonNumber'
+          value={formData.code || ''}
+          name='code'
           labelName='Pokemon Number'
           type='number'
           error={false}
@@ -54,36 +55,38 @@ const Form: React.FC<IProps> = ({
           onChange={handleOnChange}
         />
         <Input
-          value={formData.photo}
-          name='pokemonPhoto'
+          value={formData.photo || ''}
+          name='photo'
           labelName='Picture'
-          type='file'
+          type='text'
           error={false}
           onChange={handleOnChange}
         />
         <Select
           listOption={POKEMON_TYPE1}
-          name='pokemonType1'
+          name='element'
           labelName='Type 1'
           required={true}
           onChange={handleOnChangeSelect}
         />
         <Select
           listOption={POKEMON_TYPE2}
-          name='pokemonType2'
+          name='type2'
           labelName='Type 2'
           required={true}
           onChange={handleOnChangeSelect}
         />
         <TextField
           value={formData.description}
-          labelName='Description'
-          name='pokemonDescription'
+          labelName='pokemonDescription'
+          name='description'
           onChange={handleOnChangeTextArea}
           rows={2}
         />
         <Button type='submit' style='primary' size='large' label='Save' />
-        <Button style='outlined' size='large' label='Cancel' onClick={onFormCancel} />
+        <Link href={isEdit ? '/edit' : '/'}>
+          <Button style='outlined' size='large' label='Cancel' type='button' />
+        </Link>
       </form>
     </>
   );

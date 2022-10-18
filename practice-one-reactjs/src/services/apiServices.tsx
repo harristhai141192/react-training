@@ -2,14 +2,14 @@
 import { API } from '@constants/apis';
 
 // Models
-import { Pokemon } from '@models/pokemon';
+import { IPokemonProps } from '@models/pokemon';
 
 /**
  * Get all the Pokemon in DB
  * @param url - Init an URL of Pokemon
  * @returns Pokemon List
  */
-export const get = async <Pokemon,>(url: string): Promise<Pokemon> => {
+export const get = async <IPokemonProps,>(url: string): Promise<IPokemonProps> => {
   const response = await fetch(url);
   return response.json();
 };
@@ -20,13 +20,17 @@ export const get = async <Pokemon,>(url: string): Promise<Pokemon> => {
  * @param data - Init data for new Pokemon
  * @returns
  */
-export const post = async <Pokemon,>(url: string, data: Pokemon): Promise<Pokemon[]> => {
+export const post = async <IPokemonProps,>(
+  url: string,
+  data: IPokemonProps,
+): Promise<IPokemonProps[]> => {
   const response = await fetch(url, {
     method: API.HTTP_METHODS.POST,
     headers: API.HEADERS,
     body: JSON.stringify(data),
   });
-  return response.json();
+
+  return await response.json();
 };
 
 /**
@@ -36,7 +40,11 @@ export const post = async <Pokemon,>(url: string, data: Pokemon): Promise<Pokemo
  * @param data - Init a new data for the updated Pokemon
  * @returns
  */
-export const update = async (url: string, id: number, data: Pokemon): Promise<Pokemon> => {
+export const update = async (
+  url: string,
+  id: number,
+  data: IPokemonProps,
+): Promise<IPokemonProps> => {
   const response = await fetch(url + `/${id}`, {
     method: API.HTTP_METHODS.PATCH,
     headers: API.HEADERS,

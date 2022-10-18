@@ -5,19 +5,26 @@ import React from 'react';
 import { get, post, update, remove } from '@services/apiServices';
 
 // Models
-import { Pokemon } from 'src/models/pokemon';
+import { IPokemonProps } from '@models/pokemon';
 
 // Constants
 import { API } from '@constants/apis';
 
 // Get item from DB
-export const getPokemons = async (): Promise<Pokemon[]> => {
-  const pokemonList: Pokemon[] = await get(`${API.URL.BASE_URL}/${API.PATHS.POKEMON}`);
+export const getPokemons = async (): Promise<IPokemonProps[]> => {
+  const pokemonList: IPokemonProps[] = await get(`${API.URL.BASE_URL}/${API.PATHS.POKEMON}`);
 
   return pokemonList;
 };
 
-// // Delete an item from DB
+export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
+  const pokemon: IPokemonProps = await get(`${API.URL.BASE_URL}/${API.PATHS.POKEMON}/${id}`);
+
+  return pokemon;
+};
+
+// TODO: DELETE FROM DB
+// Delete an item from DB
 // export const deletePokemon = async (id: string): Promise<void> => {
 //   const url = `${API.PATHS.POKEMON}/${id}`;
 //   const pokemonServices = new ApiService<Pokemon>();
@@ -26,23 +33,14 @@ export const getPokemons = async (): Promise<Pokemon[]> => {
 // };
 
 // Add new item to DB
-export const newPokemon = async (data: Pokemon): Promise<void> => {
-  const url = `${API.PATHS.POKEMON}`;
-  const addPokemon: Pokemon = new Pokemon({
-    id: `${new Date().getTime()}`,
-    code: data.code,
-    name: data.name,
-    element: data.element,
-    photo: data.photo,
-    description: data.description,
-    type1: data.type1,
-    type2: data.type2,
-  });
+export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> => {
+  const url = `${API.URL.BASE_URL}/${API.PATHS.POKEMON}`;
 
-  post(url, data);
+  return post(url, data);
 };
 
-// // Update new item to DB
+// TODO: Update item to DB
+// Update new item to DB
 // export const updatePokemon = async (
 //   id: string,
 //   code: string,

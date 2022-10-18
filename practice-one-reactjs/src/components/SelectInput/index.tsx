@@ -26,6 +26,7 @@ const Select: React.FC<IProps> = ({
   listOption,
   onChange,
 }) => {
+  const generateKey = (item: string) => `${item}_${new Date().getTime()}_${Math.random()}}`;
   return (
     <>
       <label className='selectInput'>
@@ -34,10 +35,19 @@ const Select: React.FC<IProps> = ({
           {required && <span className='labelRequired'>*</span>}
         </div>
       </label>
-      <select name={name} className='selectValueInput' onChange={onChange} disabled={isDisabled}>
+      <select
+        defaultValue={'DEFAULT'}
+        name={name}
+        className='selectValueInput'
+        onChange={onChange}
+        disabled={isDisabled}
+      >
+        <option value='DEFAULT' disabled hidden>
+          Choose here
+        </option>
         {listOption.map((item) => {
           return (
-            <option value={item.value} key={item.name}>
+            <option value={item.value} key={generateKey(item.name)}>
               {item.name}
             </option>
           );

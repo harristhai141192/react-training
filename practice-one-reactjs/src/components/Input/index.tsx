@@ -18,9 +18,9 @@ interface IProps {
 }
 
 const Input: React.FC<IProps> = ({
-  value,
-  name,
-  placeholder,
+  value = '',
+  name = '',
+  placeholder = '',
   isDisabled = false,
   labelName = '',
   type,

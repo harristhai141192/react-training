@@ -5,7 +5,7 @@
       "code": "001",
       "name": "Bulbasaur",
       "element": "Earth",
-      "photo": "/src/assets/images/bulbasaur.png",
+      "photo": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1f619ed0-b566-4538-8392-bf02ca7a76cd/dck5gvr-d1a822f4-cb27-46b3-a0ad-5538b486b6f5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFmNjE5ZWQwLWI1NjYtNDUzOC04MzkyLWJmMDJjYTdhNzZjZFwvZGNrNWd2ci1kMWE4MjJmNC1jYjI3LTQ2YjMtYTBhZC01NTM4YjQ4NmI2ZjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9BrIks7SssFXJqO3zrbCWwfOPzVuui9_Q89iV9uwP2Y",
       "description": "A Bulbasaur with earth element",
       "type1": "Walk",
       "type2": "Bug"
@@ -15,7 +15,7 @@
       "code": "004",
       "name": "Charmander",
       "element": "Fire",
-      "photo": "/src/assets/images/firedragon.png",
+      "photo": "https://freepngimg.com/save/117717-charmander-png-image-high-quality/834x905",
       "description": "A Charmander with Fire element",
       "type1": "Walk",
       "type2": "Dragon"
@@ -25,7 +25,7 @@
       "code": "010",
       "name": "Caterpie",
       "element": "Water",
-      "photo": "/src/assets/images/Caterpie.png",
+      "photo": "https://www.kindpng.com/picc/m/229-2299454_pokemon-caterpie-hd-png-download.png",
       "description": "A Caterpie with Water element",
       "type1": "Walk",
       "type2": "Bug"
@@ -33,12 +33,51 @@
     {
       "id": "020",
       "code": "020",
-      "name": "CATERIA",
+      "name": "Lapras",
       "element": "Water",
-      "photo": "/src/assets/images/bulbasaur.png",
+      "photo": "https://www.kindpng.com/picc/m/23-236959_water-pokemon-png-transparent-png.png",
       "description": "A Caterpie with Water element",
       "type1": "Walk",
       "type2": "Bug"
+    },
+    {
+      "photo": "https://w7.pngwing.com/pngs/177/359/png-transparent-pokemon-sun-and-moon-popplio-drawing-others-marine-mammal-mammal-photography.png",
+      "name": "Popplio",
+      "code": "023",
+      "element": "water",
+      "type2": "swim",
+      "description": "This pokemon can swim",
+      "id": "1666083187119_119"
+    },
+    {
+      "id": "1666084178023_23"
+    },
+    {
+      "id": "1666084862750_750"
+    },
+    {
+      "id": "1666084867839_839"
+    },
+    {
+      "id": "1666084901591_591"
+    },
+    {
+      "id": "1666084904710_710"
+    },
+    {
+      "id": "1666084905110_110"
+    },
+    {
+      "id": "1666084905574_574"
+    },
+    {
+      "id": "1666084912262_262"
+    },
+    {
+      "id": "1666084912470_470"
+    },
+    {
+      "id": "1666084912766_766"
     }
   ]
 }

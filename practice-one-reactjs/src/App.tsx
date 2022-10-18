@@ -25,7 +25,7 @@ const App = () => (
     <Route path={'/edit'}>
       <Edit />
     </Route>
-    <Route path={'/detail'}>
+    <Route path={'/detail/:id'}>
       <Detail />
     </Route>
   </ErrorBoundary>

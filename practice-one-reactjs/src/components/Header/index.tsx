@@ -24,7 +24,7 @@ const Header: React.FC<IProps> = ({
   headerLogoDescription = '',
   children,
 }) => {
-  const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
+  const generateKey = (item: string) => `${item}_${new Date().getTime()}__${Math.random()}`;
 
   return (
     <div className='header'>

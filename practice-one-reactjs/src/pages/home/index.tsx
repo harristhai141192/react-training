@@ -6,11 +6,17 @@ import Board from '@components/Board';
 
 // Mockdata
 import { useEffect, useState } from 'react';
-import { Pokemon } from '@models/pokemon';
+
+// Models
+import { IPokemonProps } from '@models/pokemon';
+
+// Api
+import { getPokemons } from '../../apis/pokemonApi';
 
 const Home = () => {
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>();
-  const generateKey = (item: string | undefined) => `${item}_${new Date().getTime()}`;
+  const [pokemonList, setPokemonList] = useState<IPokemonProps[]>();
+  const generateKey = (item: string | undefined) =>
+    `${item}_${new Date().getTime()}_${Math.random()}`;
 
   const addPokemonLinkPage = (
     <Link className='linkToAddPage' href='/add'>
@@ -20,8 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     async function getList() {
-      const getList = new Pokemon();
-      const pokemonList = await getList.getPokemons();
+      const pokemonList = await getPokemons();
       setPokemonList(pokemonList);
     }
 
@@ -32,7 +37,7 @@ const Home = () => {
     // Get all the item in mock data file
     <>
       {pokemonList?.map((item) => (
-        <Link key={generateKey(item.code)} href='/detail' className='toDetail'>
+        <Link key={generateKey(item.code)} href={`/detail/${item.id}`} className='toDetail'>
           <Card card={item} />
         </Link>
       ))}

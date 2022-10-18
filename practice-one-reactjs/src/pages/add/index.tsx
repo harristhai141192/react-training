@@ -1,16 +1,25 @@
+// Libraries
+import { ChangeEvent, FormEvent, useState } from 'react';
+
 // Components
 import Link from '@components/Link';
 import Form from '@components/Form';
 import Layout from '@components/Layout';
 import Board from '@components/Board';
-import { IPokemonProps, Pokemon } from '@models/pokemon';
-import { ChangeEvent, FormEvent, useState } from 'react';
+
+// Models
+import { IPokemonProps } from '@models/pokemon';
+
+// Api
+import { addPokemon } from '../../apis/pokemonApi';
 
 const Add = () => {
   const [dataInput, setDataInput] = useState<IPokemonProps>({});
 
+  // Handle Change for input component
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValues = { [e.target.name]: e.target.value };
+
     setDataInput((pre) => {
       return {
         ...pre,
@@ -19,8 +28,10 @@ const Add = () => {
     });
   };
 
+  // Handle Change for select component
   const handleOnChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     const inputValues = { [e.target.name]: e.target.value };
+
     setDataInput((pre) => {
       return {
         ...pre,
@@ -29,8 +40,10 @@ const Add = () => {
     });
   };
 
+  // Handle Change for text area
   const handleOnChangeTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const inputValues = { [e.target.name]: e.target.value };
+
     setDataInput((pre) => {
       return {
         ...pre,
@@ -39,10 +52,14 @@ const Add = () => {
     });
   };
 
+  // Send data to DB when submit
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+    dataInput.id = `${new Date().getTime()}_${new Date().getMilliseconds()}`;
+
+    addPokemon(dataInput);
     e.preventDefault();
-    console.log('dataInput', dataInput);
   };
+
   return (
     <Layout>
       <div className='bodyHome'>
@@ -57,6 +74,7 @@ const Add = () => {
             onFormSubmit={handleOnSubmit}
             handleOnChangeSelect={handleOnChangeSelect}
             handleOnChangeTextArea={handleOnChangeTextArea}
+            isEdit={false}
           />
         </Board>
       </div>
