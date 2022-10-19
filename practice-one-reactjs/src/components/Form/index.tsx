@@ -14,7 +14,7 @@ import './index.styles.css';
 import Link from '@components/Link';
 
 interface IProps {
-  defaultPokemonData: IPokemonProps;
+  defaultPokemonData?: IPokemonProps;
   formTitle?: string;
   isEdit?: boolean;
   id?: string;
@@ -27,7 +27,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
       <h3 className='formTitle'>{formTitle}</h3>
       <form onSubmit={onFormSubmit}>
         <Input
-          defaultValue={defaultPokemonData.name}
+          defaultValue={defaultPokemonData?.name}
           name='name'
           type='text'
           labelName='Pokemon Name'
@@ -35,7 +35,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
           required={true}
         />
         <Input
-          defaultValue={defaultPokemonData.code}
+          defaultValue={defaultPokemonData?.code}
           name='code'
           labelName='Pokemon Number'
           type='number'
@@ -43,7 +43,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
           required={true}
         />
         <Input
-          defaultValue={defaultPokemonData.photo}
+          defaultValue={defaultPokemonData?.photo}
           name='photo'
           labelName='Picture'
           type='text'
@@ -55,7 +55,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
           name='element'
           labelName='Element'
           required={true}
-          elementData={defaultPokemonData.element || ''}
+          elementData={defaultPokemonData?.element || ''}
         />
         <Select
           isEdit={isEdit}
@@ -63,10 +63,10 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
           name='type'
           labelName='Type'
           required={true}
-          elementData={defaultPokemonData.type1 || ''}
+          elementData={defaultPokemonData?.type1 || ''}
         />
         <TextField
-          defaultValue={defaultPokemonData.description}
+          defaultValue={defaultPokemonData?.description}
           labelName='pokemonDescription'
           name='description'
           rows={2}

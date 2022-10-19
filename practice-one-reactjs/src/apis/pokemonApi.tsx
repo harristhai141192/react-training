@@ -32,14 +32,16 @@ export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
   return pokemon;
 };
 
-// TODO: DELETE FROM DB
-// Delete an item from DB
-// export const deletePokemon = async (id: string): Promise<void> => {
-//   const url = `${API.PATHS.POKEMON}/${id}`;
-//   const pokemonServices = new ApiService<Pokemon>();
+/**
+ * Delete a new pokemon to DB
+ * @param id - Init pokemon id for delete
+ * @returns
+ */
+export const deletePokemon = async (id: string): Promise<void> => {
+  const url = `${API.PATHS.URL_POKEMON}/${id}`;
 
-//   return pokemonServices.delete(url);
-// };
+  return remove(url);
+};
 
 /**
  * Adding a new pokemon to DB

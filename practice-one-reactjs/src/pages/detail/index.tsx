@@ -7,6 +7,7 @@ import Image from '@components/Image';
 import Layout from '@components/Layout';
 import Board from '@components/Board';
 import Button from '@components/Button';
+import Modal from '@components/Modal';
 
 // CSS
 import './index.styles.css';
@@ -15,19 +16,26 @@ import './index.styles.css';
 import { IPokemonProps } from '../../models/pokemon';
 
 // Apis
-import { getAPokemon } from '../../apis/pokemonApi';
+import { deletePokemon, getAPokemon } from '../../apis/pokemonApi';
 
 const Detail = () => {
   const currentPath = window.location.pathname;
-  const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
 
   useEffect(() => {
-    getAPokemon(getPathId).then((data) => {
+    getAPokemon(getPokemonId).then((data) => {
       setCurrentPokemon(data);
     });
   }, []);
+
+  // Handle delete a Pokemon with confirmation alert
+  const handleDeleteItem = () => {
+    // Delete pokemon and rotate back to the previous page
+    deletePokemon(getPokemonId);
+    window.history.go(-1);
+  };
 
   return (
     <Layout>
@@ -41,10 +49,15 @@ const Detail = () => {
               <div className='pokemonDetailTitle'>
                 <h2 className='pokemonDetailName'>{currentPokemon.name}</h2>
                 <div className='pokemonDetailBtn'>
-                  <Link className='linkTextEditPage' href={`/edit/${getPathId}`}>
-                    Edit Pokemon
+                  <Link href={`/edit/${getPokemonId}`}>
+                    <Button label={'Edit Pokemon'} />
                   </Link>
-                  <Link className='linkTextEditPage'>Delete Pokemon</Link>
+                  <Modal
+                    buttonModalName={'Delete Pokemon'}
+                    titleMessage={'Delete Pokemon'}
+                    mainMessage={'Are you sure you want to delete this Pokemon?'}
+                    onClickConfirm={handleDeleteItem}
+                  />
                 </div>
               </div>
               <div className='pokemonType'>

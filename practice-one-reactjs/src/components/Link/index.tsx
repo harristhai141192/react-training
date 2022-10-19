@@ -14,6 +14,7 @@ const Link: React.FC<IProps> = ({ className = '', href = '', children = <></> })
     const pathEvent = new PopStateEvent('popstate');
     window.dispatchEvent(pathEvent);
   };
+
   return (
     <a className={className} href={href} onClick={handleClick}>
       {children}

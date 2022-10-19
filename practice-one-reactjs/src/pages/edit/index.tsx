@@ -17,11 +17,11 @@ const Edit = () => {
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
 
   const currentPath = window.location.pathname;
-  const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
   // Get Pokemon data by ID
   useEffect(() => {
-    getAPokemon(getPathId).then((data) => {
+    getAPokemon(getPokemonId).then((data) => {
       setCurrentPokemon(data);
     });
   }, []);
@@ -44,7 +44,7 @@ const Edit = () => {
     };
 
     // Call update from pokemonApis
-    updatePokemon(getPathId, data);
+    updatePokemon(getPokemonId, data);
     window.history.go(-1);
   };
 
@@ -52,11 +52,11 @@ const Edit = () => {
     <Layout>
       <div className='bodyHome'>
         <Board>
-          <Link className='linkTextHomePage' href={`/detail/${getPathId}`}>
+          <Link className='linkTextHomePage' href={`/detail/${getPokemonId}`}>
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>
           <Form
-            id={getPathId}
+            id={getPokemonId}
             formTitle='Edit Pokemon'
             onFormSubmit={handleOnSubmit}
             isEdit={true}
