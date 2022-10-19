@@ -7,6 +7,7 @@ import Image from '@components/Image';
 import Layout from '@components/Layout';
 import Board from '@components/Board';
 import Button from '@components/Button';
+import Modal from '@components/Modal';
 
 // CSS
 import './index.styles.css';
@@ -18,8 +19,6 @@ import { IPokemonProps } from '../../models/pokemon';
 import { deletePokemon, getAPokemon } from '../../apis/pokemonApi';
 
 const Detail = () => {
-  console.log('DETAIL PAGE');
-
   const currentPath = window.location.pathname;
   const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
@@ -32,11 +31,9 @@ const Detail = () => {
   }, []);
 
   // Handle delete a Pokemon with confirmation alert
-  const handleDelete = () => {
-    if (confirm('DELETE THIS POKEMON?')) {
-      deletePokemon(getPathId);
-      window.history.go(-1);
-    }
+  const handleDeleteItem = () => {
+    deletePokemon(getPathId);
+    window.history.go(-1);
   };
 
   return (
@@ -54,13 +51,11 @@ const Detail = () => {
                   <Link href={`/edit/${getPathId}`}>
                     <Button label={'Edit Pokemon'} />
                   </Link>
-
-                  <Button
-                    type='button'
-                    label={'Delete Pokemon'}
-                    onClick={() => {
-                      handleDelete();
-                    }}
+                  <Modal
+                    buttonModalName={'Delete Pokemon'}
+                    titleMessage={'Delete Pokemon'}
+                    mainMessage={'Are you sure you want to delete this Pokemon?'}
+                    onClickConfirm={handleDeleteItem}
                   />
                 </div>
               </div>
