@@ -21,7 +21,7 @@
       "type2": "Bug"
     },
     {
-      "name": "OKNGHE",
+      "name": "OKNGHE333",
       "code": "053",
       "photo": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
       "element": "Fire",
@@ -37,6 +37,15 @@
       "type2": "Swim",
       "description": "PhoenixPhoenixPhoenixPhoenixPhoenixPhoenixPhoenix",
       "id": "PHpHjI0"
+    },
+    {
+      "name": "",
+      "code": "",
+      "photo": "",
+      "element": "Fire",
+      "type2": "Fly",
+      "description": "",
+      "id": "ccxotjC"
     }
   ]
 }

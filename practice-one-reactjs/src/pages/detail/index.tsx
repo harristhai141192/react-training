@@ -20,19 +20,20 @@ import { deletePokemon, getAPokemon } from '../../apis/pokemonApi';
 
 const Detail = () => {
   const currentPath = window.location.pathname;
-  const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
 
   useEffect(() => {
-    getAPokemon(getPathId).then((data) => {
+    getAPokemon(getPokemonId).then((data) => {
       setCurrentPokemon(data);
     });
   }, []);
 
   // Handle delete a Pokemon with confirmation alert
   const handleDeleteItem = () => {
-    deletePokemon(getPathId);
+    // Delete pokemon and rotate back to the previous page
+    deletePokemon(getPokemonId);
     window.history.go(-1);
   };
 
@@ -48,7 +49,7 @@ const Detail = () => {
               <div className='pokemonDetailTitle'>
                 <h2 className='pokemonDetailName'>{currentPokemon.name}</h2>
                 <div className='pokemonDetailBtn'>
-                  <Link href={`/edit/${getPathId}`}>
+                  <Link href={`/edit/${getPokemonId}`}>
                     <Button label={'Edit Pokemon'} />
                   </Link>
                   <Modal

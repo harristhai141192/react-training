@@ -22,25 +22,28 @@ const Modal: React.FC<IModalProps> = ({
   onClickConfirm,
 }) => {
   const [modal, setModal] = useState(false);
+
   const toggleModal = () => {
     setModal(!modal);
   };
+
   return (
     <div className='formModal'>
       <Button label={buttonModalName} onClick={toggleModal} />
+
       {modal ? (
         <div className='modal'>
           <div className='overlay'>
             <div className='modal-content'>
               <div className='closeModal' onClick={toggleModal}>
-                <Button style='outlined' label={'X'} size='large' />
+                <Button style='outlined' label='X' size='large' />
               </div>
               <div className='modalMessage'>
                 <h3 className='titleMessage'>{titleMessage}</h3>
                 <p className='mainMessage'>{mainMessage}</p>
                 <div className='buttonsMessage'>
-                  <Button size='large' onClick={onClickConfirm} label={'Yes'} />
-                  <Button size='large' onClick={toggleModal} label={'Cancel'} />
+                  <Button size='large' onClick={onClickConfirm} label='Yes' />
+                  <Button size='large' onClick={toggleModal} label='Cancel' />
                 </div>
               </div>
             </div>
