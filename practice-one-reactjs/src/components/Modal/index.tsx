@@ -31,7 +31,7 @@ const Modal: React.FC<IModalProps> = ({
     <div className='formModal'>
       <Button label={buttonModalName} onClick={toggleModal} />
 
-      {modal ? (
+      {modal && (
         <div className='modal'>
           <div className='overlay'>
             <div className='modal-content'>
@@ -49,8 +49,6 @@ const Modal: React.FC<IModalProps> = ({
             </div>
           </div>
         </div>
-      ) : (
-        ''
       )}
     </div>
   );
