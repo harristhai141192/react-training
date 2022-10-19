@@ -47,7 +47,7 @@ const Select: React.FC<IProps> = ({
             {elementData}
           </option>
         )}
-        {!listOption.length ? (
+        {listOption.length ? (
           listOption.map((item) => {
             return (
               <option value={item.value} key={generateKey(item.name)}>
