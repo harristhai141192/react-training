@@ -1,5 +1,5 @@
 // Libraries
-import React, { ChangeEvent, FormEvent } from 'react';
+import React, { FormEvent } from 'react';
 
 // Components
 import Button from '@components/Button';
@@ -19,20 +19,9 @@ interface IProps {
   isEdit?: boolean;
   id?: string;
   onFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  handleOnChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleOnChangeTextArea?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  onFormCancel?: () => void;
 }
 
-const Form: React.FC<IProps> = ({
-  formTitle,
-  defaultPokemonData,
-  isEdit,
-  id,
-  onFormSubmit,
-  handleOnChange,
-  handleOnChangeTextArea,
-}) => {
+const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onFormSubmit }) => {
   return (
     <>
       <h3 className='formTitle'>{formTitle}</h3>
@@ -71,7 +60,7 @@ const Form: React.FC<IProps> = ({
         <Select
           isEdit={isEdit}
           listOption={POKEMON_TYPE}
-          name='type2'
+          name='type'
           labelName='Type'
           required={true}
           elementData={defaultPokemonData.type1 || ''}

@@ -1,5 +1,5 @@
 // Libraries
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 
 // Components
 import Link from '@components/Link';
@@ -14,9 +14,7 @@ import { IPokemonProps } from '../../models/pokemon';
 import { getAPokemon, updatePokemon } from '../../apis/pokemonApi';
 
 const Edit = () => {
-  const [dataInput, setDataInput] = useState<IPokemonProps>({});
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
-  console.log('currentPokemon: ', currentPokemon);
 
   const currentPath = window.location.pathname;
   const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
@@ -28,48 +26,21 @@ const Edit = () => {
     });
   }, []);
 
-  // Handle Change for input component
-  const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValues = { [e.target.name]: e.target.value };
-
-    setDataInput((pre) => {
-      return {
-        ...pre,
-        ...inputValues,
-      };
-    });
-  };
-
-  // Handle Change for select component
-  const handleOnChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-    const inputValues = { [e.target.name]: e.target.value };
-
-    setDataInput((pre) => {
-      return {
-        ...pre,
-        ...inputValues,
-      };
-    });
-  };
-
-  // Handle Change for text area
-  const handleOnChangeTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValues = { [e.target.name]: e.target.value };
-
-    setDataInput((pre) => {
-      return {
-        ...pre,
-        ...inputValues,
-      };
-    });
-  };
-
   // Send data to DB when submit
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
-    updatePokemon(getPathId, dataInput);
-    console.log('currentPokemon POKEMON:', currentPokemon);
-
     e.preventDefault();
+
+    const data = {
+      name: e.target.name.value,
+      code: e.target.code.value,
+      photo: e.target.photo.value,
+      element: e.target.element.value,
+      type2: e.target.type.value,
+      description: e.target.description.value,
+    };
+
+    updatePokemon(getPathId, data);
+    window.history.go(-1);
   };
 
   return (
@@ -81,12 +52,8 @@ const Edit = () => {
           </Link>
           <Form
             id={getPathId}
-            pokemonData={dataInput}
-            handleOnChange={handleOnChangeInput}
             formTitle='Edit Pokemon'
             onFormSubmit={handleOnSubmit}
-            handleOnChangeSelect={handleOnChangeSelect}
-            handleOnChangeTextArea={handleOnChangeTextArea}
             isEdit={true}
             defaultPokemonData={currentPokemon}
           />

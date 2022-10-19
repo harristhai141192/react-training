@@ -17,7 +17,6 @@ interface IProps {
   labelName: string;
   required?: boolean;
   listOption: IListOptionProps[];
-  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Select: React.FC<IProps> = ({
@@ -28,7 +27,6 @@ const Select: React.FC<IProps> = ({
   labelName = '',
   required = true,
   listOption,
-  onChange,
 }) => {
   const generateKey = (item: string) => `${item}_${new Date().getTime()}_${Math.random()}}`;
   return (

@@ -1,5 +1,5 @@
 // Libraries
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 // Components
 import Link from '@components/Link';
@@ -16,34 +16,21 @@ import { addPokemon } from '../../apis/pokemonApi';
 const Add = () => {
   const [dataInput, setDataInput] = useState<IPokemonProps>({});
 
-  // // Handle Change for input component
-  // const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const inputValues = { [e.target.name]: e.target.value };
-
-  //   setDataInput((pre) => {
-  //     return {
-  //       ...pre,
-  //       ...inputValues,
-  //     };
-  //   });
-  // };
-
-  // // Handle Change for text area
-  // const handleOnChangeTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
-  //   const inputValues = { [e.target.name]: e.target.value };
-
-  //   setDataInput((pre) => {
-  //     return {
-  //       ...pre,
-  //       ...inputValues,
-  //     };
-  //   });
-  // };
-
   // Send data to DB when submit
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
-    addPokemon(dataInput);
     e.preventDefault();
+
+    const data = {
+      name: e.target.name.value,
+      code: e.target.code.value,
+      photo: e.target.photo.value,
+      element: e.target.element.value,
+      type2: e.target.type.value,
+      description: e.target.description.value,
+    };
+
+    addPokemon(data);
+    window.history.go(-1);
   };
 
   return (

@@ -2,13 +2,13 @@
   "pokemons": [
     {
       "id": "001",
-      "code": "0012",
-      "name": "Bulbasaur",
-      "element": "Earth",
+      "code": "0012111",
+      "name": "Bulbasaur321",
+      "element": "Water",
       "photo": "https://w7.pngwing.com/pngs/177/359/png-transparent-pokemon-sun-and-moon-popplio-drawing-others-marine-mammal-mammal-photography.png",
-      "description": "A Bulbasaur with earth asdasdas3213123daaaaaaAAA",
+      "description": "1",
       "type1": "Walk",
-      "type2": "Bug"
+      "type2": "Walk"
     },
     {
       "id": "004",
@@ -23,12 +23,12 @@
     {
       "id": "010",
       "code": "010",
-      "name": "Caterpie",
-      "element": "Water",
+      "name": "Caterpie1",
+      "element": "Fire",
       "photo": "https://www.kindpng.com/picc/m/229-2299454_pokemon-caterpie-hd-png-download.png",
       "description": "A Caterpie with Water element",
       "type1": "Walk",
-      "type2": "Bug"
+      "type2": "Fly"
     },
     {
       "id": "020",
@@ -57,235 +57,6 @@
       "type2": "Fly",
       "description": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
       "id": "1666098455060_60"
-    },
-    {
-      "name": "asdasd",
-      "code": "34123",
-      "photo": "dsgsdsd",
-      "description": "sdfsdfsdfsdfsdfsdfsdfsdfsdfsdf",
-      "id": "1666102956789_789"
-    },
-    {
-      "id": "1666103332164_164"
-    },
-    {
-      "id": "1666103349828_828"
-    },
-    {
-      "id": "1666103355716_716"
-    },
-    {
-      "id": "1666103363908_908"
-    },
-    {
-      "id": "1666103365804_804"
-    },
-    {
-      "id": "1666103366372_372"
-    },
-    {
-      "id": "1666103366764_764"
-    },
-    {
-      "id": "1666103403396_396"
-    },
-    {
-      "id": "1666103406068_68"
-    },
-    {
-      "id": "1666103406996_996"
-    },
-    {
-      "id": "1666103426452_452"
-    },
-    {
-      "id": "1666103427652_652"
-    },
-    {
-      "id": "1666103676428_428"
-    },
-    {
-      "id": "1666103677356_356"
-    },
-    {
-      "id": "1666103677924_924"
-    },
-    {
-      "id": "1666103691548_548"
-    },
-    {
-      "id": "1666103693708_708"
-    },
-    {
-      "id": "soir3NW"
-    },
-    {
-      "id": "IB8cNDr"
-    },
-    {
-      "id": "yGHlSFd"
-    },
-    {
-      "id": "Ymdouae"
-    },
-    {
-      "id": "TvlUdXE"
-    },
-    {
-      "id": "oY0eipY"
-    },
-    {
-      "id": "vbkXDHR"
-    },
-    {
-      "id": "bg6_79X"
-    },
-    {
-      "id": "WwiEosE"
-    },
-    {
-      "id": "IfXOcqG"
-    },
-    {
-      "id": "Sd86Mcg"
-    },
-    {
-      "id": "Jxkys1b"
-    },
-    {
-      "id": "hnwVggd"
-    },
-    {
-      "id": "PkjKFa1"
-    },
-    {
-      "id": "v9JfOuh"
-    },
-    {
-      "id": "H8bxttY"
-    },
-    {
-      "id": "19oxxlC"
-    },
-    {
-      "id": "ZEY2pxd"
-    },
-    {
-      "id": "wSJy63p"
-    },
-    {
-      "id": "D1_SyaF"
-    },
-    {
-      "id": "oqlWl0j"
-    },
-    {
-      "id": "fTtI4tz"
-    },
-    {
-      "id": "OtmFosl"
-    },
-    {
-      "id": "q4Wvwbs"
-    },
-    {
-      "id": "I9-76Sv"
-    },
-    {
-      "id": "mwI_bJF"
-    },
-    {
-      "id": "3bFHS1g"
-    },
-    {
-      "id": "7NvG9gH"
-    },
-    {
-      "id": "sOI9b-Z"
-    },
-    {
-      "id": "CfC48rX"
-    },
-    {
-      "id": "DvbVs6N"
-    },
-    {
-      "id": "L5c2J1D"
-    },
-    {
-      "id": "yXzfE-x"
-    },
-    {
-      "id": "NY9nnJQ"
-    },
-    {
-      "id": "V_6STxM"
-    },
-    {
-      "id": "X0jb0yu"
-    },
-    {
-      "id": "hgEF1lf"
-    },
-    {
-      "id": "nM8QME0"
-    },
-    {
-      "id": "lgd-vRx"
-    },
-    {
-      "id": "VDJL2BD"
-    },
-    {
-      "id": "aLnubFz"
-    },
-    {
-      "id": "N8FX6Lt"
-    },
-    {
-      "id": "xkCIgCi"
-    },
-    {
-      "id": "5BNbnG-"
-    },
-    {
-      "id": "hUClEOt"
-    },
-    {
-      "id": "F9OIkRj"
-    },
-    {
-      "id": "SA_2Pav"
-    },
-    {
-      "id": "__kmot4"
-    },
-    {
-      "id": "XWek2Y0"
-    },
-    {
-      "id": "jkcHQAL"
-    },
-    {
-      "id": "5aiECie"
-    },
-    {
-      "id": "Fw8U9HG"
-    },
-    {
-      "id": "NrzBng_"
-    },
-    {
-      "id": "P8geDuY"
-    },
-    {
-      "id": "m6E45Zz"
-    },
-    {
-      "id": "M7RqQyR"
-    },
-    {
-      "id": "U7EewZd"
     }
   ]
 }
