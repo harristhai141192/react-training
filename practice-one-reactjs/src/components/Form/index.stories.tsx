@@ -18,5 +18,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   formTitle: 'Add New Pokemon',
-  pokemonData: {},
+  defaultPokemonData: {},
 };
