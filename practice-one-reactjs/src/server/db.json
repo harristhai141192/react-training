@@ -1,26 +1,6 @@
 {
   "pokemons": [
     {
-      "id": "001",
-      "code": "0012111",
-      "name": "BULBASAUR",
-      "element": "Water",
-      "photo": "https://w7.pngwing.com/pngs/177/359/png-transparent-pokemon-sun-and-moon-popplio-drawing-others-marine-mammal-mammal-photography.png",
-      "description": "BULBASAUR",
-      "type1": "Walk",
-      "type2": "Walk"
-    },
-    {
-      "id": "004",
-      "code": "123123",
-      "name": "321",
-      "element": "Water",
-      "photo": "https://w7.pngwing.com/pngs/177/359/png-transparent-pokemon-sun-and-moon-popplio-drawing-others-marine-mammal-mammal-photography.png",
-      "description": "A asdasdasasdasdwith Fire element",
-      "type1": "Walk",
-      "type2": "Swim"
-    },
-    {
       "id": "010",
       "code": "010",
       "name": "Caterpie1",
@@ -41,15 +21,6 @@
       "type2": "Bug"
     },
     {
-      "photo": "https://w7.pngwing.com/pngs/177/359/png-transparent-pokemon-sun-and-moon-popplio-drawing-others-marine-mammal-mammal-photography.png",
-      "name": "Popplio",
-      "code": "023",
-      "element": "water",
-      "type2": "Swim",
-      "description": "This pokemon can swim",
-      "id": "1666083187119_119"
-    },
-    {
       "name": "OKNGHE",
       "code": "053",
       "photo": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
@@ -57,6 +28,15 @@
       "type2": "Fly",
       "description": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
       "id": "1666098455060_60"
+    },
+    {
+      "name": "Phoenix",
+      "code": "0345",
+      "photo": "https://w7.pngwing.com/pngs/177/359/png-transparent-pokemon-sun-and-moon-popplio-drawing-others-marine-mammal-mammal-photography.png",
+      "element": "Fire",
+      "type2": "Swim",
+      "description": "PhoenixPhoenixPhoenixPhoenixPhoenixPhoenixPhoenix",
+      "id": "PHpHjI0"
     }
   ]
 }

@@ -19,6 +19,7 @@ const Button = ({
   backgroundColor,
   label,
   className,
+  onClick,
   ...props
 }: IProps) => {
   return (
@@ -26,6 +27,7 @@ const Button = ({
       type={type}
       className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
       style={{ backgroundColor }}
+      onClick={onClick}
       {...props}
     >
       {label}

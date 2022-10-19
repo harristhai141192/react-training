@@ -56,8 +56,8 @@ export const update = async (url: string, data: IPokemonProps): Promise<IPokemon
  * @param id - Find an itemID that is in-charged for delete
  * @returns
  */
-export const remove = async (url: string, id: string): Promise<void> => {
-  const response = await fetch(url + `/${id}`, {
+export const remove = async (url: string): Promise<void> => {
+  const response = await fetch(url, {
     method: API.HTTP_METHODS.DELETE,
     headers: API.HEADERS,
   });

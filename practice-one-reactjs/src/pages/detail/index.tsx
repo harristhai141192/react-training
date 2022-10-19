@@ -15,9 +15,11 @@ import './index.styles.css';
 import { IPokemonProps } from '../../models/pokemon';
 
 // Apis
-import { getAPokemon } from '../../apis/pokemonApi';
+import { deletePokemon, getAPokemon } from '../../apis/pokemonApi';
 
 const Detail = () => {
+  console.log('DETAIL PAGE');
+
   const currentPath = window.location.pathname;
   const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
@@ -28,6 +30,14 @@ const Detail = () => {
       setCurrentPokemon(data);
     });
   }, []);
+
+  // Handle delete a Pokemon with confirmation alert
+  const handleDelete = () => {
+    if (confirm('DELETE THIS POKEMON?')) {
+      deletePokemon(getPathId);
+      window.history.go(-1);
+    }
+  };
 
   return (
     <Layout>
@@ -41,10 +51,17 @@ const Detail = () => {
               <div className='pokemonDetailTitle'>
                 <h2 className='pokemonDetailName'>{currentPokemon.name}</h2>
                 <div className='pokemonDetailBtn'>
-                  <Link className='linkTextEditPage' href={`/edit/${getPathId}`}>
-                    Edit Pokemon
+                  <Link href={`/edit/${getPathId}`}>
+                    <Button label={'Edit Pokemon'} />
                   </Link>
-                  <Link className='linkTextEditPage'>Delete Pokemon</Link>
+
+                  <Button
+                    type='button'
+                    label={'Delete Pokemon'}
+                    onClick={() => {
+                      handleDelete();
+                    }}
+                  />
                 </div>
               </div>
               <div className='pokemonType'>
