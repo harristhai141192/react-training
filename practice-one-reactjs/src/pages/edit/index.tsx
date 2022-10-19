@@ -19,17 +19,21 @@ const Edit = () => {
   const currentPath = window.location.pathname;
   const getPathId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
-  // Get data a pokemon
+  // Get Pokemon data by ID
   useEffect(() => {
     getAPokemon(getPathId).then((data) => {
       setCurrentPokemon(data);
     });
   }, []);
 
-  // Send data to DB when submit
+  /**
+   * Handling button submit and update to DB
+   * @param e - form event
+   */
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // get new data before update
     const data = {
       name: e.target.name.value,
       code: e.target.code.value,
@@ -39,6 +43,7 @@ const Edit = () => {
       description: e.target.description.value,
     };
 
+    // Call update from pokemonApis
     updatePokemon(getPathId, data);
     window.history.go(-1);
   };

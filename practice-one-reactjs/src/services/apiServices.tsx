@@ -5,9 +5,9 @@ import { API } from '@constants/apis';
 import { IPokemonProps } from '@models/pokemon';
 
 /**
- * Get all the Pokemon in DB
- * @param url - Init an URL of Pokemon
- * @returns Pokemon List
+ * Get all the item in DB
+ * @param url - Init an URL of item
+ * @returns item List
  */
 export const get = async <IPokemonProps,>(url: string): Promise<IPokemonProps> => {
   const response = await fetch(url);
@@ -15,9 +15,9 @@ export const get = async <IPokemonProps,>(url: string): Promise<IPokemonProps> =
 };
 
 /**
- * Adding a new Pokemon to DB
- * @param url - Init an URL of Pokemon
- * @param data - Init data for new Pokemon
+ * Adding a new item to DB
+ * @param url - Init an URL of item
+ * @param data - Init data for new item
  * @returns
  */
 export const post = async <IPokemonProps,>(
@@ -36,8 +36,8 @@ export const post = async <IPokemonProps,>(
 /**
  * Update a Pokemon in DB
  * @param url - Init an URL of Pokemon
- * @param id - Find a PokemonID that is in-charged
- * @param data - Init a new data for the updated Pokemon
+ * @param id - Find an item that is in-charged
+ * @param data - Init a new data for the update
  * @returns
  */
 export const update = async (url: string, data: IPokemonProps): Promise<IPokemonProps> => {
@@ -51,9 +51,9 @@ export const update = async (url: string, data: IPokemonProps): Promise<IPokemon
 };
 
 /**
- * Remove a Pokemon in DB
- * @param url - Init an URL of Pokemon
- * @param id - Find a PokemonID that is in-charged for delete
+ * Remove an item in DB
+ * @param url - Init an URL of item
+ * @param id - Find an itemID that is in-charged for delete
  * @returns
  */
 export const remove = async (url: string, id: string): Promise<void> => {
