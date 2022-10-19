@@ -7,19 +7,22 @@ import './index.styles.css';
 // Components
 import Image from '@components/Image';
 interface IProps {
-  items: {
-    code: string;
-    photo: string;
-    name: string;
-    description: string;
+  card: {
+    code?: string;
+    photo?: string;
+    name?: string;
+    description?: string;
   };
+  handleOnClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  isOpen?: boolean;
 }
 
 const Card: React.FC<IProps> = ({
-  items: { code = '', photo = '', name = '', description = '' },
+  card: { code = '', photo = '', name = '', description = '' },
+  handleOnClick,
 }) => {
   return (
-    <div className='pokemonCard'>
+    <div className='pokemonCard' onClick={handleOnClick}>
       <div className='pokemonPhoto'>
         <Image source={photo} alt={description} width='50px' />
       </div>

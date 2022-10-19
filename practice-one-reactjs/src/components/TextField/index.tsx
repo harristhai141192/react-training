@@ -1,5 +1,5 @@
 // Libarries
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 // CSS
 import './index.styles.css';
@@ -7,6 +7,7 @@ import './index.styles.css';
 export interface IProps {
   name: string;
   value?: string;
+  defaultValue?: string;
   labelName?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -14,12 +15,13 @@ export interface IProps {
   rows?: number;
   cols?: number;
   maxlength?: number;
-  onChange: () => void;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextField = ({
   name = 'textarea-input',
   value,
+  defaultValue,
   labelName = '',
   placeholder = 'Enter something',
   disabled = false,
@@ -27,7 +29,7 @@ const TextField = ({
   rows = 5,
   cols = 50,
   maxlength,
-  onChange = () => {},
+  onChange,
 }: IProps) => {
   return (
     <>
@@ -38,6 +40,7 @@ const TextField = ({
         </div>
       </label>
       <textarea
+        defaultValue={defaultValue}
         className='textAreaInput'
         name={name}
         value={value}

@@ -21,15 +21,5 @@ const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 export const Default = Template.bind({});
 Default.args = {
   labelName: 'Element',
-  children: (
-    <>
-      {POKEMON_ELEMENTS.map((item) => {
-        return (
-          <option value={item.name} key={generateKey(item.name)}>
-            {item.name}
-          </option>
-        );
-      })}
-    </>
-  ),
+  listOption: POKEMON_ELEMENTS,
 };

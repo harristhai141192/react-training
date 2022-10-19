@@ -5,8 +5,8 @@ import React from 'react';
 import './index.styles.css';
 
 interface IProps {
-  source: string;
-  alt: string;
+  source?: string;
+  alt?: string;
   width?: string;
   height?: string;
 }

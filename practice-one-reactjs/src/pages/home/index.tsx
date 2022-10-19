@@ -5,10 +5,18 @@ import Layout from '@components/Layout';
 import Board from '@components/Board';
 
 // Mockdata
-import tableData from '@mocks/tableData';
+import { useEffect, useState } from 'react';
+
+// Models
+import { IPokemonProps } from '@models/pokemon';
+
+// Api
+import { getPokemons } from '../../apis/pokemonApi';
 
 const Home = () => {
-  const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
+  const [pokemonList, setPokemonList] = useState<IPokemonProps[]>();
+  const generateKey = (item: string | undefined) =>
+    `${item}_${new Date().getTime()}_${Math.random()}`;
 
   const addPokemonLinkPage = (
     <Link className='linkToAddPage' href='/add'>
@@ -16,12 +24,21 @@ const Home = () => {
     </Link>
   );
 
+  useEffect(() => {
+    async function getList() {
+      const pokemonList = await getPokemons();
+      setPokemonList(pokemonList);
+    }
+
+    getList();
+  }, []);
+
   const cardItem = (
     // Get all the item in mock data file
     <>
-      {tableData.map((item) => (
-        <Link key={generateKey(item.code)} href='/detail' className='toDetail'>
-          <Card items={item} />
+      {pokemonList?.map((item) => (
+        <Link key={generateKey(item.code)} href={`/detail/${item.id}`} className='toDetail'>
+          <Card card={item} />
         </Link>
       ))}
     </>
