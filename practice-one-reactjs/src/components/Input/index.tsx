@@ -6,6 +6,7 @@ import './index.styles.css';
 
 interface IProps {
   value?: string;
+  defaultValue?: string;
   name?: string;
   placeholder?: string;
   isDisabled?: boolean;
@@ -18,7 +19,7 @@ interface IProps {
 }
 
 const Input: React.FC<IProps> = ({
-  value = '',
+  defaultValue = '',
   name = '',
   placeholder = '',
   isDisabled = false,
@@ -39,20 +40,20 @@ const Input: React.FC<IProps> = ({
       </label>
       {!error ? (
         <input
+          defaultValue={defaultValue}
           name={name}
           className='valueInput'
           type={type}
-          value={value}
           placeholder={placeholder}
           disabled={isDisabled}
           onChange={onChange}
         />
       ) : (
         <input
+          defaultValue={defaultValue}
           name={name}
           className='valueInputError'
           type={type}
-          value={value}
           placeholder={placeholder}
           disabled={isDisabled}
           onChange={onChange}

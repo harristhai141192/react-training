@@ -40,12 +40,8 @@ export const post = async <IPokemonProps,>(
  * @param data - Init a new data for the updated Pokemon
  * @returns
  */
-export const update = async (
-  url: string,
-  id: number,
-  data: IPokemonProps,
-): Promise<IPokemonProps> => {
-  const response = await fetch(url + `/${id}`, {
+export const update = async (url: string, data: IPokemonProps): Promise<IPokemonProps> => {
+  const response = await fetch(url, {
     method: API.HTTP_METHODS.PATCH,
     headers: API.HEADERS,
     body: JSON.stringify(data),

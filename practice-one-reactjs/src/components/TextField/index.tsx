@@ -7,6 +7,7 @@ import './index.styles.css';
 export interface IProps {
   name: string;
   value?: string;
+  defaultValue?: string;
   labelName?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -20,6 +21,7 @@ export interface IProps {
 const TextField = ({
   name = 'textarea-input',
   value,
+  defaultValue,
   labelName = '',
   placeholder = 'Enter something',
   disabled = false,
@@ -38,6 +40,7 @@ const TextField = ({
         </div>
       </label>
       <textarea
+        defaultValue={defaultValue}
         className='textAreaInput'
         name={name}
         value={value}

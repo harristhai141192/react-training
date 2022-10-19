@@ -39,21 +39,9 @@ export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> 
   return post(url, data);
 };
 
-// TODO: Update item to DB
 // Update new item to DB
-// export const updatePokemon = async (
-//   id: string,
-//   code: string,
-//   name: string,
-//   element: string,
-//   photo: string,
-//   description: string,
-//   type1: string,
-//   type2: string,
-// ): Promise<Pokemon> => {
-//   const newData = { id, code, name, element, photo, description, type1, type2 } as Pokemon;
-//   const pokemonServices = new ApiService<Pokemon>();
-//   const newPokemon = pokemonServices.patch(`${API.PATHS.POKEMON}/${id}`, newData);
+export const updatePokemon = async (id: string, data: IPokemonProps): Promise<IPokemonProps> => {
+  const updateNewPokemon: IPokemonProps = await update(`${API.PATHS.URL_POKEMON}/${id}`, data);
 
-//   return newPokemon;
-// };
+  return updateNewPokemon;
+};

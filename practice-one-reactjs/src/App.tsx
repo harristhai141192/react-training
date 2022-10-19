@@ -22,7 +22,7 @@ const App = () => (
     <Route path={'/add'}>
       <Add />
     </Route>
-    <Route path={'/edit'}>
+    <Route path={'/edit/:id'}>
       <Edit />
     </Route>
     <Route path={'/detail/:id'}>

@@ -11,6 +11,8 @@ interface IListOptionProps {
 
 interface IProps {
   name?: string;
+  elementData: string;
+  isEdit?: boolean;
   isDisabled?: boolean;
   labelName: string;
   required?: boolean;
@@ -20,6 +22,8 @@ interface IProps {
 
 const Select: React.FC<IProps> = ({
   name,
+  elementData,
+  isEdit = false,
   isDisabled = false,
   labelName = '',
   required = true,
@@ -35,21 +39,24 @@ const Select: React.FC<IProps> = ({
           {required && <span className='labelRequired'>*</span>}
         </div>
       </label>
-      <select
-        defaultValue={'DEFAULT'}
-        name={name}
-        className='selectValueInput'
-        onChange={onChange}
-        disabled={isDisabled}
-      >
-        <option value='DEFAULT' disabled hidden>
-          Choose here
-        </option>
-        {listOption.map((item) => (
-          <option value={item.value} key={generateKey(item.name)}>
-            {item.name}
+      <select name={name} className='selectValueInput' disabled={isDisabled}>
+        {!isEdit ? (
+          <option value='DEFAULT' disabled hidden>
+            Choose here
           </option>
-        ))}
+        ) : (
+          <option value='DEFAULT' disabled hidden>
+            {elementData}
+          </option>
+        )}
+
+        {listOption.map((item) => {
+          return (
+            <option value={item.value} key={generateKey(item.name)}>
+              {item.name}
+            </option>
+          );
+        })}
       </select>
     </>
   );

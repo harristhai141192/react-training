@@ -41,7 +41,9 @@ const Detail = () => {
               <div className='pokemonDetailTitle'>
                 <h2 className='pokemonDetailName'>{currentPokemon.name}</h2>
                 <div className='pokemonDetailBtn'>
-                  <Link className='linkTextEditPage'>Edit Pokemon</Link>
+                  <Link className='linkTextEditPage' href={`/edit/${getPathId}`}>
+                    Edit Pokemon
+                  </Link>
                   <Link className='linkTextEditPage'>Delete Pokemon</Link>
                 </div>
               </div>
