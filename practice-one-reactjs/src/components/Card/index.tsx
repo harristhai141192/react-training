@@ -16,14 +16,13 @@ interface IProps {
   };
   handleOnClick?: (e: React.MouseEvent<HTMLElement>) => void;
   isOpen?: boolean;
-  dfgfdg;
 }
 
 const Card: React.FC<IProps> = ({
   card: { code = '', photo = '', name = '', description = '' },
   handleOnClick,
 }) => (
-  <div className='pokemonCard' onClick={handleOnClick}>
+  <div className='pokemonCard' onClick={kkaasd()}>
     <div className='pokemonPhoto'>
       <Image source={photo} alt={description} width='50px' />
     </div>
