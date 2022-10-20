@@ -30,7 +30,7 @@ const Modal: React.FC<IModalProps> = ({
   return (
     <div className='formModal'>
       <Button label={buttonModalName} onClick={toggleModal} />
-
+      {/* Return a modal */}
       {modal && (
         <div className='modal'>
           <div className='overlay'>

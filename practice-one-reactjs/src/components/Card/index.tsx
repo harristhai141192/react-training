@@ -6,6 +6,7 @@ import './index.styles.css';
 
 // Components
 import Image from '@components/Image';
+
 interface IProps {
   card: {
     code?: string;
@@ -15,23 +16,22 @@ interface IProps {
   };
   handleOnClick?: (e: React.MouseEvent<HTMLElement>) => void;
   isOpen?: boolean;
+  dfgfdg;
 }
 
 const Card: React.FC<IProps> = ({
   card: { code = '', photo = '', name = '', description = '' },
   handleOnClick,
-}) => {
-  return (
-    <div className='pokemonCard' onClick={handleOnClick}>
-      <div className='pokemonPhoto'>
-        <Image source={photo} alt={description} width='50px' />
-      </div>
-      <div className='pokemonDescription'>
-        <div className='pokemonCode'>{code}</div>
-        <div className='pokemonName'>{name}</div>
-      </div>
+}) => (
+  <div className='pokemonCard' onClick={handleOnClick}>
+    <div className='pokemonPhoto'>
+      <Image source={photo} alt={description} width='50px' />
     </div>
-  );
-};
+    <div className='pokemonDescription'>
+      <div className='pokemonCode'>{code}</div>
+      <div className='pokemonName'>{name}</div>
+    </div>
+  </div>
+);
 
 export default Card;
