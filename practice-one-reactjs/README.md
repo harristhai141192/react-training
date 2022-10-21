@@ -40,7 +40,7 @@ This document provides a detailed estimate of the ReactJS practice. The practice
 - UI Reference: [UI REFERENCE LINK](https://saraneel.com/pokedex/)
 
 ### STRUCTURE ###
-![Flowchart](/uploads/f9ebabd9bb7f45d6ecaec81506b716ca/Flowchart.PNG)
+![Flowchart.svg](/uploads/a315f7dc9a1540671103850a9aa576a4/Flowchart.svg)
 
 ### COMMAND ###
 
