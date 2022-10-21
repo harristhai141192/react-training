@@ -4,11 +4,6 @@ import React, { ChangeEvent } from 'react';
 // CSS
 import './index.styles.css';
 
-interface IListOptionProps {
-  value: string;
-  name: string;
-}
-
 interface IProps {
   name?: string;
   elementData: string;
@@ -16,7 +11,7 @@ interface IProps {
   isDisabled?: boolean;
   labelName: string;
   required?: boolean;
-  listOption: IListOptionProps[];
+  listOption: string[];
 }
 
 const Select: React.FC<IProps> = ({
@@ -50,8 +45,8 @@ const Select: React.FC<IProps> = ({
         {listOption.length ? (
           listOption.map((item) => {
             return (
-              <option value={item.value} key={generateKey(item.name)}>
-                {item.name}
+              <option value={item} key={generateKey(item)}>
+                {item}
               </option>
             );
           })

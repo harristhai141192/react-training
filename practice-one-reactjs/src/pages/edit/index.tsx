@@ -15,6 +15,7 @@ import { getAPokemon, updatePokemon } from '../../apis/pokemonApi';
 
 const Edit = () => {
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const currentPath = window.location.pathname;
   const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
@@ -30,7 +31,8 @@ const Edit = () => {
    * Handling button submit and update to DB
    * @param e - form event
    */
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
 
     // get new data before update
@@ -44,14 +46,14 @@ const Edit = () => {
     };
 
     // Call update from pokemonApis
-    updatePokemon(getPokemonId, data);
+    await updatePokemon(getPokemonId, data);
     window.history.go(-1);
   };
 
   return (
     <Layout>
       <div className='bodyHome'>
-        <Board>
+        <Board isLoading={isLoading}>
           <Link className='linkTextHomePage' href={`/detail/${getPokemonId}`}>
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>

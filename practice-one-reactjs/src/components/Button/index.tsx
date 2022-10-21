@@ -21,18 +21,16 @@ const Button = ({
   className,
   onClick,
   ...props
-}: IProps) => {
-  return (
-    <button
-      type={type}
-      className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
-      style={{ backgroundColor }}
-      onClick={onClick}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+}: IProps) => (
+  <button
+    type={type}
+    className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
+    style={{ backgroundColor }}
+    onClick={onClick}
+    {...props}
+  >
+    {label}
+  </button>
+);
 
 export default Button;

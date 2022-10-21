@@ -7,7 +7,7 @@ import Input from '@components/Input';
 import Select from '@components/SelectInput';
 import TextField from '@components/TextField';
 import { IPokemonProps } from '@models/pokemon';
-import { POKEMON_ELEMENTS, POKEMON_TYPE } from '@constants/variables';
+import { getPokemonElements, getPokemonTypes } from '@constants/variables';
 
 // CSS
 import './index.styles.css';
@@ -51,7 +51,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
         />
         <Select
           isEdit={isEdit}
-          listOption={POKEMON_ELEMENTS}
+          listOption={getPokemonElements}
           name='element'
           labelName='Element'
           required={true}
@@ -59,7 +59,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onF
         />
         <Select
           isEdit={isEdit}
-          listOption={POKEMON_TYPE}
+          listOption={getPokemonTypes}
           name='type'
           labelName='Type'
           required={true}

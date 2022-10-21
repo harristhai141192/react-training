@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Select from '.';
 
 // Constants
-import { POKEMON_ELEMENTS } from '@constants/variables';
+import { getPokemonElements } from '@constants/variables';
 
 // CSS
 import '../../index.css';
@@ -21,5 +21,5 @@ const generateKey = (item: string) => `${item}_${new Date().getTime()}`;
 export const Default = Template.bind({});
 Default.args = {
   labelName: 'Element',
-  listOption: POKEMON_ELEMENTS,
+  listOption: getPokemonElements,
 };

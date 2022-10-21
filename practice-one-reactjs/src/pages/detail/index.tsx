@@ -23,6 +23,7 @@ const Detail = () => {
   const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getAPokemon(getPokemonId).then((data) => {
@@ -31,16 +32,17 @@ const Detail = () => {
   }, []);
 
   // Handle delete a Pokemon with confirmation alert
-  const handleDeleteItem = () => {
+  const handleDeleteItem = async () => {
+    setIsLoading(true);
     // Delete pokemon and rotate back to the previous page
-    deletePokemon(getPokemonId);
+    await deletePokemon(getPokemonId);
     window.history.go(-1);
   };
 
   return (
     <Layout>
       <div className='bodyHome'>
-        <Board>
+        <Board isLoading={isLoading}>
           <div className='pokemonDetail'>
             <div className='imagePokemonDetail'>
               <Image source={currentPokemon.photo} alt={currentPokemon.name} width='250px' />

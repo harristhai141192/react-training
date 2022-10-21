@@ -1,29 +1,14 @@
-export const POKEMON_ELEMENTS = [
-  {
-    name: 'Fire',
-    value: 'Fire',
-  },
-  {
-    name: 'Water',
-    value: 'Water',
-  },
-  {
-    name: 'Earth',
-    value: 'Earth',
-  },
-];
+export enum POKEMON_ELEMENTS {
+  Fire = 'Fire',
+  Water = 'Water',
+  Earth = 'Earth',
+}
 
-export const POKEMON_TYPE = [
-  {
-    name: 'Fly',
-    value: 'Fly',
-  },
-  {
-    name: 'Walk',
-    value: 'Walk',
-  },
-  {
-    name: 'Swim',
-    value: 'Swim',
-  },
-];
+export enum POKEMON_TYPE {
+  Fly = 'Fly',
+  Walk = 'Walk',
+  Swim = 'Swim',
+}
+
+export const getPokemonElements = Object.keys(POKEMON_ELEMENTS);
+export const getPokemonTypes = Object.keys(POKEMON_TYPE);

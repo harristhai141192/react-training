@@ -9,7 +9,7 @@ import Image from '@components/Image';
 import './index.styles.css';
 
 // constants
-import { POKEMON_ELEMENTS } from '@constants/variables';
+import { getPokemonElements } from '@constants/variables';
 
 interface IProps {
   handleLogoClick?: () => void;
@@ -25,7 +25,6 @@ const Header: React.FC<IProps> = ({
   children,
 }) => {
   const generateKey = (item: string) => `${item}_${new Date().getTime()}__${Math.random()}`;
-
   return (
     <div className='header'>
       <div className='headerLogo' onClick={handleLogoClick}>
@@ -33,8 +32,8 @@ const Header: React.FC<IProps> = ({
       </div>
       <div className='pokemonElements'>
         {/* RENDER ALL ELEMENTS AND SHOW UP TO NAVBAR */}
-        {POKEMON_ELEMENTS.map((item) => {
-          return <Button label={item.name} key={generateKey(item.name)} />;
+        {getPokemonElements.map((item) => {
+          return <Button label={item} key={generateKey(item)} />;
         })}
       </div>
       <div className='navBar'>{children}</div>

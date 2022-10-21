@@ -4,11 +4,11 @@
       "id": "010",
       "code": "0102",
       "name": "Caterpie12",
-      "element": "Earth",
+      "element": "Fire",
       "photo": "https://www.kindpng.com/picc/m/229-2299454_pokemon-caterpie-hd-png-download.png",
       "description": "A Caterpie with Water element",
       "type1": "Walk",
-      "type2": "Fly"
+      "type2": "Walk"
     },
     {
       "id": "020",
@@ -21,7 +21,7 @@
       "type2": "Fly"
     },
     {
-      "name": "OKNGHE333",
+      "name": "OKNGHE",
       "code": "053",
       "photo": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
       "element": "Fire",
@@ -30,130 +30,13 @@
       "id": "1666098455060_60"
     },
     {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "MF_0lBL"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "uffDdJK"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "hf4mUJo"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "vVqt_jK"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "VO-37mI"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "ZNvCFSI"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "SSZlA9r"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "r34L5pO"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "V8ZWl_L"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "Y5EKws1"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "Qyh7KgF"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "f9NpSx5"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "PUTyGAK"
-    },
-    {
-      "name": "",
-      "code": "",
-      "photo": "",
-      "element": "Fire",
-      "type2": "Fly",
-      "description": "",
-      "id": "vGqxrpC"
+      "name": "534543",
+      "code": "5345345",
+      "photo": "345345",
+      "element": "Water",
+      "type2": "Walk",
+      "description": "345345",
+      "id": "6UOWLWg"
     }
   ]
 }

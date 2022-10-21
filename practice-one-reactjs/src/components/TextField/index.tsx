@@ -30,29 +30,27 @@ const TextField = ({
   cols = 50,
   maxlength,
   onChange,
-}: IProps) => {
-  return (
-    <>
-      <label className='textAreaLabel'>
-        <div className='textAreaDescription'>
-          {labelName}
-          {required && <span className='labelRequired'>*</span>}
-        </div>
-      </label>
-      <textarea
-        defaultValue={defaultValue}
-        className='textAreaInput'
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        rows={rows}
-        cols={cols}
-        maxLength={maxlength}
-        disabled={disabled}
-      />
-    </>
-  );
-};
+}: IProps) => (
+  <>
+    <label className='textAreaLabel'>
+      <div className='textAreaDescription'>
+        {labelName}
+        {required && <span className='labelRequired'>*</span>}
+      </div>
+    </label>
+    <textarea
+      defaultValue={defaultValue}
+      className='textAreaInput'
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      rows={rows}
+      cols={cols}
+      maxLength={maxlength}
+      disabled={disabled}
+    />
+  </>
+);
 
 export default TextField;

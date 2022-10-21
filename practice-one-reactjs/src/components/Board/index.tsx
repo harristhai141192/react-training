@@ -1,4 +1,5 @@
 // Libararies
+import LoadingSpinner from '@components/LoadingSpinner';
 import React from 'react';
 
 // CSS
@@ -9,21 +10,26 @@ interface IProps {
   addButton?: React.ReactNode;
   cardItem?: React.ReactNode;
   children?: React.ReactNode;
+  isLoading?: boolean;
 }
 
-const Board: React.FC<IProps> = ({ title, addButton, cardItem, children }) => {
-  return (
-    <div className='pokedexBoard'>
-      {children}
-      <div className='pokedexNavBoard'>
-        <div className='boardName'>
-          <h2>{title}</h2>
+const Board: React.FC<IProps> = ({ title, addButton, cardItem, children, isLoading }) => (
+  <div className='pokedexBoard'>
+    {!isLoading ? (
+      <>
+        {children}
+        <div className='pokedexNavBoard'>
+          <div className='boardName'>
+            <h2>{title}</h2>
+          </div>
+          <div className='addButton'>{addButton}</div>
         </div>
-        <div className='addButton'>{addButton}</div>
-      </div>
-      <div className='pokedexCard'>{cardItem}</div>
-    </div>
-  );
-};
+        <div className='pokedexCard'>{cardItem}</div>
+      </>
+    ) : (
+      <LoadingSpinner />
+    )}
+  </div>
+);
 
 export default Board;

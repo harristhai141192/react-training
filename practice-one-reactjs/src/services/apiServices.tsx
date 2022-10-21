@@ -42,7 +42,7 @@ export const post = async <IPokemonProps,>(
  */
 export const update = async (url: string, data: IPokemonProps): Promise<IPokemonProps> => {
   const response = await fetch(url, {
-    method: API.HTTP_METHODS.PATCH,
+    method: API.HTTP_METHODS.PUT,
     headers: API.HEADERS,
     body: JSON.stringify(data),
   });

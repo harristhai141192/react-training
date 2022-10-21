@@ -15,6 +15,7 @@ import { getPokemons } from '../../apis/pokemonApi';
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState<IPokemonProps[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
 
@@ -28,8 +29,8 @@ const Home = () => {
     async function getList() {
       const pokemonList = await getPokemons();
       setPokemonList(pokemonList);
+      setIsLoading(false);
     }
-
     getList();
   }, []);
 
@@ -47,7 +48,12 @@ const Home = () => {
   return (
     <Layout>
       <div className='bodyHome'>
-        <Board title='Pokedex' addButton={addPokemonLinkPage} cardItem={cardItem} />
+        <Board
+          isLoading={isLoading}
+          title='Pokedex'
+          addButton={addPokemonLinkPage}
+          cardItem={cardItem}
+        />
       </div>
     </Layout>
   );

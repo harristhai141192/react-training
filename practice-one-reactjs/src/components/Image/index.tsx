@@ -11,8 +11,8 @@ interface IProps {
   height?: string;
 }
 
-const Image: React.FC<IProps> = ({ source = '', alt = '', width, height }) => {
-  return <img src={source} alt={alt} width={width} height={height} />;
-};
+const Image: React.FC<IProps> = ({ source = '', alt = '', width, height }) => (
+  <img src={source} alt={alt} width={width} height={height} />
+);
 
 export default Image;

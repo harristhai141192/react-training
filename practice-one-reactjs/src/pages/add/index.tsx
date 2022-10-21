@@ -11,10 +11,11 @@ import Board from '@components/Board';
 import { addPokemon } from '../../apis/pokemonApi';
 
 const Add = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   // Send data to DB when submit
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
-
     const data = {
       name: e.target.name.value,
       code: e.target.code.value,
@@ -23,15 +24,14 @@ const Add = () => {
       type2: e.target.type.value,
       description: e.target.description.value,
     };
-
-    addPokemon(data);
+    await addPokemon(data);
     window.history.go(-1);
   };
 
   return (
     <Layout>
       <div className='bodyHome'>
-        <Board>
+        <Board isLoading={isLoading}>
           <Link className='linkTextHomePage' href='/'>
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>
