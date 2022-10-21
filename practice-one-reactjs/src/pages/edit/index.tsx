@@ -22,8 +22,11 @@ const Edit = () => {
 
   // Get Pokemon data by ID
   useEffect(() => {
+    setIsLoading(true);
+
     getAPokemon(getPokemonId).then((data) => {
       setCurrentPokemon(data);
+      setIsLoading(false);
     });
   }, []);
 

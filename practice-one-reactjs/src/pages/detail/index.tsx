@@ -26,8 +26,11 @@ const Detail = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getAPokemon(getPokemonId).then((data) => {
       setCurrentPokemon(data);
+      setIsLoading(false);
     });
   }, []);
 
