@@ -13,10 +13,10 @@ import Modal from '@components/Modal';
 import './index.styles.css';
 
 // Models
-import { IPokemonProps } from '../../models/pokemon';
+import { IPokemonProps } from '@models/pokemon';
 
 // Apis
-import { deletePokemon, getAPokemon } from '../../apis/pokemonApi';
+import { deletePokemon, getAPokemon } from '@apis/pokemonApi';
 
 const Detail = () => {
   const currentPath = window.location.pathname;

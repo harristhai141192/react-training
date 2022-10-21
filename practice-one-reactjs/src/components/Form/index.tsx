@@ -6,12 +6,16 @@ import Button from '@components/Button';
 import Input from '@components/Input';
 import Select from '@components/SelectInput';
 import TextField from '@components/TextField';
+import Link from '@components/Link';
+
+// Models
 import { IPokemonProps } from '@models/pokemon';
+
+// Variables
 import { getPokemonElements, getPokemonTypes } from '@constants/variables';
 
 // CSS
 import './index.styles.css';
-import Link from '@components/Link';
 
 interface IProps {
   defaultPokemonData?: IPokemonProps;

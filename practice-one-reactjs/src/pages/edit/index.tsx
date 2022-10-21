@@ -8,10 +8,10 @@ import Layout from '@components/Layout';
 import Board from '@components/Board';
 
 // Models
-import { IPokemonProps } from '../../models/pokemon';
+import { IPokemonProps } from '@models/pokemon';
 
 // Api
-import { getAPokemon, updatePokemon } from '../../apis/pokemonApi';
+import { getAPokemon, updatePokemon } from '@apis/pokemonApi';
 
 const Edit = () => {
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});

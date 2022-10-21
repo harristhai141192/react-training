@@ -1,5 +1,5 @@
 // Libarries
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 // CSS
 import './index.styles.css';

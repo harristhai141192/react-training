@@ -8,7 +8,7 @@ import Layout from '@components/Layout';
 import Board from '@components/Board';
 
 // Api
-import { addPokemon } from '../../apis/pokemonApi';
+import { addPokemon } from '@apis/pokemonApi';
 
 const Add = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

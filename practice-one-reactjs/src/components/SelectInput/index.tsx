@@ -1,5 +1,5 @@
 // Libraries
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 // CSS
 import './index.styles.css';

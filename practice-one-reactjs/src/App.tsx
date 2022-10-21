@@ -11,7 +11,7 @@ import './index.css';
 import ErrorBoundary from '@components/ErrorBoundary';
 
 // Context
-import Route from './context/Route';
+import Route from '@context/Route';
 
 const App = () => (
   // Route path between pages and ErrorBoundary for avoiding the pages corrupted then throwing the issues

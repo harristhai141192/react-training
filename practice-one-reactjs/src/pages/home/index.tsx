@@ -1,21 +1,22 @@
+// Libraries
+import { useEffect, useState } from 'react';
+
 // Components
 import Link from '@components/Link';
 import Card from '@components/Card';
 import Layout from '@components/Layout';
 import Board from '@components/Board';
 
-// Mockdata
-import { useEffect, useState } from 'react';
-
 // Models
 import { IPokemonProps } from '@models/pokemon';
 
 // Api
-import { getPokemons } from '../../apis/pokemonApi';
+import { getPokemons } from '@apis/pokemonApi';
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState<IPokemonProps[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
 
@@ -28,6 +29,7 @@ const Home = () => {
   useEffect(() => {
     async function getList() {
       const pokemonList = await getPokemons();
+
       setPokemonList(pokemonList);
       setIsLoading(false);
     }
