@@ -6,7 +6,7 @@ This document provides a detailed estimate of the ReactJS practice. The practice
 
 ### TIMELINE ###
 
-- Estimate time: 5 days (2022/10/06 - 2022/10/12)
+- Estimate time: 5 days (2022/10/06 - 2022/10/19)
 - Actual time: 8 days
 
 
