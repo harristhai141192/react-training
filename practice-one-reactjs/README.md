@@ -1,8 +1,9 @@
 # REACT PRACTICE #
+
 *06 Oct 2022*
 ## OVERVIEW ##
 
-This document provides a detailed estimate of the ReactJS practice. The practice tends to develop a single page with a filter, searching bar for pokemon in detail. 
+This document provides a detailed estimate of the ReactJS practice. The practice tends to develop four pages in which are home, detail, add and edit. CRUD will be the main features of the practice using MockApi.io to work with the data. Json server was first in-use but has been changed to MockApi.io due to additional requirements.
 
 ### TIMELINE ###
 
@@ -11,6 +12,7 @@ This document provides a detailed estimate of the ReactJS practice. The practice
 
 
 ### TECHNICAL STACK ###
+
 - ReactJS
 - HTML5/CSS3
 - Typescript
@@ -20,16 +22,21 @@ This document provides a detailed estimate of the ReactJS practice. The practice
 - Husky
 - Prettier
 - MockAPI.io
+- PNPM
 
 ### TEAM SIZE ###
+
 - 1 Developer: Bao.Thai@asnet.com.vn
 
 ### TARGET ###
-- Understand ReactJS Component flow including rendering element, components, props, JSX, handling events, state, and so on.
-- Get to know about husky pre-commit
+
+- Understand ReactJS Component
+- Get to know about husky pre-commit and how it works with Eslint
 - Fluent in React Devtools
+- Well know in useState, useEffect hook
 
 ### REQUIREMENT ###
+
 - Build React app with latest version with following features:
     - CRUD features
         - Create button pop up modal for adding item
@@ -37,6 +44,9 @@ This document provides a detailed estimate of the ReactJS practice. The practice
         - Edit or Remove must pop up confirmation modal
     - Sorting item by element
     - Pokedex shows code, name, photo.
+
+### UI REFERENCE ###
+
 - UI Reference: [UI REFERENCE LINK](https://saraneel.com/pokedex/)
 
 ### STRUCTURE ###
