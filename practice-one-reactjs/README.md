@@ -39,6 +39,8 @@ This document provides a detailed estimate of the ReactJS practice. The practice
     - Pokedex shows code, name, photo.
 - UI Reference: [UI REFERENCE LINK](https://saraneel.com/pokedex/)
 
+### STRUCTURE ###
+![STRUCTURE](https://drive.google.com/file/d/1aih71gNRH3R7gKmnZzMhRP5CyO--k8qu/view?usp=sharing)
 ### COMMAND ###
 
 All commands are run from the root folder, from a terminal:
