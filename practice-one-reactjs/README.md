@@ -41,6 +41,7 @@ This document provides a detailed estimate of the ReactJS practice. The practice
 
 ### STRUCTURE ###
 ![Flowchart](/uploads/f9ebabd9bb7f45d6ecaec81506b716ca/Flowchart.PNG)
+
 ### COMMAND ###
 
 All commands are run from the root folder, from a terminal:
