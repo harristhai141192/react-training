@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Layout from '.';
 
 // CSS
-import '../../index.css';
+import '../index.css';
 
 export default {
   title: 'Practice-One/Layout',

@@ -4,7 +4,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 // Components
 import Link from '@components/Link';
 import Form from '@components/Form';
-import Layout from '@components/Layout';
+import Layout from '../../Layout';
 import Board from '@components/Board';
 
 // Models

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 // Components
 import Link from '@components/Link';
 import Image from '@components/Image';
-import Layout from '@components/Layout';
+import Layout from '../../Layout';
 import Board from '@components/Board';
 import Button from '@components/Button';
 import Modal from '@components/Modal';

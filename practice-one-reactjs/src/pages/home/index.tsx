@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // Components
 import Link from '@components/Link';
 import Card from '@components/Card';
-import Layout from '@components/Layout';
+import Layout from '../../Layout';
 import Board from '@components/Board';
 
 // Models

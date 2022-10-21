@@ -9,7 +9,7 @@ import Footer from '@components/Footer';
 import { PokemonLogo } from '@assets/index';
 
 // CSS
-import '../../pages/index.styles.css';
+import '../pages/index.styles.css';
 
 interface IProps {
   children?: React.ReactNode;
