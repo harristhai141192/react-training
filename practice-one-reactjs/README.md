@@ -40,7 +40,7 @@ This document provides a detailed estimate of the ReactJS practice. The practice
 - UI Reference: [UI REFERENCE LINK](https://saraneel.com/pokedex/)
 
 ### STRUCTURE ###
-![STRUCTURE](https://drive.google.com/file/d/1aih71gNRH3R7gKmnZzMhRP5CyO--k8qu/view?usp=sharing)
+![Flowchart](/uploads/f9ebabd9bb7f45d6ecaec81506b716ca/Flowchart.PNG)
 ### COMMAND ###
 
 All commands are run from the root folder, from a terminal:
