@@ -39,8 +39,13 @@ const Detail = () => {
   const handleDeleteItem = async () => {
     setIsLoading(true);
     // Delete pokemon and rotate back to the previous page
-    await deletePokemon(params.id);
-    window.history.go(-1);
+    const response = await fetch(`${params}` + params.id);
+    if (response.ok) {
+      window.history.pushState({}, '', '/');
+      const pathEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(pathEvent);
+      await deletePokemon(params.id);
+    }
   };
 
   return (
@@ -74,7 +79,7 @@ const Detail = () => {
                 {currentPokemon.description}
                 <br />
                 <Link className='linkBack' href='/'>
-                  &lArr; Back to Pokedex
+                  <p className='textBack'>&lArr; Back to Pokedex</p>
                 </Link>
               </div>
             </div>

@@ -17,15 +17,18 @@ const Home = () => {
   const [pokemonList, setPokemonList] = useState<IPokemonProps[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // Generate key for mapping pokemon List
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
 
+  // Route to page Add when on click to Add New Pokemon
   const addPokemonLinkPage = (
     <Link className='linkToAddPage' href='/add'>
       <p className='linkTextAddPage'>+ Add New Pokemon</p>
     </Link>
   );
 
+  // Get pokemon list and render it one time when the page load with useEffect
   useEffect(() => {
     async function getList() {
       const pokemonList = await getPokemons();
@@ -35,6 +38,18 @@ const Home = () => {
     }
     getList();
   }, []);
+
+  // Get list of pokemon follow to param
+  const getPokemonsByElement = async (pokemonElement: string) => {
+    const pokemonsArray = [];
+    const getAllPokemon = await getPokemons();
+    for (let i = 0; i < getAllPokemon?.length; i++) {
+      if (getAllPokemon[i].element == pokemonElement) {
+        pokemonsArray.push(getAllPokemon[i]);
+      }
+    }
+    return pokemonsArray;
+  };
 
   const cardItem = (
     // Get all the item in mock data file
@@ -47,8 +62,22 @@ const Home = () => {
     </>
   );
 
+  // Handle click filter following the element
+  const handleOnClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (e.target.name == 'All') {
+      setIsLoading(true);
+      setPokemonList(await getPokemons());
+    } else {
+      setIsLoading(true);
+      setPokemonList(await getPokemonsByElement(e.target.name));
+    }
+    setIsLoading(false);
+  };
+
   return (
-    <Layout>
+    <Layout onClick={handleOnClick}>
       <div className='bodyHome'>
         <Board
           isLoading={isLoading}

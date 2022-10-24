@@ -6,7 +6,7 @@ import './index.styles.css';
 
 const LoadingSpinner = () => (
   <div className='spinnerContainer'>
-    <div className='loadingSpinner'></div>
+    <span className='loader'></span>
   </div>
 );
 

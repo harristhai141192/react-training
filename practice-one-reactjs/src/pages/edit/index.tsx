@@ -37,6 +37,8 @@ const Edit = () => {
    */
   const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
+
+    // Prevent default browser action
     e.preventDefault();
 
     // get new data before update
@@ -49,9 +51,14 @@ const Edit = () => {
       description: e.target.description.value,
     };
 
+    const response = await fetch(`${params}` + params.id);
     // Call update from pokemonApis
-    await updatePokemon(params.id, data);
-    window.history.go(-1);
+    if (response.ok) {
+      await updatePokemon(params.id, data);
+      window.history.pushState({}, '', '/');
+      const pathEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(pathEvent);
+    }
   };
 
   return (

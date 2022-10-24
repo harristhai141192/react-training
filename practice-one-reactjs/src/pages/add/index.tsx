@@ -1,5 +1,5 @@
 // Libraries
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 
 // Components
 import Link from '@components/Link';
@@ -7,15 +7,22 @@ import Form from '@components/Form';
 import Layout from '../../Layout';
 import Board from '@components/Board';
 
+// Router
+import { RoutingContext } from '@router/Router';
+
 // Api
 import { addPokemon } from '@apis/pokemonApi';
 
 const Add = () => {
+  const { params } = useContext(RoutingContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   // Send data to DB when submit
   const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
+
+    // Prevent default browser action
     e.preventDefault();
+
     const data = {
       name: e.target.name.value,
       code: e.target.code.value,
@@ -24,8 +31,15 @@ const Add = () => {
       type2: e.target.type.value,
       description: e.target.description.value,
     };
-    await addPokemon(data);
-    window.history.go(-1);
+
+    const response = await fetch(`${params}` + params.id);
+    // Call add from pokemonApis
+    if (response.ok) {
+      await addPokemon(data);
+      window.history.pushState({}, '', '/');
+      const pathEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(pathEvent);
+    }
   };
 
   return (

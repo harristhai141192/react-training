@@ -11,8 +11,9 @@ interface IProps {
   size?: 'small' | 'medium' | 'large';
   label: string;
   className?: string;
+  name?: string;
   children?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEvent<HTMLElement>;
 }
 
 const Button = ({
@@ -22,6 +23,7 @@ const Button = ({
   backgroundColor,
   label,
   className,
+  name,
   onClick,
   ...props
 }: IProps) => (
@@ -29,6 +31,7 @@ const Button = ({
     type={type}
     className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
     style={{ backgroundColor }}
+    name={name}
     onClick={onClick}
     {...props}
   >

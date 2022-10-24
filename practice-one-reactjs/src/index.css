@@ -22,6 +22,15 @@
   font-family: DMSansMedium;
 }
 
-body {
+html, body {
   margin: 0px;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
 }

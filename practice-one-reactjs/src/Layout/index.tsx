@@ -13,11 +13,12 @@ import '../pages/index.styles.css';
 
 interface IProps {
   children?: React.ReactNode;
+  onClick?: React.MouseEvent;
 }
 
-const Layout: React.FC<IProps> = ({ children }) => (
+const Layout: React.FC<IProps> = ({ children, onClick }) => (
   <div className='App'>
-    <Header headerLogo={PokemonLogo} headerLogoDescription='Pokedex ball logo' />
+    <Header headerLogo={PokemonLogo} headerLogoDescription='Pokedex ball logo' onClick={onClick} />
     {children}
     <Footer />
   </div>

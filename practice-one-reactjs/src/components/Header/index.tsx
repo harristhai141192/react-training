@@ -16,6 +16,7 @@ interface IProps {
   headerLogo: string;
   headerLogoDescription: string;
   children?: React.ReactNode;
+  onClick?: React.MouseEvent;
 }
 
 const Header: React.FC<IProps> = ({
@@ -23,8 +24,11 @@ const Header: React.FC<IProps> = ({
   headerLogo = '',
   headerLogoDescription = '',
   children,
+  onClick,
 }) => {
+  // Generate key for mapping button element
   const generateKey = (item: string) => `${item}_${new Date().getTime()}__${Math.random()}`;
+
   return (
     <div className='header'>
       <div className='headerLogo' onClick={handleLogoClick}>
@@ -33,8 +37,9 @@ const Header: React.FC<IProps> = ({
       <div className='pokemonElements'>
         {/* RENDER ALL ELEMENTS AND SHOW UP TO NAVBAR */}
         {getPokemonElements.map((item) => {
-          return <Button label={item} key={generateKey(item)} />;
+          return <Button name={item} key={generateKey(item)} onClick={onClick} className={item} />;
         })}
+        <Button name='All' className='All' onClick={onClick} />
       </div>
       <div className='navBar'>{children}</div>
     </div>
