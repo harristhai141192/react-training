@@ -1,5 +1,8 @@
 // Libraries
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+// Router
+import { RoutingContext } from '@router/Router';
 
 // Components
 import Link from '@components/Link';
@@ -19,16 +22,14 @@ import { IPokemonProps } from '@models/pokemon';
 import { deletePokemon, getAPokemon } from '@apis/pokemonApi';
 
 const Detail = () => {
-  const currentPath = window.location.pathname;
-  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-
+  const { params } = useContext(RoutingContext);
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getAPokemon(getPokemonId).then((data) => {
+    getAPokemon(params.id).then((data) => {
       setCurrentPokemon(data);
       setIsLoading(false);
     });
@@ -38,7 +39,7 @@ const Detail = () => {
   const handleDeleteItem = async () => {
     setIsLoading(true);
     // Delete pokemon and rotate back to the previous page
-    await deletePokemon(getPokemonId);
+    await deletePokemon(params.id);
     window.history.go(-1);
   };
 
@@ -54,7 +55,7 @@ const Detail = () => {
               <div className='pokemonDetailTitle'>
                 <h2 className='pokemonDetailName'>{currentPokemon.name}</h2>
                 <div className='pokemonDetailBtn'>
-                  <Link href={`/edit/${getPokemonId}`}>
+                  <Link href={`/edit/${params.id}`}>
                     <Button label={'Edit Pokemon'} />
                   </Link>
                   <Modal

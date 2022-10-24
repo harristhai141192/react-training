@@ -1,3 +1,6 @@
+// Libraries
+import React from 'react';
+
 // Pages
 import Add from '@pages/add';
 import Edit from '@pages/edit';
@@ -10,24 +13,28 @@ import './index.css';
 // Components
 import ErrorBoundary from '@components/ErrorBoundary';
 
-// Context
-import Route from '@context/Route';
+// Router
+import Router from '@router/Router';
+import Route from '@router/Route';
 
 const App = () => (
   // Route path between pages and ErrorBoundary for avoiding the pages corrupted then throwing the issues
+
   <ErrorBoundary>
-    <Route path={'/'}>
-      <Home />
-    </Route>
-    <Route path={'/add'}>
-      <Add />
-    </Route>
-    <Route path={'/edit/:id'}>
-      <Edit />
-    </Route>
-    <Route path={'/detail/:id'}>
-      <Detail />
-    </Route>
+    <Router>
+      <Route path={'/'}>
+        <Home />
+      </Route>
+      <Route path={'/add'}>
+        <Add />
+      </Route>
+      <Route path={'/edit/:id'}>
+        <Edit />
+      </Route>
+      <Route path={'/detail/:id'}>
+        <Detail />
+      </Route>
+    </Router>
   </ErrorBoundary>
 );
 

@@ -1,14 +1,8 @@
-// Libraries
-import React from 'react';
-
 // Services
 import { get, post, update, remove } from '@services/apiServices';
 
 // Models
 import { IPokemonProps } from '@models/pokemon';
-
-// Constants
-import { API } from '@constants/apis';
 
 const URL_MOCK = 'https://635111333e9fa1244e5464ea.mockapi.io/pokemons';
 

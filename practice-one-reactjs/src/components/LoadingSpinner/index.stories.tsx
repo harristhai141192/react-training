@@ -1,5 +1,4 @@
 // Libraries
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Components
@@ -13,7 +12,7 @@ export default {
   },
 } as ComponentMeta<typeof LoadingSpinner>;
 
-const Template: ComponentStory<typeof LoadingSpinner> = (args) => <LoadingSpinner />;
+const Template: ComponentStory<typeof LoadingSpinner> = () => <LoadingSpinner />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

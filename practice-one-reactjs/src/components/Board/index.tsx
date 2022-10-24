@@ -17,14 +17,16 @@ const Board: React.FC<IProps> = ({ title, addButton, cardItem, children, isLoadi
   <div className='pokedexBoard'>
     {!isLoading ? (
       <>
-        {children}
-        <div className='pokedexNavBoard'>
-          <div className='boardName'>
-            <h2>{title}</h2>
+        <div className='loadingBoard'>
+          {children}
+          <div className='pokedexNavBoard'>
+            <div className='boardName'>
+              <h2>{title}</h2>
+            </div>
+            <div className='addButton'>{addButton}</div>
           </div>
-          <div className='addButton'>{addButton}</div>
+          <div className='pokedexCard'>{cardItem}</div>
         </div>
-        <div className='pokedexCard'>{cardItem}</div>
       </>
     ) : (
       <LoadingSpinner />

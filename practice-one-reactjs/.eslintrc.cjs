@@ -13,13 +13,13 @@ module.exports = {
   plugins: ['eslint-plugin-prettier', 'react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': ['error', { endOfLine: 'auto' }, { usePrettierrc: true }],
-    'react/prop-types': 'off',
+    'react/prop-types': 'error',
     'react/react-in-jsx-scope': 'off',
-    'react/display-name': 'off',
+    'react/display-name': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-var-requires': 'error',
     '@typescript-eslint/no-empty-function': [
       'error',
       {
@@ -27,6 +27,6 @@ module.exports = {
       },
     ],
     'react-hooks/exhaustive-deps': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
   },
 };

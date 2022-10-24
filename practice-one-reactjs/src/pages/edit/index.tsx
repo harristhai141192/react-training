@@ -1,5 +1,8 @@
 // Libraries
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState, useContext } from 'react';
+
+// Router
+import { RoutingContext } from '@router/Router';
 
 // Components
 import Link from '@components/Link';
@@ -14,17 +17,15 @@ import { IPokemonProps } from '@models/pokemon';
 import { getAPokemon, updatePokemon } from '@apis/pokemonApi';
 
 const Edit = () => {
+  const { params } = useContext(RoutingContext);
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const currentPath = window.location.pathname;
-  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
   // Get Pokemon data by ID
   useEffect(() => {
     setIsLoading(true);
 
-    getAPokemon(getPokemonId).then((data) => {
+    getAPokemon(params.id).then((data) => {
       setCurrentPokemon(data);
       setIsLoading(false);
     });
@@ -49,7 +50,7 @@ const Edit = () => {
     };
 
     // Call update from pokemonApis
-    await updatePokemon(getPokemonId, data);
+    await updatePokemon(params.id, data);
     window.history.go(-1);
   };
 
@@ -57,11 +58,11 @@ const Edit = () => {
     <Layout>
       <div className='bodyHome'>
         <Board isLoading={isLoading}>
-          <Link className='linkTextHomePage' href={`/detail/${getPokemonId}`}>
+          <Link className='linkTextHomePage' href={`/detail/${params.id}`}>
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>
           <Form
-            id={getPokemonId}
+            id={params.id}
             formTitle='Edit Pokemon'
             onFormSubmit={handleOnSubmit}
             isEdit={true}

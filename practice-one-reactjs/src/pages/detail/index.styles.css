@@ -20,12 +20,11 @@
   width: 100%;
 }
 
-.pokedexBoard {
-  padding: 30px 50px;
-}
-
 .pokemonDetailName {
-  font-size: 26px;
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  font-size: 22px;
   margin: 0px;
   justify-content: space-between;
 }

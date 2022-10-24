@@ -25,7 +25,7 @@
       "@services/*": ["src/services/*"],
       "@models/*": ["src/models/*"],
       "@apis/*": ["src/apis/*"],
-      "@context/*": ["src/context/*"]
+      "@router/*": ["src/router/*"]
     }
   },
   "include": ["src"],

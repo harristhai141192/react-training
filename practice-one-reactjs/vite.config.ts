@@ -44,8 +44,8 @@ export default defineConfig({
         replacement: path.resolve(__dirname, 'src/apis'),
       },
       {
-        find: '@context',
-        replacement: path.resolve(__dirname, 'src/context'),
+        find: '@router',
+        replacement: path.resolve(__dirname, 'src/router'),
       },
     ],
   },
