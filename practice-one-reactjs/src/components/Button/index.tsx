@@ -9,11 +9,11 @@ interface IProps {
   style?: 'primary' | 'secondary' | 'tertiary' | 'outlined';
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
-  label: string;
+  label?: string;
   className?: string;
   name?: string;
   children?: React.ReactNode;
-  onClick?: React.MouseEvent<HTMLElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({

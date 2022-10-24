@@ -6,6 +6,12 @@ export const RoutingContext = createContext({
   params: { id: '' },
 });
 
+export const navigate = (href: string) => {
+  window.history.pushState({}, '', href);
+  const pathEvent = new PopStateEvent('popstate');
+  window.dispatchEvent(pathEvent);
+};
+
 interface IProps {
   children: ReactNode;
 }

@@ -1,8 +1,8 @@
 // Libraries
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 
 // Router
-import { RoutingContext } from '@router/Router';
+import { RoutingContext, navigate } from '@router/Router';
 
 // Components
 import Link from '@components/Link';
@@ -36,17 +36,17 @@ const Detail = () => {
   }, []);
 
   // Handle delete a Pokemon with confirmation alert
-  const handleDeleteItem = async () => {
+  const handleDeleteItem = useCallback(async () => {
     setIsLoading(true);
-    // Delete pokemon and rotate back to the previous page
+
     const response = await fetch(`${params}` + params.id);
+
     if (response.ok) {
-      window.history.pushState({}, '', '/');
-      const pathEvent = new PopStateEvent('popstate');
-      window.dispatchEvent(pathEvent);
+      // Delete pokemon and rotate back to the previous page
       await deletePokemon(params.id);
+      navigate('/');
     }
-  };
+  }, []);
 
   return (
     <Layout>

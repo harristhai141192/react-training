@@ -34,18 +34,16 @@ const Select: React.FC<IProps> = ({
       </label>
       <select name={name} className='selectValueInput' disabled={isDisabled}>
         {!isEdit ? (
-          <option value='DEFAULT' disabled hidden>
-            Choose here
-          </option>
+          <option selected={elementData === 'DEFAULT'} value='DEFAULT' disabled hidden></option>
         ) : (
-          <option value='DEFAULT' disabled hidden>
+          <option selected={elementData === 'DEFAULT'} value='DEFAULT' disabled hidden>
             {elementData}
           </option>
         )}
         {listOption.length ? (
           listOption.map((item) => {
             return (
-              <option value={item} key={generateKey(item)}>
+              <option selected={elementData === item} value={item} key={generateKey(item)}>
                 {item}
               </option>
             );

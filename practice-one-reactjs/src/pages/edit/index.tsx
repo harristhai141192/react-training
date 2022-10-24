@@ -1,8 +1,8 @@
 // Libraries
-import React, { FormEvent, useEffect, useState, useContext } from 'react';
+import React, { FormEvent, useEffect, useState, useContext, useCallback } from 'react';
 
 // Router
-import { RoutingContext } from '@router/Router';
+import { RoutingContext, navigate } from '@router/Router';
 
 // Components
 import Link from '@components/Link';
@@ -35,31 +35,31 @@ const Edit = () => {
    * Handling button submit and update to DB
    * @param e - form event
    */
-  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    setIsLoading(true);
-
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     // Prevent default browser action
     e.preventDefault();
 
-    // get new data before update
-    const data = {
-      name: e.target.name.value,
-      code: e.target.code.value,
-      photo: e.target.photo.value,
-      element: e.target.element.value,
-      type2: e.target.type.value,
-      description: e.target.description.value,
-    };
+    setIsLoading(true);
 
     const response = await fetch(`${params}` + params.id);
-    // Call update from pokemonApis
+
     if (response.ok) {
-      await updatePokemon(params.id, data);
-      window.history.pushState({}, '', '/');
-      const pathEvent = new PopStateEvent('popstate');
-      window.dispatchEvent(pathEvent);
+      const formElements = e.target as HTMLFormElement;
+
+      // Call update from pokemonApis
+      await updatePokemon(params.id, {
+        name: (formElements[0] as HTMLInputElement).value,
+        code: (formElements[1] as HTMLInputElement).value,
+        photo: (formElements[2] as HTMLInputElement).value,
+        element: (formElements[3] as HTMLSelectElement).value,
+        type2: (formElements[4] as HTMLSelectElement).value,
+        description: (formElements[5] as HTMLInputElement).value,
+      });
+
+      // Navigate to homepage
+      navigate(`/detail/${params.id}`);
     }
-  };
+  }, []);
 
   return (
     <Layout>
@@ -71,7 +71,7 @@ const Edit = () => {
           <Form
             id={params.id}
             formTitle='Edit Pokemon'
-            onFormSubmit={handleOnSubmit}
+            onSubmit={handleSubmit}
             isEdit={true}
             defaultPokemonData={currentPokemon}
           />

@@ -1,5 +1,5 @@
 // Libraries
-import { FormEvent, useState, useContext } from 'react';
+import { FormEvent, useState, useContext, useCallback } from 'react';
 
 // Components
 import Link from '@components/Link';
@@ -8,7 +8,7 @@ import Layout from '../../Layout';
 import Board from '@components/Board';
 
 // Router
-import { RoutingContext } from '@router/Router';
+import { RoutingContext, navigate } from '@router/Router';
 
 // Api
 import { addPokemon } from '@apis/pokemonApi';
@@ -16,31 +16,33 @@ import { addPokemon } from '@apis/pokemonApi';
 const Add = () => {
   const { params } = useContext(RoutingContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // Send data to DB when submit
-  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    setIsLoading(true);
 
+  // Send data to DB when submit
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     // Prevent default browser action
     e.preventDefault();
 
-    const data = {
-      name: e.target.name.value,
-      code: e.target.code.value,
-      photo: e.target.photo.value,
-      element: e.target.element.value,
-      type2: e.target.type.value,
-      description: e.target.description.value,
-    };
+    setIsLoading(true);
 
     const response = await fetch(`${params}` + params.id);
-    // Call add from pokemonApis
+
     if (response.ok) {
-      await addPokemon(data);
-      window.history.pushState({}, '', '/');
-      const pathEvent = new PopStateEvent('popstate');
-      window.dispatchEvent(pathEvent);
+      const formElements = e.target as HTMLFormElement;
+
+      // Call add from pokemonApis
+      await addPokemon({
+        name: (formElements[0] as HTMLInputElement).value,
+        code: (formElements[1] as HTMLInputElement).value,
+        photo: (formElements[2] as HTMLInputElement).value,
+        element: (formElements[3] as HTMLSelectElement).value,
+        type2: (formElements[4] as HTMLSelectElement).value,
+        description: (formElements[5] as HTMLInputElement).value,
+      });
+
+      // Navigate to homepage
+      navigate('/');
     }
-  };
+  }, []);
 
   return (
     <Layout>
@@ -49,7 +51,7 @@ const Add = () => {
           <Link className='linkTextHomePage' href='/'>
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>
-          <Form formTitle='Add New Pokemon' onFormSubmit={handleOnSubmit} isEdit={false} />
+          <Form formTitle='Add New Pokemon' onSubmit={handleSubmit} isEdit={false} />
         </Board>
       </div>
     </Layout>

@@ -1,5 +1,5 @@
 // Libraries
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 // Components
 import Link from '@components/Link';
@@ -63,7 +63,7 @@ const Home = () => {
   );
 
   // Handle click filter following the element
-  const handleOnClick = async (e: React.MouseEvent) => {
+  const handleOnClick = useCallback(async (e: React.MouseEvent) => {
     e.preventDefault();
 
     if (e.target.name == 'All') {
@@ -74,7 +74,7 @@ const Home = () => {
       setPokemonList(await getPokemonsByElement(e.target.name));
     }
     setIsLoading(false);
-  };
+  }, []);
 
   return (
     <Layout onClick={handleOnClick}>
