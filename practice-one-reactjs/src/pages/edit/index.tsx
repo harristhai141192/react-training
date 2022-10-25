@@ -1,5 +1,5 @@
 // Libraries
-import React, { FormEvent, useEffect, useState, useContext, useCallback } from 'react';
+import { FormEvent, useEffect, useState, useContext, useCallback } from 'react';
 
 // Router
 import { RoutingContext, navigate } from '@router/Router';

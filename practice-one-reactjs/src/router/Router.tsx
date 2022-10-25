@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState, useEffect, useMemo, createContext, FC, ReactNode } from 'react';
+import { useState, useEffect, useMemo, createContext, FC, ReactNode } from 'react';
 
 export const RoutingContext = createContext({
   currentPath: window.location.pathname,

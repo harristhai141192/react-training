@@ -1,6 +1,3 @@
-// Libraries
-import React from 'react';
-
 // Pages
 import Add from '@pages/add';
 import Edit from '@pages/edit';
@@ -8,6 +5,7 @@ import Detail from '@pages/detail';
 import Home from '@pages/home';
 
 // CSS
+import './normalize.css';
 import './index.css';
 
 // Components

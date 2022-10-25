@@ -1,6 +1,8 @@
 // Libararies
-import LoadingSpinner from '@components/LoadingSpinner';
 import React from 'react';
+
+// Components
+import LoadingSpinner from '@components/LoadingSpinner';
 
 // CSS
 import './index.styles.css';

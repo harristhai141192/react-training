@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 
 // Router
 import { RoutingContext, navigate } from '@router/Router';

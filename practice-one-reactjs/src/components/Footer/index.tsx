@@ -1,6 +1,3 @@
-// Libraries
-import React from 'react';
-
 // CSS
 import './index.styles.css';
 
