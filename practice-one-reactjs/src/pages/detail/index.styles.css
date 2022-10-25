@@ -1,6 +1,7 @@
 .pokemonDetail {
   display: flex;
   flex-direction: row;
+  max-width: 1000px;
 }
 
 .imagePokemonDetail {
@@ -8,6 +9,7 @@
   background-color: rgba(221, 221, 221, 0.5);
   width: fit-content;
   box-shadow: 0px 0px 2px 5px lightgrey;
+  height: 100%;
 }
 
 .imagePokemonDetail > img {
@@ -20,12 +22,15 @@
   width: 100%;
 }
 
-.pokedexBoard {
-  padding: 30px 50px;
+.pokemonDetailDescription {
+  overflow-wrap: break-word;
 }
 
 .pokemonDetailName {
-  font-size: 26px;
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  font-size: 22px;
   margin: 0px;
   justify-content: space-between;
 }
@@ -95,4 +100,10 @@
 
 .pokemonDetailBtn {
   display: flex;
+}
+
+.textBack {
+  margin-top: 20px;
+  margin-left: 0px;
+  float: right;
 }

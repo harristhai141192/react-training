@@ -29,39 +29,37 @@ const Input: React.FC<IProps> = ({
   error = false,
   errorText,
   onChange,
-}) => {
-  return (
-    <>
-      <label className='input'>
-        <div className='labelInput'>
-          {labelName}
-          {required && <span className='labelRequired'>*</span>}
-        </div>
-      </label>
-      {!error ? (
-        <input
-          defaultValue={defaultValue}
-          name={name}
-          className='valueInput'
-          type={type}
-          placeholder={placeholder}
-          disabled={isDisabled}
-          onChange={onChange}
-        />
-      ) : (
-        <input
-          defaultValue={defaultValue}
-          name={name}
-          className='valueInputError'
-          type={type}
-          placeholder={placeholder}
-          disabled={isDisabled}
-          onChange={onChange}
-        />
-      )}
-      {error && <span className='errorText'>{errorText}</span>}
-    </>
-  );
-};
+}) => (
+  <>
+    <label className='input'>
+      <div className='labelInput'>
+        {labelName}
+        {required && <span className='labelRequired'>*</span>}
+      </div>
+    </label>
+    {!error ? (
+      <input
+        defaultValue={defaultValue}
+        name={name}
+        className='valueInput'
+        type={type}
+        placeholder={placeholder}
+        disabled={isDisabled}
+        onChange={onChange}
+      />
+    ) : (
+      <input
+        defaultValue={defaultValue}
+        name={name}
+        className='valueInputError'
+        type={type}
+        placeholder={placeholder}
+        disabled={isDisabled}
+        onChange={onChange}
+      />
+    )}
+    {error && <span className='errorText'>{errorText}</span>}
+  </>
+);
 
 export default Input;

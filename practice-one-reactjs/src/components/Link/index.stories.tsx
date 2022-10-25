@@ -1,6 +1,7 @@
-import React from 'react';
+// Libraries
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+// Components
 import Link from '.';
 
 export default {

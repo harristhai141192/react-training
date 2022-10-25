@@ -1,28 +1,33 @@
 // Libraries
-import React, { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState, useContext, useCallback } from 'react';
+
+// Router
+import { RoutingContext, navigate } from '@router/Router';
 
 // Components
 import Link from '@components/Link';
 import Form from '@components/Form';
-import Layout from '@components/Layout';
+import Layout from '../../Layout';
 import Board from '@components/Board';
 
 // Models
-import { IPokemonProps } from '../../models/pokemon';
+import { IPokemonProps } from '@models/pokemon';
 
 // Api
-import { getAPokemon, updatePokemon } from '../../apis/pokemonApi';
+import { getAPokemon, updatePokemon } from '@apis/pokemonApi';
 
 const Edit = () => {
+  const { params } = useContext(RoutingContext);
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
-
-  const currentPath = window.location.pathname;
-  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Get Pokemon data by ID
   useEffect(() => {
-    getAPokemon(getPokemonId).then((data) => {
+    setIsLoading(true);
+
+    getAPokemon(params.id).then((data) => {
       setCurrentPokemon(data);
+      setIsLoading(false);
     });
   }, []);
 
@@ -30,35 +35,43 @@ const Edit = () => {
    * Handling button submit and update to DB
    * @param e - form event
    */
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+    // Prevent default browser action
     e.preventDefault();
 
-    // get new data before update
-    const data = {
-      name: e.target.name.value,
-      code: e.target.code.value,
-      photo: e.target.photo.value,
-      element: e.target.element.value,
-      type2: e.target.type.value,
-      description: e.target.description.value,
-    };
+    setIsLoading(true);
 
-    // Call update from pokemonApis
-    updatePokemon(getPokemonId, data);
-    window.history.go(-1);
-  };
+    const response = await fetch(`${params}` + params.id);
+
+    if (response.ok) {
+      const formElements = e.target as HTMLFormElement;
+
+      // Call update from pokemonApis
+      await updatePokemon(params.id, {
+        name: (formElements[0] as HTMLInputElement).value,
+        code: (formElements[1] as HTMLInputElement).value,
+        photo: (formElements[2] as HTMLInputElement).value,
+        element: (formElements[3] as HTMLSelectElement).value,
+        type2: (formElements[4] as HTMLSelectElement).value,
+        description: (formElements[5] as HTMLInputElement).value,
+      });
+
+      // Navigate to homepage
+      navigate(`/detail/${params.id}`);
+    }
+  }, []);
 
   return (
     <Layout>
       <div className='bodyHome'>
-        <Board>
-          <Link className='linkTextHomePage' href={`/detail/${getPokemonId}`}>
+        <Board isLoading={isLoading}>
+          <Link className='linkTextHomePage' href={`/detail/${params.id}`}>
             <p className='linkTextHomePage'> &lArr; Go back</p>
           </Link>
           <Form
-            id={getPokemonId}
+            id={params.id}
             formTitle='Edit Pokemon'
-            onFormSubmit={handleOnSubmit}
+            onSubmit={handleSubmit}
             isEdit={true}
             defaultPokemonData={currentPokemon}
           />

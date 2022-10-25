@@ -24,3 +24,35 @@
   align-items: flex-end;
   padding: 20PX;
 }
+
+.all {
+  border: 2px solid white;
+  border-radius: 2px solid white;
+  background: white;
+  border-radius: 50%;
+  height: 40px;
+}
+
+.fire {
+  border: 2px solid white;
+  border-radius: 10px solid white;
+  background-color: red;
+  border-radius: 50%;
+  height: 40px;
+}
+
+.water {
+  border: 2px solid white;
+  border-radius: 2px solid white;
+  background-color: rgb(0, 38, 255);
+  border-radius: 50%;
+  height: 40px;
+}
+
+.earth {
+  border: 2px solid white;
+  border-radius: 2px solid white;
+  background-color: rgb(143, 52, 0);
+  border-radius: 50%;
+  height: 40px;
+}

@@ -1,11 +1,12 @@
 // Libraries
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 // Components
 import Layout from '.';
 
 // CSS
-import '../../index.css';
+import '../index.css';
 
 export default {
   title: 'Practice-One/Layout',

@@ -1,4 +1,7 @@
+// Libraries
 import React from 'react';
+
+// CSS
 import './index.styles.css';
 
 interface IProps {
@@ -6,10 +9,11 @@ interface IProps {
   style?: 'primary' | 'secondary' | 'tertiary' | 'outlined';
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
-  label: string;
+  label?: string;
   className?: string;
+  name?: string;
   children?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({
@@ -19,20 +23,20 @@ const Button = ({
   backgroundColor,
   label,
   className,
+  name,
   onClick,
   ...props
-}: IProps) => {
-  return (
-    <button
-      type={type}
-      className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
-      style={{ backgroundColor }}
-      onClick={onClick}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+}: IProps) => (
+  <button
+    type={type}
+    className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
+    style={{ backgroundColor }}
+    name={name}
+    onClick={onClick}
+    {...props}
+  >
+    {label}
+  </button>
+);
 
 export default Button;

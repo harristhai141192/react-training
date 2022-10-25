@@ -1,6 +1,9 @@
 .bodyHome {
   background-color: var(--body-background-color);
   padding: 50px;
+  height: 75.2%;
+  display: flex;
+  justify-content: center;
 }
 
 .linkTextAddPage, .linkTextEditPage {
@@ -22,8 +25,8 @@
 
 .linkTextHomePage, .linkBack {
   text-decoration: none;
-  margin: 0px;
   width: fit-content;
+  margin: 0px;
 }
 
 .linkTextHomePage :hover {

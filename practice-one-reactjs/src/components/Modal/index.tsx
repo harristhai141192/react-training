@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 // Components
 import Button from '@components/Button';
-import Form from '@components/Form';
 
 // CSS
 import './index.styles.css';
@@ -30,7 +29,7 @@ const Modal: React.FC<IModalProps> = ({
   return (
     <div className='formModal'>
       <Button label={buttonModalName} onClick={toggleModal} />
-
+      {/* Return a modal */}
       {modal && (
         <div className='modal'>
           <div className='overlay'>

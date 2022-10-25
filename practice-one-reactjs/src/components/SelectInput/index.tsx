@@ -1,13 +1,8 @@
 // Libraries
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 // CSS
 import './index.styles.css';
-
-interface IListOptionProps {
-  value: string;
-  name: string;
-}
 
 interface IProps {
   name?: string;
@@ -16,7 +11,7 @@ interface IProps {
   isDisabled?: boolean;
   labelName: string;
   required?: boolean;
-  listOption: IListOptionProps[];
+  listOption: string[];
 }
 
 const Select: React.FC<IProps> = ({
@@ -39,19 +34,17 @@ const Select: React.FC<IProps> = ({
       </label>
       <select name={name} className='selectValueInput' disabled={isDisabled}>
         {!isEdit ? (
-          <option value='DEFAULT' disabled hidden>
-            Choose here
-          </option>
+          <option selected={elementData === 'DEFAULT'} value='DEFAULT' disabled hidden></option>
         ) : (
-          <option value='DEFAULT' disabled hidden>
+          <option selected={elementData === 'DEFAULT'} value='DEFAULT' disabled hidden>
             {elementData}
           </option>
         )}
         {listOption.length ? (
           listOption.map((item) => {
             return (
-              <option value={item.value} key={generateKey(item.name)}>
-                {item.name}
+              <option selected={elementData === item} value={item} key={generateKey(item)}>
+                {item}
               </option>
             );
           })

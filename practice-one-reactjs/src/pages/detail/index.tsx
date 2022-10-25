@@ -1,10 +1,13 @@
 // Libraries
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
+
+// Router
+import { RoutingContext, navigate } from '@router/Router';
 
 // Components
 import Link from '@components/Link';
 import Image from '@components/Image';
-import Layout from '@components/Layout';
+import Layout from '../../Layout';
 import Board from '@components/Board';
 import Button from '@components/Button';
 import Modal from '@components/Modal';
@@ -13,34 +16,42 @@ import Modal from '@components/Modal';
 import './index.styles.css';
 
 // Models
-import { IPokemonProps } from '../../models/pokemon';
+import { IPokemonProps } from '@models/pokemon';
 
 // Apis
-import { deletePokemon, getAPokemon } from '../../apis/pokemonApi';
+import { deletePokemon, getAPokemon } from '@apis/pokemonApi';
 
 const Detail = () => {
-  const currentPath = window.location.pathname;
-  const getPokemonId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-
+  const { params } = useContext(RoutingContext);
   const [currentPokemon, setCurrentPokemon] = useState<IPokemonProps>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getAPokemon(getPokemonId).then((data) => {
+    setIsLoading(true);
+
+    getAPokemon(params.id).then((data) => {
       setCurrentPokemon(data);
+      setIsLoading(false);
     });
   }, []);
 
   // Handle delete a Pokemon with confirmation alert
-  const handleDeleteItem = () => {
-    // Delete pokemon and rotate back to the previous page
-    deletePokemon(getPokemonId);
-    window.history.go(-1);
-  };
+  const handleDeleteItem = useCallback(async () => {
+    setIsLoading(true);
+
+    const response = await fetch(`${params}` + params.id);
+
+    if (response.ok) {
+      // Delete pokemon and rotate back to the previous page
+      await deletePokemon(params.id);
+      navigate('/');
+    }
+  }, []);
 
   return (
     <Layout>
       <div className='bodyHome'>
-        <Board>
+        <Board isLoading={isLoading}>
           <div className='pokemonDetail'>
             <div className='imagePokemonDetail'>
               <Image source={currentPokemon.photo} alt={currentPokemon.name} width='250px' />
@@ -49,7 +60,7 @@ const Detail = () => {
               <div className='pokemonDetailTitle'>
                 <h2 className='pokemonDetailName'>{currentPokemon.name}</h2>
                 <div className='pokemonDetailBtn'>
-                  <Link href={`/edit/${getPokemonId}`}>
+                  <Link href={`/edit/${params.id}`}>
                     <Button label={'Edit Pokemon'} />
                   </Link>
                   <Modal
@@ -68,7 +79,7 @@ const Detail = () => {
                 {currentPokemon.description}
                 <br />
                 <Link className='linkBack' href='/'>
-                  &lArr; Back to Pokedex
+                  <p className='textBack'>&lArr; Back to Pokedex</p>
                 </Link>
               </div>
             </div>

@@ -1,14 +1,10 @@
-// Libraries
-import React from 'react';
-
 // Services
 import { get, post, update, remove } from '@services/apiServices';
 
 // Models
 import { IPokemonProps } from '@models/pokemon';
 
-// Constants
-import { API } from '@constants/apis';
+const URL_MOCK = 'https://635111333e9fa1244e5464ea.mockapi.io/pokemons';
 
 /**
  * Get all the pokemon in DB
@@ -16,7 +12,7 @@ import { API } from '@constants/apis';
  * @returns pokemon List
  */
 export const getPokemons = async (): Promise<IPokemonProps[]> => {
-  const pokemonList: IPokemonProps[] = await get(`${API.PATHS.URL_POKEMON}`);
+  const pokemonList: IPokemonProps[] = await get(`${URL_MOCK}`);
 
   return pokemonList;
 };
@@ -27,7 +23,7 @@ export const getPokemons = async (): Promise<IPokemonProps[]> => {
  * @returns item List
  */
 export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
-  const pokemon: IPokemonProps = await get(`${API.PATHS.URL_POKEMON}/${id}`);
+  const pokemon: IPokemonProps = await get(`${URL_MOCK}/${id}`);
 
   return pokemon;
 };
@@ -38,7 +34,7 @@ export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
  * @returns
  */
 export const deletePokemon = async (id: string): Promise<void> => {
-  const url = `${API.PATHS.URL_POKEMON}/${id}`;
+  const url = `${URL_MOCK}/${id}`;
 
   return remove(url);
 };
@@ -49,7 +45,7 @@ export const deletePokemon = async (id: string): Promise<void> => {
  * @returns
  */
 export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> => {
-  const url = `${API.PATHS.URL_POKEMON}`;
+  const url = `${URL_MOCK}`;
 
   return post(url, data);
 };
@@ -62,7 +58,7 @@ export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> 
  * @returns
  */
 export const updatePokemon = async (id: string, data: IPokemonProps): Promise<IPokemonProps> => {
-  const updateNewPokemon: IPokemonProps = await update(`${API.PATHS.URL_POKEMON}/${id}`, data);
+  const updateNewPokemon: IPokemonProps = await update(`${URL_MOCK}/${id}`, data);
 
   return updateNewPokemon;
 };
