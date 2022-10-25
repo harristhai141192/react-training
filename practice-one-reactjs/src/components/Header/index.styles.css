@@ -36,7 +36,7 @@
 .fire {
   border: 2px solid white;
   border-radius: 10px solid white;
-  background-color: red;
+  background-color: rgb(255, 66, 66);
   border-radius: 50%;
   height: 40px;
 }
@@ -44,7 +44,7 @@
 .water {
   border: 2px solid white;
   border-radius: 2px solid white;
-  background-color: rgb(0, 38, 255);
+  background-color: rgb(77, 103, 255);
   border-radius: 50%;
   height: 40px;
 }
@@ -52,7 +52,7 @@
 .earth {
   border: 2px solid white;
   border-radius: 2px solid white;
-  background-color: rgb(143, 52, 0);
+  background-color: rgb(179, 101, 56);
   border-radius: 50%;
   height: 40px;
 }
