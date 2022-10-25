@@ -32,7 +32,7 @@ const Header: React.FC<IProps> = ({
   return (
     <div className='header'>
       <div className='headerLogo' onClick={handleLogoClick}>
-        <Image source={headerLogo} alt={headerLogoDescription} width='35' />
+        <Image source={headerLogo} alt={headerLogoDescription} width='55' />
       </div>
       <div className='pokemonElements'>
         {/* RENDER ALL ELEMENTS AND SHOW UP TO NAVBAR */}
