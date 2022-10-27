@@ -23,9 +23,19 @@ interface IProps {
   isEdit?: boolean;
   id?: string;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  errorName?: boolean;
+  errorCode?: boolean;
 }
 
-const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onSubmit }) => (
+const Form: React.FC<IProps> = ({
+  formTitle,
+  defaultPokemonData,
+  isEdit,
+  id,
+  onSubmit,
+  errorName = false,
+  errorCode = false,
+}) => (
   <>
     <h3 className='formTitle'>{formTitle}</h3>
     <form onSubmit={onSubmit}>
@@ -34,16 +44,18 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onS
         name='name'
         type='text'
         labelName='Pokemon Name'
-        error={false}
+        error={errorName}
         required={true}
+        errorText='Pokemon Name is required'
       />
       <Input
         defaultValue={defaultPokemonData?.code}
         name='code'
         labelName='Pokemon Number'
         type='number'
-        error={false}
+        error={errorCode}
         required={true}
+        errorText='Pokemon Number is required'
       />
       <Input
         defaultValue={defaultPokemonData?.photo}
@@ -51,6 +63,7 @@ const Form: React.FC<IProps> = ({ formTitle, defaultPokemonData, isEdit, id, onS
         labelName='Picture'
         type='text'
         error={false}
+        errorText=''
       />
       <Select
         isEdit={isEdit}

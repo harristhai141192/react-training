@@ -37,27 +37,16 @@ const Input: React.FC<IProps> = ({
         {required && <span className='labelRequired'>*</span>}
       </div>
     </label>
-    {!error ? (
-      <input
-        defaultValue={defaultValue}
-        name={name}
-        className='valueInput'
-        type={type}
-        placeholder={placeholder}
-        disabled={isDisabled}
-        onChange={onChange}
-      />
-    ) : (
-      <input
-        defaultValue={defaultValue}
-        name={name}
-        className='valueInputError'
-        type={type}
-        placeholder={placeholder}
-        disabled={isDisabled}
-        onChange={onChange}
-      />
-    )}
+    <input
+      defaultValue={defaultValue}
+      name={name}
+      className={!error ? 'valueInput' : 'valueInputError'}
+      type={type}
+      placeholder={placeholder}
+      disabled={isDisabled}
+      onChange={onChange}
+    />
+
     {error && <span className='errorText'>{errorText}</span>}
   </>
 );

@@ -55,3 +55,8 @@ Large.args = {
   size: 'large',
   label: 'Button',
 };
+
+export const Disable = Template.bind({});
+Disable.args = {
+  isDisabled: true,
+};

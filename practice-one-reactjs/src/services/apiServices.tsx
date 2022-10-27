@@ -10,8 +10,13 @@ import { IPokemonProps } from '@models/pokemon';
  * @returns item List
  */
 export const get = async <IPokemonProps,>(url: string): Promise<IPokemonProps> => {
-  const response = await fetch(url);
-  return response.json();
+  try {
+    const response = await fetch(url);
+
+    return response.json();
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -24,13 +29,17 @@ export const post = async <IPokemonProps,>(
   url: string,
   data: IPokemonProps,
 ): Promise<IPokemonProps[]> => {
-  const response = await fetch(url, {
-    method: API.HTTP_METHODS.POST,
-    headers: API.HEADERS,
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch(url, {
+      method: API.HTTP_METHODS.POST,
+      headers: API.HEADERS,
+      body: JSON.stringify(data),
+    });
 
-  return await response.json();
+    return await response.json();
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -41,13 +50,17 @@ export const post = async <IPokemonProps,>(
  * @returns
  */
 export const update = async (url: string, data: IPokemonProps): Promise<IPokemonProps> => {
-  const response = await fetch(url, {
-    method: API.HTTP_METHODS.PUT,
-    headers: API.HEADERS,
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch(url, {
+      method: API.HTTP_METHODS.PUT,
+      headers: API.HEADERS,
+      body: JSON.stringify(data),
+    });
 
-  return await response.json();
+    return await response.json();
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -57,10 +70,14 @@ export const update = async (url: string, data: IPokemonProps): Promise<IPokemon
  * @returns
  */
 export const remove = async (url: string): Promise<void> => {
-  const response = await fetch(url, {
-    method: API.HTTP_METHODS.DELETE,
-    headers: API.HEADERS,
-  });
+  try {
+    const response = await fetch(url, {
+      method: API.HTTP_METHODS.DELETE,
+      headers: API.HEADERS,
+    });
 
-  return await response.json();
+    return await response.json();
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };

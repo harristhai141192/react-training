@@ -33,7 +33,7 @@ const Modal: React.FC<IModalProps> = ({
       {modal && (
         <div className='modal'>
           <div className='overlay'>
-            <div className='modal-content'>
+            <div className='modalContent'>
               <div className='closeModal' onClick={toggleModal}>
                 <Button style='outlined' label='X' size='large' />
               </div>
@@ -42,7 +42,7 @@ const Modal: React.FC<IModalProps> = ({
                 <p className='mainMessage'>{mainMessage}</p>
                 <div className='buttonsMessage'>
                   <Button size='large' onClick={onClickConfirm} label='Yes' />
-                  <Button size='large' onClick={toggleModal} label='Cancel' />
+                  <Button size='large' style='outlined' onClick={toggleModal} label='Cancel' />
                 </div>
               </div>
             </div>

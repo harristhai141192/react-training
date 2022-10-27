@@ -7,7 +7,7 @@ import { RoutingContext, navigate } from '@router/Router';
 // Components
 import Link from '@components/Link';
 import Form from '@components/Form';
-import Layout from '../../Layout';
+import Layout from '../../layouts';
 import Board from '@components/Board';
 
 // Models
