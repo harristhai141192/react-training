@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint:fix": "pnpx eslint ./src --fix",
-    "prepare": "cd .. && husky install /practice-two-reactjs/.husky"
+    "prepare": "cd .. && husky install practice-two-reactjs/_"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.3.7",
