@@ -1,0 +1,53 @@
+.defaultButton {
+  font-family: DMSansMedium;
+  border: 0;
+  border-radius: 1.2em;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.defaultButton:hover {
+  color: white;
+  background-color: black;
+  transition: 0.4s;
+  opacity: 0.6;
+}
+
+.primary {
+  color: var(--default-button-font-color);
+  background-color: var(--primary-button-background-color);
+}
+
+.secondary {
+  color: var(--default-button-font-color);
+  background-color: var(--secondary-button-background-color);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px inset;
+}
+
+.tertiary {
+  color: var(--secondary-button-background-color);
+  background-color: var(--tertiary-button-background-color);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 1px inset;
+}
+
+.outlined {
+  color: var(--secondary-button-font-color);
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px inset;
+}
+
+.small {
+  font-size: var(--font-small);
+  padding: 10px 16px;
+}
+
+.medium {
+  font-size: var(--font-medium);
+  padding: 11px 20px;
+}
+
+.large {
+  font-size: var(--font-large);
+  padding: 12px 24px;
+}

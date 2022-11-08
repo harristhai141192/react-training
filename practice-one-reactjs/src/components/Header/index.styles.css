@@ -1,0 +1,58 @@
+/* Header CSS */
+.header {
+  background-color: var(--header-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  color: var(--header-font-color);
+}
+
+.headerLogo {
+  padding: 20px;
+}
+
+.pokemonElements {
+  flex-grow: 1;
+}
+
+.pokemonElements > * {
+  margin: 5px;
+}
+
+.navBar {
+  align-items: flex-end;
+  padding: 20PX;
+}
+
+.all {
+  border: 2px solid white;
+  border-radius: 2px solid white;
+  background: white;
+  border-radius: 50%;
+  height: 40px;
+}
+
+.fire {
+  border: 2px solid white;
+  border-radius: 10px solid white;
+  background-color: rgb(255, 66, 66);
+  border-radius: 50%;
+  height: 40px;
+}
+
+.water {
+  border: 2px solid white;
+  border-radius: 2px solid white;
+  background-color: rgb(77, 103, 255);
+  border-radius: 50%;
+  height: 40px;
+}
+
+.earth {
+  border: 2px solid white;
+  border-radius: 2px solid white;
+  background-color: rgb(179, 101, 56);
+  border-radius: 50%;
+  height: 40px;
+}

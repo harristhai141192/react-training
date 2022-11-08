@@ -1,0 +1,29 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.valueInput {
+  margin: 10px 0px;
+  border: 1px solid lightgrey;
+  width: 100%;
+  padding: 13px;
+  box-sizing: border-box;
+}
+
+.valueInputError {
+  margin: 10px 0px;
+  padding: 13px;
+  box-sizing: border-box;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.labelRequired {
+  color: red;
+  margin-left: 3px;
+}
+
+.errorText {
+  color: rgb(233, 0, 0);
+}

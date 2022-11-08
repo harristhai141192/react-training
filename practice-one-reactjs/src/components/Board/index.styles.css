@@ -1,0 +1,41 @@
+/* Board CSS */
+.pokedexBoard {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 0px 13px var(--header-background-color);
+  background-color: whitesmoke;
+  border-radius: 0.5em;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+.pokedexNavBoard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.boardName {
+  flex-grow: 1;
+}
+
+.pokedexCard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.pokedexCard > .toDetail {
+  width: calc(100%/3);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.loadingBoard {
+  padding: 20px 30px;
+}

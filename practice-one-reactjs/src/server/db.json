@@ -1,0 +1,42 @@
+{
+  "pokemons": [
+    {
+      "id": "010",
+      "code": "0102",
+      "name": "Caterpie12",
+      "element": "Fire",
+      "photo": "https://www.kindpng.com/picc/m/229-2299454_pokemon-caterpie-hd-png-download.png",
+      "description": "A Caterpie with Water element",
+      "type1": "Walk",
+      "type2": "Walk"
+    },
+    {
+      "id": "020",
+      "code": "0201223",
+      "name": "Lapras",
+      "element": "Fire",
+      "photo": "https://www.kindpng.com/picc/m/23-236959_water-pokemon-png-transparent-png.png",
+      "description": "A Caterpie with Water element",
+      "type1": "Walk",
+      "type2": "Fly"
+    },
+    {
+      "name": "OKNGHE",
+      "code": "053",
+      "photo": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
+      "element": "Fire",
+      "type2": "Fly",
+      "description": "https://www.pngkey.com/png/detail/62-622689_fire-pokemon-png-moltres-pokemon.png",
+      "id": "1666098455060_60"
+    },
+    {
+      "name": "534543",
+      "code": "5345345",
+      "photo": "345345",
+      "element": "Water",
+      "type2": "Walk",
+      "description": "345345",
+      "id": "6UOWLWg"
+    }
+  ]
+}
