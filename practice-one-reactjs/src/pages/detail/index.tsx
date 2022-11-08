@@ -7,7 +7,7 @@ import { RoutingContext, navigate } from '@router/Router';
 // Components
 import Link from '@components/Link';
 import Image from '@components/Image';
-import Layout from '../../Layout';
+import Layout from '../../layouts';
 import Board from '@components/Board';
 import Button from '@components/Button';
 import Modal from '@components/Modal';
@@ -29,9 +29,13 @@ const Detail = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getAPokemon(params.id).then((data) => {
-      setCurrentPokemon(data);
-      setIsLoading(false);
+    getAPokemon(params.id).then(async (data) => {
+      if (typeof data == 'string') {
+        navigate(`/error`);
+      } else {
+        setCurrentPokemon(data);
+        setIsLoading(false);
+      }
     });
   }, []);
 
@@ -78,10 +82,10 @@ const Detail = () => {
               <div className='pokemonDetailDescription'>
                 {currentPokemon.description}
                 <br />
-                <Link className='linkBack' href='/'>
-                  <p className='textBack'>&lArr; Back to Pokedex</p>
-                </Link>
               </div>
+              <Link className='linkBack' href='/'>
+                <p className='textBack'>&lArr; Back to Pokedex</p>
+              </Link>
             </div>
           </div>
           <div className='pokemonDetailLocation'>
@@ -96,7 +100,7 @@ const Detail = () => {
               </div>
               <div className='detailRouteBtn'>
                 <Button label='Edit' style='tertiary' />
-                <Button label='Delete' style='tertiary' />
+                <Button label='Delete' style='primary' />
               </div>
             </div>
           </div>

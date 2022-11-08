@@ -10,6 +10,7 @@ interface IProps {
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
   label?: string;
+  isDisabled?: boolean;
   className?: string;
   name?: string;
   children?: React.ReactNode;
@@ -23,6 +24,7 @@ const Button = ({
   backgroundColor,
   label,
   className,
+  isDisabled,
   name,
   onClick,
   ...props
@@ -32,6 +34,7 @@ const Button = ({
     className={['defaultButton', `${style}`, `${size}`, `${className}`].join(' ')}
     style={{ backgroundColor }}
     name={name}
+    disabled={isDisabled}
     onClick={onClick}
     {...props}
   >

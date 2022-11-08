@@ -25,6 +25,5 @@
 }
 
 .errorText {
-  color: red;
-  font-weight: 600;
+  color: rgb(233, 0, 0);
 }

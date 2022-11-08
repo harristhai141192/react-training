@@ -13,6 +13,7 @@ interface IProps {
   cardItem?: React.ReactNode;
   children?: React.ReactNode;
   isLoading?: boolean;
+  isError?: boolean;
 }
 
 const Board: React.FC<IProps> = ({ title, addButton, cardItem, children, isLoading }) => (

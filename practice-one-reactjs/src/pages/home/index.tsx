@@ -4,14 +4,14 @@ import { useCallback, useEffect, useState } from 'react';
 // Components
 import Link from '@components/Link';
 import Card from '@components/Card';
-import Layout from '../../Layout';
+import Layout from '../../layouts';
 import Board from '@components/Board';
 
 // Models
 import { IPokemonProps } from '@models/pokemon';
 
 // Api
-import { getPokemons } from '@apis/pokemonApi';
+import { getPokemons, getPokemonsWithElement } from '@apis/pokemonApi';
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState<IPokemonProps[]>();
@@ -39,18 +39,6 @@ const Home = () => {
     getList();
   }, []);
 
-  // Get list of pokemon follow to param
-  const getPokemonsByElement = async (pokemonElement: string) => {
-    const pokemonsArray = [];
-    const getAllPokemon = await getPokemons();
-    for (let i = 0; i < getAllPokemon?.length; i++) {
-      if (getAllPokemon[i].element == pokemonElement) {
-        pokemonsArray.push(getAllPokemon[i]);
-      }
-    }
-    return pokemonsArray;
-  };
-
   const cardItem = (
     // Get all the item in mock data file
     <>
@@ -71,7 +59,8 @@ const Home = () => {
       setPokemonList(await getPokemons());
     } else {
       setIsLoading(true);
-      setPokemonList(await getPokemonsByElement(e.target.name));
+
+      setPokemonList(await getPokemonsWithElement(e.target.name));
     }
     setIsLoading(false);
   }, []);

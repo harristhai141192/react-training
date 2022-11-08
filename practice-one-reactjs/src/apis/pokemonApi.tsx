@@ -12,9 +12,13 @@ const URL_MOCK = 'https://635111333e9fa1244e5464ea.mockapi.io/pokemons';
  * @returns pokemon List
  */
 export const getPokemons = async (): Promise<IPokemonProps[]> => {
-  const pokemonList: IPokemonProps[] = await get(`${URL_MOCK}`);
+  try {
+    const pokemonList: IPokemonProps[] = await get(`${URL_MOCK}`);
 
-  return pokemonList;
+    return pokemonList;
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -23,9 +27,23 @@ export const getPokemons = async (): Promise<IPokemonProps[]> => {
  * @returns item List
  */
 export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
-  const pokemon: IPokemonProps = await get(`${URL_MOCK}/${id}`);
+  try {
+    const pokemon: IPokemonProps = await get(`${URL_MOCK}/${id}`);
 
-  return pokemon;
+    return pokemon;
+  } catch (e) {
+    throw (e as Error).message;
+  }
+};
+
+export const getPokemonsWithElement = async (element: string): Promise<IPokemonProps[]> => {
+  try {
+    const pokemonList: IPokemonProps[] = await get(`${URL_MOCK}?element=${element}`);
+
+    return pokemonList;
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -34,9 +52,13 @@ export const getAPokemon = async (id: string): Promise<IPokemonProps> => {
  * @returns
  */
 export const deletePokemon = async (id: string): Promise<void> => {
-  const url = `${URL_MOCK}/${id}`;
+  try {
+    const url = `${URL_MOCK}/${id}`;
 
-  return remove(url);
+    return remove(url);
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -45,9 +67,13 @@ export const deletePokemon = async (id: string): Promise<void> => {
  * @returns
  */
 export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> => {
-  const url = `${URL_MOCK}`;
+  try {
+    const url = `${URL_MOCK}`;
 
-  return post(url, data);
+    return post(url, data);
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
 
 /**
@@ -58,7 +84,11 @@ export const addPokemon = async (data: IPokemonProps): Promise<IPokemonProps[]> 
  * @returns
  */
 export const updatePokemon = async (id: string, data: IPokemonProps): Promise<IPokemonProps> => {
-  const updateNewPokemon: IPokemonProps = await update(`${URL_MOCK}/${id}`, data);
+  try {
+    const updateNewPokemon: IPokemonProps = await update(`${URL_MOCK}/${id}`, data);
 
-  return updateNewPokemon;
+    return updateNewPokemon;
+  } catch (e) {
+    throw (e as Error).message;
+  }
 };
