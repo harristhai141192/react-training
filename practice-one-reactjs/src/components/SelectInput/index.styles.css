@@ -1,0 +1,17 @@
+.selectInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectValueInput {
+  margin: 10px 0px;
+  padding: 13px;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.labelRequired {
+  color: red;
+  margin-left: 3px;
+}
