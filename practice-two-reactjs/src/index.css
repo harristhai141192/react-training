@@ -4,8 +4,18 @@
 }
 
 @font-face {
-  font-family: ButtonFont;
+  font-family: RalewayExtraBold;
   src: url(assets/fonts/Raleway-ExtraBold.ttf)
+}
+
+@font-face {
+  font-family: RalewayBold;
+  src: url(assets/fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+  font-family: RalewayLight;
+  src: url(assets/fonts/Raleway-VariableFont_wght.ttf);
 }
 
 :root {

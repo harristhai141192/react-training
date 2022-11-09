@@ -7,6 +7,7 @@ module.exports = {
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@themes/(.*)': '<rootDir>/src/themes/$1',
     '@assets/(.*)': '<rootDir>/src/assets/$1',
+    '@utils/(.*)': '<rootDir>/src/utils/$1',
   },
   transform: {
     '.+\\.(css|less|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
