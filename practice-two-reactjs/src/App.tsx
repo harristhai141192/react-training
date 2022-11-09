@@ -8,7 +8,6 @@ function App() {
     <ChakraProvider theme={themes}>
       <Button variant='solid' label='Try Now' />
       <br />
-      <br />
       <Button variant='outline' label='Learn How' />
       <br />
       <Button variant='ghost' label='Features' />
