@@ -1,16 +1,16 @@
 import './App.css';
 import themes from './themes';
-import Card from '@components/Card';
+import Input from '@components/Input';
 import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
     <ChakraProvider theme={themes}>
-      <Card
-        titleText='Frankie'
-        imageBg="url('src/assets/images/Frankie.svg')"
-        subText='Member since 2016'
-        width='350px'
+      <Input
+        labelName='Input'
+        placeholder='input your value'
+        error={true}
+        errorText='Something went wrong !'
       />
     </ChakraProvider>
   );

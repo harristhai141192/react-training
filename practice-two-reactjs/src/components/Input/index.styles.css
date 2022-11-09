@@ -1,0 +1,11 @@
+.labelInput {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+
+.errorText {
+  display: flex;
+  align-items: flex-start;
+  color: crimson;
+}
