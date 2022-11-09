@@ -1,5 +1,4 @@
-import { Box as BoxChakra, Text } from '@chakra-ui/react';
-import './index.styles.css';
+import { Box, Text } from '@chakra-ui/react';
 
 interface IProps {
   imageBg?: string;
@@ -10,7 +9,7 @@ interface IProps {
 
 const Card = ({ imageBg, titleText, subText, width }: IProps) => {
   return (
-    <BoxChakra
+    <Box
       h={'250px'}
       w={width}
       backgroundImage={imageBg}
@@ -19,15 +18,24 @@ const Card = ({ imageBg, titleText, subText, width }: IProps) => {
       backgroundSize='cover'
       data-testid='testCard'
     >
-      <div className='cardDetail'>
+      <Box
+        display='flex'
+        flexDirection='column'
+        textAlign='left'
+        p='20px'
+        justifyContent='end'
+        height='100%'
+        backgroundImage='linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459))'
+        color='white'
+      >
         <Text className='textTitle' fontSize='3xl' fontFamily='RalewayExtraBold'>
           {titleText}
         </Text>
         <Text className='textDescription' fontSize='sm' fontFamily='RalewayBold'>
           {subText}
         </Text>
-      </div>
-    </BoxChakra>
+      </Box>
+    </Box>
   );
 };
 

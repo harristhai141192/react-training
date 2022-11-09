@@ -1,6 +1,5 @@
-import { Box as BoxChakra, Text, Image } from '@chakra-ui/react';
+import { Box, Text, Image } from '@chakra-ui/react';
 import { ArrowRightIcon } from '@chakra-ui/icons';
-import './index.styles.css';
 import themes from '@themes/index';
 
 interface IProps {
@@ -10,22 +9,37 @@ interface IProps {
   maxWidth?: string;
 }
 
-const Box = ({ imageURL, imageAlt, subText, maxWidth }: IProps) => {
+const BoxComponent = ({ imageURL, imageAlt, subText, maxWidth }: IProps) => {
   return (
-    <BoxChakra maxW={maxWidth} boxShadow={'0 0 10px 1px lightgrey'} overflow={'hidden'}>
-      <div className='cardImage'>
-        <Image src={imageURL} w={'100%'} alt={imageAlt} paddingBottom={2} />
-      </div>
-      <div className='textDetail'>
-        <Text fontSize='sm' textAlign='left'>
-          {subText}
-        </Text>
-        <Text paddingTop={2} as='b' fontSize='sm' color={themes.colors.green[1000]}>
-          Learn more <ArrowRightIcon w={2} h={2} />
-        </Text>
-      </div>
-    </BoxChakra>
+    <Box
+      display='flex'
+      flexDirection='column'
+      maxW={maxWidth}
+      boxShadow={'0 0 10px 1px lightgrey'}
+      overflow={'hidden'}
+    >
+      <Image
+        maxHeight='200px'
+        objectFit='cover'
+        src={imageURL}
+        w={'100%'}
+        alt={imageAlt}
+        paddingBottom={2}
+      />
+      <Box p={5}>
+        <Box display='flex' alignContent='flex-start'>
+          <Text fontSize='sm' textAlign='left' fontFamily='RalewayLight'>
+            {subText}
+          </Text>
+        </Box>
+        <Box display='flex' alignContent='flex-start' fontFamily='RalewayBold'>
+          <Text paddingTop={2} as='b' fontSize='sm' color={themes.colors.green[1000]}>
+            Learn more {'>'}
+          </Text>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
-export default Box;
+export default BoxComponent;
