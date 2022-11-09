@@ -1,5 +1,5 @@
 // libraries
-import { render, fireEvent } from '../../../utils/testUtils';
+import { render, fireEvent } from '@utils/testUtils';
 // components
 import Button from '../index';
 

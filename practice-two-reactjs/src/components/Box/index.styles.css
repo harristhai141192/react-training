@@ -1,0 +1,13 @@
+.textDetail {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "RalewayLight";
+  padding: 30px;
+}
+
+.cardImage {
+  overflow: hidden;
+  height: 220px;
+}

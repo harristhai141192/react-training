@@ -45,7 +45,7 @@ export const Button = {
       fontSize: '13px',
       textTransform: 'uppercase',
       letterSpacing: '1.2px',
-      fontFamily: 'ButtonFont',
+      fontFamily: 'RalewayExtraBold',
       borderRadius: '0px',
       bg: colors.green[1000],
       color: 'white',
@@ -53,7 +53,7 @@ export const Button = {
     },
     outline: {
       fontSize: '13px',
-      fontFamily: 'ButtonFont',
+      fontFamily: 'RalewayExtraBold',
       letterSpacing: '1.2px',
       textTransform: 'uppercase',
       bg: 'white',
@@ -65,7 +65,7 @@ export const Button = {
     },
     ghost: {
       fontSize: '13px',
-      fontFamily: 'ButtonFont',
+      fontFamily: 'RalewayExtraBold',
       textTransform: 'uppercase',
       borderBottom: '3px solid',
       borderColor: colors.green[1000],

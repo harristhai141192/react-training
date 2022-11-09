@@ -1,0 +1,11 @@
+.cardDetail {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 20px;
+  justify-content: end;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459));
+  color: white;
+}
+
