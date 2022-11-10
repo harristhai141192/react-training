@@ -7,6 +7,7 @@ interface IProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   label?: string;
   loadingText?: string;
+  isLoading?: boolean;
   isDisabled?: boolean;
   className?: string;
   leftIcon?: React.ReactElement;
@@ -22,17 +23,20 @@ const Button = ({
   colorScheme,
   label,
   loadingText = '',
+  isLoading,
   isDisabled,
   onClick,
   ...props
 }: IProps) => (
   <ButtonChakra
+    marginRight='5px'
     size={size}
     leftIcon={leftIcon}
     colorScheme={colorScheme}
     variant={variant}
     loadingText={loadingText}
     isDisabled={isDisabled}
+    isLoading={isLoading}
     onClick={onClick}
     {...props}
   >
