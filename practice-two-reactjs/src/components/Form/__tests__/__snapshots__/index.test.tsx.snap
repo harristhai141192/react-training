@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component [Input] should match snapshot It should match snapshot 1`] = `
+<div>
+  <form>
+    <div
+      class="css-j7qwjs"
+    >
+      <p
+        class="chakra-text css-9hpz1u"
+      />
+      <div
+        class="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-g6pte"
+          for="name"
+          id="field-:r0:-label"
+        >
+          Your Name:
+        </label>
+        <input
+          class="chakra-input css-10eaxd9"
+          id="field-:r0:"
+          name="name"
+          placeholder=""
+          value=""
+        />
+        <label
+          class="chakra-form__label css-g6pte"
+          for="dateOfBirth"
+          id="field-:r0:-label"
+        >
+          Date of birth:
+        </label>
+        <input
+          class="chakra-input css-10eaxd9"
+          id="field-:r0:"
+          name="dateOfBirth"
+          placeholder=""
+          value=""
+        />
+        <label
+          class="chakra-form__label css-g6pte"
+          for="phone"
+          id="field-:r0:-label"
+        >
+          Phone:
+        </label>
+        <input
+          class="chakra-input css-10eaxd9"
+          id="field-:r0:"
+          name="phone"
+          placeholder=""
+          value=""
+        />
+        <label
+          class="chakra-form__label css-g6pte"
+          for="memberDate"
+          id="field-:r0:-label"
+        >
+          Member since:
+        </label>
+        <input
+          class="chakra-input css-10eaxd9"
+          id="field-:r0:"
+          name="memberDate"
+          placeholder=""
+          type="date"
+          value=""
+        />
+        <label
+          class="chakra-form__label css-g6pte"
+          for="email"
+          id="field-:r0:-label"
+        >
+          Email:
+        </label>
+        <input
+          class="chakra-input css-10eaxd9"
+          id="field-:r0:"
+          name="email"
+          placeholder=""
+          type="text"
+          value=""
+        />
+        <div
+          class="css-h2h2zh"
+        >
+          <button
+            class="chakra-button css-jcr1fc"
+            type="button"
+          >
+            Submit
+          </button>
+          <button
+            class="chakra-button css-jcr1fc"
+            type="button"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;

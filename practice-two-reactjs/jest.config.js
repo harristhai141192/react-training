@@ -3,6 +3,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   moduleDirectories: ['node_modules', 'src'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   moduleNameMapper: {
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@themes/(.*)': '<rootDir>/src/themes/$1',

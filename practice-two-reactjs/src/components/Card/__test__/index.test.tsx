@@ -1,18 +1,18 @@
 // libraries
-import { getByAltText, getByRole, getByTestId, getByText, render, screen } from '@utils/testUtils';
+import { getByTestId, getByText, render } from '@utils/testUtils';
 // components
 import Card from '../index';
 
 // theme
 
 describe('Card component', () => {
-  test('It should match snapshot', () => {
+  test('Component [Card] should match snapshot', () => {
     const { container } = render(<Card />);
 
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render contain sub text, image and alt text', () => {
+  test('Component [Card] should render correctly with subText, titleText and Image', () => {
     const { container } = render(
       <Card
         imageBg="url('src/assets/images/Frankie.svg')"

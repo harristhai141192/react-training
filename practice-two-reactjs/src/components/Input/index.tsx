@@ -1,46 +1,51 @@
 // Libraries
-import { Input as InputChakra } from '@chakra-ui/react';
+import { Input, Box, Text } from '@chakra-ui/react';
 import React, { ChangeEvent } from 'react';
 
-// CSS
-import './index.styles.css';
+// themes
+import themes from '@themes/index';
 
 interface IProps {
+  name?: string;
   value?: string;
   defaultValue?: string;
   placeholder?: string;
   isDisabled?: boolean;
-  labelName: string;
   type?: string;
-  error: boolean;
+  error?: boolean;
   errorText?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<IProps> = ({
+const InputComponent: React.FC<IProps> = ({
   defaultValue = '',
+  name,
   placeholder = '',
   isDisabled = false,
-  labelName = '',
   type,
   error = false,
   errorText,
   onChange,
 }) => (
   <>
-    <label className='labelInput'>{labelName}</label>
-    <InputChakra
+    <Input
+      name={name}
       isInvalid={error}
       defaultValue={defaultValue}
       placeholder={placeholder}
       isDisabled={isDisabled}
       errorBorderColor='crimson'
       type={type}
-      size={'md'}
+      size={'sm'}
       onChange={onChange}
+      focusBorderColor={themes.colors.green[1000]}
     />
-    {error && <span className='errorText'>{errorText}</span>}
+    {error && (
+      <Box display='flex' alignItems='flex-start' marginTop='10px' color='crimson'>
+        <Text as='sub'>{errorText}</Text>
+      </Box>
+    )}
   </>
 );
 
-export default Input;
+export default InputComponent;

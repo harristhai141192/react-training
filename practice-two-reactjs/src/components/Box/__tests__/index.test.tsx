@@ -6,13 +6,13 @@ import Box from '../index';
 // theme
 
 describe('Box component', () => {
-  test('It should match snapshot', () => {
+  test('Component [Box] should match snapshot', () => {
     const { container } = render(<Box />);
 
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render contain sub text, image and alt text', () => {
+  test('Component [Box] should render correctly which is contained sub text, image and alt text', () => {
     const { container } = render(
       <Box
         imageAlt='for testing'
