@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 
 // theme
 
-describe('Component [Input] should match snapshot', () => {
+describe('Component [Form] should match snapshot', () => {
   test('It should match snapshot', () => {
     const { container } = render(
       <Form
@@ -22,7 +22,7 @@ describe('Component [Input] should match snapshot', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Component [Input] should render correctly', () => {
+  test('Component [Form] should render correctly', () => {
     const { container } = render(
       <Form
         errorName={false}

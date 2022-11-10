@@ -4,8 +4,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 // Component
 import Box from '.';
 
-import '../../index.css';
-
 export default {
   title: 'Components/Box',
   component: Box,

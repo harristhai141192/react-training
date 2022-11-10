@@ -69,9 +69,15 @@ const FormComponent: React.FC<IProps> = ({
             Email:
           </FormLabel>
           <InputComponent name='email' type='text' error={errorEmail} errorText={errorEmailText} />
-          <Box marginTop={10} display='flex' justifyContent='flex-start' alignItems='flex-end'>
+          <Box
+            marginTop={7}
+            marginBottom={5}
+            display='flex'
+            justifyContent='flex-start'
+            alignItems='flex-end'
+          >
             <Button label='Submit' isLoading={isSubmitting} loadingText='Submitting' />
-            <Button label='Cancel' onClick={onCancel} loadingText='Submitting' />
+            <Button label='Cancel' onClick={onCancel} />
           </Box>
         </FormControl>
       </Box>
