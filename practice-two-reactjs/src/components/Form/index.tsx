@@ -44,24 +44,30 @@ const FormComponent: React.FC<IProps> = ({
       <Box display='flex' flexDirection='column'>
         <Text fontSize='2xl'>{formName}</Text>
         <FormControl>
-          <FormLabel htmlFor='name'>Your name: </FormLabel>
+          <FormLabel marginTop={3} htmlFor='name'>
+            Your name:
+          </FormLabel>
           <InputComponent name='name' error={errorName} errorText={errorNameText} />
-
-          <FormLabel htmlFor='dateOfBirth'>Date of birth:</FormLabel>
+          <FormLabel marginTop={3} htmlFor='dateOfBirth'>
+            Date of birth:
+          </FormLabel>
           <InputComponent name='dateOfBirth' error={errorDOB} errorText={errorDOBText} />
-
-          <FormLabel htmlFor='phone'>Phone:</FormLabel>
+          <FormLabel marginTop={3} htmlFor='phone'>
+            Phone:
+          </FormLabel>
           <InputComponent name='phone' error={errorPhone} errorText={errorPhoneText} />
-
-          <FormLabel htmlFor='memberDate'>Member since:</FormLabel>
+          <FormLabel marginTop={3} htmlFor='memberDate'>
+            Member since:
+          </FormLabel>
           <InputComponent
             name='memberDate'
             type='date'
             error={errorMember}
             errorText={errorMemberText}
           />
-
-          <FormLabel htmlFor='email'>Email:</FormLabel>
+          <FormLabel marginTop={3} htmlFor='email'>
+            Email:
+          </FormLabel>
           <InputComponent name='email' type='text' error={errorEmail} errorText={errorEmailText} />
           <Box marginTop={10} display='flex' justifyContent='flex-start' alignItems='flex-end'>
             <Button label='Submit' isLoading={isSubmitting} loadingText='Submitting' />

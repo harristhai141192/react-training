@@ -18,7 +18,7 @@ exports[`Component [Input] should match snapshot It should match snapshot 1`] = 
           for="name"
           id="field-:r0:-label"
         >
-          Your Name:
+          Your name: 
         </label>
         <input
           class="chakra-input css-10eaxd9"
