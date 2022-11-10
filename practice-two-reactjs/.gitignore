@@ -11,8 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
-__snapshots__/
-
+*.test.tsx.snap
+src/components/*/__tests__/__snapshots__
 
 # Editor directories and files
 .vscode/*
