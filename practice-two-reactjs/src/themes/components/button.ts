@@ -71,5 +71,14 @@ export const Button = {
       borderColor: colors.green[1000],
       borderRadius: '0px',
     },
+    link: {
+      fontSize: '14px',
+      fontFamily: 'RalewayExtraBold',
+      color: 'black',
+      borderRadius: '0px',
+      _hover: {
+        color: colors.green[1000],
+      },
+    },
   },
 };
