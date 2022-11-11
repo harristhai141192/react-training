@@ -4,9 +4,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 // Components
 import Header from '.';
 
-// CSS
-import '../../index.css';
-
 export default {
   title: 'Components/Header',
   component: Header,

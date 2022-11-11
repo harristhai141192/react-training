@@ -1,15 +1,20 @@
 // Libraries
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image, Text, Link } from '@chakra-ui/react';
+import React from 'react';
 
 // Component
 import Button from '@components/Button';
 
-const Footer = () => {
+interface IProps {
+  linkTerms?: string;
+}
+
+const Footer: React.FC<IProps> = ({ linkTerms }) => {
   return (
     <Box>
-      <Box display='flex' flexDirection='row'>
+      <Box display='flex' flexDirection='row' p='0% 10%' marginBottom='50px'>
         <Box flexGrow='4'>
-          <Image src='src/assets/images/NinjaMailLogo.svg' />
+          <Image w='50%' src='src/assets/images/NinjaMailLogo.svg' />
         </Box>
         <Box
           flexGrow='6'
@@ -46,9 +51,22 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-      <Box>
-        <Box></Box>
-        <Box></Box>
+      <Box p='1px' bg='#DBDBDB' m='0% 10%'></Box>
+
+      <Box display='flex' flexDirection='row' p='0% 10%' fontFamily='RalewayBold' marginTop='20px'>
+        <Box flexGrow='4' display='flex' justifyContent='center'>
+          <Text as='sub'>
+            NinjaMail is a sample project for Quest AI. © 2019 Quest AI, All rights reserved.
+          </Text>
+        </Box>
+        <Box flexGrow='6' display='flex' justifyContent='space-around'>
+          <Text as='sub'>
+            <Link>Terms & Conditions</Link>
+          </Text>
+          <Text as='sub'>
+            <Link href={linkTerms}>Privacy Policy</Link>
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

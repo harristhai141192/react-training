@@ -6,12 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import Footer from '@components/Footer';
 
 function App() {
-  return (
-    <ChakraProvider theme={themes}>
-      <Header />
-      <Footer />
-    </ChakraProvider>
-  );
+  return <ChakraProvider theme={themes}></ChakraProvider>;
 }
 
 export default App;
