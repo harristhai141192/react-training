@@ -17,15 +17,16 @@ import Button from '@components/Button';
 interface IProps {
   modalTitle: string;
   children: React.ReactNode;
+  size?: string;
 }
 
-const ModalComponent: React.FC<IProps> = ({ modalTitle, children }) => {
+const ModalComponent: React.FC<IProps> = ({ modalTitle, children, size }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box>
       <Button onClick={onOpen} label='Open Modal' />
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={size}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{modalTitle}</ModalHeader>

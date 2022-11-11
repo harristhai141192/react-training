@@ -15,6 +15,8 @@ interface IProps {
   children?: React.ReactNode;
   marginBottom?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  width?: string;
+  marginRight?: string;
 }
 
 const Button = ({
@@ -28,10 +30,12 @@ const Button = ({
   isDisabled,
   marginBottom,
   onClick,
+  width,
+  marginRight = '10px',
   ...props
 }: IProps) => (
   <ButtonChakra
-    marginRight='10px'
+    marginRight={marginRight}
     size={size}
     leftIcon={leftIcon}
     colorScheme={colorScheme}
@@ -41,6 +45,7 @@ const Button = ({
     isLoading={isLoading}
     onClick={onClick}
     marginBottom={marginBottom}
+    w={width}
     {...props}
   >
     {label}
