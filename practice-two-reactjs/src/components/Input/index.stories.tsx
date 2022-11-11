@@ -4,8 +4,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 // Component
 import InputComponent from '.';
 
-import '../../index.css';
-
 export default {
   title: 'Components/InputComponent',
   component: InputComponent,
