@@ -2,7 +2,7 @@
 import { Box, Image } from '@chakra-ui/react';
 import React from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
-import { breakpoints } from '@themes/breakpoints';
+import { widths } from '@themes/metrics';
 
 // Components
 import Button from '@components/Button';
@@ -24,11 +24,14 @@ const Header: React.FC<IProps> = ({
 }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
-    <Box display='flex' flexGrow='row' justifyContent='space-between'>
+    <Box display='flex' flexGrow='row' justifyContent='space-between' margin='20px 0px'>
       <Box>
-        <Image src='src/assets/images/NinjaMailLogo.svg' />
+        <Image
+          src='src/assets/images/NinjaMailLogo.svg'
+          w={{ sm: widths.medium, md: widths.medium, lg: widths.large }}
+        />
       </Box>
-      <Box>
+      <Box marginTop='5px'>
         {isMobile ? (
           ''
         ) : (

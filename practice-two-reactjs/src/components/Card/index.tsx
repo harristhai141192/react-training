@@ -5,18 +5,21 @@ interface IProps {
   titleText?: string;
   subText?: string;
   width?: string;
+  margin?: string;
+  height?: string;
 }
 
-const Card = ({ imageBg, titleText, subText, width }: IProps) => {
+const Card = ({ imageBg, titleText, subText, width, margin, height }: IProps) => {
   return (
     <Box
-      h={'250px'}
+      h={height}
       w={width}
       backgroundImage={imageBg}
       backgroundPosition='center'
       backgroundRepeat='no-repeat'
       backgroundSize='cover'
       data-testid='testCard'
+      margin={margin}
     >
       <Box
         display='flex'

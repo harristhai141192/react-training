@@ -1,6 +1,7 @@
 export const widths = {
   extraTiny: '25px',
   tiny: '35px',
+  superSmall: '75px',
   extraSmall: '100px',
   small: '120px',
   medium: '200px',

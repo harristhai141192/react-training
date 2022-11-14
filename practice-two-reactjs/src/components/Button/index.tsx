@@ -1,9 +1,6 @@
 // Libraries
 import React from 'react';
 import { Button as ButtonChakra } from '@chakra-ui/react';
-import { Text } from '@chakra-ui/react';
-import themes from '@themes/index';
-import { fontSizes } from '../../themes/typography';
 
 interface IProps {
   variant?: 'ghost' | 'outline' | 'solid' | 'link' | 'unstyled';
@@ -21,6 +18,7 @@ interface IProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   width?: string;
   marginRight?: string;
+  padding?: string;
 }
 
 const Button = ({
@@ -36,10 +34,17 @@ const Button = ({
   onClick,
   width,
   marginRight = '10px',
+  padding,
   ...props
 }: IProps) => (
   <ButtonChakra
-    fontSize={{ sm: 'text.extraSmall', md: 'text.extraSmall', lg: 'text.small' }}
+    p={padding}
+    fontSize={{
+      sm: 'text.small',
+      md: 'text.extraSmall',
+      lg: 'text.extraSmall',
+      xl: 'text.small',
+    }}
     marginRight={marginRight}
     size={size}
     leftIcon={leftIcon}

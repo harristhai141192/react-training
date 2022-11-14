@@ -1,49 +1,37 @@
 import { widths, heights } from '@themes/metrics';
 import { colors } from '@themes/colors';
-import themes from '..';
 
 export const Button = {
   baseStyle: {
     fontWeight: 'bold',
     borderRadius: '4px',
+    padding: '18px 0px',
   },
 
   sizes: {
     default: {
-      width: { base: widths.extraTiny, md: widths.extraSmall, xl: widths.small },
-      height: { base: heights.tiny, md: heights.small },
+      width: {
+        base: widths.extraTiny,
+        sm: widths.small,
+        md: widths.superSmall,
+        xl: widths.small,
+      },
+      height: { base: heights.tiny, md: heights.small, sm: heights.small },
     },
   },
 
   lg: {
-    fontSize: { base: 'text.small', lg: 'text.large' },
-    lineHeight: {
-      base: 'text.tiny',
-      lg: 'text.extraSmall',
-      xl: 'text.medium',
-      xxl: 'text.extraLarge',
-    },
     width: { base: widths.small, md: widths.medium, lg: widths.large },
     height: '40px',
   },
 
   md: {
-    fontSize: { base: 'text.small', lg: 'text.large' },
-    lineHeight: { base: 'text.tiny', lg: 'text.small' },
     width: { base: widths.extraLarge, xl: widths.huge },
     height: { base: heights.medium, lg: heights.large, xxl: heights.extraLarge },
   },
 
-  sm: {
-    fontSize: 'text.large',
-    lineHeight: 'text.extraSmall',
-    width: '70px',
-    height: '35px',
-  },
-
   variants: {
     solid: {
-      fontSize: '13px',
       textTransform: 'uppercase',
       letterSpacing: '1.2px',
       fontFamily: 'RalewayExtraBold',
@@ -58,7 +46,7 @@ export const Button = {
       letterSpacing: '1.2px',
       textTransform: 'uppercase',
       bg: 'white',
-      border: `3px solid`,
+      border: `1.5px solid`,
       borderRadius: '0px',
       borderColor: colors.green[1000],
       color: colors.green[1000],
@@ -80,6 +68,15 @@ export const Button = {
       _hover: {
         color: colors.green[1000],
       },
+    },
+    unstyled: {
+      letterSpacing: '1.2px',
+      fontFamily: 'RalewayExtraBold',
+      textTransform: 'uppercase',
+      borderRadius: '0px',
+      bg: 'white',
+      color: colors.green[1000],
+      _hover: { bg: colors.green[950], color: 'black' },
     },
   },
 };
