@@ -4,7 +4,9 @@ import { breakpoints } from '@themes/breakpoints';
 import { colors } from './colors';
 
 import { Button, Container } from '@themes/components';
+
 import { fonts } from './fonts';
+import { fontSizes, fontWeights, lineHeights } from './typography';
 
 const themes = extendTheme({
   config: {
@@ -17,6 +19,9 @@ const themes = extendTheme({
   colors,
   breakpoints,
   fonts,
+  fontWeights,
+  fontSizes,
+  lineHeights,
 });
 
 export default themes;

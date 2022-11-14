@@ -1,8 +1,8 @@
 export const widths = {
   extraTiny: '25px',
   tiny: '35px',
-  extraSmall: '45px',
-  small: '150px',
+  extraSmall: '100px',
+  small: '120px',
   medium: '200px',
   large: '300px',
   extraLarge: '350px',

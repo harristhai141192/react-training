@@ -1,5 +1,6 @@
 import { widths, heights } from '@themes/metrics';
 import { colors } from '@themes/colors';
+import themes from '..';
 
 export const Button = {
   baseStyle: {
@@ -9,7 +10,7 @@ export const Button = {
 
   sizes: {
     default: {
-      width: { base: widths.extraTiny, md: widths.tiny, xl: widths.extraSmall },
+      width: { base: widths.extraTiny, md: widths.extraSmall, xl: widths.small },
       height: { base: heights.tiny, md: heights.small },
     },
   },
@@ -51,8 +52,8 @@ export const Button = {
       color: 'white',
       _hover: { bg: colors.green[950], color: 'black' },
     },
+
     outline: {
-      fontSize: '13px',
       fontFamily: 'RalewayExtraBold',
       letterSpacing: '1.2px',
       textTransform: 'uppercase',
@@ -63,16 +64,16 @@ export const Button = {
       color: colors.green[1000],
       _hover: { bg: colors.green[950], color: 'black' },
     },
+
     ghost: {
-      fontSize: '13px',
       fontFamily: 'RalewayExtraBold',
       textTransform: 'uppercase',
       borderBottom: '3px solid',
       borderColor: colors.green[1000],
       borderRadius: '0px',
     },
+
     link: {
-      fontSize: '14px',
       fontFamily: 'RalewayExtraBold',
       color: 'black',
       borderRadius: '0px',
