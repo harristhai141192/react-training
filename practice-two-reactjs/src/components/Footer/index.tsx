@@ -33,22 +33,22 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Features
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Pricing
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Services
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Partners
                     </Link>
                   </ListItem>
@@ -57,32 +57,32 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       About Us
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Tutorials
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Resources
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Help Center
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Templates
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Case Studies
                     </Link>
                   </ListItem>
@@ -98,27 +98,27 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Medium
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Twitter
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Facebook
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Instagram
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Linkedln
                     </Link>
                   </ListItem>
@@ -127,17 +127,17 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Contact Us
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Slack
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                    <Link marginBottom='7px' href='' fontSize='sm'>
                       Jobs
                     </Link>
                   </ListItem>

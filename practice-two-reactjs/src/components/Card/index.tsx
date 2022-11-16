@@ -1,25 +1,27 @@
 import { Box, Text } from '@chakra-ui/react';
 
+import { IMemberDetail } from '@models/index';
+
 interface IProps {
-  imageBg?: string;
-  titleText?: string;
-  subText?: string;
+  card: IMemberDetail;
   width?: string;
   margin?: string;
   height?: string;
+  onClick?: () => void;
 }
 
-const Card = ({ imageBg, titleText, subText, width, margin, height }: IProps) => {
+const Card = ({ width, margin, height, onClick, card }: IProps) => {
   return (
     <Box
       h={height}
       w={width}
-      backgroundImage={imageBg}
+      backgroundImage={card.memberImg}
       backgroundPosition='center'
       backgroundRepeat='no-repeat'
       backgroundSize='cover'
       data-testid='testCard'
       margin={margin}
+      onClick={onClick}
     >
       <Box
         display='flex'
@@ -32,10 +34,10 @@ const Card = ({ imageBg, titleText, subText, width, margin, height }: IProps) =>
         color='white'
       >
         <Text className='textTitle' fontSize='3xl' fontFamily='RalewayExtraBold'>
-          {titleText}
+          {card.memberName}
         </Text>
         <Text className='textDescription' fontSize='sm' fontFamily='RalewayBold'>
-          {subText}
+          Member Since {card.memberSince?.slice(card.memberSince?.lastIndexOf('/') + 1)}
         </Text>
       </Box>
     </Box>

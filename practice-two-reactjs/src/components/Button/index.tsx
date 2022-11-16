@@ -19,6 +19,8 @@ interface IProps {
   width?: string;
   marginRight?: string;
   padding?: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
+  backgroundColor?: string;
 }
 
 const Button = ({
@@ -35,6 +37,8 @@ const Button = ({
   width,
   marginRight = '10px',
   padding,
+  type,
+  backgroundColor,
   ...props
 }: IProps) => (
   <ButtonChakra
@@ -45,6 +49,8 @@ const Button = ({
       lg: 'text.extraSmall',
       xl: 'text.small',
     }}
+    bg={backgroundColor}
+    type={type}
     marginRight={marginRight}
     size={size}
     leftIcon={leftIcon}

@@ -4,39 +4,34 @@ import React from 'react';
 
 // Components
 import ModalComponent from '@components/Modal';
+import { IMemberDetail } from '@models/index';
 
 interface IProps {
+  member?: IMemberDetail;
   modalTitle: string;
-  memberName: string;
-  memberImg?: string;
   children?: React.ReactNode;
-  phone?: string;
-  dateOfBirth?: string;
-  email?: string;
-  memberSince?: string;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 const MemberCard: React.FC<IProps> = ({
-  modalTitle,
-  memberName,
-  memberImg,
+  member,
   children,
-  phone,
-  dateOfBirth,
-  email,
-  memberSince,
+  modalTitle,
+  isOpen = false,
+  onClose = () => {},
 }) => {
   return (
-    <ModalComponent modalTitle={modalTitle} size='xl'>
-      <Box display='flex' fontFamily='RalewayLight' padding='10px' height='260px'>
+    <ModalComponent modalTitle={modalTitle} size='xl' isOpen={isOpen} onClose={onClose}>
+      <Box display='flex' fontFamily='RalewayLight' padding='10px' maxHeight='280px'>
         <Box flexGrow='4' w='30%' boxShadow='0 0 3px 1px lightgrey'>
           <Box>
-            <Image src={memberImg} objectFit='cover' w='100%' h='100%' />
+            <Image src={member?.memberImg} objectFit='cover' w='100%' h='100%' />
           </Box>
           <Box
             display='flex'
-            marginTop='12px'
-            justifyContent='center'
+            marginTop='5px'
+            justifyContent='space-around'
             w='100%'
             p='0px 10px 5px 10px'
           >
@@ -46,23 +41,35 @@ const MemberCard: React.FC<IProps> = ({
         <Box flexGrow='6' display='flex' flexDirection='column' paddingLeft='10px'>
           <Text as='b'>
             Name:
-            {memberName}
+            {member?.memberName}
           </Text>
-          <Text>
-            <b>Phone Number: </b>
-            {phone}
+          <Text as='b'>
+            Phone Number:
+            {member?.phone}
           </Text>
-          <Text>
-            <b>Birthday: </b>
-            {dateOfBirth}
+          <Text as='b'>
+            Birthday:
+            {member?.dateOfBirth}
           </Text>
-          <Text>
-            <b>Email: </b>
-            {email}
+          <Text as='b'>
+            Email:
+            {member?.email}
           </Text>
-          <Text>
-            <b>Member Since: </b>
-            {memberSince}
+          <Text as='b'>
+            Member Since:
+            {member?.memberSince}
+          </Text>
+          <Text as='b'>
+            Job:
+            {member?.job}
+          </Text>
+          <Text as='b'>
+            Description:
+            {member?.description}
+          </Text>
+          <Text as='b'>
+            Gender:
+            {member?.gender}
           </Text>
         </Box>
       </Box>

@@ -24,7 +24,9 @@
       "@pages/*": ["src/pages/*"],
       "@models/*": ["src/models/*"],
       "@themes/*": ["src/themes/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@apis/*": ["src/apis/*"]
     }
   },
   "include": ["src"],
