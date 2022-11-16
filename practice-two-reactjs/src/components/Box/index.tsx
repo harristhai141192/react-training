@@ -15,8 +15,8 @@ const BoxComponent = ({ imageURL, imageAlt, subText, maxWidth, width }: IProps) 
       display='flex'
       flexDirection='column'
       maxW={maxWidth}
-      boxShadow={'0 0 10px 1px lightgrey'}
-      overflow={'hidden'}
+      boxShadow='0 0 10px 1px lightgrey'
+      overflow='hidden'
       width={width}
       bg='white'
     >

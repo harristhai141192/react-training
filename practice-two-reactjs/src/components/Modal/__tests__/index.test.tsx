@@ -10,7 +10,7 @@ import Button from '@components/Button';
 describe('Component [ModalComponent] should match snapshot', () => {
   test('It should match snapshot', () => {
     const { container } = render(
-      <ModalComponent modalTitle={''}>
+      <ModalComponent modalTitle=''>
         <Button />
       </ModalComponent>,
     );

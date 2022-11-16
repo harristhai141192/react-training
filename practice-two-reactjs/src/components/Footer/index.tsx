@@ -1,5 +1,5 @@
 // Libraries
-import { Box, Image, Text, Link } from '@chakra-ui/react';
+import { Box, Image, Text, Link, UnorderedList, ListItem, ListIcon } from '@chakra-ui/react';
 import React from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
 
@@ -34,38 +34,62 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
               justifyContent='space-around'
             >
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Features
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Pricing
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Services
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Partners
-                </Link>
+                <UnorderedList listStyleType='none'>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Features
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Pricing
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Services
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Partners
+                    </Link>
+                  </ListItem>
+                </UnorderedList>
               </Box>
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  About Us
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Tutorials
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Resources
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Help Center
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Templates
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Case Studies
-                </Link>
+                <UnorderedList listStyleType='none'>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      About Us
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Tutorials
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Resources
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Help Center
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Templates
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Case Studies
+                    </Link>
+                  </ListItem>
+                </UnorderedList>
               </Box>
             </Box>
             <Box
@@ -75,32 +99,52 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
               justifyContent={isMobile ? 'flex-start' : 'space-around'}
             >
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Medium
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Twitter
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Facebook
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Instagram
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Linkedln
-                </Link>
+                <UnorderedList listStyleType='none'>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Medium
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Twitter
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Facebook
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Instagram
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Linkedln
+                    </Link>
+                  </ListItem>
+                </UnorderedList>
               </Box>
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Contact Us
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Slack
-                </Link>
-                <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
-                  Jobs
-                </Link>
+                <UnorderedList listStyleType='none'>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Contact Us
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Slack
+                    </Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link marginBottom='7px' href='javascript:void(0)' fontSize='sm'>
+                      Jobs
+                    </Link>
+                  </ListItem>
+                </UnorderedList>
               </Box>
             </Box>
           </Box>

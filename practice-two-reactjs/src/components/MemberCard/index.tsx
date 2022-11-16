@@ -31,21 +31,21 @@ const MemberCard: React.FC<IProps> = ({
       <Box display='flex' fontFamily='RalewayLight' padding='10px' height='260px'>
         <Box flexGrow='4' w='30%' boxShadow='0 0 3px 1px lightgrey'>
           <Box>
-            <Image src={memberImg} objectFit='cover' w={'100%'} h='100%' />
+            <Image src={memberImg} objectFit='cover' w='100%' h='100%' />
           </Box>
           <Box
             display='flex'
             marginTop='12px'
             justifyContent='center'
-            w={'100%'}
+            w='100%'
             p='0px 10px 5px 10px'
           >
             {children}
           </Box>
         </Box>
         <Box flexGrow='6' display='flex' flexDirection='column' paddingLeft='10px'>
-          <Text>
-            <b>Name: </b>
+          <Text as='b'>
+            Name:
             {memberName}
           </Text>
           <Text>

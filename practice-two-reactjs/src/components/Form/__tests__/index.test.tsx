@@ -15,7 +15,7 @@ describe('Component [Form] should match snapshot', () => {
         errorPhone={false}
         errorMember={false}
         errorEmail={false}
-        formName={''}
+        formName=''
       />,
     );
 
@@ -30,7 +30,7 @@ describe('Component [Form] should match snapshot', () => {
         errorPhone={false}
         errorMember={false}
         errorEmail={false}
-        formName={'Add Form'}
+        formName='Add Form'
       />,
     );
     const getTitle = getByText(container, 'Add Form');
