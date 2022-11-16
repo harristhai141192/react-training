@@ -1,5 +1,5 @@
 // Libraries
-import { Box, Text, Spinner } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { useState, useEffect, useCallback } from 'react';
 
 // API
@@ -59,13 +59,12 @@ const Detail = () => {
   // Handle turn off edit form and turn on add form
   const openAddForm = () => {
     setIsEditting(false);
-    setMember({});
     setIsOpenAddForm(true);
   };
 
   // Handle On Add
-  const handleOnAdd = () =>
-    useCallback(async (e: FormEvent<HTMLFormElement>) => {
+  const handleOnAdd = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       const formItems = e.target as HTMLFormElement;
@@ -82,7 +81,10 @@ const Detail = () => {
         job: (formItems[7] as HTMLInputElement).value,
         description: (formItems[8] as HTMLInputElement).value,
       });
-    }, []);
+      setIsOpenAddForm(false);
+    },
+    [memberList],
+  );
 
   // Handle Click Edit Button
   const handleOnEdit = useCallback(
@@ -102,6 +104,7 @@ const Detail = () => {
         job: (formItems[7] as HTMLInputElement).value,
         description: (formItems[8] as HTMLInputElement).value,
       });
+      setIsOpenAddForm(false);
     },
     [member],
   );
