@@ -11,20 +11,10 @@ import Button from '@components/Button';
 import themes from '@themes/index';
 
 interface IProps {
-  onFeatureClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onPricingClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onServicesClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onPartnersClick?: React.MouseEventHandler<HTMLButtonElement>;
   onSignUpClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Header: React.FC<IProps> = ({
-  onFeatureClick,
-  onPricingClick,
-  onPartnersClick,
-  onServicesClick,
-  onSignUpClick,
-}) => {
+const Header: React.FC<IProps> = ({ onSignUpClick }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
     <Box
