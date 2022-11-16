@@ -5,7 +5,6 @@ export const Button = {
   baseStyle: {
     fontWeight: 'bold',
     borderRadius: '4px',
-    padding: '18px 0px',
   },
 
   sizes: {

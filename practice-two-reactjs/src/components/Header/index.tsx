@@ -1,11 +1,14 @@
 // Libraries
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image, Link, ListItem, UnorderedList } from '@chakra-ui/react';
 import React from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
 import { widths } from '@themes/metrics';
 
 // Components
 import Button from '@components/Button';
+
+// themes
+import themes from '@themes/index';
 
 interface IProps {
   onFeatureClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -24,25 +27,67 @@ const Header: React.FC<IProps> = ({
 }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
-    <Box display='flex' flexGrow='row' justifyContent='space-between' margin='20px 0px'>
+    <Box
+      display='flex'
+      flexGrow='row'
+      justifyContent='space-between'
+      margin='20px 0px'
+      textTransform='uppercase'
+    >
       <Box>
         <Image
           src='src/assets/images/NinjaMailLogo.svg'
           w={{ sm: widths.medium, md: widths.medium, lg: widths.large }}
         />
       </Box>
-      <Box marginTop='5px'>
-        {isMobile ? (
-          ''
-        ) : (
-          <>
-            <Button onClick={onFeatureClick} variant='ghost' label='Features' />
-            <Button onClick={onPricingClick} variant='ghost' label='Pricing' />
-            <Button onClick={onPartnersClick} variant='ghost' label='Services' />
-            <Button onClick={onServicesClick} variant='ghost' label='Partners' />
-          </>
-        )}
-        <Button onClick={onSignUpClick} variant='solid' label='Sign Up Free' />
+      <Box marginTop='5px' fontFamily='RalewayExtraBold'>
+        <UnorderedList listStyleType='none' display='flex' flexDirection='row' fontSize='12px'>
+          {isMobile ? (
+            ''
+          ) : (
+            <>
+              <ListItem>
+                <Link
+                  borderBottom={`3px solid ${themes.colors.green[1000]}`}
+                  padding='10px'
+                  margin='0px 10px'
+                >
+                  Features
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link
+                  borderBottom={`3px solid ${themes.colors.green[1000]}`}
+                  padding='10px'
+                  margin='0px 10px'
+                >
+                  Pricing
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link
+                  borderBottom={`3px solid ${themes.colors.green[1000]}`}
+                  padding='10px'
+                  margin='0px 10px'
+                >
+                  Services
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link
+                  borderBottom={`3px solid ${themes.colors.green[1000]}`}
+                  padding='10px'
+                  margin='0px 10px'
+                >
+                  Partners
+                </Link>
+              </ListItem>
+            </>
+          )}
+          <ListItem>
+            <Button onClick={onSignUpClick} variant='solid' label='Sign Up Free' />
+          </ListItem>
+        </UnorderedList>
       </Box>
     </Box>
   );

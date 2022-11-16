@@ -1,10 +1,7 @@
 // Libraries
-import { Box, Image, Text, Link, UnorderedList, ListItem, ListIcon } from '@chakra-ui/react';
+import { Box, Image, Text, Link, UnorderedList, ListItem } from '@chakra-ui/react';
 import React from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
-
-// Component
-import Button from '@components/Button';
 
 interface IProps {
   linkTerms?: string;
@@ -150,7 +147,6 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
           </Box>
         </Box>
         <Box p='1px' bg='#DBDBDB' m='0% 10%'></Box>
-
         <Box
           display='flex'
           flexDirection='row'

@@ -15,6 +15,12 @@ const themes = extendTheme({
   components: {
     Button,
     Container,
+    Link: {
+      baseStyle: {
+        padding: '5px',
+        '&:hover': { textDecoration: 'none', bg: 'lightgrey' },
+      },
+    },
   },
   colors,
   breakpoints,
