@@ -1,6 +1,6 @@
 // Libraries
 import { Box, Text } from '@chakra-ui/react';
-import { useState, useEffect, useCallback, useContext } from 'react';
+import { useState, useEffect, useCallback, useContext, useMemo } from 'react';
 
 // API
 import { IMemberDetail } from '@models/index';
@@ -9,7 +9,6 @@ import { getMembers, updateMember, deleteMember, addMember } from '@apis/memberA
 import { API } from '@constants/apis';
 
 import useSWR from 'swr';
-import { ContextState } from 'src/globals';
 import useMemberContext from '../../globals/context';
 
 // Components
@@ -25,8 +24,6 @@ import { FormEvent } from 'react';
 const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
-  const [memberList, setMemberList] = useState<IMemberDetail[]>([]);
-  // const [isLoading, setIsLoading] = useState<boolean>(true);
   const [member, setMember] = useState<IMemberDetail>();
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
   const [isEditting, setIsEditting] = useState<boolean>(false);
@@ -40,14 +37,17 @@ const Detail = () => {
   const [memberContext, dispatch] = useMemberContext();
 
   // Handle Click On Card
-  const handleClickCard = async (id: string | undefined) => {
-    setIsOpenDetail(true);
-    const pullAMember = data?.find((item: IMemberDetail) => {
-      return item.id == id;
-    });
+  const handleClickCard = useCallback(
+    async (id: string | undefined) => {
+      setIsOpenDetail(true);
+      const pullAMember = memberContext.member.find((item: IMemberDetail) => {
+        return item.id == id;
+      });
 
-    setMember(pullAMember);
-  };
+      setMember(pullAMember);
+    },
+    [memberContext],
+  );
 
   // Generate Key for key
   const generateKey = (item: string | undefined) =>
@@ -55,10 +55,12 @@ const Detail = () => {
 
   // Get all the member
   useEffect(() => {
-    dispatch({
-      type: 'GET_MEMBERS',
-      payload: data,
-    });
+    if (data) {
+      dispatch({
+        type: 'ADD_MEMBER',
+        payload: data,
+      });
+    }
   }, [data]);
 
   // Handle turn on edit form and turn off detail form
@@ -75,7 +77,7 @@ const Detail = () => {
   };
 
   // Handle On Add
-  const handleOnAdd = async (e: FormEvent<HTMLFormElement>) => {
+  const handleOnAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formItems = e.target as HTMLFormElement;
 
@@ -94,11 +96,11 @@ const Detail = () => {
     setIsOpenAddForm(false);
     getMembers().then((data) => {
       dispatch({
-        type: 'GET_MEMBERS',
+        type: 'ADD_MEMBER',
         payload: data,
       });
     });
-  };
+  }, []);
 
   // Handle Click Edit Button
   const handleOnEdit = useCallback(
@@ -119,6 +121,12 @@ const Detail = () => {
         description: (formItems[8] as HTMLInputElement).value,
       });
       setIsOpenAddForm(false);
+      getMembers().then((data) => {
+        dispatch({
+          type: 'EDIT_MEMBER',
+          payload: data,
+        });
+      });
     },
     [member],
   );
@@ -130,22 +138,33 @@ const Detail = () => {
       setIsOpenDeleteModal(false);
       setIsOpenDetail(false);
     }
+    getMembers().then((data) => {
+      dispatch({
+        type: 'DELETE_MEMBER',
+        payload: data,
+      });
+    });
   }, [member]);
 
+  const renderTitile = useMemo(() => {
+    return (
+      <Text fontSize='4xl' as='b' fontFamily='PlayFairBold' marginRight='30px'>
+        Member List
+      </Text>
+    );
+  }, []);
   return (
     <>
       {/* HEADER SESSION */}
       <Header />
       <Box marginBottom='50px' marginLeft='30px' display='flex' alignItems='center'>
-        <Text fontSize='4xl' as='b' fontFamily='PlayFairBold' marginRight='30px'>
-          Member List
-        </Text>
+        {renderTitile}
         <Button label='+ Add A Member' padding='10px 70px' onClick={openAddForm} />
       </Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap' alignItems='center'>
         {/* DETAIL */}
-        {data &&
-          data.map((item) => (
+        {memberContext.member &&
+          memberContext.member.map((item) => (
             <Card
               card={item}
               key={generateKey(item.id)}

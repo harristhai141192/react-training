@@ -7,13 +7,14 @@ const reducer = (state, action) => {
     case 'ADD_MEMBER':
       return {
         ...state,
-        member: action.addMember,
+        member: action.payload,
       };
     case 'DELETE_MEMBER':
-      return state.filter((member) => member.id !== action.data.id);
+      return {
+        ...state,
+        member: action.payload,
+      };
     case 'EDIT_MEMBER':
-      return [...state.map((member) => (member.id === action.data.id ? action.data : member))];
-    case 'GET_MEMBERS':
       return {
         ...state,
         member: action.payload,

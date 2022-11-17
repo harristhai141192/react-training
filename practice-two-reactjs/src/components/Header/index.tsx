@@ -1,6 +1,6 @@
 // Libraries
 import { Box, Image, Link, ListItem, UnorderedList } from '@chakra-ui/react';
-import React from 'react';
+import React, { memo } from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
 import { widths } from '@themes/metrics';
 
@@ -83,4 +83,4 @@ const Header: React.FC<IProps> = ({ onSignUpClick }) => {
   );
 };
 
-export default Header;
+export default memo(Header);
