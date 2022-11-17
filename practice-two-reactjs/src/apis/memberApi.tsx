@@ -13,8 +13,6 @@ import { API } from '@constants/apis';
 export const getMembers = async (): Promise<IMemberDetail[]> => {
   try {
     const memberList: IMemberDetail[] = await get(`${API.PATHS.URL_MEMBER}`);
-    console.log('abc');
-
     return memberList;
   } catch (e) {
     throw (e as Error).message;

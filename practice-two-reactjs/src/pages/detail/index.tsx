@@ -1,10 +1,16 @@
 // Libraries
 import { Box, Text } from '@chakra-ui/react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 
 // API
 import { IMemberDetail } from '@models/index';
 import { getMembers, updateMember, deleteMember, addMember } from '@apis/memberApi';
+
+import { API } from '@constants/apis';
+
+import useSWR from 'swr';
+import { ContextState } from 'src/globals';
+import useMemberContext from '../../globals/context';
 
 // Components
 import Header from '@components/Header';
@@ -20,17 +26,26 @@ const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
   const [memberList, setMemberList] = useState<IMemberDetail[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // const [isLoading, setIsLoading] = useState<boolean>(true);
   const [member, setMember] = useState<IMemberDetail>();
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
   const [isEditting, setIsEditting] = useState<boolean>(false);
 
+  // SWR
+  const { data } = useSWR(`${API.PATHS.URL_MEMBER}`, getMembers);
+
+  console.log('DATA: ', data);
+  // console.log('isLoading: ', isLoading);
+
+  const [memberContext, dispatch] = useMemberContext();
+
   // Handle Click On Card
   const handleClickCard = async (id: string | undefined) => {
     setIsOpenDetail(true);
-    const pullAMember = memberList.find((item: IMemberDetail) => {
+    const pullAMember = data?.find((item: IMemberDetail) => {
       return item.id == id;
     });
+
     setMember(pullAMember);
   };
 
@@ -40,14 +55,11 @@ const Detail = () => {
 
   // Get all the member
   useEffect(() => {
-    async function getList() {
-      const memberList = await getMembers();
-
-      setMemberList(memberList);
-      setIsLoading(false);
-    }
-    getList();
-  }, []);
+    dispatch({
+      type: 'GET_MEMBERS',
+      payload: data,
+    });
+  }, [data]);
 
   // Handle turn on edit form and turn off detail form
   const openEditForm = () => {
@@ -63,28 +75,30 @@ const Detail = () => {
   };
 
   // Handle On Add
-  const handleOnAdd = useCallback(
-    async (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+  const handleOnAdd = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formItems = e.target as HTMLFormElement;
 
-      const formItems = e.target as HTMLFormElement;
-
-      await addMember({
-        id: generateKey('Member'),
-        memberName: (formItems[0] as HTMLInputElement).value,
-        dateOfBirth: (formItems[1] as HTMLInputElement).value,
-        memberImg: (formItems[2] as HTMLInputElement).value,
-        phone: (formItems[3] as HTMLInputElement).value,
-        memberSince: (formItems[4] as HTMLInputElement).value,
-        email: (formItems[5] as HTMLInputElement).value,
-        gender: (formItems[6] as HTMLInputElement).value,
-        job: (formItems[7] as HTMLInputElement).value,
-        description: (formItems[8] as HTMLInputElement).value,
+    await addMember({
+      id: generateKey('Member'),
+      memberName: (formItems[0] as HTMLInputElement).value,
+      dateOfBirth: (formItems[1] as HTMLInputElement).value,
+      memberImg: (formItems[2] as HTMLInputElement).value,
+      phone: (formItems[3] as HTMLInputElement).value,
+      memberSince: (formItems[4] as HTMLInputElement).value,
+      email: (formItems[5] as HTMLInputElement).value,
+      gender: (formItems[6] as HTMLInputElement).value,
+      job: (formItems[7] as HTMLInputElement).value,
+      description: (formItems[8] as HTMLInputElement).value,
+    });
+    setIsOpenAddForm(false);
+    getMembers().then((data) => {
+      dispatch({
+        type: 'GET_MEMBERS',
+        payload: data,
       });
-      setIsOpenAddForm(false);
-    },
-    [memberList],
-  );
+    });
+  };
 
   // Handle Click Edit Button
   const handleOnEdit = useCallback(
@@ -130,16 +144,17 @@ const Detail = () => {
       </Box>
       <Box display='flex' flexDirection='row' flexWrap='wrap' alignItems='center'>
         {/* DETAIL */}
-        {memberList.map((item) => (
-          <Card
-            card={item}
-            key={generateKey(item.id)}
-            width='25%'
-            height='150px'
-            margin='1% 3%'
-            onClick={() => handleClickCard(item?.id)}
-          />
-        ))}
+        {data &&
+          data.map((item) => (
+            <Card
+              card={item}
+              key={generateKey(item.id)}
+              width='25%'
+              height='150px'
+              margin='1% 3%'
+              onClick={() => handleClickCard(item?.id)}
+            />
+          ))}
         {isOpenDetail && (
           <MemberCard
             isOpen={isOpenDetail}
