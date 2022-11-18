@@ -20,6 +20,7 @@ interface IProps {
   errorMemberText?: string;
   errorEmail?: boolean;
   errorEmailText?: string;
+  isLoading?: boolean;
   onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   onCancel?: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -37,6 +38,7 @@ const FormComponent: React.FC<IProps> = ({
   errorMemberText = '',
   errorEmail,
   errorEmailText = '',
+  isLoading,
   onSubmit = () => {},
   onCancel = () => {},
 }) => {
@@ -123,8 +125,8 @@ const FormComponent: React.FC<IProps> = ({
             justifyContent='flex-start'
             alignItems='flex-end'
           >
-            <Button label='Submit' type='submit' loadingText='Submitting' />
-            <Button label='Cancel' onClick={onCancel} />
+            <Button isLoading={isLoading} label='Submit' type='submit' loadingText='Submitting' />
+            <Button label='Cancel' onClick={onCancel} isLoading={isLoading} />
           </Box>
         </FormControl>
       </Box>

@@ -13,6 +13,7 @@ interface IProps {
   isDisabled?: boolean;
   type?: string;
   error?: boolean;
+  width?: string;
   errorText?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   margin?: string;
@@ -28,6 +29,7 @@ const InputComponent: React.FC<IProps> = ({
   errorText,
   onChange,
   margin,
+  width,
 }) => (
   <>
     <Input
@@ -42,6 +44,7 @@ const InputComponent: React.FC<IProps> = ({
       onChange={onChange}
       focusBorderColor={themes.colors.green[1000]}
       margin={margin}
+      w={width}
     />
     {error && (
       <Box display='flex' alignItems='flex-start' marginTop='10px' color='crimson'>

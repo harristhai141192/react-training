@@ -20,23 +20,25 @@ import Button from '@components/Button';
 import ModalComponent from '@components/Modal';
 import FormComponent from '@components/Form';
 import { FormEvent } from 'react';
+import LoadingSpinner from '@components/LoadingSpinner';
+import InputComponent from '@components/Input';
+import { fontSizes } from '../../themes/typography';
 
 const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
   const [member, setMember] = useState<IMemberDetail>();
+  const [isLoading, setIsLoading] = useState<boolean>();
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
   const [isEditting, setIsEditting] = useState<boolean>(false);
+  const [inputText, setInputText] = useState<string>('');
 
-  // SWR
+  // GET DATA THRU SWR
   const { data } = useSWR(`${API.PATHS.URL_MEMBER}`, getMembers);
-
-  console.log('DATA: ', data);
-  // console.log('isLoading: ', isLoading);
 
   const [memberContext, dispatch] = useMemberContext();
 
-  // Handle Click On Card
+  // HANDLE CLICK ON CARD TO SHOW MEMBER INFOR
   const handleClickCard = useCallback(
     async (id: string | undefined) => {
       setIsOpenDetail(true);
@@ -49,12 +51,13 @@ const Detail = () => {
     [memberContext],
   );
 
-  // Generate Key for key
+  // GENERATE KEY
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
 
-  // Get all the member
+  // GET ALL THE MEMBER
   useEffect(() => {
+    setIsLoading(false);
     if (data) {
       dispatch({
         type: 'ADD_MEMBER',
@@ -63,22 +66,23 @@ const Detail = () => {
     }
   }, [data]);
 
-  // Handle turn on edit form and turn off detail form
+  // HANDLE ON/OFF EDIT FORM
   const openEditForm = () => {
     setIsEditting(true);
     setIsOpenDetail(false);
     setIsOpenAddForm(true);
   };
 
-  // Handle turn off edit form and turn on add form
+  // HANDLE ON OFF ADD FORM
   const openAddForm = () => {
     setIsEditting(false);
     setIsOpenAddForm(true);
   };
 
-  // Handle On Add
-  const handleOnAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+  // HANDLE ON CLICK ADD BUTTON
+  const handleClickAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const formItems = e.target as HTMLFormElement;
 
     await addMember({
@@ -99,13 +103,15 @@ const Detail = () => {
         type: 'ADD_MEMBER',
         payload: data,
       });
+      setIsLoading(false);
     });
   }, []);
 
-  // Handle Click Edit Button
-  const handleOnEdit = useCallback(
+  // HANDLE ON CLICK EDIT BUTTON
+  const handleOnClickEdit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      setIsLoading(true);
 
       const formItems = e.target as HTMLFormElement;
 
@@ -126,54 +132,99 @@ const Detail = () => {
           type: 'EDIT_MEMBER',
           payload: data,
         });
+        setIsLoading(false);
       });
     },
     [member],
   );
 
-  // Handle Click Delete Button
-  const handleOnDelete = useCallback(async () => {
+  // HANDLE ON CLICK DELETE BUTTON
+  const handleOnClickDelete = useCallback(async () => {
+    setIsLoading(true);
     await deleteMember(member?.id);
+
     if (member?.id) {
       setIsOpenDeleteModal(false);
       setIsOpenDetail(false);
     }
+
     getMembers().then((data) => {
       dispatch({
         type: 'DELETE_MEMBER',
         payload: data,
       });
+
+      setIsLoading(false);
     });
   }, [member]);
 
-  const renderTitile = useMemo(() => {
+  // RENDER TITLE TO NOT BE RERENDERED
+  const renderTitle = useMemo(() => {
     return (
-      <Text fontSize='4xl' as='b' fontFamily='PlayFairBold' marginRight='30px'>
+      <Text
+        fontSize={{ sm: '1xl', md: '3xl' }}
+        as='b'
+        fontFamily='PlayFairBold'
+        marginRight='30px'
+        w='50%'
+      >
         Member List
       </Text>
     );
   }, []);
+
+  // GET VALUE ON SEARCH
+  const handleOnSearch = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputText(e.target.value.toLowerCase());
+    },
+    [memberContext],
+  );
+
+  // HANDLE SEARCH/FILTER
+  const filteringData = memberContext.member?.filter((item) => {
+    if (inputText === '') {
+      return memberContext.member;
+    } else if (item.memberName?.includes(inputText)) {
+      return item.memberName;
+    }
+  });
+
   return (
     <>
       {/* HEADER SESSION */}
       <Header />
-      <Box marginBottom='50px' marginLeft='30px' display='flex' alignItems='center'>
-        {renderTitile}
-        <Button label='+ Add A Member' padding='10px 70px' onClick={openAddForm} />
+      <Box display='flex' marginLeft='30px' flexDirection='row' flexWrap='wrap'>
+        <Box width='100%' display='flex' marginBottom='10px' alignItems='center'>
+          {renderTitle}
+          <Box display='flex' justifyContent='flex-end' width='100%'>
+            <Text>Searching: </Text>
+            <InputComponent width='30%' margin='0px 30px' onChange={handleOnSearch} />
+          </Box>
+        </Box>
+        <Button
+          marginBottom='30px'
+          label='+ Add A Member'
+          padding='10px 70px'
+          onClick={openAddForm}
+        />
       </Box>
+
       <Box display='flex' flexDirection='row' flexWrap='wrap' alignItems='center'>
         {/* DETAIL */}
-        {memberContext.member &&
-          memberContext.member.map((item) => (
+        {!isLoading && filteringData ? (
+          filteringData.map((item: IMemberDetail) => (
             <Card
               card={item}
               key={generateKey(item.id)}
-              width='25%'
               height='150px'
               margin='1% 3%'
               onClick={() => handleClickCard(item?.id)}
             />
-          ))}
+          ))
+        ) : (
+          <LoadingSpinner />
+        )}
         {isOpenDetail && (
           <MemberCard
             isOpen={isOpenDetail}
@@ -185,7 +236,7 @@ const Detail = () => {
               label='Edit'
               variant='outline'
               width='100%'
-              marginRight='0'
+              marginRight='5px'
               onClick={openEditForm}
             />
             <Button
@@ -194,6 +245,7 @@ const Detail = () => {
               backgroundColor='crimson'
               width='100%'
               marginRight='0'
+              padding='0'
               onClick={() => setIsOpenDeleteModal(true)}
             />
           </MemberCard>
@@ -207,8 +259,9 @@ const Detail = () => {
             <FormComponent
               formName=''
               onCancel={() => setIsOpenAddForm(false)}
-              onSubmit={isEditting ? handleOnEdit : handleOnAdd}
+              onSubmit={isEditting ? handleOnClickEdit : handleClickAdd}
               defaultMemberData={member}
+              isLoading={isLoading}
             />
           </ModalComponent>
         )}
@@ -218,13 +271,25 @@ const Detail = () => {
             onClose={() => setIsOpenDeleteModal(false)}
             modalTitle='Delete Member Board'
           >
-            <Box display='flex' flexDirection='row'>
+            <Box display='flex' flexDirection='row' fontFamily='RalewayLight'>
               <Text>Do you want to delete </Text>
-              <Text color='crimson'> &nbsp;{member?.memberName} ?</Text>
+              <Text color='crimson'> &nbsp;{member?.memberName}</Text>
+              <Text>?</Text>
             </Box>
             <Box display='flex' flexDirection='row' justifyContent='flex-end' margin='30px 0'>
-              <Button label='Yes' backgroundColor='crimson' onClick={handleOnDelete} />
-              <Button label='No' variant='outline' onClick={() => setIsOpenDeleteModal(false)} />
+              <Button
+                isLoading={isLoading}
+                loadingText='Submitting'
+                label='Yes'
+                backgroundColor='crimson'
+                onClick={handleOnClickDelete}
+              />
+              <Button
+                isLoading={isLoading}
+                label='No'
+                variant='outline'
+                onClick={() => setIsOpenDeleteModal(false)}
+              />
             </Box>
           </ModalComponent>
         )}

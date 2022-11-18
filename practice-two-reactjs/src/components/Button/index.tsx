@@ -44,7 +44,7 @@ const Button = ({
   <ButtonChakra
     p={padding}
     fontSize={{
-      sm: 'text.small',
+      sm: 'text.extraSmall',
       md: 'text.extraSmall',
       lg: 'text.extraSmall',
       xl: 'text.small',

@@ -8,12 +8,19 @@ import Button from '@components/Button';
 import BoxComponent from '@components/Box';
 import Card from '@components/Card';
 import InputComponent from '@components/Input';
-import themes from '@themes/index';
 import Footer from '@components/Footer';
+
+// themes
+import themes from '@themes/index';
+
+// Mocks
+import MEMBER_DATA from '../../mockData/tableData';
 
 const Home = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
-
+  // Generate Key for key
+  const generateKey = (item: string | undefined) =>
+    `${item}_${new Date().getTime()}_${Math.random()}`;
   return (
     <>
       {/* HEADER SESSION */}
@@ -74,12 +81,12 @@ const Home = () => {
           <Text fontSize='4xl' as='b' color='#FFFFFF' fontFamily='PlayFairBold' marginBottom='15px'>
             Reach More Customers
           </Text>
-          <Button label='Learn How' variant='unstyled' size='md'></Button>
+          <Button label='Learn How' variant='unstyled' size='md' padding='0px 20px'></Button>
         </Box>
 
         {/* ADVERTISE DESCRIPTION */}
         <Box
-          height={{ sm: '1000px', md: '600px', lg: '500px' }}
+          height={{ sm: '1100px', md: '600px', lg: '500px' }}
           display='flex'
           flexDirection={isMobile ? 'column' : 'row'}
           p='0% 15%'
@@ -130,30 +137,20 @@ const Home = () => {
             justifyContent='space-evenly'
             alignItems='center'
           >
-            <Card
-              titleText='Frankie'
-              subText='Member since 2016'
-              imageBg='src/assets/images/Frankie.svg'
-              width={isMobile ? '80%' : '30%'}
-              margin='5% 0%'
-              height={isMobile ? '170px' : '250px'}
-            />
-            <Card
-              titleText='Camile'
-              subText='Member since 2012'
-              imageBg='src/assets/images/Camile.svg'
-              width={isMobile ? '80%' : '30%'}
-              margin='5% 0%'
-              height={isMobile ? '170px' : '250px'}
-            />
-            <Card
-              titleText='Elayne'
-              subText='Member since 2018'
-              imageBg='src/assets/images/Elayne.svg'
-              width={isMobile ? '80%' : '30%'}
-              margin='5% 0%'
-              height={isMobile ? '170px' : '250px'}
-            />
+            {MEMBER_DATA.map((item) => {
+              return (
+                <>
+                  <Card
+                    card={item}
+                    key={generateKey(item.memberSince)}
+                    width={isMobile ? '80%' : '30%'}
+                    margin='5% 0%'
+                    height={isMobile ? '170px' : '250px'}
+                    linkToPage='/detail'
+                  />
+                </>
+              );
+            })}
           </Box>
 
           <Box display='flex' flexDirection='column' alignItems='center'>

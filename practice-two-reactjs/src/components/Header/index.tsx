@@ -3,6 +3,7 @@ import { Box, Image, Link, ListItem, UnorderedList } from '@chakra-ui/react';
 import React, { memo } from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
 import { widths } from '@themes/metrics';
+import { Link as LinkRouter } from 'react-router-dom';
 
 // Components
 import Button from '@components/Button';
@@ -25,11 +26,14 @@ const Header: React.FC<IProps> = ({ onSignUpClick }) => {
       textTransform='uppercase'
     >
       <Box>
-        <Image
-          src='src/assets/images/NinjaMailLogo.svg'
-          w={{ sm: widths.medium, md: widths.medium, lg: widths.large }}
-        />
+        <LinkRouter to='/'>
+          <Image
+            src='src/assets/images/NinjaMailLogo.svg'
+            w={{ sm: widths.medium, md: widths.medium, lg: widths.large }}
+          />
+        </LinkRouter>
       </Box>
+
       <Box marginTop='5px' fontFamily='RalewayExtraBold'>
         <UnorderedList listStyleType='none' display='flex' flexDirection='row' fontSize='12px'>
           {isMobile ? (

@@ -1,20 +1,21 @@
 import { Box, Text } from '@chakra-ui/react';
 
 import { IMemberDetail } from '@models/index';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   card: IMemberDetail;
-  width?: string;
   margin?: string;
   height?: string;
   onClick?: () => void;
+  linkToPage?: string;
 }
 
-const Card = ({ width, margin, height, onClick, card }: IProps) => {
+const Card = ({ margin, height, onClick, card, linkToPage = '' }: IProps) => {
   return (
     <Box
       h={height}
-      w={width}
+      w={{ sm: '100%', md: '25%', lg: '25%' }}
       backgroundImage={card.memberImg}
       backgroundPosition='center'
       backgroundRepeat='no-repeat'
@@ -23,23 +24,26 @@ const Card = ({ width, margin, height, onClick, card }: IProps) => {
       margin={margin}
       onClick={onClick}
     >
-      <Box
-        display='flex'
-        flexDirection='column'
-        textAlign='left'
-        p='20px'
-        justifyContent='end'
-        height='100%'
-        backgroundImage='linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459))'
-        color='white'
-      >
-        <Text className='textTitle' fontSize='3xl' fontFamily='RalewayExtraBold'>
-          {card.memberName}
-        </Text>
-        <Text className='textDescription' fontSize='sm' fontFamily='RalewayBold'>
-          Member Since {card.memberSince?.slice(card.memberSince?.lastIndexOf('/') + 1)}
-        </Text>
-      </Box>
+      <Link to={linkToPage}>
+        <Box
+          display='flex'
+          flexDirection='column'
+          textAlign='left'
+          p='20px'
+          justifyContent='end'
+          height='100%'
+          backgroundImage='linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459))'
+          color='white'
+          fontSize={{ sm: 'text.small', md: 'text.small', lg: 'text.large' }}
+        >
+          <Text className='textTitle' fontFamily='RalewayExtraBold'>
+            {card.memberName}
+          </Text>
+          <Text className='textDescription' fontFamily='RalewayBold'>
+            Member Since {card.memberSince?.substring(0, 4)}
+          </Text>
+        </Box>
+      </Link>
     </Box>
   );
 };

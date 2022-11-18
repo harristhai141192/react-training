@@ -13,7 +13,6 @@ import React from 'react';
 interface IProps {
   modalTitle: string;
   children: React.ReactNode;
-  size?: string;
   isOpen?: boolean;
   onClose?: () => void;
 }
@@ -21,13 +20,12 @@ interface IProps {
 const ModalComponent: React.FC<IProps> = ({
   modalTitle,
   children,
-  size,
   isOpen = false,
   onClose = () => {},
 }) => {
   return (
-    <Box>
-      <Modal isOpen={isOpen} onClose={onClose} size={size}>
+    <Box fontFamily='RalewayLight'>
+      <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'sm', md: 'md', lg: 'xl' }}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{modalTitle}</ModalHeader>

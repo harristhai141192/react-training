@@ -1,8 +1,9 @@
-import { createContext, useReducer } from 'react';
+import { IMemberDetail } from '@models/index';
+import { createContext, useReducer, ReactNode } from 'react';
 
 export const ContextState = createContext([]);
 
-const reducer = (state, action) => {
+const reducer = (state: IMemberDetail, action: { type: string; payload: IMemberDetail[] }) => {
   switch (action.type) {
     case 'ADD_MEMBER':
       return {
@@ -25,7 +26,7 @@ const reducer = (state, action) => {
 };
 
 // eslint-disable-next-line react/prop-types
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [memberContext, dispatch] = useReducer(reducer, []);
   return (
     <ContextState.Provider value={[memberContext, dispatch]}>{children}</ContextState.Provider>
