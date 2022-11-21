@@ -1,12 +1,19 @@
-import './App.css';
-import themes from './themes';
+// Libraries
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import { ContextProvider } from './globals';
-
 import { ChakraProvider } from '@chakra-ui/react';
 import { lazy, Suspense } from 'react';
+
+// themes
+import themes from './themes';
+
+// Components
 import LoadingSpinner from '@components/LoadingSpinner';
+
+// Context
+import { ContextProvider } from './globals';
+
+// CSS
+import './App.css';
 
 const Home = lazy(() => import('@pages/home'));
 const Detail = lazy(() => import('@pages/detail'));

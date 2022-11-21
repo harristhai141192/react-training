@@ -45,6 +45,7 @@ const InputComponent: React.FC<IProps> = ({
       focusBorderColor={themes.colors.green[1000]}
       margin={margin}
       w={width}
+      borderColor='grey'
     />
     {error && (
       <Box display='flex' alignItems='flex-start' marginTop='10px' color='crimson'>

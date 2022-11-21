@@ -34,12 +34,15 @@ const Card = ({ margin, height, onClick, card, linkToPage = '' }: IProps) => {
           height='100%'
           backgroundImage='linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459))'
           color='white'
-          fontSize={{ sm: 'text.small', md: 'text.small', lg: 'text.large' }}
         >
-          <Text className='textTitle' fontFamily='RalewayExtraBold'>
+          <Text
+            className='textTitle'
+            fontFamily='RalewayExtraBold'
+            fontSize={{ sm: 'text.extraLarge', md: 'text.large', lg: 'text.extraLarge' }}
+          >
             {card.memberName}
           </Text>
-          <Text className='textDescription' fontFamily='RalewayBold'>
+          <Text className='textDescription' fontFamily='RalewayLight' fontSize='text.small'>
             Member Since {card.memberSince?.substring(0, 4)}
           </Text>
         </Box>

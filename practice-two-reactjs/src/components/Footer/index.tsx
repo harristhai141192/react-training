@@ -13,7 +13,12 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
   return (
     <footer>
       <Box margin='40px 0px'>
-        <Box display='flex' flexDirection='row' p='0% 10%' marginBottom='50px'>
+        <Box
+          display='flex'
+          flexDirection={isMobile ? 'column' : 'row'}
+          p='0% 10%'
+          marginBottom='50px'
+        >
           <Box flexGrow='4'>
             <Image w='50%' src='src/assets/images/NinjaMailLogo.svg' />
           </Box>
@@ -149,19 +154,33 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
         <Box p='1px' bg='#DBDBDB' m='0% 10%'></Box>
         <Box
           display='flex'
-          flexDirection='row'
+          flexDirection={isMobile ? 'column' : 'row'}
           p='0% 10%'
           fontFamily='RalewayBold'
           marginTop='20px'
+          width={isMobile ? '80%' : '100%'}
         >
           <Box flexGrow='4' display='flex' justifyContent='center'>
-            <Text fontSize='sm'>
+            <Text fontSize={isMobile ? 'xs' : 'sm'}>
               NinjaMail is a sample project for Quest AI. © 2019 Quest AI, All rights reserved.
             </Text>
           </Box>
-          <Box flexGrow='6' display='flex' justifyContent='space-around'>
-            <Link fontSize='sm'> Terms & Conditions</Link>
-            <Link href={linkTerms} fontSize='sm'>
+          <Box
+            flexGrow='6'
+            display='flex'
+            justifyContent='space-around'
+            flexDirection={isMobile ? 'column' : 'row'}
+            marginTop={isMobile ? '30px' : ''}
+          >
+            <Link fontSize={isMobile ? 'xs' : 'sm'} padding='0'>
+              Terms & Conditions
+            </Link>
+            <Link
+              href={linkTerms}
+              fontSize={isMobile ? 'xs' : 'sm'}
+              padding='0'
+              marginTop={isMobile ? '7px' : ''}
+            >
               Privacy Policy
             </Link>
           </Box>
