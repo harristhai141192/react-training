@@ -263,7 +263,7 @@ const Detail = () => {
                 formName=''
                 onCancel={() => setIsOpenAddForm(false)}
                 onSubmit={isEditting ? handleOnClickEdit : handleClickAdd}
-                defaultMemberData={member}
+                defaultMemberData={isEditting ? member : {}}
                 isLoading={isLoading}
               />
             </ModalComponent>
