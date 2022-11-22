@@ -1,7 +1,8 @@
 // Libraries
-import { Box, Image, Text, Link, UnorderedList, ListItem } from '@chakra-ui/react';
+import { Box, Image, Text, Link, UnorderedList, ListItem, Container } from '@chakra-ui/react';
 import React, { memo } from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
+import { FOOTER_BAR_INFORMATION } from '../../mockData/tableData';
 
 interface IProps {
   linkTerms?: string;
@@ -9,9 +10,13 @@ interface IProps {
 
 const Footer: React.FC<IProps> = ({ linkTerms }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
+  // GENERATE KEY
+  const generateKey = (item: string | undefined) =>
+    `${item}_${new Date().getTime()}_${Math.random()}`;
 
   return (
-    <footer>
+    <Container as='footer'>
+      {/* CONTAINER CHAKRA FOOTER */}
       <Box margin='40px 0px'>
         <Box
           display='flex'
@@ -29,68 +34,37 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
             textAlign='left'
             fontFamily='RalewayBold'
           >
+            {/* ISMOBILE ISSUES */}
             <Box
               display='flex'
               flexDirection={isMobile ? 'column' : 'row'}
               flexGrow='5'
-              justifyContent='space-around'
+              justifyContent={isMobile ? 'flex-start' : 'space-around'}
             >
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Features
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Pricing
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Services
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Partners
-                    </Link>
-                  </ListItem>
+                  {FOOTER_BAR_INFORMATION.serviceCenter.map((item) => {
+                    return (
+                      <ListItem key={generateKey(item)}>
+                        <Link marginBottom='7px' href='' fontSize='sm'>
+                          {item}
+                        </Link>
+                      </ListItem>
+                    );
+                  })}
                 </UnorderedList>
               </Box>
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      About Us
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Tutorials
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Resources
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Help Center
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Templates
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Case Studies
-                    </Link>
-                  </ListItem>
+                  {FOOTER_BAR_INFORMATION.informationCenter.map((item) => {
+                    return (
+                      <ListItem key={generateKey(item)}>
+                        <Link marginBottom='7px' href='' fontSize='sm'>
+                          {item}
+                        </Link>
+                      </ListItem>
+                    );
+                  })}
                 </UnorderedList>
               </Box>
             </Box>
@@ -102,50 +76,28 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
             >
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Medium
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Twitter
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Facebook
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Instagram
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Linkedln
-                    </Link>
-                  </ListItem>
+                  {FOOTER_BAR_INFORMATION.socialCenter.map((item) => {
+                    return (
+                      <ListItem key={generateKey(item)}>
+                        <Link marginBottom='7px' href='' fontSize='sm'>
+                          {item}
+                        </Link>
+                      </ListItem>
+                    );
+                  })}
                 </UnorderedList>
               </Box>
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Contact Us
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Slack
-                    </Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link marginBottom='7px' href='' fontSize='sm'>
-                      Jobs
-                    </Link>
-                  </ListItem>
+                  {FOOTER_BAR_INFORMATION.contactCenter.map((item) => {
+                    return (
+                      <ListItem key={generateKey(item)}>
+                        <Link marginBottom='7px' href='' fontSize='sm'>
+                          {item}
+                        </Link>
+                      </ListItem>
+                    );
+                  })}
                 </UnorderedList>
               </Box>
             </Box>
@@ -186,7 +138,7 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
           </Box>
         </Box>
       </Box>
-    </footer>
+    </Container>
   );
 };
 

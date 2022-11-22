@@ -31,9 +31,18 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     if (this.state.hasError) {
-      return <Navigate to='/Page404' replace={true}></Navigate>;
+      return (
+        <div>
+          <h2>An error has been occurred!! </h2>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
+            {this.state.error && this.state.error.toString()}
+          </details>
+          <button type='button' onClick={() => this.setState({ hasError: false })}>
+            Try again?
+          </button>
+        </div>
+      );
     }
-
     return this.props.children;
   }
 }

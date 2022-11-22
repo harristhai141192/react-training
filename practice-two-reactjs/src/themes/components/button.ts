@@ -12,7 +12,7 @@ export const Button = {
       width: {
         base: widths.extraTiny,
         sm: widths.small,
-        md: widths.superSmall,
+        md: widths.small,
         xl: widths.small,
       },
       height: { base: heights.tiny, md: heights.small, sm: heights.small },

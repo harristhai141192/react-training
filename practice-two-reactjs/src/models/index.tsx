@@ -1,4 +1,4 @@
-export interface IMemberDetail {
+export class IMemberDetail {
   id?: string;
   memberName?: string;
   memberSince?: string;

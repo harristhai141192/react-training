@@ -1,6 +1,6 @@
 // Libraries
 import { Box, Text } from '@chakra-ui/react';
-import { useState, useEffect, useCallback, useContext, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { FormEvent } from 'react';
 
 // API
@@ -15,8 +15,6 @@ import useSWR from 'swr';
 import useMemberContext from '../../globals/context';
 
 // Components
-import Header from '@components/Header';
-import Footer from '@components/Footer';
 import MemberCard from '@components/MemberCard';
 import Card from '@components/Card';
 import Button from '@components/Button';
@@ -25,8 +23,11 @@ import FormComponent from '@components/Form';
 import LoadingSpinner from '@components/LoadingSpinner';
 import InputComponent from '@components/Input';
 import ErrorBoundary from '@components/ErrorBoundary';
+import Layout from 'src/layout/index';
 
 const Detail = () => {
+  // TAO NHUNG CAI BIEN MODAL TRONG CAC ARRAY DE GIAM THIEU SO LUONG STATE SU DUNG
+  // CURRENT MODAL WITH ID
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
   const [member, setMember] = useState<IMemberDetail>();
@@ -176,6 +177,7 @@ const Detail = () => {
   }, []);
 
   // GET VALUE ON SEARCH
+  //  LAY DATA 1 LAN CUOI CUNG, DEBOUND
   const handleOnSearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value.toLowerCase());
@@ -194,112 +196,110 @@ const Detail = () => {
 
   return (
     <>
-      {/* HEADER SESSION */}
-      <ErrorBoundary>
-        <Header />
-        <Box display='flex' marginLeft='30px' flexDirection='row' flexWrap='wrap'>
-          <Box width='100%' display='flex' marginBottom='10px' alignItems='center'>
-            {renderTitle}
-            <Box display='flex' justifyContent='flex-end' width='100%'>
-              <Text>Searching: </Text>
-              <InputComponent width='30%' margin='0px 30px' onChange={handleOnSearch} />
+      <Layout>
+        <ErrorBoundary>
+          <Box display='flex' marginLeft='30px' flexDirection='row' flexWrap='wrap'>
+            <Box width='100%' display='flex' marginBottom='10px' alignItems='center'>
+              {renderTitle}
+              <Box display='flex' justifyContent='flex-end' width='100%'>
+                <Text>Searching: </Text>
+                <InputComponent width='30%' margin='0px 30px' onChange={handleOnSearch} />
+              </Box>
             </Box>
+            <Button
+              marginBottom='30px'
+              label='+ Add A Member'
+              padding='10px 70px'
+              onClick={openAddForm}
+            />
           </Box>
-          <Button
-            marginBottom='30px'
-            label='+ Add A Member'
-            padding='10px 70px'
-            onClick={openAddForm}
-          />
-        </Box>
 
-        <Box display='flex' flexDirection='row' flexWrap='wrap'>
-          {/* DETAIL */}
-          {!isLoading && filteringData ? (
-            filteringData.map((item: IMemberDetail) => (
-              <Card
-                card={item}
-                key={generateKey(item.id)}
-                height='150px'
-                margin='1% 3%'
-                onClick={() => handleClickCard(item?.id)}
-              />
-            ))
-          ) : (
-            <LoadingSpinner />
-          )}
-          {isOpenDetail && (
-            <MemberCard
-              isOpen={isOpenDetail}
-              onClose={() => setIsOpenDetail(false)}
-              modalTitle='Member Detail'
-              member={member}
-            >
-              <Button
-                label='Edit'
-                variant='outline'
-                width='100%'
-                marginRight='5px'
-                onClick={openEditForm}
-              />
-              <Button
-                label='Delete'
-                variant='solid'
-                backgroundColor='crimson'
-                width='100%'
-                marginRight='0'
-                padding='0'
-                onClick={() => setIsOpenDeleteModal(true)}
-              />
-            </MemberCard>
-          )}
-          {isOpenAddForm && (
-            <ModalComponent
-              isOpen={isOpenAddForm}
-              onClose={() => setIsOpenAddForm(false)}
-              modalTitle={isEditting ? 'Edit A Member' : 'Add A Member'}
-            >
-              <FormComponent
-                formName=''
-                onCancel={() => setIsOpenAddForm(false)}
-                onSubmit={isEditting ? handleOnClickEdit : handleClickAdd}
-                defaultMemberData={isEditting ? member : {}}
-                isLoading={isLoading}
-              />
-            </ModalComponent>
-          )}
-          {isOpenDeleteModal && (
-            <ModalComponent
-              isOpen={isOpenDeleteModal}
-              onClose={() => setIsOpenDeleteModal(false)}
-              modalTitle='Delete Member Board'
-            >
-              <Box display='flex' flexDirection='row' fontFamily='RalewayLight'>
-                <Text>Do you want to delete </Text>
-                <Text color='crimson'> &nbsp;{member?.memberName}</Text>
-                <Text>?</Text>
-              </Box>
-              <Box display='flex' flexDirection='row' justifyContent='flex-end' margin='30px 0'>
-                <Button
-                  isLoading={isLoading}
-                  loadingText='Submitting'
-                  label='Yes'
-                  backgroundColor='crimson'
-                  onClick={handleOnClickDelete}
+          <Box display='flex' flexDirection='row' flexWrap='wrap'>
+            {/* DETAIL */}
+            {!isLoading && filteringData ? (
+              filteringData.map((item: IMemberDetail) => (
+                <Card
+                  card={item}
+                  key={generateKey(item.id)}
+                  height='150px'
+                  margin='1% 3%'
+                  onClick={() => handleClickCard(item?.id)}
                 />
+              ))
+            ) : (
+              <LoadingSpinner />
+            )}
+            {isOpenDetail && (
+              <MemberCard
+                isOpen={isOpenDetail}
+                onClose={() => setIsOpenDetail(false)}
+                modalTitle='Member Detail'
+                member={member}
+              >
                 <Button
-                  isLoading={isLoading}
-                  label='No'
+                  label='Edit'
                   variant='outline'
-                  onClick={() => setIsOpenDeleteModal(false)}
+                  width='100%'
+                  marginRight='5px'
+                  onClick={openEditForm}
                 />
-              </Box>
-            </ModalComponent>
-          )}
-        </Box>
-        {/* FOOTER */}
-        <Footer />
-      </ErrorBoundary>
+                <Button
+                  label='Delete'
+                  variant='solid'
+                  backgroundColor='crimson'
+                  width='100%'
+                  marginRight='0'
+                  padding='0'
+                  onClick={() => setIsOpenDeleteModal(true)}
+                />
+              </MemberCard>
+            )}
+            {isOpenAddForm && (
+              <ModalComponent
+                isOpen={isOpenAddForm}
+                onClose={() => setIsOpenAddForm(false)}
+                modalTitle={isEditting ? 'Edit A Member' : 'Add A Member'}
+              >
+                <FormComponent
+                  formName=''
+                  onCancel={() => setIsOpenAddForm(false)}
+                  onSubmit={isEditting ? handleOnClickEdit : handleClickAdd}
+                  defaultMemberData={isEditting ? member : {}}
+                  isLoading={isLoading}
+                />
+              </ModalComponent>
+            )}
+            {isOpenDeleteModal && (
+              <ModalComponent
+                isOpen={isOpenDeleteModal}
+                onClose={() => setIsOpenDeleteModal(false)}
+                modalTitle='Delete Member Board'
+              >
+                <Box display='flex' flexDirection='row' fontFamily='RalewayLight'>
+                  <Text>Do you want to delete </Text>
+                  <Text color='crimson'> &nbsp;{member?.memberName}</Text>
+                  <Text>?</Text>
+                </Box>
+                <Box display='flex' flexDirection='row' justifyContent='flex-end' margin='30px 0'>
+                  <Button
+                    isLoading={isLoading}
+                    loadingText='Submitting'
+                    label='Yes'
+                    backgroundColor='crimson'
+                    onClick={handleOnClickDelete}
+                  />
+                  <Button
+                    isLoading={isLoading}
+                    label='No'
+                    variant='outline'
+                    onClick={() => setIsOpenDeleteModal(false)}
+                  />
+                </Box>
+              </ModalComponent>
+            )}
+          </Box>
+        </ErrorBoundary>
+      </Layout>
     </>
   );
 };

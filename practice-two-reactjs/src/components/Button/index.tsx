@@ -23,6 +23,7 @@ interface IProps {
   backgroundColor?: string;
 }
 
+// CO SAN TREN CHAKRA UI, CONFIG BUTTON COMPONENT TREN THEME, K CAN THIET TAO THEM
 const Button = ({
   variant = 'solid',
   size = 'default',

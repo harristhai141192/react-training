@@ -24,6 +24,7 @@ const ModalComponent: React.FC<IProps> = ({
   onClose = () => {},
 }) => {
   return (
+    // CAN APPLY SUSPENSE CHO CAC MODAL NGAY CHO IMPORT MODAL (NOT IN COMPOENNT)
     <Box fontFamily='RalewayLight'>
       <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'sm', md: 'md', lg: 'xl' }}>
         <ModalOverlay />

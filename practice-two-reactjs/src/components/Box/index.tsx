@@ -1,5 +1,4 @@
 import { Box, Text, Image } from '@chakra-ui/react';
-import themes from '@themes/index';
 
 interface IProps {
   imageURL?: string;
@@ -8,7 +7,7 @@ interface IProps {
   maxWidth?: string;
   width?: string;
 }
-
+// FOLDER NAME COMPONENT NOT MATCH
 const BoxComponent = ({ imageURL, imageAlt, subText, maxWidth, width }: IProps) => {
   return (
     <Box
@@ -28,7 +27,7 @@ const BoxComponent = ({ imageURL, imageAlt, subText, maxWidth, width }: IProps) 
           </Text>
         </Box>
         <Box display='flex' alignContent='flex-start' fontFamily='RalewayBold'>
-          <Text paddingTop={2} as='b' fontSize='sm' color={themes.colors.green[1000]}>
+          <Text paddingTop={2} as='b' fontSize='sm' color='var(--main-color)'>
             Learn more {'>'}
           </Text>
         </Box>

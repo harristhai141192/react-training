@@ -26,9 +26,10 @@
       "@themes/*": ["src/themes/*"],
       "@utils/*": ["src/utils/*"],
       "@services/*": ["src/services/*"],
-      "@apis/*": ["src/apis/*"]
+      "@apis/*": ["src/apis/*"],
+      "@layout/*": ["layouts/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "layouts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

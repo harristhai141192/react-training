@@ -1,6 +1,5 @@
 import { Spinner } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
-import themes from '@themes/index';
 
 const LoadingSpinner = () => {
   return (
@@ -20,7 +19,7 @@ const LoadingSpinner = () => {
         thickness='4px'
         speed='0.65s'
         emptyColor='gray.200'
-        color={themes.colors.green[1000]}
+        color='var(--main-color)'
         size='xl'
       />
     </Box>

@@ -23,6 +23,7 @@ function App() {
     <ChakraProvider theme={themes}>
       <ContextProvider>
         <BrowserRouter>
+          {/* LOADING SPINNER KO CAN CHO HEADER FOOTER HOAC CAC DATA TINH, CAN CHI TIET LAI */}
           <Suspense fallback={<LoadingSpinner />}>
             <Routes>
               <Route>

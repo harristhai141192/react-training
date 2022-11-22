@@ -25,6 +25,7 @@ const reducer = (state: IMemberDetail, action: { type: string; payload: IMemberD
   }
 };
 
+// TACH RA LAM 2 FILES, 1 CONTEXT , 1 REDUCER
 // eslint-disable-next-line react/prop-types
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [memberContext, dispatch] = useReducer(reducer, []);

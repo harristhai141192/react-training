@@ -47,6 +47,10 @@ export default defineConfig({
         find: '@apis',
         replacement: path.resolve(__dirname, 'src/apis'),
       },
+      {
+        find: '@layout',
+        replacement: path.resolve(__dirname, 'src/layout'),
+      },
     ],
   },
 });

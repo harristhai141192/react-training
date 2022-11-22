@@ -19,4 +19,11 @@ const MEMBER_DATA = [
   },
 ];
 
-export default MEMBER_DATA;
+const FOOTER_BAR_INFORMATION = {
+  serviceCenter: ['Features', 'Pricing', 'Services', 'Partners'],
+  informationCenter: ['About Us', 'Tutorials', 'Resources'],
+  socialCenter: ['Medium', 'Twitter', 'Facebook', 'Instagram', 'Linkedln'],
+  contactCenter: ['Contact Us', 'Slack', 'Jobs'],
+};
+
+export { MEMBER_DATA, FOOTER_BAR_INFORMATION };

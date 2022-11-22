@@ -1,5 +1,6 @@
 // Libraries
 import { FormControl, FormLabel, Box, Text, Textarea, Select } from '@chakra-ui/react';
+//  IMPORT REACT NEN DE TREN CUNG
 import React, { FormEvent } from 'react';
 
 // Components
@@ -7,19 +8,15 @@ import InputComponent from '@components/Input';
 import Button from '@components/Button';
 import { IMemberDetail } from '@models/index';
 
+// ERROR MESSAGE
 interface IProps {
   defaultMemberData?: IMemberDetail;
   formName?: string;
   errorName?: boolean;
-  errorNameText?: string;
   errorDOB?: boolean;
-  errorDOBText?: string;
   errorPhone?: boolean;
-  errorPhoneText?: string;
   errorMember?: boolean;
-  errorMemberText?: string;
   errorEmail?: boolean;
-  errorEmailText?: string;
   isLoading?: boolean;
   onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   onCancel?: React.MouseEventHandler<HTMLButtonElement>;
@@ -29,15 +26,10 @@ const FormComponent: React.FC<IProps> = ({
   defaultMemberData,
   formName,
   errorName,
-  errorNameText = '',
   errorDOB,
-  errorDOBText = '',
   errorPhone,
-  errorPhoneText = '',
   errorMember,
-  errorMemberText = '',
   errorEmail,
-  errorEmailText = '',
   isLoading,
   onSubmit = () => {},
   onCancel = () => {},
@@ -53,7 +45,6 @@ const FormComponent: React.FC<IProps> = ({
           <InputComponent
             name='name'
             error={errorName}
-            errorText={errorNameText}
             defaultValue={defaultMemberData?.memberName}
           />
           <FormLabel marginTop={3} htmlFor='dateOfBirth' fontSize='sm'>
@@ -63,7 +54,6 @@ const FormComponent: React.FC<IProps> = ({
             name='dateOfBirth'
             type='date'
             error={errorDOB}
-            errorText={errorDOBText}
             defaultValue={defaultMemberData?.dateOfBirth}
           />
           <FormLabel marginTop={3} htmlFor='memberImage' fontSize='sm'>
@@ -73,12 +63,7 @@ const FormComponent: React.FC<IProps> = ({
           <FormLabel marginTop={3} htmlFor='phone' fontSize='sm'>
             Phone:
           </FormLabel>
-          <InputComponent
-            name='phone'
-            error={errorPhone}
-            errorText={errorPhoneText}
-            defaultValue={defaultMemberData?.phone}
-          />
+          <InputComponent name='phone' error={errorPhone} defaultValue={defaultMemberData?.phone} />
           <FormLabel marginTop={3} htmlFor='memberSince' fontSize='sm'>
             Member since:
           </FormLabel>
@@ -86,7 +71,6 @@ const FormComponent: React.FC<IProps> = ({
             name='memberSince'
             type='date'
             error={errorMember}
-            errorText={errorMemberText}
             defaultValue={defaultMemberData?.memberSince}
           />
           <FormLabel marginTop={3} htmlFor='email' fontSize='sm'>
@@ -96,7 +80,6 @@ const FormComponent: React.FC<IProps> = ({
             name='gender'
             type='text'
             error={errorEmail}
-            errorText={errorEmailText}
             defaultValue={defaultMemberData?.gender}
           />
           <FormLabel marginTop={3} htmlFor='gender' fontSize='sm'>

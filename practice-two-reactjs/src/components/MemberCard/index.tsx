@@ -25,8 +25,18 @@ const MemberCard: React.FC<IProps> = ({
     <ModalComponent modalTitle={modalTitle} isOpen={isOpen} onClose={onClose}>
       <Box display='flex' fontFamily='RalewayLight' padding='10px' maxHeight='280px'>
         <Box flexGrow='4' w='30%' boxShadow='0 0 3px 1px lightgrey'>
-          <Box height='75%'>
-            <Image src={member?.memberImg} objectFit='cover' w='100%' h='100%' />
+          <Box
+            height={{ sm: '120px', md: '170px', lg: '200px' }}
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+          >
+            <Image
+              src={member?.memberImg}
+              objectFit='cover'
+              w={{ sm: '100px', md: '150px', lg: '170px' }}
+              h={{ sm: '100px', md: '150px', lg: '170px' }}
+            />
           </Box>
           <Box
             display='flex'
