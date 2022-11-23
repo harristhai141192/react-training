@@ -1,4 +1,4 @@
-export class IMemberDetail {
+export class Member {
   id?: string;
   memberName?: string;
   memberSince?: string;
@@ -9,4 +9,8 @@ export class IMemberDetail {
   description?: string;
   phone?: string;
   email?: string;
+
+  constructor(member: Member) {
+    this.id = member.id;
+  }
 }

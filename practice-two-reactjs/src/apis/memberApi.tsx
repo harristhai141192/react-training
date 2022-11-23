@@ -2,7 +2,7 @@
 import { get, post, update, remove } from '@services/apiServices';
 
 // Models
-import { IMemberDetail } from '@models/index';
+import { Member } from '@models/index';
 import { API } from '@constants/apis';
 
 /**
@@ -10,9 +10,9 @@ import { API } from '@constants/apis';
  * @param url - Init an URL of member
  * @returns member List
  */
-export const getMembers = async (): Promise<IMemberDetail[]> => {
+export const getMembers = async (): Promise<Member[]> => {
   try {
-    const memberList: IMemberDetail[] = await get(`${API.PATHS.URL_MEMBER}`);
+    const memberList: Member[] = await get(`${API.PATHS.URL_MEMBER}`);
     return memberList;
   } catch (e) {
     throw (e as Error).message;
@@ -24,9 +24,9 @@ export const getMembers = async (): Promise<IMemberDetail[]> => {
  * @param url - Init an URL of item
  * @returns item List
  */
-export const getAMember = async (id: string): Promise<IMemberDetail> => {
+export const getAMember = async (id: string): Promise<Member> => {
   try {
-    const member: IMemberDetail = await get(`${API.PATHS.URL_MEMBER}/${id}`);
+    const member: Member = await get(`${API.PATHS.URL_MEMBER}/${id}`);
 
     return member;
   } catch (e) {
@@ -54,7 +54,7 @@ export const deleteMember = async (id: string): Promise<void> => {
  * @param data - Init data for new member
  * @returns
  */
-export const addMember = async (data: IMemberDetail): Promise<IMemberDetail[]> => {
+export const addMember = async (data: Member): Promise<Member[]> => {
   try {
     const url = `${API.PATHS.URL_MEMBER}`;
 
@@ -71,9 +71,9 @@ export const addMember = async (data: IMemberDetail): Promise<IMemberDetail[]> =
  * @param data - Init a new data for the updated member
  * @returns
  */
-export const updateMember = async (id: string, data: IMemberDetail): Promise<IMemberDetail> => {
+export const updateMember = async (id: string, data: Member): Promise<Member> => {
   try {
-    const updateMember: IMemberDetail = await update(`${API.PATHS.URL_MEMBER}/${id}`, data);
+    const updateMember: Member = await update(`${API.PATHS.URL_MEMBER}/${id}`, data);
 
     return updateMember;
   } catch (e) {

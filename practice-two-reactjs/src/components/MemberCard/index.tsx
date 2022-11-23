@@ -1,13 +1,21 @@
 // Libraries
 import { Box, Text, Image } from '@chakra-ui/react';
 import React from 'react';
+import {
+  FaMailBulk,
+  FaBirthdayCake,
+  FaChild,
+  FaBriefcase,
+  FaTransgender,
+  FaPenNib,
+} from 'react-icons/fa';
 
 // Components
 import ModalComponent from '@components/Modal';
-import { IMemberDetail } from '@models/index';
+import { Member } from '@models/index';
 
 interface IProps {
-  member?: IMemberDetail;
+  member?: Member;
   modalTitle: string;
   children?: React.ReactNode;
   isOpen?: boolean;
@@ -23,10 +31,18 @@ const MemberCard: React.FC<IProps> = ({
 }) => {
   return (
     <ModalComponent modalTitle={modalTitle} isOpen={isOpen} onClose={onClose}>
-      <Box display='flex' fontFamily='RalewayLight' padding='10px' maxHeight='280px'>
-        <Box flexGrow='4' w='30%' boxShadow='0 0 3px 1px lightgrey'>
+      <Box
+        display='flex'
+        fontFamily='RalewayLight'
+        padding='10px'
+        maxHeight='280px'
+        boxShadow='0 0 3px 1px lightgrey'
+        marginBottom='30px'
+        bgColor='#F8F8F8'
+      >
+        <Box flexGrow='4' w='30%'>
           <Box
-            height={{ sm: '120px', md: '170px', lg: '200px' }}
+            height={{ sm: '150px', md: '170px', lg: '200px' }}
             display='flex'
             justifyContent='center'
             alignItems='center'
@@ -34,8 +50,9 @@ const MemberCard: React.FC<IProps> = ({
             <Image
               src={member?.memberImg}
               objectFit='cover'
-              w={{ sm: '100px', md: '150px', lg: '170px' }}
-              h={{ sm: '100px', md: '150px', lg: '170px' }}
+              w={{ sm: '120px', md: '150px', lg: '170px' }}
+              h={{ sm: '120px', md: '150px', lg: '170px' }}
+              borderRadius='50%'
             />
           </Box>
           <Box
@@ -56,37 +73,45 @@ const MemberCard: React.FC<IProps> = ({
           flexDirection='column'
           paddingLeft='10px'
         >
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Name : &nbsp;</Text>
-            <Text>{member?.memberName}</Text>
+          <Box display='flex' flexDirection='row' justifyContent='center'>
+            <Text as='b' fontSize='xl'>
+              {member?.memberName}
+            </Text>
           </Box>
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Phone Number : &nbsp;</Text>
-            <Text> {member?.phone}</Text>
+          <Box
+            display='flex'
+            flexDirection='row'
+            justifyContent='center'
+            marginBottom='15px'
+            alignItems='center'
+          >
+            <Text fontSize='text.medium'>{member?.phone}</Text>
           </Box>
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Birthday : &nbsp;</Text>
-            <Text> {member?.dateOfBirth}</Text>
+
+          <Box display='flex' flexDirection='row' alignItems='center'>
+            <FaMailBulk /> &nbsp;
+            <Text fontSize='text.large'>{member?.email}</Text>
           </Box>
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Email : &nbsp;</Text>
-            <Text> {member?.email}</Text>
+          <Box display='flex' flexDirection='row' alignItems='center'>
+            <FaBirthdayCake />
+            &nbsp;
+            <Text fontSize='text.large'>{member?.dateOfBirth}</Text>
           </Box>
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Member Since : &nbsp;</Text>
-            <Text> {member?.memberSince}</Text>
+          <Box display='flex' flexDirection='row' alignItems='center'>
+            <FaChild /> &nbsp;
+            <Text fontSize='text.large'>{member?.memberSince}</Text>
           </Box>
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Job : &nbsp;</Text>
-            <Text> {member?.job}</Text>
+          <Box display='flex' flexDirection='row' alignItems='center'>
+            <FaBriefcase /> &nbsp;
+            <Text fontSize='text.large'>{member?.job}</Text>
           </Box>
-          <Box display='flex' flexDirection='row' flexWrap='wrap'>
-            <Text as='b'>Description : &nbsp;</Text>
-            <Text> {member?.description}</Text>
+          <Box display='flex' flexDirection='row' alignItems='center'>
+            <FaTransgender /> &nbsp;
+            <Text fontSize='text.large'>{member?.gender}</Text>
           </Box>
-          <Box display='flex' flexDirection='row'>
-            <Text as='b'>Gender : &nbsp;</Text>
-            <Text> {member?.gender}</Text>
+          <Box display='flex' flexDirection='row' flexWrap='wrap' alignItems='center'>
+            <FaPenNib /> &nbsp;
+            <Text fontSize='text.large'>{member?.description}</Text>
           </Box>
         </Box>
       </Box>

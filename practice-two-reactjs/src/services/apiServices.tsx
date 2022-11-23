@@ -2,14 +2,14 @@
 import { API } from '@constants/apis';
 
 // Models
-import { IMemberDetail } from '@models/index';
+import { Member } from '@models/index';
 
 /**
  * Get all the item in DB
  * @param url - Init an URL of item
  * @returns item List
  */
-export const get = async <IMemberDetail,>(url: string): Promise<IMemberDetail> => {
+export const get = async <Member,>(url: string): Promise<Member> => {
   try {
     const response = await fetch(url);
 
@@ -25,10 +25,7 @@ export const get = async <IMemberDetail,>(url: string): Promise<IMemberDetail> =
  * @param data - Init data for new item
  * @returns
  */
-export const post = async <IMemberDetail,>(
-  url: string,
-  data: IMemberDetail,
-): Promise<IMemberDetail[]> => {
+export const post = async <Member,>(url: string, data: Member): Promise<Member[]> => {
   try {
     const response = await fetch(url, {
       method: API.HTTP_METHODS.POST,
@@ -49,7 +46,7 @@ export const post = async <IMemberDetail,>(
  * @param data - Init a new data for the update
  * @returns
  */
-export const update = async (url: string, data: IMemberDetail): Promise<IMemberDetail> => {
+export const update = async (url: string, data: Member): Promise<Member> => {
   try {
     const response = await fetch(url, {
       method: API.HTTP_METHODS.PUT,

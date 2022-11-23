@@ -1,9 +1,15 @@
-import { useContext } from 'react';
+import { useContext, createContext, useReducer } from 'react';
+import memberReducer from './memberReducer';
 
-import { ContextState } from './index';
+export const ContextState = createContext([]);
 
-const useMemberContext = () => {
+export const useMemberContext = () => {
   return useContext(ContextState);
 };
 
-export default useMemberContext;
+export const ContextProvider = ({ children }: { children: ReactNode }) => {
+  const [memberContext, dispatch] = useReducer(memberReducer, []);
+  return (
+    <ContextState.Provider value={[memberContext, dispatch]}>{children}</ContextState.Provider>
+  );
+};

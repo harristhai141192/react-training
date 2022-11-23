@@ -1,10 +1,10 @@
 import { Box, Text } from '@chakra-ui/react';
 
-import { IMemberDetail } from '@models/index';
+import { Member } from '@models/index';
 import { Link } from 'react-router-dom';
 
 interface IProps {
-  card: IMemberDetail;
+  card: Member;
   margin?: string;
   height?: string;
   onClick?: () => void;

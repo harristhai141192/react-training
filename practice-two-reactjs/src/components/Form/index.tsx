@@ -6,11 +6,11 @@ import React, { FormEvent } from 'react';
 // Components
 import InputComponent from '@components/Input';
 import Button from '@components/Button';
-import { IMemberDetail } from '@models/index';
+import { Member } from '@models/index';
 
 // ERROR MESSAGE
 interface IProps {
-  defaultMemberData?: IMemberDetail;
+  defaultMemberData?: Member;
   formName?: string;
   errorName?: boolean;
   errorDOB?: boolean;
@@ -80,7 +80,7 @@ const FormComponent: React.FC<IProps> = ({
             name='gender'
             type='text'
             error={errorEmail}
-            defaultValue={defaultMemberData?.gender}
+            defaultValue={defaultMemberData?.email}
           />
           <FormLabel marginTop={3} htmlFor='gender' fontSize='sm'>
             Gender:
