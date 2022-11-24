@@ -27,7 +27,9 @@
       "@utils/*": ["src/utils/*"],
       "@services/*": ["src/services/*"],
       "@apis/*": ["src/apis/*"],
-      "@layout/*": ["layouts/*"]
+      "@layout/*": ["layouts/*"],
+      "@mockData/*": ["src/mockData/*"],
+      "@globals/*": ["src/globals/*"]
     }
   },
   "include": ["src", "layouts"],

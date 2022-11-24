@@ -10,7 +10,7 @@ import Button from '@components/Button';
 describe('Component [MemberCard] should match snapshot', () => {
   test('It should match snapshot', () => {
     const { container } = render(
-      <MemberCard modalTitle='' memberName=''>
+      <MemberCard modalTitle=''>
         <Button />
       </MemberCard>,
     );

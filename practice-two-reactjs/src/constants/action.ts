@@ -1,0 +1,5 @@
+export const ACTION_DISPATCH = {
+  ADD: 'ADD_MEMBER',
+  EDIT: 'EDIT_MEMBER',
+  DELETE: 'DELETE_MEMBER',
+};

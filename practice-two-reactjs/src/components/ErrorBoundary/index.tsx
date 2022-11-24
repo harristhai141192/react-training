@@ -1,7 +1,5 @@
 // Libraries
 import { Component, ReactNode } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Page404 from '@pages/404';
 
 type ErrorBoundaryState = {
   hasError: boolean;

@@ -1,7 +1,8 @@
 // libraries
 import { render, getByText } from '@utils/testUtils';
+
 // components
-import Form from '../index';
+import FormComponent from '../index';
 import '@testing-library/jest-dom';
 
 // theme
@@ -9,7 +10,7 @@ import '@testing-library/jest-dom';
 describe('Component [Form] should match snapshot', () => {
   test('It should match snapshot', () => {
     const { container } = render(
-      <Form
+      <FormComponent
         errorName={false}
         errorDOB={false}
         errorPhone={false}
@@ -25,7 +26,7 @@ describe('Component [Form] should match snapshot', () => {
   // ADD XU LY THEM TEST CASE VE CAC ,LGKC TEST
   test('Component [Form] should render correctly', () => {
     const { container } = render(
-      <Form
+      <FormComponent
         errorName={false}
         errorDOB={false}
         errorPhone={false}

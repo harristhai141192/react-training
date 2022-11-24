@@ -10,9 +10,9 @@ import { API } from '@constants/apis';
  * @param url - Init an URL of member
  * @returns member List
  */
-export const getMembers = async (): Promise<Member[]> => {
+export const getMembers = async (url: API.PATHS): Promise<Member[]> => {
   try {
-    const memberList: Member[] = await get(`${API.PATHS.URL_MEMBER}`);
+    const memberList: Member[] = await get(url);
     return memberList;
   } catch (e) {
     throw (e as Error).message;

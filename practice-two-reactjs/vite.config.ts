@@ -51,6 +51,14 @@ export default defineConfig({
         find: '@layout',
         replacement: path.resolve(__dirname, 'src/layout'),
       },
+      {
+        find: '@mockData',
+        replacement: path.resolve(__dirname, 'src/mockData'),
+      },
+      {
+        find: '@globals',
+        replacement: path.resolve(__dirname, 'src/globals'),
+      },
     ],
   },
 });

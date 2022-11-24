@@ -1,8 +1,13 @@
 // Libraries
-import { Box, Image, Text, Link, UnorderedList, ListItem, Container } from '@chakra-ui/react';
 import React, { memo } from 'react';
+import { Box, Image, Text, Link, UnorderedList, ListItem, Container } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
-import { FOOTER_BAR_INFORMATION } from '../../mockData/tableData';
+
+// Mock data
+import { FOOTER_BAR_INFORMATION } from '@mockData/tableData';
+
+// Constants
+import { LOGO_URL } from '@constants/image';
 
 interface IProps {
   linkTerms?: string;
@@ -25,7 +30,7 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
           marginBottom='50px'
         >
           <Box flexGrow='4'>
-            <Image w='50%' src='src/assets/images/NinjaMailLogo.svg' />
+            <Image w='50%' src={LOGO_URL.imgURL} alt={LOGO_URL.alt} />
           </Box>
           <Box
             flexGrow='6'

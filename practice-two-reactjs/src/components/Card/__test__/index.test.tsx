@@ -6,28 +6,26 @@ import Card from '../index';
 // theme
 
 describe('Card component', () => {
+  const memberCard = {
+    memberImg: "url('src/assets/images/Frankie.svg')",
+    memberSince: '2016',
+    memberName: 'Frankie',
+  };
   test('Component [Card] should match snapshot', () => {
-    const { container } = render(<Card />);
+    const { container } = render(<Card card={memberCard} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  test('Component [Card] should render correctly with subText, titleText and Image', () => {
-    const { container } = render(
-      <Card
-        imageBg="url('src/assets/images/Frankie.svg')"
-        subText='Member since 2016'
-        titleText='Frankie'
-        width='350px'
-      />,
-    );
+  test('Component [Card] should render correctly with member name, member since and member image', () => {
+    const { container } = render(<Card card={memberCard} />);
 
-    const titleText = getByText(container, 'Frankie');
-    const subText = getByText(container, 'Member since 2016');
-    const getBgImg = getByTestId(container, 'testCard');
+    const memberName = getByText(container, 'Frankie');
+    const memberSince = getByText(container, 'Member Since 2016');
+    const memberImage = getByTestId(container, 'testCard');
 
-    expect(titleText).toBeTruthy;
-    expect(subText).toBeTruthy;
-    expect(getBgImg.style.backgroundImage).toBe('');
+    expect(memberName).toBeTruthy;
+    expect(memberSince).toBeTruthy;
+    expect(memberImage.style.backgroundImage).toBe('');
   });
 });

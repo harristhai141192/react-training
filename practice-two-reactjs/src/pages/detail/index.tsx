@@ -1,7 +1,9 @@
 // Libraries
+import { FormEvent, useState, useEffect, useCallback, useMemo } from 'react';
 import { Box, Text } from '@chakra-ui/react';
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { FormEvent } from 'react';
+
+// Constants
+import { ACTION_DISPATCH } from '@constants/action';
 
 // API
 import { Member } from '@models/index';
@@ -12,7 +14,7 @@ import { API } from '@constants/apis';
 import useSWR from 'swr';
 
 //Context
-import { useMemberContext } from '../../globals/context';
+import { useMemberContext } from '@globals/context';
 
 // Components
 import MemberCard from '@components/MemberCard';
@@ -23,11 +25,8 @@ import FormComponent from '@components/Form';
 import LoadingSpinner from '@components/LoadingSpinner';
 import InputComponent from '@components/Input';
 import ErrorBoundary from '@components/ErrorBoundary';
-import { useDebounce } from '../../globals/debounce';
 
 const Detail = () => {
-  // TAO NHUNG CAI BIEN MODAL TRONG CAC ARRAY DE GIAM THIEU SO LUONG STATE SU DUNG
-  // CURRENT MODAL WITH ID
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
   const [member, setMember] = useState<Member>();
@@ -35,11 +34,10 @@ const Detail = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
   const [isEditting, setIsEditting] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>('');
+  const [memberContext, dispatch] = useMemberContext();
 
   // GET DATA THRU SWR
-  const { data } = useSWR(`${API.PATHS.URL_MEMBER}`, getMembers);
-
-  const [memberContext, dispatch] = useMemberContext();
+  const { data } = useSWR(API.PATHS.URL_MEMBER, getMembers);
 
   // HANDLE CLICK ON CARD TO SHOW MEMBER INFOR
   const handleClickCard = useCallback(
@@ -61,7 +59,7 @@ const Detail = () => {
     setIsLoading(false);
     if (data) {
       dispatch({
-        type: 'ADD_MEMBER',
+        type: ACTION_DISPATCH.ADD,
         payload: data,
       });
     }
@@ -101,7 +99,7 @@ const Detail = () => {
     setIsOpenAddForm(false);
     getMembers().then((data) => {
       dispatch({
-        type: 'ADD_MEMBER',
+        type: ACTION_DISPATCH.ADD,
         payload: data,
       });
       setIsLoading(false);
@@ -130,7 +128,7 @@ const Detail = () => {
       setIsOpenAddForm(false);
       getMembers().then((data) => {
         dispatch({
-          type: 'EDIT_MEMBER',
+          type: ACTION_DISPATCH.EDIT,
           payload: data,
         });
         setIsLoading(false);
@@ -151,7 +149,7 @@ const Detail = () => {
 
     getMembers().then((data) => {
       dispatch({
-        type: 'DELETE_MEMBER',
+        type: ACTION_DISPATCH.DELETE,
         payload: data,
       });
 

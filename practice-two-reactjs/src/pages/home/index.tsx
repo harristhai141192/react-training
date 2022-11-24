@@ -9,14 +9,19 @@ import Card from '@components/Card';
 import InputComponent from '@components/Input';
 
 // Mocks
-import { MEMBER_DATA } from '../../mockData/tableData';
+import { MEMBER_DATA } from '@mockData/tableData';
 import ErrorBoundary from '@components/ErrorBoundary';
+
+// Constants
+import { PAGE_ROUTES } from '@constants/routes';
 
 const Home = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
+
   // Generate Key for key
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
+
   return (
     <>
       <ErrorBoundary>
@@ -142,7 +147,7 @@ const Home = () => {
                       key={generateKey(Math.random().toString())}
                       margin='5% 0%'
                       height={isMobile ? '170px' : '250px'}
-                      linkToPage='/detail'
+                      linkToPage={PAGE_ROUTES.DETAIL}
                     />
                   </>
                 );

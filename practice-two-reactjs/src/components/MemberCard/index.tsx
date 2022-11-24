@@ -1,6 +1,8 @@
 // Libraries
 import { Box, Text, Image } from '@chakra-ui/react';
 import React from 'react';
+
+// Icon
 import {
   FaMailBulk,
   FaBirthdayCake,
@@ -99,7 +101,7 @@ const MemberCard: React.FC<IProps> = ({
           </Box>
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaChild /> &nbsp;
-            <Text fontSize='text.large'>{member?.memberSince}</Text>
+            <Text fontSize='text.large'>Member since {member?.memberSince}</Text>
           </Box>
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaBriefcase /> &nbsp;
