@@ -32,9 +32,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return (
         <div>
           <h2>An error has been occurred!! </h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-          </details>
+          <details style={{ whiteSpace: 'pre-wrap' }}>{this.state.error?.message}</details>
           <button type='button' onClick={() => this.setState({ hasError: false })}>
             Try again?
           </button>

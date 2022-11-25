@@ -1,161 +1,187 @@
 // Libraries
-import { FormEvent, useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 
-// Constants
-import { ACTION_DISPATCH } from '@constants/action';
+// Models
+import { Member } from '@models/index';
 
 // API
-import { Member } from '@models/index';
-import { getMembers, updateMember, deleteMember, addMember } from '@apis/memberApi';
 import { API } from '@constants/apis';
 
-// SWR
-import useSWR from 'swr';
-
-//Context
-import { useMemberContext } from '@globals/context';
+//Store
+import { useMemberContext } from '@store/context';
+import { ACTIONS } from '@store/action';
 
 // Components
-import MemberCard from '@components/MemberCard';
 import Card from '@components/Card';
 import Button from '@components/Button';
-import ModalComponent from '@components/Modal';
-import FormComponent from '@components/Form';
 import LoadingSpinner from '@components/LoadingSpinner';
 import InputComponent from '@components/Input';
 import ErrorBoundary from '@components/ErrorBoundary';
+import ModalFormComponent from './ModalFormComponent';
+import ModalDeleteComponent from './ModalDeleteComponent';
+import MemberCardDetail from './MemberCardDetail';
 
 const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
   const [isOpenAddForm, setIsOpenAddForm] = useState<boolean>(false);
-  const [member, setMember] = useState<Member>();
-  const [isLoading, setIsLoading] = useState<boolean>();
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
-  const [isEditting, setIsEditting] = useState<boolean>(false);
-  const [inputText, setInputText] = useState<string>('');
-  const [memberContext, dispatch] = useMemberContext();
+  const [currentId, setCurrentId] = useState<string>('');
+  const [state, dispatch] = useMemberContext();
+  // NEED TO HANDLE SUCCESS AND ERROR MESSAGE TO SHOW TO UI for add,edit and delete
 
-  // GET DATA THRU SWR
-  const { data } = useSWR(API.PATHS.URL_MEMBER, getMembers);
+  // GET ALL THE MEMBER
+  useEffect(() => {
+    dispatch({
+      type: ACTIONS.API_CALL_REQUEST,
+    });
+    // DEFINE HELPERS, TRYCATCH
+    const getAllMember = async () => {
+      const response = await fetch(API.PATHS.URL_MEMBER);
 
-  // HANDLE CLICK ON CARD TO SHOW MEMBER INFOR
-  const handleClickCard = useCallback(
-    async (id: string | undefined) => {
-      setIsOpenDetail(true);
-      const pullAMember = memberContext.member.find((item: Member) => item.id === id);
+      if (response.status == 200) {
+        const members = await response.json();
+        dispatch({ type: ACTIONS.API_CALL_SUCCESS, data: { members } });
+        return;
+      }
+      dispatch({ type: ACTIONS.API_CALL_FAILURE, data: { error: response.error } });
+    };
+    getAllMember();
+  }, []);
 
-      setMember(pullAMember);
-    },
-    [memberContext],
-  );
+  // HANDLE CLICK ON CARD TO SHOW MEMBER INFO
+  const handleClickCard = (id: string) => {
+    setIsOpenDetail(true);
+    setCurrentId(id);
+  };
+
+  const handleCloseCard = () => {
+    setIsOpenDetail(false);
+    setCurrentId('');
+  };
+
+  // HANDLE ON/OFF EDIT FORM
+  // const openEditForm = () => {
+  //   setIsEditting(true);
+  //   setIsOpenDetail(false);
+  //   setIsOpenAddForm(true);
+  // };
+
+  const openEditForm = (id: string) => {
+    setIsOpenAddForm(true);
+    setCurrentId(id);
+  };
+
+  const handleCloseForm = () => {
+    setIsOpenAddForm(false);
+  };
+
+  // HANDLE ON OFF ADD FORM
+  // const openAddForm = () => {
+  //   setIsEditting(false);
+  //   setIsOpenAddForm(true);
+  // };
+
+  const openAddForm = () => {};
+
+  // HANDLE ON CLICK ADD BUTTON
+  // const handleClickAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   const formItems = e.target as HTMLFormElement;
+
+  //   await addMember({
+  //     id: generateKey('Member'),
+  //     memberName: (formItems[0] as HTMLInputElement).value,
+  //     dateOfBirth: (formItems[1] as HTMLInputElement).value,
+  //     memberImg: (formItems[2] as HTMLInputElement).value,
+  //     phone: (formItems[3] as HTMLInputElement).value,
+  //     memberSince: (formItems[4] as HTMLInputElement).value,
+  //     email: (formItems[5] as HTMLInputElement).value,
+  //     gender: (formItems[6] as HTMLInputElement).value,
+  //     job: (formItems[7] as HTMLInputElement).value,
+  //     description: (formItems[8] as HTMLInputElement).value,
+  //   });
+  //   setIsOpenAddForm(false);
+  //   getMembers().then((data) => {
+  //     dispatch({
+  //       type: ACTION_DISPATCH.ADD,
+  //       payload: data,
+  //     });
+  //     setIsLoading(false);
+  //   });
+  // }, []);
+
+  const handleClickAdd = () => {};
+
+  // HANDLE ON CLICK EDIT BUTTON
+  // const handleOnClickEdit = useCallback(
+  //   async (e: FormEvent<HTMLFormElement>) => {
+  //     e.preventDefault();
+  //     setIsLoading(true);
+
+  //     const formItems = e.target as HTMLFormElement;
+
+  //     await updateMember(member?.id, {
+  //       memberName: (formItems[0] as HTMLInputElement).value,
+  //       dateOfBirth: (formItems[1] as HTMLInputElement).value,
+  //       memberImg: (formItems[2] as HTMLInputElement).value,
+  //       phone: (formItems[3] as HTMLInputElement).value,
+  //       memberSince: (formItems[4] as HTMLInputElement).value,
+  //       email: (formItems[5] as HTMLInputElement).value,
+  //       gender: (formItems[6] as HTMLInputElement).value,
+  //       job: (formItems[7] as HTMLInputElement).value,
+  //       description: (formItems[8] as HTMLInputElement).value,
+  //     });
+  //     setIsOpenAddForm(false);
+  //     getMembers().then((data) => {
+  //       dispatch({
+  //         type: ACTION_DISPATCH.EDIT,
+  //         payload: data,
+  //       });
+  //       setIsLoading(false);
+  //     });
+  //   },
+  //   [member],
+  // );
+
+  const handleOnClickEdit = () => {};
+
+  // HANDLE ON CLICK DELETE BUTTON
+  // const handleOnClickDelete = useCallback(async () => {
+  //   setIsLoading(true);
+  //   await deleteMember(member?.id);
+
+  //   if (member?.id) {
+  //     setIsOpenDeleteModal(false);
+  //     setIsOpenDetail(false);
+  //   }
+
+  //   getMembers().then((data) => {
+  //     dispatch({
+  //       type: ACTION_DISPATCH.DELETE,
+  //       payload: data,
+  //     });
+
+  //     setIsLoading(false);
+  //   });
+  // }, [member]);
+
+  const handleOnClickDelete = () => {};
+
+  // GET VALUE ON SEARCH
+  // const handleOnSearch = useCallback(
+  //   (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     setInputText(e.target.value.toLowerCase());
+  //   },
+  //   [memberContext],
+  // );
+
+  const handleOnSearch = () => {};
 
   // GENERATE KEY
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
-
-  // GET ALL THE MEMBER
-  useEffect(() => {
-    setIsLoading(false);
-    if (data) {
-      dispatch({
-        type: ACTION_DISPATCH.ADD,
-        payload: data,
-      });
-    }
-  }, [data]);
-
-  // HANDLE ON/OFF EDIT FORM
-  const openEditForm = () => {
-    setIsEditting(true);
-    setIsOpenDetail(false);
-    setIsOpenAddForm(true);
-  };
-
-  // HANDLE ON OFF ADD FORM
-  const openAddForm = () => {
-    setIsEditting(false);
-    setIsOpenAddForm(true);
-  };
-
-  // HANDLE ON CLICK ADD BUTTON
-  const handleClickAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const formItems = e.target as HTMLFormElement;
-
-    await addMember({
-      id: generateKey('Member'),
-      memberName: (formItems[0] as HTMLInputElement).value,
-      dateOfBirth: (formItems[1] as HTMLInputElement).value,
-      memberImg: (formItems[2] as HTMLInputElement).value,
-      phone: (formItems[3] as HTMLInputElement).value,
-      memberSince: (formItems[4] as HTMLInputElement).value,
-      email: (formItems[5] as HTMLInputElement).value,
-      gender: (formItems[6] as HTMLInputElement).value,
-      job: (formItems[7] as HTMLInputElement).value,
-      description: (formItems[8] as HTMLInputElement).value,
-    });
-    setIsOpenAddForm(false);
-    getMembers().then((data) => {
-      dispatch({
-        type: ACTION_DISPATCH.ADD,
-        payload: data,
-      });
-      setIsLoading(false);
-    });
-  }, []);
-
-  // HANDLE ON CLICK EDIT BUTTON
-  const handleOnClickEdit = useCallback(
-    async (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setIsLoading(true);
-
-      const formItems = e.target as HTMLFormElement;
-
-      await updateMember(member?.id, {
-        memberName: (formItems[0] as HTMLInputElement).value,
-        dateOfBirth: (formItems[1] as HTMLInputElement).value,
-        memberImg: (formItems[2] as HTMLInputElement).value,
-        phone: (formItems[3] as HTMLInputElement).value,
-        memberSince: (formItems[4] as HTMLInputElement).value,
-        email: (formItems[5] as HTMLInputElement).value,
-        gender: (formItems[6] as HTMLInputElement).value,
-        job: (formItems[7] as HTMLInputElement).value,
-        description: (formItems[8] as HTMLInputElement).value,
-      });
-      setIsOpenAddForm(false);
-      getMembers().then((data) => {
-        dispatch({
-          type: ACTION_DISPATCH.EDIT,
-          payload: data,
-        });
-        setIsLoading(false);
-      });
-    },
-    [member],
-  );
-
-  // HANDLE ON CLICK DELETE BUTTON
-  const handleOnClickDelete = useCallback(async () => {
-    setIsLoading(true);
-    await deleteMember(member?.id);
-
-    if (member?.id) {
-      setIsOpenDeleteModal(false);
-      setIsOpenDetail(false);
-    }
-
-    getMembers().then((data) => {
-      dispatch({
-        type: ACTION_DISPATCH.DELETE,
-        payload: data,
-      });
-
-      setIsLoading(false);
-    });
-  }, [member]);
 
   // RENDER TITLE TO NOT BE RERENDERED
   const renderTitle = useMemo(() => {
@@ -171,23 +197,6 @@ const Detail = () => {
       </Text>
     );
   }, []);
-
-  // GET VALUE ON SEARCH
-  const handleOnSearch = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputText(e.target.value.toLowerCase());
-    },
-    [memberContext],
-  );
-
-  // HANDLE SEARCH/FILTER
-  const filteringData = memberContext.member?.filter((item: { memberName: string }) => {
-    if (inputText === '') {
-      return memberContext.member;
-    } else if (item.memberName?.toLowerCase().includes(inputText.toLowerCase().trim())) {
-      return item.memberName;
-    }
-  });
 
   return (
     <>
@@ -212,8 +221,8 @@ const Detail = () => {
 
         <Box display='flex' flexDirection='row' flexWrap='wrap'>
           {/* DETAIL */}
-          {!isLoading && filteringData ? (
-            filteringData.map((item: Member) => (
+          {!state.loading && state.members ? (
+            state.members.map((item: Member) => (
               <Card
                 card={item}
                 key={generateKey(item.id)}
@@ -225,74 +234,20 @@ const Detail = () => {
           ) : (
             <LoadingSpinner />
           )}
-          {isOpenDetail && (
-            <MemberCard
-              isOpen={isOpenDetail}
-              onClose={() => setIsOpenDetail(false)}
-              modalTitle='Member Detail'
-              member={member}
-            >
-              <Button
-                label='Edit'
-                variant='outline'
-                width='100%'
-                marginRight='5px'
-                onClick={openEditForm}
-              />
-              <Button
-                label='Delete'
-                variant='solid'
-                backgroundColor='crimson'
-                width='100%'
-                marginRight='0'
-                padding='0'
-                onClick={() => setIsOpenDeleteModal(true)}
-              />
-            </MemberCard>
-          )}
-          {isOpenAddForm && (
-            <ModalComponent
-              isOpen={isOpenAddForm}
-              onClose={() => setIsOpenAddForm(false)}
-              modalTitle={isEditting ? 'Edit A Member' : 'Add A Member'}
-            >
-              <FormComponent
-                formName=''
-                onCancel={() => setIsOpenAddForm(false)}
-                onSubmit={isEditting ? handleOnClickEdit : handleClickAdd}
-                defaultMemberData={isEditting ? member : {}}
-                isLoading={isLoading}
-              />
-            </ModalComponent>
-          )}
-          {isOpenDeleteModal && (
-            <ModalComponent
-              isOpen={isOpenDeleteModal}
-              onClose={() => setIsOpenDeleteModal(false)}
-              modalTitle='Delete Member Board'
-            >
-              <Box display='flex' flexDirection='row' fontFamily='RalewayLight'>
-                <Text>Do you want to delete </Text>
-                <Text color='crimson'> &nbsp;{member?.memberName}</Text>
-                <Text>?</Text>
-              </Box>
-              <Box display='flex' flexDirection='row' justifyContent='flex-end' margin='30px 0'>
-                <Button
-                  isLoading={isLoading}
-                  loadingText='Submitting'
-                  label='Yes'
-                  backgroundColor='crimson'
-                  onClick={handleOnClickDelete}
-                />
-                <Button
-                  isLoading={isLoading}
-                  label='No'
-                  variant='outline'
-                  onClick={() => setIsOpenDeleteModal(false)}
-                />
-              </Box>
-            </ModalComponent>
-          )}
+
+          {/* MODAL */}
+          <MemberCardDetail
+            memberId={currentId}
+            isOpen={isOpenDetail}
+            onClose={handleCloseCard}
+            onOpenEdit={openEditForm}
+          />
+          <ModalFormComponent
+            memberId={currentId}
+            isOpen={isOpenAddForm}
+            onClose={handleCloseForm}
+          />
+          {isOpenDeleteModal && <ModalDeleteComponent />}
         </Box>
       </ErrorBoundary>
     </>

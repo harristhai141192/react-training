@@ -10,7 +10,7 @@ import themes from './themes';
 import LoadingSpinner from '@components/LoadingSpinner';
 
 // Context
-import { ContextProvider } from './globals/context';
+import { ContextProvider } from './store/context';
 
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';

@@ -11,7 +11,7 @@ import {
 import React from 'react';
 
 interface IProps {
-  modalTitle: string;
+  modalTitle?: string;
   children: React.ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
