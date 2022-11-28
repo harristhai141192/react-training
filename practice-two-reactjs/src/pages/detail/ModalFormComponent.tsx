@@ -15,7 +15,7 @@ interface IProps {
   isOpen?: boolean;
   isLoading?: boolean;
   onClose?: () => void;
-  onSubmit?: () => void;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   modalTitle?: string;
   memberId: string;
 }

@@ -34,8 +34,6 @@ const FormComponent: React.FC<IProps> = ({
   onSubmit = () => {},
   onCancel = () => {},
 }) => {
-  console.log('DEFAULT DATA: ', defaultMemberData);
-
   return (
     <form onSubmit={onSubmit}>
       <Box display='flex' flexDirection='column'>

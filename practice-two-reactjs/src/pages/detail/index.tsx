@@ -1,5 +1,5 @@
 // Libraries
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, FormEvent, useCallback } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 
 // Models
@@ -46,6 +46,8 @@ const Detail = () => {
       }
       dispatch({ type: ACTIONS.API_CALL_FAILURE, data: { error: response.error } });
     };
+    console.log('MEMBER STATE: ', state.members);
+
     getAllMember();
   }, []);
 
@@ -58,6 +60,7 @@ const Detail = () => {
   const handleCloseCard = () => {
     setIsOpenDetail(false);
     setCurrentId('');
+    console.log('CLOSE CARD');
   };
 
   // HANDLE ON/OFF EDIT FORM
@@ -69,11 +72,23 @@ const Detail = () => {
 
   const openEditForm = (id: string) => {
     setIsOpenAddForm(true);
-    setCurrentId(id);
+    console.log('currentid', currentId);
   };
 
   const handleCloseForm = () => {
     setIsOpenAddForm(false);
+  };
+
+  const onOpenDeleteForm = () => {
+    console.log('DELETE FORM');
+
+    setIsOpenDeleteModal(true);
+  };
+
+  const handleCloseDeleteForm = () => {
+    console.log('CLOSE OPEN DELETE');
+
+    setIsOpenDeleteModal(false);
   };
 
   // HANDLE ON OFF ADD FORM
@@ -82,7 +97,10 @@ const Detail = () => {
   //   setIsOpenAddForm(true);
   // };
 
-  const openAddForm = () => {};
+  const openAddForm = () => {
+    console.log('CURRENT ID in add form', currentId);
+    setIsOpenAddForm(true);
+  };
 
   // HANDLE ON CLICK ADD BUTTON
   // const handleClickAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
@@ -112,62 +130,105 @@ const Detail = () => {
   //   });
   // }, []);
 
-  const handleClickAdd = () => {};
+  // HANDLE CLICK ADD BUTTON FORM
+  const handleClickAdd = async (e: FormEvent<HTMLFormElement>) => {
+    console.log('CURRENT ID IN ADD FORM: ', currentId);
 
-  // HANDLE ON CLICK EDIT BUTTON
-  // const handleOnClickEdit = useCallback(
-  //   async (e: FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault();
-  //     setIsLoading(true);
+    e.preventDefault();
+    const formItems = e.target as HTMLFormElement;
 
-  //     const formItems = e.target as HTMLFormElement;
+    // ADD MEMBER
+    const addMember = async () => {
+      dispatch({
+        type: ACTIONS.API_ADD_REQUEST,
+      });
+      const member = {
+        memberName: (formItems[0] as HTMLInputElement).value,
+        dateOfBirth: (formItems[1] as HTMLInputElement).value,
+        memberImg: (formItems[2] as HTMLInputElement).value,
+        phone: (formItems[3] as HTMLInputElement).value,
+        memberSince: (formItems[4] as HTMLInputElement).value,
+        email: (formItems[5] as HTMLInputElement).value,
+        gender: (formItems[6] as HTMLInputElement).value,
+        job: (formItems[7] as HTMLInputElement).value,
+        description: (formItems[8] as HTMLInputElement).value,
+      };
+      const response = await fetch(API.PATHS.URL_MEMBER, {
+        method: API.HTTP_METHODS.POST,
+        headers: API.HEADERS,
+        body: JSON.stringify(member),
+      });
+      if (response.status == 201) {
+        const members = await response.json();
 
-  //     await updateMember(member?.id, {
-  //       memberName: (formItems[0] as HTMLInputElement).value,
-  //       dateOfBirth: (formItems[1] as HTMLInputElement).value,
-  //       memberImg: (formItems[2] as HTMLInputElement).value,
-  //       phone: (formItems[3] as HTMLInputElement).value,
-  //       memberSince: (formItems[4] as HTMLInputElement).value,
-  //       email: (formItems[5] as HTMLInputElement).value,
-  //       gender: (formItems[6] as HTMLInputElement).value,
-  //       job: (formItems[7] as HTMLInputElement).value,
-  //       description: (formItems[8] as HTMLInputElement).value,
-  //     });
-  //     setIsOpenAddForm(false);
-  //     getMembers().then((data) => {
-  //       dispatch({
-  //         type: ACTION_DISPATCH.EDIT,
-  //         payload: data,
-  //       });
-  //       setIsLoading(false);
-  //     });
-  //   },
-  //   [member],
-  // );
+        dispatch({ type: ACTIONS.API_ADD_SUCCESS, data: { members } });
+        return;
+      }
+      dispatch({ type: ACTIONS.API_ADD_FAILURE, data: { error: response.error } });
+    };
 
-  const handleOnClickEdit = () => {};
+    // UPDATE MEMBER
+    const updateMember = async () => {
+      dispatch({
+        type: ACTIONS.API_UPDATE_REQUEST,
+      });
 
-  // HANDLE ON CLICK DELETE BUTTON
-  // const handleOnClickDelete = useCallback(async () => {
-  //   setIsLoading(true);
-  //   await deleteMember(member?.id);
+      const member = {
+        memberName: (formItems[0] as HTMLInputElement).value,
+        dateOfBirth: (formItems[1] as HTMLInputElement).value,
+        memberImg: (formItems[2] as HTMLInputElement).value,
+        phone: (formItems[3] as HTMLInputElement).value,
+        memberSince: (formItems[4] as HTMLInputElement).value,
+        email: (formItems[5] as HTMLInputElement).value,
+        gender: (formItems[6] as HTMLInputElement).value,
+        job: (formItems[7] as HTMLInputElement).value,
+        description: (formItems[8] as HTMLInputElement).value,
+      };
+      const response = await fetch(`${API.PATHS.URL_MEMBER}/${currentId}`, {
+        method: API.HTTP_METHODS.PUT,
+        headers: API.HEADERS,
+        body: JSON.stringify(member),
+      });
+      if (response.status == 200) {
+        const members = await response.json();
 
-  //   if (member?.id) {
-  //     setIsOpenDeleteModal(false);
-  //     setIsOpenDetail(false);
-  //   }
+        dispatch({ type: ACTIONS.API_UPDATE_SUCCESS, data: { members } });
+        return;
+      }
+      dispatch({ type: ACTIONS.API_UPDATE_FAILURE, data: { error: response.error } });
+    };
+    console.log('CURRENT ID OUTSIDE: ', currentId);
 
-  //   getMembers().then((data) => {
-  //     dispatch({
-  //       type: ACTION_DISPATCH.DELETE,
-  //       payload: data,
-  //     });
+    if (currentId) {
+      updateMember();
+    } else {
+      addMember();
+    }
+    setIsOpenAddForm(false);
+  };
 
-  //     setIsLoading(false);
-  //   });
-  // }, [member]);
+  // HANDLE CLICK DELETE
+  const handleOnClickDelete = () => {
+    setIsOpenDeleteModal(true);
+    dispatch({
+      type: ACTIONS.API_DELETE_REQUEST,
+    });
 
-  const handleOnClickDelete = () => {};
+    const deleteMember = async () => {
+      const response = await fetch(`${API.PATHS.URL_MEMBER}/${currentId}`, {
+        method: API.HTTP_METHODS.DELETE,
+        headers: API.HEADERS,
+      });
+      if (response.status == 200) {
+        const members = await response.json();
+
+        dispatch({ type: ACTIONS.API_DELETE_SUCCESS, data: { members } });
+        return;
+      }
+      dispatch({ type: ACTIONS.API_DELETE_FAILURE, data: { error: response.error } });
+    };
+    deleteMember();
+  };
 
   // GET VALUE ON SEARCH
   // const handleOnSearch = useCallback(
@@ -241,13 +302,21 @@ const Detail = () => {
             isOpen={isOpenDetail}
             onClose={handleCloseCard}
             onOpenEdit={openEditForm}
+            onOpenDelete={onOpenDeleteForm}
           />
           <ModalFormComponent
             memberId={currentId}
             isOpen={isOpenAddForm}
             onClose={handleCloseForm}
+            onSubmit={handleClickAdd}
           />
-          {isOpenDeleteModal && <ModalDeleteComponent />}
+          {isOpenDeleteModal && (
+            <ModalDeleteComponent
+              isOpenDeleteModal={isOpenDeleteModal}
+              onClickDelete={handleOnClickDelete}
+              onCloseDeleteModal={handleCloseDeleteForm}
+            />
+          )}
         </Box>
       </ErrorBoundary>
     </>

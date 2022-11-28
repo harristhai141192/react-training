@@ -38,6 +38,7 @@ const reducer = (
       };
     // request add
     case ACTIONS.API_ADD_REQUEST:
+      console.log('DISPATCH REQUEST');
       return {
         ...state,
         loading: true,
