@@ -19,86 +19,107 @@ const reducer = (
 ) => {
   switch (actions.type) {
     // request get all
-    case ACTIONS.API_CALL_REQUEST:
+    case ACTIONS.MEMBER_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.API_CALL_SUCCESS:
+    case ACTIONS.MEMBER_REQUEST_SUCCESS:
       return {
         ...state,
         members: actions.data.members,
         loading: false,
       };
-    case ACTIONS.API_CALL_FAILURE:
+    case ACTIONS.MEMBER_REQUEST_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
     // request add
-    case ACTIONS.API_ADD_REQUEST:
+    case ACTIONS.ADD_MEMBER_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.API_ADD_SUCCESS:
+    case ACTIONS.ADD_MEMBER_SUCCESS:
       return {
         ...state,
         members: [...state.members, actions.data.member],
         loading: false,
       };
-    case ACTIONS.API_ADD_FAILURE:
+    case ACTIONS.ADD_MEMBER_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
     // request update
-    case ACTIONS.API_UPDATE_REQUEST:
+    case ACTIONS.UPDATE_MEMBER_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.API_UPDATE_SUCCESS:
-      // state.members.map(() => {
-      //   state.members.find((e: Member) => e.id === actions.data.member.id);
-      // });
+    case ACTIONS.UPDATE_MEMBER_SUCCESS:
+      // eslint-disable-next-line no-case-declarations
+      const updateMemberArray = state.members;
       // eslint-disable-next-line no-case-declarations
       const findObj = state.members.findIndex((obj) => obj.id == actions.data.member.id);
-      state.members[findObj] = actions.data.member;
+      updateMemberArray[findObj] = actions.data.member;
       return {
         ...state,
-        members: [...state.members],
+        members: updateMemberArray,
         loading: false,
       };
-    case ACTIONS.API_UPDATE_FAILURE:
+    case ACTIONS.UPDATE_MEMBER_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
     // request delete
-    case ACTIONS.API_DELETE_REQUEST:
+    case ACTIONS.DELETE_MEMBER_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.API_DELETE_SUCCESS:
-      state.members = state.members.filter((e: Member) => {
+    case ACTIONS.DELETE_MEMBER_SUCCESS:
+      // eslint-disable-next-line no-case-declarations
+      const filterDataDeleted = state.members.filter((e: Member) => {
         return e.id !== actions.data.member.id;
       });
       return {
         ...state,
-        members: [...state.members],
+        members: filterDataDeleted,
         loading: false,
       };
-    case ACTIONS.API_DELETE_FAILURE:
+    case ACTIONS.DELETE_MEMBER_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
+
+    case ACTIONS.SEARCH_MEMBER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case ACTIONS.SEARCH_MEMBER_SUCCESS:
+      return {
+        ...state,
+        members: actions.data.members,
+        loading: false,
+      };
+
+    case ACTIONS.SEARCH_MEMBER_FAILURE:
+      return {
+        ...state,
+        error: actions.data.error,
+        loading: false,
+      };
+
     default:
       return state;
   }

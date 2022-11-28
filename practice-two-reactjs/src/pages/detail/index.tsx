@@ -28,12 +28,13 @@ const Detail = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
   const [currentId, setCurrentId] = useState<string>('');
   const [state, dispatch] = useMemberContext();
-  // NEED TO HANDLE SUCCESS AND ERROR MESSAGE TO SHOW TO UI for add,edit and delete
+
+  // NEED TO HANDLE SUCCESS AND ERROR MESSAGE TO SHOW TO UI for add,edit and delete (IN-PROGRESS)
 
   // GET ALL THE MEMBER
   useEffect(() => {
     dispatch({
-      type: ACTIONS.API_CALL_REQUEST,
+      type: ACTIONS.MEMBER_REQUEST,
     });
     // DEFINE HELPERS, TRYCATCH
     const getAllMember = async () => {
@@ -41,10 +42,10 @@ const Detail = () => {
 
       if (response.status == 200) {
         const members = await response.json();
-        dispatch({ type: ACTIONS.API_CALL_SUCCESS, data: { members } });
+        dispatch({ type: ACTIONS.MEMBER_REQUEST_SUCCESS, data: { members } });
         return;
       }
-      dispatch({ type: ACTIONS.API_CALL_FAILURE, data: { error: response.error } });
+      dispatch({ type: ACTIONS.MEMBER_REQUEST_FAILURE, data: { error: response.error } });
     };
 
     getAllMember();
@@ -60,13 +61,6 @@ const Detail = () => {
     setIsOpenDetail(false);
     setCurrentId('');
   };
-
-  // HANDLE ON/OFF EDIT FORM
-  // const openEditForm = () => {
-  //   setIsEditting(true);
-  //   setIsOpenDetail(false);
-  //   setIsOpenAddForm(true);
-  // };
 
   const openEditForm = (id: string) => {
     setIsOpenAddForm(true);
@@ -84,43 +78,9 @@ const Detail = () => {
     setIsOpenDeleteModal(false);
   };
 
-  // HANDLE ON OFF ADD FORM
-  // const openAddForm = () => {
-  //   setIsEditting(false);
-  //   setIsOpenAddForm(true);
-  // };
-
   const openAddForm = () => {
     setIsOpenAddForm(true);
   };
-
-  // HANDLE ON CLICK ADD BUTTON
-  // const handleClickAdd = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   const formItems = e.target as HTMLFormElement;
-
-  //   await addMember({
-  //     id: generateKey('Member'),
-  //     memberName: (formItems[0] as HTMLInputElement).value,
-  //     dateOfBirth: (formItems[1] as HTMLInputElement).value,
-  //     memberImg: (formItems[2] as HTMLInputElement).value,
-  //     phone: (formItems[3] as HTMLInputElement).value,
-  //     memberSince: (formItems[4] as HTMLInputElement).value,
-  //     email: (formItems[5] as HTMLInputElement).value,
-  //     gender: (formItems[6] as HTMLInputElement).value,
-  //     job: (formItems[7] as HTMLInputElement).value,
-  //     description: (formItems[8] as HTMLInputElement).value,
-  //   });
-  //   setIsOpenAddForm(false);
-  //   getMembers().then((data) => {
-  //     dispatch({
-  //       type: ACTION_DISPATCH.ADD,
-  //       payload: data,
-  //     });
-  //     setIsLoading(false);
-  //   });
-  // }, []);
 
   // HANDLE CLICK ADD BUTTON FORM
   const handleClickAdd = async (e: FormEvent<HTMLFormElement>) => {
@@ -130,7 +90,7 @@ const Detail = () => {
     // ADD MEMBER
     const addMember = async () => {
       dispatch({
-        type: ACTIONS.API_ADD_REQUEST,
+        type: ACTIONS.ADD_MEMBER_REQUEST,
       });
       const getMemberValue = {
         memberName: (formItems[0] as HTMLInputElement).value,
@@ -150,16 +110,16 @@ const Detail = () => {
       });
       if (response.status == 201) {
         const member = await response.json();
-        dispatch({ type: ACTIONS.API_ADD_SUCCESS, data: { member } });
+        dispatch({ type: ACTIONS.ADD_MEMBER_SUCCESS, data: { member } });
         return;
       }
-      dispatch({ type: ACTIONS.API_ADD_FAILURE, data: { error: response.error } });
+      dispatch({ type: ACTIONS.ADD_MEMBER_FAILURE, data: { error: response.error } });
     };
 
     // UPDATE MEMBER
     const updateMember = async () => {
       dispatch({
-        type: ACTIONS.API_UPDATE_REQUEST,
+        type: ACTIONS.UPDATE_MEMBER_REQUEST,
       });
 
       const getMemberValue = {
@@ -180,11 +140,11 @@ const Detail = () => {
       });
       if (response.status == 200) {
         const member = await response.json();
-        dispatch({ type: ACTIONS.API_UPDATE_SUCCESS, data: { member } });
+        dispatch({ type: ACTIONS.UPDATE_MEMBER_SUCCESS, data: { member } });
 
         return;
       }
-      dispatch({ type: ACTIONS.API_UPDATE_FAILURE, data: { error: response.error } });
+      dispatch({ type: ACTIONS.UPDATE_MEMBER_FAILURE, data: { error: response.error } });
     };
 
     if (currentId) {
@@ -199,7 +159,7 @@ const Detail = () => {
   const handleOnClickDelete = () => {
     setIsOpenDeleteModal(true);
     dispatch({
-      type: ACTIONS.API_DELETE_REQUEST,
+      type: ACTIONS.DELETE_MEMBER_REQUEST,
     });
 
     const deleteMember = async () => {
@@ -210,25 +170,31 @@ const Detail = () => {
       if (response.status == 200) {
         const member = await response.json();
 
-        dispatch({ type: ACTIONS.API_DELETE_SUCCESS, data: { member } });
+        dispatch({ type: ACTIONS.DELETE_MEMBER_SUCCESS, data: { member } });
         setIsOpenDeleteModal(false);
         setIsOpenDetail(false);
         return;
       }
-      dispatch({ type: ACTIONS.API_DELETE_FAILURE, data: { error: response.error } });
+      dispatch({ type: ACTIONS.DELETE_MEMBER_FAILURE, data: { error: response.error } });
     };
     deleteMember();
   };
 
-  // GET VALUE ON SEARCH
-  // const handleOnSearch = useCallback(
-  //   (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     setInputText(e.target.value.toLowerCase());
-  //   },
-  //   [memberContext],
-  // );
+  const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: ACTIONS.SEARCH_MEMBER_REQUEST });
+    const inputText = e.target.value.toLowerCase();
+    const searchMember = async () => {
+      const response = await fetch(`${API.PATHS.URL_MEMBER}?memberName=${inputText}`);
 
-  const handleOnSearch = () => {};
+      if (response.status == 200) {
+        const members = await response.json();
+        dispatch({ type: ACTIONS.SEARCH_MEMBER_SUCCESS, data: { members } });
+        return;
+      }
+      dispatch({ type: ACTIONS.SEARCH_MEMBER_FAILURE, data: { error: response.error } });
+    };
+    searchMember();
+  };
 
   // GENERATE KEY
   const generateKey = (item: string | undefined) =>
