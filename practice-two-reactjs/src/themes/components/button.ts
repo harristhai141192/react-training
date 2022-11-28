@@ -11,7 +11,7 @@ export const Button = {
     default: {
       width: {
         base: widths.extraTiny,
-        sm: widths.small,
+        sm: widths.medium,
         md: widths.small,
         xl: widths.small,
       },

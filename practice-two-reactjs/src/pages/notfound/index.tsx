@@ -8,8 +8,6 @@ import { PAGE_ROUTES } from '@constants/routes';
 import { FaHome } from 'react-icons/fa';
 
 const NotFound = () => {
-  console.log('NOT FOUND');
-
   return (
     <>
       <Box

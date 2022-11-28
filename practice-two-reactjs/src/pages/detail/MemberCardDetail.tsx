@@ -38,6 +38,7 @@ const MemberCardDetail: React.FC<IProps> = ({
         variant='outline'
         width='100%'
         marginRight='5px'
+        padding='0px 10px'
         onClick={() => onOpenEdit(memberId)}
       />
       <Button
@@ -46,7 +47,7 @@ const MemberCardDetail: React.FC<IProps> = ({
         backgroundColor='crimson'
         width='100%'
         marginRight='0'
-        padding='0'
+        padding='0px 5px'
         onClick={onOpenDelete}
       />
     </MemberCard>

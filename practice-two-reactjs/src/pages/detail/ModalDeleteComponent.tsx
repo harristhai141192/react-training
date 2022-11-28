@@ -25,7 +25,11 @@ const ModalDeleteComponent: React.FC<IProps> = ({
   const member: Member = {};
 
   return (
-    <ModalComponent isOpen={isOpenDeleteModal} modalTitle='Delete Member Board'>
+    <ModalComponent
+      isOpen={isOpenDeleteModal}
+      onClose={onCloseDeleteModal}
+      modalTitle='Delete Member Board'
+    >
       <Box display='flex' flexDirection='row' fontFamily='RalewayLight'>
         <Text>Do you want to delete </Text>
         <Text color='crimson'> &nbsp;{member?.memberName}</Text>

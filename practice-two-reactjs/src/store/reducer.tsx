@@ -15,7 +15,7 @@ export const initialState: IInitialStateProps = {
 
 const reducer = (
   state = initialState,
-  actions: { type: string; data: { members?: Member[]; error: string } },
+  actions: { type: string; data: { members?: Member[]; member: Member; error: string } },
 ) => {
   switch (actions.type) {
     // request get all
@@ -38,7 +38,6 @@ const reducer = (
       };
     // request add
     case ACTIONS.API_ADD_REQUEST:
-      console.log('DISPATCH REQUEST');
       return {
         ...state,
         loading: true,
@@ -46,7 +45,7 @@ const reducer = (
     case ACTIONS.API_ADD_SUCCESS:
       return {
         ...state,
-        members: actions.data.members,
+        members: [...state.members, actions.data.member],
         loading: false,
       };
     case ACTIONS.API_ADD_FAILURE:
@@ -62,9 +61,15 @@ const reducer = (
         loading: true,
       };
     case ACTIONS.API_UPDATE_SUCCESS:
+      // state.members.map(() => {
+      //   state.members.find((e: Member) => e.id === actions.data.member.id);
+      // });
+      // eslint-disable-next-line no-case-declarations
+      const findObj = state.members.findIndex((obj) => obj.id == actions.data.member.id);
+      state.members[findObj] = actions.data.member;
       return {
         ...state,
-        members: actions.data.members,
+        members: [...state.members],
         loading: false,
       };
     case ACTIONS.API_UPDATE_FAILURE:
@@ -80,9 +85,12 @@ const reducer = (
         loading: true,
       };
     case ACTIONS.API_DELETE_SUCCESS:
+      state.members = state.members.filter((e: Member) => {
+        return e.id !== actions.data.member.id;
+      });
       return {
         ...state,
-        members: actions.data.members,
+        members: [...state.members],
         loading: false,
       };
     case ACTIONS.API_DELETE_FAILURE:

@@ -46,7 +46,6 @@ const Detail = () => {
       }
       dispatch({ type: ACTIONS.API_CALL_FAILURE, data: { error: response.error } });
     };
-    console.log('MEMBER STATE: ', state.members);
 
     getAllMember();
   }, []);
@@ -60,7 +59,6 @@ const Detail = () => {
   const handleCloseCard = () => {
     setIsOpenDetail(false);
     setCurrentId('');
-    console.log('CLOSE CARD');
   };
 
   // HANDLE ON/OFF EDIT FORM
@@ -72,7 +70,6 @@ const Detail = () => {
 
   const openEditForm = (id: string) => {
     setIsOpenAddForm(true);
-    console.log('currentid', currentId);
   };
 
   const handleCloseForm = () => {
@@ -80,14 +77,10 @@ const Detail = () => {
   };
 
   const onOpenDeleteForm = () => {
-    console.log('DELETE FORM');
-
     setIsOpenDeleteModal(true);
   };
 
   const handleCloseDeleteForm = () => {
-    console.log('CLOSE OPEN DELETE');
-
     setIsOpenDeleteModal(false);
   };
 
@@ -98,7 +91,6 @@ const Detail = () => {
   // };
 
   const openAddForm = () => {
-    console.log('CURRENT ID in add form', currentId);
     setIsOpenAddForm(true);
   };
 
@@ -132,8 +124,6 @@ const Detail = () => {
 
   // HANDLE CLICK ADD BUTTON FORM
   const handleClickAdd = async (e: FormEvent<HTMLFormElement>) => {
-    console.log('CURRENT ID IN ADD FORM: ', currentId);
-
     e.preventDefault();
     const formItems = e.target as HTMLFormElement;
 
@@ -142,7 +132,7 @@ const Detail = () => {
       dispatch({
         type: ACTIONS.API_ADD_REQUEST,
       });
-      const member = {
+      const getMemberValue = {
         memberName: (formItems[0] as HTMLInputElement).value,
         dateOfBirth: (formItems[1] as HTMLInputElement).value,
         memberImg: (formItems[2] as HTMLInputElement).value,
@@ -156,12 +146,11 @@ const Detail = () => {
       const response = await fetch(API.PATHS.URL_MEMBER, {
         method: API.HTTP_METHODS.POST,
         headers: API.HEADERS,
-        body: JSON.stringify(member),
+        body: JSON.stringify(getMemberValue),
       });
       if (response.status == 201) {
-        const members = await response.json();
-
-        dispatch({ type: ACTIONS.API_ADD_SUCCESS, data: { members } });
+        const member = await response.json();
+        dispatch({ type: ACTIONS.API_ADD_SUCCESS, data: { member } });
         return;
       }
       dispatch({ type: ACTIONS.API_ADD_FAILURE, data: { error: response.error } });
@@ -173,7 +162,7 @@ const Detail = () => {
         type: ACTIONS.API_UPDATE_REQUEST,
       });
 
-      const member = {
+      const getMemberValue = {
         memberName: (formItems[0] as HTMLInputElement).value,
         dateOfBirth: (formItems[1] as HTMLInputElement).value,
         memberImg: (formItems[2] as HTMLInputElement).value,
@@ -187,17 +176,16 @@ const Detail = () => {
       const response = await fetch(`${API.PATHS.URL_MEMBER}/${currentId}`, {
         method: API.HTTP_METHODS.PUT,
         headers: API.HEADERS,
-        body: JSON.stringify(member),
+        body: JSON.stringify(getMemberValue),
       });
       if (response.status == 200) {
-        const members = await response.json();
+        const member = await response.json();
+        dispatch({ type: ACTIONS.API_UPDATE_SUCCESS, data: { member } });
 
-        dispatch({ type: ACTIONS.API_UPDATE_SUCCESS, data: { members } });
         return;
       }
       dispatch({ type: ACTIONS.API_UPDATE_FAILURE, data: { error: response.error } });
     };
-    console.log('CURRENT ID OUTSIDE: ', currentId);
 
     if (currentId) {
       updateMember();
@@ -220,9 +208,11 @@ const Detail = () => {
         headers: API.HEADERS,
       });
       if (response.status == 200) {
-        const members = await response.json();
+        const member = await response.json();
 
-        dispatch({ type: ACTIONS.API_DELETE_SUCCESS, data: { members } });
+        dispatch({ type: ACTIONS.API_DELETE_SUCCESS, data: { member } });
+        setIsOpenDeleteModal(false);
+        setIsOpenDetail(false);
         return;
       }
       dispatch({ type: ACTIONS.API_DELETE_FAILURE, data: { error: response.error } });
