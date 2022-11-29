@@ -1,11 +1,10 @@
 // Libraries
 import { Box, Image, Text } from '@chakra-ui/react';
 import { Link as LinkRouter } from 'react-router-dom';
+import { FaHome } from 'react-icons/fa';
 
 // constants
 import { PAGE_ROUTES } from '@constants/routes';
-
-import { FaHome } from 'react-icons/fa';
 
 const NotFound = () => {
   return (

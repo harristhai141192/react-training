@@ -2,10 +2,11 @@ import { useContext, createContext, useReducer, ReactNode } from 'react';
 import reducer, { initialState } from './reducer';
 import { IInitialStateProps } from './reducer';
 
-// MEMBERS - member
-export const MemberContext = createContext([]);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const MemberContext: any = createContext([]);
 
-export const useMemberContext = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const useMemberContext: any = () => {
   return useContext(MemberContext);
 };
 

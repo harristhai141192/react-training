@@ -11,6 +11,7 @@ import { API } from '@constants/apis';
 //Store
 import { useMemberContext } from '@store/context';
 import { ACTIONS } from '@store/action';
+import { IInitialStateProps } from '@store/reducer';
 
 // Components
 import Card from '@components/Card';
@@ -21,7 +22,6 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import ModalFormComponent from '@components/ModalFormComponent';
 import ModalDeleteComponent from '@components/ModalDeleteComponent';
 import MemberCardDetail from '@components/MemberCardDetail';
-import { IInitialStateProps } from '@store/reducer';
 
 const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
@@ -175,6 +175,7 @@ const Detail = () => {
         dispatch({ type: ACTIONS.DELETE_MEMBER_SUCCESS, data: { member } });
         setIsOpenDeleteModal(false);
         setIsOpenDetail(false);
+        setCurrentId('');
         return;
       }
       dispatch({ type: ACTIONS.DELETE_MEMBER_FAILURE, data: { error: response.error } });
@@ -239,7 +240,7 @@ const Detail = () => {
         </Box>
 
         <Box display='flex' flexDirection='row' flexWrap='wrap'>
-          {/* DETAIL */}
+          {/* LOADING MEMBERS DETAIL CARD */}
           {!loading && members ? (
             members.map((item: Member) => (
               <Card
@@ -247,7 +248,7 @@ const Detail = () => {
                 key={generateKey(item.id)}
                 height='150px'
                 margin='1% 3%'
-                onClick={() => handleClickCard(item?.id)}
+                onClick={() => handleClickCard(item.id)}
               />
             ))
           ) : (

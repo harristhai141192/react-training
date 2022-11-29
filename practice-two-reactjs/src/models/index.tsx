@@ -1,5 +1,5 @@
 export class Member {
-  id?: string;
+  id: string;
   memberName?: string;
   memberSince?: string;
   dateOfBirth?: string;

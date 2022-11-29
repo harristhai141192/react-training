@@ -17,7 +17,7 @@ interface IProps {
   onClose?: () => void;
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   modalTitle?: string;
-  memberId: string;
+  memberId?: string;
 }
 
 const ModalFormComponent: React.FC<IProps> = ({
@@ -35,6 +35,7 @@ const ModalFormComponent: React.FC<IProps> = ({
   const member = state.members.find((item: Member) => {
     return item.id === memberId;
   });
+  console.log('MEMBER: ', member);
 
   return (
     <ModalComponent isOpen={isOpen} onClose={onClose} modalTitle={modalTitle}>

@@ -18,6 +18,7 @@ Default.args = {
   isOpen: true,
   modalTitle: 'Member Detail',
   member: {
+    id: '1',
     memberName: 'Thai Gia Bao',
     phone: '0902181613',
     email: 'thaigiabao92@gmail.com',

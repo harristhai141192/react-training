@@ -7,10 +7,10 @@ import Button from '@components/Button';
 import BoxComponent from '@components/Box';
 import Card from '@components/Card';
 import InputComponent from '@components/Input';
+import ErrorBoundary from '@components/ErrorBoundary';
 
 // Mocks
 import { MEMBER_DATA } from '@mockData/tableData';
-import ErrorBoundary from '@components/ErrorBoundary';
 
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
@@ -58,7 +58,7 @@ const Home = () => {
                   clicks.
                 </Text>
                 <Box display='flex' flexDirection='row'>
-                  <Button label='Try Now' marginRight='25px' size='md'></Button>
+                  <Button label='Try Now' marginRight='15px' size='md'></Button>
                   <Button label='Get A Demo' variant='outline' size='md'></Button>
                 </Box>
               </Box>
@@ -141,15 +141,13 @@ const Home = () => {
             >
               {MEMBER_DATA.map((item) => {
                 return (
-                  <>
-                    <Card
-                      card={item}
-                      key={generateKey(Math.random().toString())}
-                      margin='5% 0%'
-                      height={isMobile ? '170px' : '250px'}
-                      linkToPage={PAGE_ROUTES.DETAIL}
-                    />
-                  </>
+                  <Card
+                    key={generateKey(Math.random().toString())}
+                    card={item}
+                    margin='5% 0%'
+                    height={isMobile ? '170px' : '250px'}
+                    linkToPage={PAGE_ROUTES.DETAIL}
+                  />
                 );
               })}
             </Box>
@@ -233,7 +231,7 @@ const Home = () => {
               src='src/assets/images/Logo1.svg'
               w={isMobile ? '30%' : '10%'}
               h={isMobile ? '10%' : ''}
-              order={isMobile ? '3' : '1'}
+              order={{ sm: '3', md: '1', lg: '1' }}
               margin='0px 20px'
             />
             <Image

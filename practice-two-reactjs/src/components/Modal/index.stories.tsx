@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof ModalComponent> = (args) => <ModalComponen
 
 export const Default = Template.bind({});
 Default.args = {
+  isOpen: true,
   modalTitle: 'Default Modal',
   children: <FormComponent />,
 };

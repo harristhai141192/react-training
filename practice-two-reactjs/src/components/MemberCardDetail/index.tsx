@@ -47,7 +47,7 @@ const MemberCardDetail: React.FC<IProps> = ({
         backgroundColor='crimson'
         width='100%'
         marginRight='0'
-        padding='0px 5px'
+        padding='0px 10px'
         onClick={onOpenDelete}
       />
     </MemberCard>
