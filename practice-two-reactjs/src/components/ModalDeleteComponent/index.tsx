@@ -5,7 +5,6 @@ import { Box, Text } from '@chakra-ui/layout';
 // Components
 import ModalComponent from '@components/Modal';
 import Button from '@components/Button';
-import { Member } from '@models/index';
 
 interface IProps {
   isLoading?: boolean;
@@ -13,6 +12,7 @@ interface IProps {
   onCloseDeleteModal?: () => void;
   onClickDelete?: () => void;
   onOpenDeleteModal?: () => void;
+  onOpenSuccess?: boolean;
   memberId?: string;
 }
 
@@ -22,8 +22,6 @@ const ModalDeleteComponent: React.FC<IProps> = ({
   onCloseDeleteModal,
   onClickDelete,
 }) => {
-  const member: Member = {};
-
   return (
     <ModalComponent
       isOpen={isOpenDeleteModal}
@@ -31,9 +29,7 @@ const ModalDeleteComponent: React.FC<IProps> = ({
       modalTitle='Delete Member Board'
     >
       <Box display='flex' flexDirection='row' fontFamily='RalewayLight'>
-        <Text>Do you want to delete </Text>
-        <Text color='crimson'> &nbsp;{member?.memberName}</Text>
-        <Text>?</Text>
+        <Text>Do you want to delete ?</Text>
       </Box>
       <Box display='flex' flexDirection='row' justifyContent='flex-end' margin='30px 0'>
         <Button

@@ -1,5 +1,7 @@
 // Libraries
 import { Component, ReactNode } from 'react';
+import { Box, Text } from '@chakra-ui/react';
+import Button from '@components/Button';
 
 type ErrorBoundaryState = {
   hasError: boolean;
@@ -30,13 +32,15 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render() {
     if (this.state.hasError) {
       return (
-        <div>
-          <h2>An error has been occurred!! </h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>{this.state.error?.message}</details>
-          <button type='button' onClick={() => this.setState({ hasError: false })}>
+        <Box>
+          <Text size='xl'>An error has been occurred!! </Text>
+          <Text as='sub' style={{ whiteSpace: 'pre-wrap' }}>
+            {this.state.error?.message}
+          </Text>
+          <Button type='button' onClick={() => this.setState({ hasError: false })}>
             Try again?
-          </button>
-        </div>
+          </Button>
+        </Box>
       );
     }
     return this.props.children;

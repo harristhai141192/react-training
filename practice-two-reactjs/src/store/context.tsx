@@ -1,5 +1,6 @@
 import { useContext, createContext, useReducer, ReactNode } from 'react';
 import reducer, { initialState } from './reducer';
+import { IInitialStateProps } from './reducer';
 
 // MEMBERS - member
 export const MemberContext = createContext([]);
@@ -9,7 +10,7 @@ export const useMemberContext = () => {
 };
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch]: [IInitialStateProps, () => void] = useReducer(reducer, initialState);
 
   return <MemberContext.Provider value={[state, dispatch]}>{children}</MemberContext.Provider>;
 };

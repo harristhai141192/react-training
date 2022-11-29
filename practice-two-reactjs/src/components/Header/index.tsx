@@ -15,14 +15,20 @@ import { LOGO_URL } from '@constants/image';
 
 interface IProps {
   onSignUpClick?: React.MouseEventHandler<HTMLButtonElement>;
+  footerInformationBar: {
+    serviceCenter: string[];
+    informationCenter: string[];
+    socialCenter: string[];
+    contactCenter: string[];
+  };
 }
 
-const Header: React.FC<IProps> = ({ onSignUpClick }) => {
+const Header: React.FC<IProps> = ({ onSignUpClick, footerInformationBar }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   // GENERATE KEY
   const generateKey = (item: string | undefined) =>
     `${item}_${new Date().getTime()}_${Math.random()}`;
-
+  footerInformationBar = FOOTER_BAR_INFORMATION;
   return (
     <Container as='header' margin='0 auto' w='100%'>
       <Box
@@ -48,7 +54,7 @@ const Header: React.FC<IProps> = ({ onSignUpClick }) => {
               ''
             ) : (
               <>
-                {FOOTER_BAR_INFORMATION.serviceCenter.map((item) => {
+                {footerInformationBar.serviceCenter.map((item) => {
                   return (
                     <ListItem key={generateKey(item)}>
                       <Link

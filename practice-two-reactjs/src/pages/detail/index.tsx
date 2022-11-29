@@ -1,5 +1,5 @@
 // Libraries
-import { useState, useEffect, useMemo, FormEvent, useCallback } from 'react';
+import { useState, useEffect, useMemo, FormEvent } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 
 // Models
@@ -18,9 +18,10 @@ import Button from '@components/Button';
 import LoadingSpinner from '@components/LoadingSpinner';
 import InputComponent from '@components/Input';
 import ErrorBoundary from '@components/ErrorBoundary';
-import ModalFormComponent from './ModalFormComponent';
-import ModalDeleteComponent from './ModalDeleteComponent';
-import MemberCardDetail from './MemberCardDetail';
+import ModalFormComponent from '@components/ModalFormComponent';
+import ModalDeleteComponent from '@components/ModalDeleteComponent';
+import MemberCardDetail from '@components/MemberCardDetail';
+import { IInitialStateProps } from '@store/reducer';
 
 const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
@@ -28,8 +29,7 @@ const Detail = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
   const [currentId, setCurrentId] = useState<string>('');
   const [state, dispatch] = useMemberContext();
-
-  // NEED TO HANDLE SUCCESS AND ERROR MESSAGE TO SHOW TO UI for add,edit and delete (IN-PROGRESS)
+  const { members, loading }: IInitialStateProps = state;
 
   // GET ALL THE MEMBER
   useEffect(() => {
@@ -51,7 +51,7 @@ const Detail = () => {
     getAllMember();
   }, []);
 
-  // HANDLE CLICK ON CARD TO SHOW MEMBER INFO
+  // HANDLE MODALS CLICK
   const handleClickCard = (id: string) => {
     setIsOpenDetail(true);
     setCurrentId(id);
@@ -62,7 +62,7 @@ const Detail = () => {
     setCurrentId('');
   };
 
-  const openEditForm = (id: string) => {
+  const openEditForm = () => {
     setIsOpenAddForm(true);
   };
 
@@ -85,13 +85,15 @@ const Detail = () => {
   // HANDLE CLICK ADD BUTTON FORM
   const handleClickAdd = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch({
+      type: ACTIONS.ADD_MEMBER_REQUEST,
+      loading: true,
+    });
+
     const formItems = e.target as HTMLFormElement;
 
     // ADD MEMBER
     const addMember = async () => {
-      dispatch({
-        type: ACTIONS.ADD_MEMBER_REQUEST,
-      });
       const getMemberValue = {
         memberName: (formItems[0] as HTMLInputElement).value,
         dateOfBirth: (formItems[1] as HTMLInputElement).value,
@@ -238,8 +240,8 @@ const Detail = () => {
 
         <Box display='flex' flexDirection='row' flexWrap='wrap'>
           {/* DETAIL */}
-          {!state.loading && state.members ? (
-            state.members.map((item: Member) => (
+          {!loading && members ? (
+            members.map((item: Member) => (
               <Card
                 card={item}
                 key={generateKey(item.id)}
@@ -265,12 +267,14 @@ const Detail = () => {
             isOpen={isOpenAddForm}
             onClose={handleCloseForm}
             onSubmit={handleClickAdd}
+            isLoading={state.loading}
           />
           {isOpenDeleteModal && (
             <ModalDeleteComponent
               isOpenDeleteModal={isOpenDeleteModal}
               onClickDelete={handleOnClickDelete}
               onCloseDeleteModal={handleCloseDeleteForm}
+              isLoading={state.loading}
             />
           )}
         </Box>

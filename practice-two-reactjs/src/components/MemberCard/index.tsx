@@ -92,28 +92,40 @@ const MemberCard: React.FC<IProps> = ({
 
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaMailBulk /> &nbsp;
-            <Text fontSize='text.large'>{member?.email}</Text>
+            <Text fontSize={{ sm: 'text.small', md: 'text.medium', lg: 'text.large' }}>
+              {member?.email}
+            </Text>
           </Box>
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaBirthdayCake />
             &nbsp;
-            <Text fontSize='text.large'>{member?.dateOfBirth}</Text>
+            <Text fontSize={{ sm: 'text.small', md: 'text.medium', lg: 'text.large' }}>
+              {member?.dateOfBirth}
+            </Text>
           </Box>
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaChild /> &nbsp;
-            <Text fontSize='text.large'>Member since {member?.memberSince}</Text>
+            <Text fontSize={{ sm: 'text.small', md: 'text.medium', lg: 'text.large' }}>
+              Member since {member?.memberSince}
+            </Text>
           </Box>
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaBriefcase /> &nbsp;
-            <Text fontSize='text.large'>{member?.job}</Text>
+            <Text fontSize={{ sm: 'text.small', md: 'text.medium', lg: 'text.large' }}>
+              {member?.job}
+            </Text>
           </Box>
           <Box display='flex' flexDirection='row' alignItems='center'>
             <FaTransgender /> &nbsp;
-            <Text fontSize='text.large'>{member?.gender}</Text>
+            <Text fontSize={{ sm: 'text.small', md: 'text.medium', lg: 'text.large' }}>
+              {member?.gender}
+            </Text>
           </Box>
           <Box display='flex' flexDirection='row' flexWrap='wrap' alignItems='center'>
             <FaPenNib /> &nbsp;
-            <Text fontSize='text.large'>{member?.description}</Text>
+            <Text fontSize={{ sm: 'text.small', md: 'text.medium', lg: 'text.large' }}>
+              {member?.description}
+            </Text>
           </Box>
         </Box>
       </Box>

@@ -7,16 +7,18 @@ export interface IInitialStateProps {
   error: string;
 }
 
+export interface IActionProps {
+  type: string;
+  data: { members?: Member[]; member: Member; error: string };
+}
+
 export const initialState: IInitialStateProps = {
   members: [],
   loading: false,
   error: '',
 };
 
-const reducer = (
-  state = initialState,
-  actions: { type: string; data: { members?: Member[]; member: Member; error: string } },
-) => {
+const reducer = (state: IInitialStateProps = initialState, actions: IActionProps) => {
   switch (actions.type) {
     // request get all
     case ACTIONS.MEMBER_REQUEST:
@@ -36,6 +38,7 @@ const reducer = (
         error: actions.data.error,
         loading: false,
       };
+
     // request add
     case ACTIONS.ADD_MEMBER_REQUEST:
       return {
@@ -54,6 +57,7 @@ const reducer = (
         error: actions.data.error,
         loading: false,
       };
+
     // request update
     case ACTIONS.UPDATE_MEMBER_REQUEST:
       return {
@@ -77,6 +81,7 @@ const reducer = (
         error: actions.data.error,
         loading: false,
       };
+
     // request delete
     case ACTIONS.DELETE_MEMBER_REQUEST:
       return {
@@ -100,19 +105,18 @@ const reducer = (
         loading: false,
       };
 
+    // request search
     case ACTIONS.SEARCH_MEMBER_REQUEST:
       return {
         ...state,
         loading: true,
       };
-
     case ACTIONS.SEARCH_MEMBER_SUCCESS:
       return {
         ...state,
         members: actions.data.members,
         loading: false,
       };
-
     case ACTIONS.SEARCH_MEMBER_FAILURE:
       return {
         ...state,
