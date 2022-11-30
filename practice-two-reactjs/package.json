@@ -10,7 +10,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint:fix": "pnpx eslint ./src --fix",
-    "prepare": "cd .. && husky install practice-two-reactjs/_"
+    "prepare": "cd .. && husky install practice-two-reactjs/_",
+    "coverage": "pnpm test -- --coverage"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
@@ -19,6 +20,7 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/open-sans": "^4.5.13",
     "@fontsource/raleway": "^4.5.11",
+    "coverage": "^0.4.1",
     "framer-motion": "^7.6.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

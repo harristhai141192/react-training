@@ -7,9 +7,16 @@ import Card from '../index';
 
 describe('Card component', () => {
   const memberCard = {
-    memberImg: "url('src/assets/images/Frankie.svg')",
-    memberSince: '2016',
     memberName: 'Frankie',
+    dateOfBirth: '2022-11-27',
+    memberImg: 'https://www.w3schools.com/w3images/team2.jpg',
+    gender: 'Male',
+    job: 'Software Engineer',
+    description: "There's nothing about me",
+    phone: '0902181613',
+    email: 'luuhuynh@gmail.com',
+    memberSince: '2016',
+    id: '4',
   };
   test('Component [Card] should match snapshot', () => {
     const { container } = render(<Card card={memberCard} />);

@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace API {
   export enum URL {
-    BASE_URL = 'http://localhost:3001',
+    BASE_URL = 'https://635111333e9fa1244e5464ea.mockapi.io',
   }
 
   export enum PATHS {

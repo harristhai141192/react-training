@@ -11,6 +11,13 @@ module.exports = {
     '@utils/(.*)': '<rootDir>/src/utils/$1',
     '@mockData/(.*)': '<rootDir>/src/mockData/$1',
     '@constants/(.*)': '<rootDir>/src/constants/$1',
+    '@services/(.*)': '<rootDir>/src/services/$1',
+    '@store/(.*)': '<rootDir>/src/store/$1',
+    '@helpers/(.*)': '<rootDir>/src/helpers/$1',
+    '@pages/(.*)': '<rootDir>/src/pages/$1',
+    '@apis/(.*)': '<rootDir>/src/apis/$1',
+    '@layout/(.*)': '<rootDir>/src/layout/$1',
+    '@models/(.*)': '<rootDir>/src/models/$1',
   },
   transform: {
     '.+\\.(css|less|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':

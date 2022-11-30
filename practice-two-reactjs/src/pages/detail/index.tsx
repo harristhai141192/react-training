@@ -54,7 +54,7 @@ const Detail = () => {
     setCurrentId('');
   };
 
-  const openEditForm = () => {
+  const handleOpenEditForm = () => {
     setIsOpenAddForm(true);
   };
 
@@ -62,7 +62,7 @@ const Detail = () => {
     setIsOpenAddForm(false);
   };
 
-  const onOpenDeleteForm = () => {
+  const handleOpenDeleteForm = () => {
     setIsOpenDeleteModal(true);
   };
 
@@ -151,7 +151,7 @@ const Detail = () => {
               <Card
                 card={item}
                 key={generateKey()}
-                height='150px'
+                height={{ sm: '150px' }}
                 margin='1% 3%'
                 onClick={() => handleClickCard(item.id)}
               />
@@ -165,8 +165,8 @@ const Detail = () => {
             memberId={currentId}
             isOpen={isOpenDetail}
             onClose={handleCloseCard}
-            onOpenEdit={openEditForm}
-            onOpenDelete={onOpenDeleteForm}
+            onOpenEdit={handleOpenEditForm}
+            onOpenDelete={handleOpenDeleteForm}
           />
           <ModalFormComponent
             memberId={currentId}
