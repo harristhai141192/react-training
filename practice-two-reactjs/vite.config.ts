@@ -59,6 +59,10 @@ export default defineConfig({
         find: '@store',
         replacement: path.resolve(__dirname, 'src/store'),
       },
+      {
+        find: '@helpers',
+        replacement: path.resolve(__dirname, 'src/helpers'),
+      },
     ],
   },
 });

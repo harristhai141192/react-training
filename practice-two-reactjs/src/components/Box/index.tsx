@@ -5,7 +5,7 @@ interface IProps {
   imageAlt?: string;
   subText?: string;
   maxWidth?: string;
-  width?: string;
+  width?: { sm: string; md?: string; lg?: string };
 }
 // FOLDER NAME COMPONENT NOT MATCH
 const BoxComponent = ({ imageURL, imageAlt, subText, maxWidth, width }: IProps) => {

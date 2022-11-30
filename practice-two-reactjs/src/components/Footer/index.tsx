@@ -1,7 +1,6 @@
 // Libraries
 import React, { memo } from 'react';
 import { Box, Image, Text, Link, UnorderedList, ListItem, Container } from '@chakra-ui/react';
-import { useMediaQuery } from '@chakra-ui/react';
 
 // Mock data
 import { FOOTER_BAR_INFORMATION } from '@mockData/tableData';
@@ -9,23 +8,21 @@ import { FOOTER_BAR_INFORMATION } from '@mockData/tableData';
 // Constants
 import { LOGO_URL } from '@constants/image';
 
+// utils
+import { generateKey } from '@utils/mainFeaturesUtils';
+
 interface IProps {
   linkTerms?: string;
 }
 
 const Footer: React.FC<IProps> = ({ linkTerms }) => {
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
-  // GENERATE KEY
-  const generateKey = (item: string | undefined) =>
-    `${item}_${new Date().getTime()}_${Math.random()}`;
-
   return (
     <Container as='footer'>
       {/* CONTAINER CHAKRA FOOTER */}
       <Box margin='40px 0px'>
         <Box
           display='flex'
-          flexDirection={isMobile ? 'column' : 'row'}
+          flexDirection={{ sm: 'column', md: 'row', lg: 'row' }}
           p='0% 10%'
           marginBottom='50px'
         >
@@ -39,18 +36,17 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
             textAlign='left'
             fontFamily='RalewayBold'
           >
-            {/* ISMOBILE ISSUES */}
             <Box
               display='flex'
-              flexDirection={isMobile ? 'column' : 'row'}
+              flexDirection={{ sm: 'column', md: 'row', lg: 'row' }}
               flexGrow='5'
-              justifyContent={isMobile ? 'flex-start' : 'space-around'}
+              justifyContent={{ sm: 'flex-start', md: 'space-around' }}
             >
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
                   {FOOTER_BAR_INFORMATION.serviceCenter.map((item) => {
                     return (
-                      <ListItem key={generateKey(item)}>
+                      <ListItem key={generateKey()}>
                         <Link marginBottom='7px' href='' fontSize='sm'>
                           {item}
                         </Link>
@@ -63,7 +59,7 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
                 <UnorderedList listStyleType='none'>
                   {FOOTER_BAR_INFORMATION.informationCenter.map((item) => {
                     return (
-                      <ListItem key={generateKey(item)}>
+                      <ListItem key={generateKey()}>
                         <Link marginBottom='7px' href='' fontSize='sm'>
                           {item}
                         </Link>
@@ -75,15 +71,15 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
             </Box>
             <Box
               display='flex'
-              flexDirection={isMobile ? 'column' : 'row'}
+              flexDirection={{ sm: 'column', md: 'row', lg: 'row' }}
               flexGrow='5'
-              justifyContent={isMobile ? 'flex-start' : 'space-around'}
+              justifyContent={{ sm: 'flex-start', md: 'space-around' }}
             >
               <Box display='flex' flexDirection='column' alignItems='flex-start'>
                 <UnorderedList listStyleType='none'>
                   {FOOTER_BAR_INFORMATION.socialCenter.map((item) => {
                     return (
-                      <ListItem key={generateKey(item)}>
+                      <ListItem key={generateKey()}>
                         <Link marginBottom='7px' href='' fontSize='sm'>
                           {item}
                         </Link>
@@ -96,7 +92,7 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
                 <UnorderedList listStyleType='none'>
                   {FOOTER_BAR_INFORMATION.contactCenter.map((item) => {
                     return (
-                      <ListItem key={generateKey(item)}>
+                      <ListItem key={generateKey()}>
                         <Link marginBottom='7px' href='' fontSize='sm'>
                           {item}
                         </Link>
@@ -111,14 +107,14 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
         <Box p='1px' bg='#DBDBDB' m='0% 10%'></Box>
         <Box
           display='flex'
-          flexDirection={isMobile ? 'column' : 'row'}
+          flexDirection={{ sm: 'column', md: 'row', lg: 'row' }}
           p='0% 10%'
           fontFamily='RalewayBold'
           marginTop='20px'
-          width={isMobile ? '80%' : '100%'}
+          width={{ sm: '80%', md: '100%' }}
         >
           <Box flexGrow='4' display='flex' justifyContent='center'>
-            <Text fontSize={isMobile ? 'xs' : 'sm'}>
+            <Text fontSize={{ sm: 'xs', md: 'sm' }}>
               NinjaMail is a sample project for Quest AI. © 2019 Quest AI, All rights reserved.
             </Text>
           </Box>
@@ -126,17 +122,17 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
             flexGrow='6'
             display='flex'
             justifyContent='space-around'
-            flexDirection={isMobile ? 'column' : 'row'}
-            marginTop={isMobile ? '30px' : ''}
+            flexDirection={{ sm: 'column', md: 'row' }}
+            marginTop={{ sm: '30px', md: '0px' }}
           >
-            <Link fontSize={isMobile ? 'xs' : 'sm'} padding='0'>
+            <Link fontSize={{ sm: 'xs', md: 'sm' }} padding='0'>
               Terms & Conditions
             </Link>
             <Link
               href={linkTerms}
-              fontSize={isMobile ? 'xs' : 'sm'}
+              fontSize={{ sm: 'xs', md: 'sm' }}
               padding='0'
-              marginTop={isMobile ? '7px' : ''}
+              marginTop={{ sm: '7px', md: '0px' }}
             >
               Privacy Policy
             </Link>

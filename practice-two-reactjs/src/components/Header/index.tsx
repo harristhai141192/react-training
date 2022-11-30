@@ -6,12 +6,14 @@ import { widths } from '@themes/metrics';
 import { Link as LinkRouter } from 'react-router-dom';
 
 // Components
-import { FOOTER_BAR_INFORMATION } from '@mockData/tableData';
 import Button from '@components/Button';
 
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
 import { LOGO_URL } from '@constants/image';
+
+// Utils
+import { generateKey } from '@utils/mainFeaturesUtils';
 
 interface IProps {
   onSignUpClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -26,9 +28,6 @@ interface IProps {
 const Header: React.FC<IProps> = ({ onSignUpClick, footerInformationBar }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   // GENERATE KEY
-  const generateKey = (item: string | undefined) =>
-    `${item}_${new Date().getTime()}_${Math.random()}`;
-  footerInformationBar = FOOTER_BAR_INFORMATION;
   return (
     <Container as='header' margin='0 auto' w='100%'>
       <Box
@@ -56,7 +55,7 @@ const Header: React.FC<IProps> = ({ onSignUpClick, footerInformationBar }) => {
               <>
                 {footerInformationBar.serviceCenter.map((item) => {
                   return (
-                    <ListItem key={generateKey(item)}>
+                    <ListItem key={generateKey()}>
                       <Link
                         borderBottom='3px solid var(--main-color)'
                         padding='10px'

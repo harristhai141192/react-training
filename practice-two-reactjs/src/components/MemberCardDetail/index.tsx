@@ -27,6 +27,8 @@ const MemberCardDetail: React.FC<IProps> = ({
   memberId,
 }) => {
   const [state] = useMemberContext();
+  console.log('STATE: ', state);
+
   const member = state.members.find((item: Member) => {
     return item.id === memberId;
   });

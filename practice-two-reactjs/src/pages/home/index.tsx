@@ -1,6 +1,5 @@
 // Libraries
 import { Box, Image, Text } from '@chakra-ui/react';
-import { useMediaQuery } from '@chakra-ui/react';
 
 // Components
 import Button from '@components/Button';
@@ -15,13 +14,10 @@ import { MEMBER_DATA } from '@mockData/tableData';
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
 
+// Utils
+import { generateKey } from '@utils/mainFeaturesUtils';
+
 const Home = () => {
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
-
-  // Generate Key for key
-  const generateKey = (item: string | undefined) =>
-    `${item}_${new Date().getTime()}_${Math.random()}`;
-
   return (
     <>
       <ErrorBoundary>
@@ -42,7 +38,7 @@ const Home = () => {
               backgroundRepeat='no-repeat'
               backgroundPosition='right'
               backgroundSize={{ sm: '100%', md: '80%', lg: '60%' }}
-              justifyContent={isMobile ? 'top' : 'center'}
+              justifyContent={{ sm: 'top', md: 'center' }}
             >
               <Box w={{ sm: '100%', md: '50%', lg: '45%' }} textAlign='left'>
                 <Text fontSize='4xl' as='b' marginBottom='30px' fontFamily='PlayFairBold'>
@@ -52,7 +48,7 @@ const Home = () => {
                   fontSize='sm'
                   fontFamily='RalewayLight'
                   marginBottom='13px'
-                  marginTop={isMobile ? '100px' : ''}
+                  marginTop={{ sm: '100px', md: '0px' }}
                 >
                   Create and launch email campaigns that captivate your customers in just a few
                   clicks.
@@ -92,24 +88,24 @@ const Home = () => {
           </Box>
 
           {/* ADVERTISE DESCRIPTION */}
-          <Box display='flex' flexDirection={isMobile ? 'column' : 'row'} p='0% 4%'>
+          <Box display='flex' flexDirection={{ sm: 'column', md: 'row' }} p='0% 4%'>
             <Box marginRight='5%'>
               <BoxComponent
                 subText='Launch campaigns but also find new customers. Our unique platform handles campaigns from start to end.'
                 imageURL='src/assets/images/photoAva1.png'
-                width={isMobile ? '270px' : '250px'}
+                width={{ sm: '270px', md: '250px' }}
               />
             </Box>
             <Box
               marginTop='5%'
-              display={isMobile ? 'flex' : ''}
-              justifyContent={isMobile ? 'flex-end' : ''}
-              marginBottom={isMobile ? '30px' : ''}
+              display={{ sm: 'flex', md: '' }}
+              justifyContent={{ sm: 'flex-end', md: '' }}
+              marginBottom={{ sm: '30px', md: '0px' }}
             >
               <BoxComponent
                 subText='Start building and sharing with your team today. NinjaMail is renowned for its industry leading team collaboration tools.'
                 imageURL='src/assets/images/photoAva2.svg'
-                width={isMobile ? '270px' : '250px'}
+                width={{ sm: '270px', md: '250px' }}
               />
             </Box>
             <Box
@@ -118,8 +114,8 @@ const Home = () => {
               justifyContent='center'
               textAlign='left'
               margin='0% 7%'
-              padding={isMobile ? '10px' : ''}
-              alignItems={isMobile ? 'center' : ''}
+              padding={{ sm: '10px', md: '0px' }}
+              alignItems={{ sm: 'center', md: '' }}
             >
               <Text fontSize='3xl' fontFamily='PlayFairBold'>
                 The source for proven, engaging email campaigns
@@ -132,20 +128,20 @@ const Home = () => {
           </Box>
 
           {/* SESSION MEMBER CARD */}
-          <Box margin={isMobile ? '0 15%' : '0 4%'}>
+          <Box margin={{ sm: '0 15%', md: '0 4%' }}>
             <Box
               display='flex'
-              flexDirection={isMobile ? 'column' : 'row'}
+              flexDirection={{ sm: 'column', md: 'row' }}
               justifyContent='space-evenly'
               alignItems='center'
             >
               {MEMBER_DATA.map((item) => {
                 return (
                   <Card
-                    key={generateKey(Math.random().toString())}
+                    key={generateKey()}
                     card={item}
                     margin='5% 0%'
-                    height={isMobile ? '170px' : '250px'}
+                    height={{ sm: '170px', md: '250px' }}
                     linkToPage={PAGE_ROUTES.DETAIL}
                   />
                 );
@@ -165,19 +161,19 @@ const Home = () => {
               <Box
                 display='flex'
                 flexDirection='row'
-                width={isMobile ? '60%' : '50%'}
+                width={{ sm: '60%', md: '50%' }}
                 alignItems='flex-start'
                 flexWrap='wrap'
                 textAlign='center'
                 marginTop='5px'
               >
                 <Box
-                  flexGrow={isMobile ? '10' : '5'}
-                  width={isMobile ? '100%' : ''}
+                  flexGrow={{ sm: '10', md: '5' }}
+                  width={{ sm: '100%', md: '' }}
                   marginRight='15px'
                   display='flex'
                   flexDirection='column'
-                  justifyContent={isMobile ? 'center' : ''}
+                  justifyContent={{ sm: 'center', md: '' }}
                 >
                   <Box>
                     <InputComponent placeholder='Enter your email' />
@@ -189,7 +185,7 @@ const Home = () => {
                   </Box>
                 </Box>
                 <Box
-                  flexGrow={isMobile ? '10' : '5'}
+                  flexGrow={{ sm: '10', md: '5' }}
                   display='flex'
                   alignItems='self-start'
                   justifyContent='center'
@@ -229,37 +225,37 @@ const Home = () => {
             </Box>
             <Image
               src='src/assets/images/Logo1.svg'
-              w={isMobile ? '30%' : '10%'}
-              h={isMobile ? '10%' : ''}
+              w={{ sm: '30%', md: '10%', lg: '20%' }}
+              h={{ sm: '10%', md: '20%', lg: '20%' }}
               order={{ sm: '3', md: '1', lg: '1' }}
               margin='0px 20px'
             />
             <Image
               src='src/assets/images/Logo2.svg'
-              w={isMobile ? '30%' : '10%'}
-              h={isMobile ? '10%' : ''}
-              order={isMobile ? '1' : '2'}
+              w={{ sm: '30%', md: '10%' }}
+              h={{ sm: '10%', md: '20%', lg: '20%' }}
+              order={{ sm: '1', md: '2' }}
               margin='0px 20px'
             />
             <Image
               src='src/assets/images/Logo3.svg'
-              w={isMobile ? '30%' : '10%'}
-              h={isMobile ? '10%' : ''}
-              order={isMobile ? '5' : '3'}
+              w={{ sm: '30%', md: '10%' }}
+              h={{ sm: '10%', md: '20%', lg: '20%' }}
+              order={{ sm: '5', md: '3' }}
               margin='0px 20px'
             />
             <Image
               src='src/assets/images/Logo4.svg'
-              w={isMobile ? '30%' : '10%'}
-              h={isMobile ? '10%' : ''}
-              order={isMobile ? '4' : '4'}
+              w={{ sm: '30%', md: '10%' }}
+              h={{ sm: '10%', md: '20%', lg: '20%' }}
+              order={{ sm: '4', md: '4' }}
               margin='0px 20px'
             />
             <Image
               src='src/assets/images/Logo5.svg'
-              w={isMobile ? '30%' : '10%'}
-              h={isMobile ? '10%' : ''}
-              order={isMobile ? '2' : '5'}
+              w={{ sm: '30%', md: '10%' }}
+              h={{ sm: '10%', md: '20%', lg: '20%' }}
+              order={{ sm: '2', md: '5' }}
               margin='0px 20px'
             />
           </Box>

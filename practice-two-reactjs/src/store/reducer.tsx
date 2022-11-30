@@ -1,16 +1,46 @@
-import { Member } from '@models/index';
-import { ACTIONS } from './action';
+import { ACTIONS } from './actions';
+import {
+  RequestMembersAction,
+  SuccessRequestMembersAction,
+  FailedRequestMembersAction,
+  RequestAddMemberAction,
+  SuccessAddMemberAction,
+  FailedAddMemberAction,
+  RequestUpdateMemberAction,
+  SuccessUpdateMemberAction,
+  FailedUpdateMemberAction,
+  RequestDeleteMemberAction,
+  SuccessDeleteMemberAction,
+  FailedDeleteMemberAction,
+  RequestSearchMemberAction,
+  SuccessSearchMemberAction,
+  FailedSearchMemberAction,
+} from './types';
 
+// Models
+import { Member } from '@models/index';
 export interface IInitialStateProps {
   members: Member[];
   loading: boolean;
   error: string;
 }
 
-export interface IActionProps {
-  type: string;
-  data: { members?: Member[]; member: Member; error: string };
-}
+export type IActionProps =
+  | RequestMembersAction
+  | SuccessRequestMembersAction
+  | FailedRequestMembersAction
+  | RequestAddMemberAction
+  | SuccessAddMemberAction
+  | FailedAddMemberAction
+  | RequestUpdateMemberAction
+  | SuccessUpdateMemberAction
+  | FailedUpdateMemberAction
+  | RequestDeleteMemberAction
+  | SuccessDeleteMemberAction
+  | FailedDeleteMemberAction
+  | RequestSearchMemberAction
+  | SuccessSearchMemberAction
+  | FailedSearchMemberAction;
 
 export const initialState: IInitialStateProps = {
   members: [],

@@ -13,7 +13,6 @@ import { Member } from '@models/index';
 
 interface IProps {
   isOpen?: boolean;
-  isLoading?: boolean;
   onClose?: () => void;
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   modalTitle?: string;
@@ -25,17 +24,13 @@ const ModalFormComponent: React.FC<IProps> = ({
   onClose,
   onSubmit,
   modalTitle,
-  isLoading,
   memberId,
 }) => {
   // const data = memberId ? member : {}
 
   const [state] = useMemberContext();
 
-  const member = state.members.find((item: Member) => {
-    return item.id === memberId;
-  });
-  console.log('MEMBER: ', member);
+  const member = state.members.find((item: Member) => item.id === memberId);
 
   return (
     <ModalComponent isOpen={isOpen} onClose={onClose} modalTitle={modalTitle}>
@@ -44,7 +39,7 @@ const ModalFormComponent: React.FC<IProps> = ({
         onCancel={onClose}
         onSubmit={onSubmit}
         defaultMemberData={member}
-        isLoading={isLoading}
+        isLoading={state.loading}
       />
     </ModalComponent>
   );

@@ -1,13 +1,16 @@
 // libraries
-import { render, fireEvent } from '@utils/testUtils';
+import { render, fireEvent, getByTestId } from '@utils/testUtils';
+import { Text, Box } from '@chakra-ui/react';
+
 // components
 import Button from '../index';
 
-// theme
-
 describe('Button component', () => {
-  const onClick = jest.fn();
-
+  const handleOnClick = jest.fn();
+  let buttonText = 'default';
+  const handleActivatedButton = () => {
+    return (buttonText = 'Button Clicked Changes text');
+  };
   test('Component [Button] should match snapshot', () => {
     const { container } = render(<Button />);
 
@@ -15,8 +18,8 @@ describe('Button component', () => {
   });
 
   test('Component [Button] with on click function should be called once when click button', () => {
-    const { getByText } = render(<Button onClick={onClick} label='Button' />);
+    const { getByText } = render(<Button onClick={handleOnClick} label='Button' />);
     fireEvent.click(getByText('Button'));
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(handleOnClick).toHaveBeenCalledTimes(1);
   });
 });

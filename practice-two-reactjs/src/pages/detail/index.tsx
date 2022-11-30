@@ -5,12 +5,19 @@ import { Box, Text } from '@chakra-ui/react';
 // Models
 import { Member } from '@models/index';
 
-// API
-import { API } from '@constants/apis';
+//Utils
+import {
+  addMember,
+  updateSpecificMember,
+  deleteMember,
+  getAllMember,
+  searchMember,
+  generateKey,
+} from '@utils/mainFeaturesUtils';
 
 //Store
 import { useMemberContext } from '@store/context';
-import { ACTIONS } from '@store/action';
+import { ACTIONS } from '@store/actions';
 import { IInitialStateProps } from '@store/reducer';
 
 // Components
@@ -33,22 +40,7 @@ const Detail = () => {
 
   // GET ALL THE MEMBER
   useEffect(() => {
-    dispatch({
-      type: ACTIONS.MEMBER_REQUEST,
-    });
-    // DEFINE HELPERS, TRYCATCH
-    const getAllMember = async () => {
-      const response = await fetch(API.PATHS.URL_MEMBER);
-
-      if (response.status == 200) {
-        const members = await response.json();
-        dispatch({ type: ACTIONS.MEMBER_REQUEST_SUCCESS, data: { members } });
-        return;
-      }
-      dispatch({ type: ACTIONS.MEMBER_REQUEST_FAILURE, data: { error: response.error } });
-    };
-
-    getAllMember();
+    getAllMember(dispatch);
   }, []);
 
   // HANDLE MODALS CLICK
@@ -85,74 +77,13 @@ const Detail = () => {
   // HANDLE CLICK ADD BUTTON FORM
   const handleClickAdd = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch({
-      type: ACTIONS.ADD_MEMBER_REQUEST,
-      loading: true,
-    });
 
     const formItems = e.target as HTMLFormElement;
 
-    // ADD MEMBER
-    const addMember = async () => {
-      const getMemberValue = {
-        memberName: (formItems[0] as HTMLInputElement).value,
-        dateOfBirth: (formItems[1] as HTMLInputElement).value,
-        memberImg: (formItems[2] as HTMLInputElement).value,
-        phone: (formItems[3] as HTMLInputElement).value,
-        memberSince: (formItems[4] as HTMLInputElement).value,
-        email: (formItems[5] as HTMLInputElement).value,
-        gender: (formItems[6] as HTMLInputElement).value,
-        job: (formItems[7] as HTMLInputElement).value,
-        description: (formItems[8] as HTMLInputElement).value,
-      };
-      const response = await fetch(API.PATHS.URL_MEMBER, {
-        method: API.HTTP_METHODS.POST,
-        headers: API.HEADERS,
-        body: JSON.stringify(getMemberValue),
-      });
-      if (response.status == 201) {
-        const member = await response.json();
-        dispatch({ type: ACTIONS.ADD_MEMBER_SUCCESS, data: { member } });
-        return;
-      }
-      dispatch({ type: ACTIONS.ADD_MEMBER_FAILURE, data: { error: response.error } });
-    };
-
-    // UPDATE MEMBER
-    const updateMember = async () => {
-      dispatch({
-        type: ACTIONS.UPDATE_MEMBER_REQUEST,
-      });
-
-      const getMemberValue = {
-        memberName: (formItems[0] as HTMLInputElement).value,
-        dateOfBirth: (formItems[1] as HTMLInputElement).value,
-        memberImg: (formItems[2] as HTMLInputElement).value,
-        phone: (formItems[3] as HTMLInputElement).value,
-        memberSince: (formItems[4] as HTMLInputElement).value,
-        email: (formItems[5] as HTMLInputElement).value,
-        gender: (formItems[6] as HTMLInputElement).value,
-        job: (formItems[7] as HTMLInputElement).value,
-        description: (formItems[8] as HTMLInputElement).value,
-      };
-      const response = await fetch(`${API.PATHS.URL_MEMBER}/${currentId}`, {
-        method: API.HTTP_METHODS.PUT,
-        headers: API.HEADERS,
-        body: JSON.stringify(getMemberValue),
-      });
-      if (response.status == 200) {
-        const member = await response.json();
-        dispatch({ type: ACTIONS.UPDATE_MEMBER_SUCCESS, data: { member } });
-
-        return;
-      }
-      dispatch({ type: ACTIONS.UPDATE_MEMBER_FAILURE, data: { error: response.error } });
-    };
-
     if (currentId) {
-      updateMember();
+      updateSpecificMember(dispatch, currentId, formItems);
     } else {
-      addMember();
+      addMember(dispatch, formItems);
     }
     setIsOpenAddForm(false);
   };
@@ -160,48 +91,22 @@ const Detail = () => {
   // HANDLE CLICK DELETE
   const handleOnClickDelete = () => {
     setIsOpenDeleteModal(true);
-    dispatch({
-      type: ACTIONS.DELETE_MEMBER_REQUEST,
-    });
 
-    const deleteMember = async () => {
-      const response = await fetch(`${API.PATHS.URL_MEMBER}/${currentId}`, {
-        method: API.HTTP_METHODS.DELETE,
-        headers: API.HEADERS,
-      });
-      if (response.status == 200) {
-        const member = await response.json();
-
-        dispatch({ type: ACTIONS.DELETE_MEMBER_SUCCESS, data: { member } });
-        setIsOpenDeleteModal(false);
-        setIsOpenDetail(false);
-        setCurrentId('');
-        return;
-      }
-      dispatch({ type: ACTIONS.DELETE_MEMBER_FAILURE, data: { error: response.error } });
+    const handleDeleteMember = () => {
+      deleteMember(dispatch, currentId);
+      setIsOpenDeleteModal(false);
+      setIsOpenDetail(false);
+      setCurrentId('');
     };
-    deleteMember();
+    handleDeleteMember();
   };
 
   const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTIONS.SEARCH_MEMBER_REQUEST });
     const inputText = e.target.value.toLowerCase();
-    const searchMember = async () => {
-      const response = await fetch(`${API.PATHS.URL_MEMBER}?memberName=${inputText}`);
 
-      if (response.status == 200) {
-        const members = await response.json();
-        dispatch({ type: ACTIONS.SEARCH_MEMBER_SUCCESS, data: { members } });
-        return;
-      }
-      dispatch({ type: ACTIONS.SEARCH_MEMBER_FAILURE, data: { error: response.error } });
-    };
-    searchMember();
+    searchMember(dispatch, inputText);
   };
-
-  // GENERATE KEY
-  const generateKey = (item: string | undefined) =>
-    `${item}_${new Date().getTime()}_${Math.random()}`;
 
   // RENDER TITLE TO NOT BE RERENDERED
   const renderTitle = useMemo(() => {
@@ -245,7 +150,7 @@ const Detail = () => {
             members.map((item: Member) => (
               <Card
                 card={item}
-                key={generateKey(item.id)}
+                key={generateKey()}
                 height='150px'
                 margin='1% 3%'
                 onClick={() => handleClickCard(item.id)}
@@ -268,14 +173,12 @@ const Detail = () => {
             isOpen={isOpenAddForm}
             onClose={handleCloseForm}
             onSubmit={handleClickAdd}
-            isLoading={state.loading}
           />
           {isOpenDeleteModal && (
             <ModalDeleteComponent
               isOpenDeleteModal={isOpenDeleteModal}
               onClickDelete={handleOnClickDelete}
               onCloseDeleteModal={handleCloseDeleteForm}
-              isLoading={state.loading}
             />
           )}
         </Box>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 interface IProps {
   card: Member;
   margin?: string;
-  height?: string;
+  height?: { sm?: string; md?: string; lg?: string };
   onClick?: () => void;
   linkToPage?: string;
 }

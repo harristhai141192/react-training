@@ -2,12 +2,14 @@
 import React from 'react';
 import { Box, Text } from '@chakra-ui/layout';
 
+// Store
+import { useMemberContext } from '@store/context';
+
 // Components
 import ModalComponent from '@components/Modal';
 import Button from '@components/Button';
 
 interface IProps {
-  isLoading?: boolean;
   isOpenDeleteModal?: boolean;
   onCloseDeleteModal?: () => void;
   onClickDelete?: () => void;
@@ -17,11 +19,14 @@ interface IProps {
 }
 
 const ModalDeleteComponent: React.FC<IProps> = ({
-  isLoading,
   isOpenDeleteModal,
   onCloseDeleteModal,
   onClickDelete,
 }) => {
+  const [state] = useMemberContext();
+
+  const isLoading = state.loading;
+
   return (
     <ModalComponent
       isOpen={isOpenDeleteModal}
