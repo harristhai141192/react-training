@@ -4,6 +4,10 @@ import { render } from '@utils/testUtils';
 import Footer from '@components/Footer/index';
 import '@testing-library/jest-dom';
 
+const setup = () => {
+  return render(<Footer />);
+};
+
 describe('Component [Footer] should match snapshot', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
@@ -21,7 +25,7 @@ describe('Component [Footer] should match snapshot', () => {
     });
   });
   test('It should match snapshot', () => {
-    const { container } = render(<Footer />);
+    const { container } = setup();
 
     expect(container).toMatchSnapshot();
   });

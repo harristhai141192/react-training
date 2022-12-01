@@ -4,11 +4,12 @@ import { render } from '@utils/testUtils';
 import LoadingSpinner from '../index';
 import '@testing-library/jest-dom';
 
-// theme
-
+const setup = () => {
+  return render(<LoadingSpinner />);
+};
 describe('Component [LoadingSpinner] should match snapshot', () => {
   test('It should match snapshot', () => {
-    const { container } = render(<LoadingSpinner />);
+    const { container } = setup();
 
     expect(container).toMatchSnapshot();
   });

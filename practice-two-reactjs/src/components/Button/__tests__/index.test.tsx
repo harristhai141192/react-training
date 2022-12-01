@@ -1,25 +1,35 @@
 // libraries
-import { render, fireEvent, getByTestId } from '@utils/testUtils';
-import { Text, Box } from '@chakra-ui/react';
+import { render, fireEvent } from '@utils/testUtils';
 
 // components
 import Button from '../index';
 
-describe('Button component', () => {
-  const handleOnClick = jest.fn();
-  let buttonText = 'default';
-  const handleActivatedButton = () => {
-    return (buttonText = 'Button Clicked Changes text');
+const baseProps = {
+  label: 'Button',
+  isLoading: false,
+};
+
+const setup = (overrideProps = {}) => {
+  const props = {
+    ...baseProps,
+    ...overrideProps,
   };
+  return render(<Button {...props} />);
+};
+
+describe('Button component', () => {
   test('Component [Button] should match snapshot', () => {
-    const { container } = render(<Button />);
+    const { container } = setup();
 
     expect(container).toMatchSnapshot();
   });
 
   test('Component [Button] with on click function should be called once when click button', () => {
-    const { getByText } = render(<Button onClick={handleOnClick} label='Button' />);
+    const handleOnClick = jest.fn();
+    const { getByText } = setup({ onClick: handleOnClick });
     fireEvent.click(getByText('Button'));
     expect(handleOnClick).toHaveBeenCalledTimes(1);
   });
+
+  test('Component [Button] on click will be loading', () => {});
 });

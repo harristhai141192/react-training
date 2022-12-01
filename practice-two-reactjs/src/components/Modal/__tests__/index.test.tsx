@@ -5,15 +5,22 @@ import ModalComponent from '../index';
 import '@testing-library/jest-dom';
 import Button from '@components/Button';
 
-// theme
+const baseProps = {
+  modaleTitle: '',
+  children: <Button />,
+};
+
+const setup = (overrideProps = {}) => {
+  const props = {
+    ...baseProps,
+    ...overrideProps,
+  };
+  return render(<ModalComponent {...props} />);
+};
 
 describe('Component [ModalComponent] should match snapshot', () => {
   test('It should match snapshot', () => {
-    const { container } = render(
-      <ModalComponent modalTitle=''>
-        <Button />
-      </ModalComponent>,
-    );
+    const { container } = setup();
 
     expect(container).toMatchSnapshot();
   });
