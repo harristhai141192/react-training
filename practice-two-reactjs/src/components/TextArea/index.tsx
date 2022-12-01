@@ -2,9 +2,6 @@
 import { Text, Textarea } from '@chakra-ui/react';
 import React, { ChangeEvent } from 'react';
 
-// themes
-import themes from '@themes/index';
-
 interface IProps {
   name?: string;
   value?: string;
@@ -33,7 +30,6 @@ const TextField: React.FC<IProps> = ({
         placeholder={placeholder}
         isInvalid={error}
         size={size}
-        focusBorderColor={themes.colors.green[1000]}
       />
       {error && (
         <Text as='sub' color='crimson'>

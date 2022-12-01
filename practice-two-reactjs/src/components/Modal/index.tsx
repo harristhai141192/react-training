@@ -7,25 +7,25 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
 
-// Components
-import Button from '@components/Button';
-
 interface IProps {
-  modalTitle: string;
+  modalTitle?: string;
   children: React.ReactNode;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-const ModalComponent: React.FC<IProps> = ({ modalTitle, children }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+const ModalComponent: React.FC<IProps> = ({
+  modalTitle,
+  children,
+  isOpen = false,
+  onClose = () => {},
+}) => {
   return (
-    <Box>
-      <Button onClick={onOpen} label='Open Modal' />
-      <Modal isOpen={isOpen} onClose={onClose}>
+    <Box fontFamily='RalewayLight'>
+      <Modal isOpen={isOpen} onClose={onClose} size={{ sm: 'sm', md: 'md', lg: 'xl' }}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{modalTitle}</ModalHeader>

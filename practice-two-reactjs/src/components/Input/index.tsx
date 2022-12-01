@@ -2,9 +2,6 @@
 import { Input, Box, Text } from '@chakra-ui/react';
 import React, { ChangeEvent } from 'react';
 
-// themes
-import themes from '@themes/index';
-
 interface IProps {
   name?: string;
   value?: string;
@@ -13,8 +10,10 @@ interface IProps {
   isDisabled?: boolean;
   type?: string;
   error?: boolean;
+  width?: string;
   errorText?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  margin?: string;
 }
 
 const InputComponent: React.FC<IProps> = ({
@@ -26,6 +25,8 @@ const InputComponent: React.FC<IProps> = ({
   error = false,
   errorText,
   onChange,
+  margin,
+  width,
 }) => (
   <>
     <Input
@@ -36,9 +37,10 @@ const InputComponent: React.FC<IProps> = ({
       isDisabled={isDisabled}
       errorBorderColor='crimson'
       type={type}
-      size={'sm'}
+      size='sm'
       onChange={onChange}
-      focusBorderColor={themes.colors.green[1000]}
+      margin={margin}
+      w={width}
     />
     {error && (
       <Box display='flex' alignItems='flex-start' marginTop='10px' color='crimson'>

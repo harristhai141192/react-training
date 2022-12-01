@@ -1,40 +1,52 @@
 import { Box, Text } from '@chakra-ui/react';
 
+import { Member } from '@models/index';
+import { Link } from 'react-router-dom';
+
 interface IProps {
-  imageBg?: string;
-  titleText?: string;
-  subText?: string;
-  width?: string;
+  card: Member;
+  margin?: string;
+  height?: { sm?: string; md?: string; lg?: string };
+  onClick?: () => void;
+  linkToPage?: string;
 }
 
-const Card = ({ imageBg, titleText, subText, width }: IProps) => {
+const Card = ({ margin, height, onClick, card, linkToPage = '' }: IProps) => {
   return (
     <Box
-      h={'250px'}
-      w={width}
-      backgroundImage={imageBg}
+      h={height}
+      w={{ sm: '100%', md: '25%', lg: '25%' }}
+      backgroundImage={card.memberImg}
       backgroundPosition='center'
       backgroundRepeat='no-repeat'
       backgroundSize='cover'
       data-testid='testCard'
+      margin={margin}
+      onClick={onClick}
     >
-      <Box
-        display='flex'
-        flexDirection='column'
-        textAlign='left'
-        p='20px'
-        justifyContent='end'
-        height='100%'
-        backgroundImage='linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459))'
-        color='white'
-      >
-        <Text className='textTitle' fontSize='3xl' fontFamily='RalewayExtraBold'>
-          {titleText}
-        </Text>
-        <Text className='textDescription' fontSize='sm' fontFamily='RalewayBold'>
-          {subText}
-        </Text>
-      </Box>
+      <Link to={linkToPage}>
+        <Box
+          display='flex'
+          flexDirection='column'
+          textAlign='left'
+          p='20px'
+          justifyContent='end'
+          height='100%'
+          backgroundImage='linear-gradient(to bottom, rgba(230, 230, 230, 0), rgba(30, 29, 29, 0.459))'
+          color='white'
+        >
+          <Text
+            className='textTitle'
+            fontFamily='RalewayExtraBold'
+            fontSize={{ sm: 'text.extraLarge', md: 'text.large', lg: 'text.extraLarge' }}
+          >
+            {card.memberName}
+          </Text>
+          <Text className='textDescription' fontFamily='RalewayLight' fontSize='text.small'>
+            Member Since {card.memberSince?.substring(0, 4)}
+          </Text>
+        </Box>
+      </Link>
     </Box>
   );
 };

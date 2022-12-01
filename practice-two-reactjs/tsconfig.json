@@ -24,9 +24,15 @@
       "@pages/*": ["src/pages/*"],
       "@models/*": ["src/models/*"],
       "@themes/*": ["src/themes/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@apis/*": ["src/apis/*"],
+      "@layout/*": ["layouts/*"],
+      "@mockData/*": ["src/mockData/*"],
+      "@store/*": ["src/store/*"],
+      "@helpers/*": ["src/helpers/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "layouts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
