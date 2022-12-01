@@ -15,9 +15,6 @@ import { ContextProvider } from './store/context';
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
 
-// CSS
-import './App.css';
-
 // Layout
 import Layout from './layout';
 
