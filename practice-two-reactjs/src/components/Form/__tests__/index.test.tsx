@@ -29,7 +29,6 @@ describe('Component [Form] should match snapshot', () => {
     expect(container).toMatchSnapshot();
   });
 
-  // ADD XU LY THEM TEST CASE VE CAC ,LGKC TEST
   test('Component [Form] should render correctly', () => {
     const { container } = setup({ formName: 'Add Form' });
     const getTitle = getByText(container, 'Add Form');

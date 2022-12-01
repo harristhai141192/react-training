@@ -1,14 +1,12 @@
 // Libraries
-import { FormControl, FormLabel, Box, Text, Textarea, Select } from '@chakra-ui/react';
-//  IMPORT REACT NEN DE TREN CUNG
 import React, { FormEvent } from 'react';
+import { FormControl, FormLabel, Box, Text, Textarea, Select } from '@chakra-ui/react';
 
 // Components
 import InputComponent from '@components/Input';
 import Button from '@components/Button';
 import { Member } from '@models/index';
 
-// ERROR MESSAGE
 interface IProps {
   defaultMemberData?: Member;
   formName?: string;
