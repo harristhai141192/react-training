@@ -1,5 +1,5 @@
 // libraries
-import { getByText, render } from '@utils/testUtils';
+import { render } from '@utils/testUtils';
 // components
 import MemberCard from '../index';
 import '@testing-library/jest-dom';
