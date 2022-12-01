@@ -8,7 +8,7 @@ This document provides a detailed estimate of the React practice. This practice 
 ### Timeline ###
 
 - Estimate time:  10 days (2022/11/07 - 2022/11/18)
-- Actual time: …
+- Actual time: 10 days 
 
 ### Technical Stack ###
 
