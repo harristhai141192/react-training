@@ -105,11 +105,11 @@ const Detail = () => {
   };
 
   const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: ACTIONS.SEARCH_MEMBER_REQUEST });
     setValue(e.target.value.toLowerCase());
   };
 
   useEffect(() => {
+    dispatch({ type: ACTIONS.SEARCH_MEMBER_REQUEST });
     searchMember(dispatch, value);
   }, [debouncedValue]);
 

@@ -139,10 +139,8 @@ const reducer = (state: IInitialStateProps = initialState, actions: IActionProps
     case ACTIONS.SEARCH_MEMBER_REQUEST:
       return {
         ...state,
-        loading: false,
+        loading: true,
       };
-    // return la het r
-    // true la` quay, ra false ma no van doi quay
     case ACTIONS.SEARCH_MEMBER_SUCCESS:
       return {
         ...state,
