@@ -1,9 +1,9 @@
 // Libraries
 import React from 'react';
+import { Button } from '@chakra-ui/button';
 
 // Components
 import MemberCard from '@components/MemberCard';
-import Button from '@components/Button';
 
 // Modal
 import { Member } from '@models/index';
@@ -35,22 +35,24 @@ const MemberCardDetail: React.FC<IProps> = ({
   return (
     <MemberCard isOpen={isOpen} onClose={onClose} modalTitle='Member Detail' member={member}>
       <Button
-        label='Edit'
         variant='outline'
         width='100%'
         marginRight='5px'
         padding='0px 10px'
         onClick={() => onOpenEdit(memberId)}
-      />
+      >
+        Edit
+      </Button>
       <Button
-        label='Delete'
         variant='solid'
         backgroundColor='crimson'
         width='100%'
         marginRight='0'
         padding='0px 10px'
         onClick={onOpenDelete}
-      />
+      >
+        Delete
+      </Button>
     </MemberCard>
   );
 };

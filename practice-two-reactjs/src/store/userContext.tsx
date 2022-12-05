@@ -49,9 +49,9 @@ interface IUseMember {
   members: Member[];
   loading: boolean;
   error: string;
-  addMemberRequest(): any;
+  addMemberRequest(): () => void;
   addMemberSuccess(response: Response): Promise<void>;
-  addMemberFailure(error: Error): any;
+  addMemberFailure(error: Error): () => void;
 }
 
 const useMember = (): IUseMember => {

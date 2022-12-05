@@ -1,5 +1,5 @@
 // libraries
-import { render, getByPlaceholderText } from '@utils/testUtils';
+import { render, getByPlaceholderText, getByText, getByTestId } from '@utils/testUtils';
 // components
 import InputComponent from '../index';
 import '@testing-library/jest-dom';
@@ -30,5 +30,24 @@ describe('Component [Input] should match snapshot', () => {
     expect(getPlaceHolder).toBeInTheDocument();
   });
 
-  test('Component [Input] should show error message when invalid', () => {});
+  test('Component [Input] should show error message when invalid', () => {
+    const { container } = setup({
+      placeholder: 'Input Your Value',
+      error: true,
+      errorText: 'Error!',
+    });
+
+    const inputError = getByText(container, 'Error!');
+    expect(inputError).toBeInTheDocument();
+  });
+
+  test('Component [Input] should be red border when get error', () => {
+    const { container } = setup({
+      placeholder: 'Input Your Value',
+      error: true,
+      errorText: 'Error!',
+    });
+
+    expect(getByTestId(container, 'Input Test')).toHaveStyle('border-color: crimson');
+  });
 });

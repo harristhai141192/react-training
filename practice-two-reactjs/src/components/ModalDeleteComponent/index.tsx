@@ -1,13 +1,12 @@
 // Libraries
 import React, { Suspense } from 'react';
-import { Box, Text } from '@chakra-ui/layout';
+import { Box, Text, Button } from '@chakra-ui/react';
 
 // Store
 import { useMemberContext } from '@store/context';
 
 // Components
 import ModalComponent from '@components/Modal';
-import Button from '@components/Button';
 import LoadingSpinner from '@components/LoadingSpinner';
 
 interface IProps {
@@ -42,11 +41,14 @@ const ModalDeleteComponent: React.FC<IProps> = ({
           <Button
             isLoading={isLoading}
             loadingText='Submitting'
-            label='Yes'
             backgroundColor='crimson'
             onClick={onClickDelete}
-          />
-          <Button isLoading={isLoading} label='No' variant='outline' onClick={onCloseDeleteModal} />
+          >
+            Yes
+          </Button>
+          <Button isLoading={isLoading} variant='outline' onClick={onCloseDeleteModal}>
+            No
+          </Button>
         </Box>
       </ModalComponent>
     </Suspense>

@@ -5,9 +5,6 @@ import { Box, Image, Text, Link, UnorderedList, ListItem, Container } from '@cha
 // Mock data
 import { FOOTER_BAR_INFORMATION } from '@mockData/tableData';
 
-// Constants
-import { LOGO_URL } from '@constants/image';
-
 // utils
 import { generateKey } from '@utils/mainFeaturesUtils';
 
@@ -27,7 +24,7 @@ const Footer: React.FC<IProps> = ({ linkTerms }) => {
           marginBottom='50px'
         >
           <Box flexGrow='4'>
-            <Image w='50%' src={LOGO_URL.imgURL} alt={LOGO_URL.alt} />
+            <Image w='50%' src='src/assets/images/NinjaMailLogo.svg' alt='Ninja Mail Logo' />
           </Box>
           <Box
             flexGrow='6'

@@ -1,10 +1,9 @@
 // Libraries
 import React, { FormEvent } from 'react';
-import { FormControl, FormLabel, Box, Text, Textarea, Select } from '@chakra-ui/react';
+import { FormControl, FormLabel, Box, Text, Textarea, Select, Button } from '@chakra-ui/react';
 
 // Components
 import InputComponent from '@components/Input';
-import Button from '@components/Button';
 import { Member } from '@models/index';
 
 interface IProps {
@@ -106,8 +105,12 @@ const FormComponent: React.FC<IProps> = ({
             justifyContent='flex-start'
             alignItems='flex-end'
           >
-            <Button isLoading={isLoading} label='Submit' type='submit' loadingText='Submitting' />
-            <Button label='Cancel' onClick={onCancel} isLoading={isLoading} />
+            <Button isLoading={isLoading} type='submit' loadingText='Submitting'>
+              Submit
+            </Button>
+            <Button onClick={onCancel} isLoading={isLoading}>
+              Cancel
+            </Button>
           </Box>
         </FormControl>
       </Box>

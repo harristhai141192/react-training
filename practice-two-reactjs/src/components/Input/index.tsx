@@ -41,6 +41,7 @@ const InputComponent: React.FC<IProps> = ({
       onChange={onChange}
       margin={margin}
       w={width}
+      data-testid='Input Test'
     />
     {error && (
       <Box display='flex' alignItems='flex-start' marginTop='10px' color='crimson'>

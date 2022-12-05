@@ -12,11 +12,4 @@ export namespace API {
   export enum HEADERS {
     'Content-Type' = 'application/json',
   }
-
-  export enum HTTP_METHODS {
-    GET = 'GET',
-    POST = 'POST',
-    DELETE = 'DELETE',
-    PUT = 'PUT',
-  }
 }

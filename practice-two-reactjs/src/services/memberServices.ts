@@ -1,5 +1,6 @@
 // Constants
 import { API } from '@constants/apis';
+import { HTTP_METHODS } from '@constants/httpMethods';
 
 // Models
 import { Member } from '@models/index';
@@ -7,10 +8,7 @@ import { Member } from '@models/index';
 //store
 import { ACTIONS } from '@store/actions';
 import { IActionProps } from '@store/reducer';
-import { getMemberHelper, memberActionHelper } from '@helpers/memberHelpers';
-
-import useMember from '../store/userContext';
-const { addMemberRequest, addMemberSuccess, addMemberFailure } = useMember();
+import { getAllMemberHelper, getMemberHelper } from '@helpers/memberHelpers';
 
 /**
  * Get all the item in DB
@@ -24,7 +22,7 @@ export const getMembers = async (url: string, dispatch: (action: IActionProps) =
   try {
     const response = await fetch(url);
     if (response.status == 200) {
-      return getMemberHelper(response, ACTIONS.MEMBER_REQUEST_SUCCESS, dispatch);
+      return getAllMemberHelper(response, ACTIONS.MEMBER_REQUEST_SUCCESS, dispatch);
     }
   } catch (e) {
     dispatch({ type: ACTIONS.MEMBER_REQUEST_FAILURE, data: { error: (e as Error).message } });
@@ -42,23 +40,20 @@ export const postMember = async (
   data: Member,
   dispatch: (action: IActionProps) => void,
 ) => {
-  // dispatch({
-  //   type: ACTIONS.ADD_MEMBER_REQUEST,
-  // });
-  addMemberRequest();
+  dispatch({
+    type: ACTIONS.ADD_MEMBER_REQUEST,
+  });
   try {
     const response = await fetch(url, {
-      method: API.HTTP_METHODS.POST,
+      method: HTTP_METHODS.POST,
       headers: API.HEADERS,
       body: JSON.stringify(data),
     });
     if (response.status == 201) {
-      // return memberActionHelper(response, ACTIONS.ADD_MEMBER_SUCCESS, dispatch);
-      await addMemberSuccess(response);
+      return getMemberHelper(response, ACTIONS.ADD_MEMBER_SUCCESS, dispatch);
     }
   } catch (e) {
-    // dispatch({ type: ACTIONS.ADD_MEMBER_FAILURE, data: { error: (e as Error).message } });
-    addMemberFailure(e as Error);
+    dispatch({ type: ACTIONS.ADD_MEMBER_FAILURE, data: { error: (e as Error).message } });
   }
 };
 
@@ -79,12 +74,12 @@ export const updateMember = async (
   });
   try {
     const response = await fetch(url, {
-      method: API.HTTP_METHODS.PUT,
+      method: HTTP_METHODS.PUT,
       headers: API.HEADERS,
       body: JSON.stringify(data),
     });
     if (response.status == 200) {
-      return memberActionHelper(response, ACTIONS.UPDATE_MEMBER_SUCCESS, dispatch);
+      return getMemberHelper(response, ACTIONS.UPDATE_MEMBER_SUCCESS, dispatch);
     }
   } catch (e) {
     dispatch({ type: ACTIONS.UPDATE_MEMBER_FAILURE, data: { error: (e as Error).message } });
@@ -106,11 +101,11 @@ export const removeMember = async (
   });
   try {
     const response = await fetch(url, {
-      method: API.HTTP_METHODS.DELETE,
+      method: HTTP_METHODS.DELETE,
       headers: API.HEADERS,
     });
     if (response.status == 200) {
-      return memberActionHelper(response, ACTIONS.DELETE_MEMBER_SUCCESS, dispatch);
+      return getMemberHelper(response, ACTIONS.DELETE_MEMBER_SUCCESS, dispatch);
     }
   } catch (e) {
     dispatch({ type: ACTIONS.DELETE_MEMBER_FAILURE, data: { error: (e as Error).message } });

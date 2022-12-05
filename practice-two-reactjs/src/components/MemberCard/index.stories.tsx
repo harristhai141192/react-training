@@ -1,5 +1,5 @@
 // Libs
-import Button from '@components/Button';
+import { Button } from '@chakra-ui/button';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
@@ -25,5 +25,9 @@ Default.args = {
     memberSince: '14/05/2021',
     dateOfBirth: '14/11/1992',
   },
-  children: <Button label='Edit' variant='outline' width='100%' marginRight='0' />,
+  children: (
+    <Button variant='outline' width='100%' marginRight='0'>
+      Edit
+    </Button>
+  ),
 };

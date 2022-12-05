@@ -1,6 +1,6 @@
 // Libraries
 import { useState, useEffect, useMemo, FormEvent } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Button } from '@chakra-ui/react';
 
 // Models
 import { Member } from '@models/index';
@@ -22,13 +22,14 @@ import { IInitialStateProps } from '@store/reducer';
 
 // Components
 import Card from '@components/Card';
-import Button from '@components/Button';
 import LoadingSpinner from '@components/LoadingSpinner';
 import InputComponent from '@components/Input';
 import ErrorBoundary from '@components/ErrorBoundary';
 import ModalFormComponent from '@components/ModalFormComponent';
 import ModalDeleteComponent from '@components/ModalDeleteComponent';
 import MemberCardDetail from '@components/MemberCardDetail';
+import { useDebounce } from '../../store/debounce';
+import { useCallback } from '@storybook/addons';
 
 const Detail = () => {
   const [isOpenDetail, setIsOpenDetail] = useState<boolean>(false);
@@ -37,6 +38,8 @@ const Detail = () => {
   const [currentId, setCurrentId] = useState<string>('');
   const [state, dispatch] = useMemberContext();
   const { members, loading }: IInitialStateProps = state;
+  const [value, setValue] = useState<string>('');
+  const debouncedValue = useDebounce<string>(value, 1000);
 
   // GET ALL THE MEMBER
   useEffect(() => {
@@ -103,10 +106,12 @@ const Detail = () => {
 
   const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTIONS.SEARCH_MEMBER_REQUEST });
-    const inputText = e.target.value.toLowerCase();
-
-    searchMember(dispatch, inputText);
+    setValue(e.target.value.toLowerCase());
   };
+
+  useEffect(() => {
+    searchMember(dispatch, value);
+  }, [debouncedValue]);
 
   // RENDER TITLE TO NOT BE RERENDERED
   const renderTitle = useMemo(() => {
@@ -136,12 +141,9 @@ const Detail = () => {
               <InputComponent width='30%' margin='0px 15px' onChange={handleOnSearch} />
             </Box>
           </Box>
-          <Button
-            marginBottom='30px'
-            label='+ Add A Member'
-            padding='10px 70px'
-            onClick={openAddForm}
-          />
+          <Button marginBottom='30px' padding='10px 70px' onClick={openAddForm}>
+            + Add a member
+          </Button>
         </Box>
 
         <Box display='flex' flexDirection='row' flexWrap='wrap'>

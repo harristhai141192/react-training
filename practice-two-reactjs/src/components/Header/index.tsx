@@ -1,16 +1,12 @@
 // Libraries
 import React, { memo } from 'react';
-import { Box, Container, Image, Link, ListItem, UnorderedList } from '@chakra-ui/react';
+import { Box, Container, Image, Link, ListItem, UnorderedList, Button } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
 import { widths } from '@themes/metrics';
 import { Link as LinkRouter } from 'react-router-dom';
 
-// Components
-import Button from '@components/Button';
-
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
-import { LOGO_URL } from '@constants/image';
 
 // Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
@@ -27,7 +23,6 @@ interface IProps {
 
 const Header: React.FC<IProps> = ({ onSignUpClick, footerInformationBar }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
-  // GENERATE KEY
   return (
     <Container as='header' margin='0 auto' w='100%'>
       <Box
@@ -40,15 +35,21 @@ const Header: React.FC<IProps> = ({ onSignUpClick, footerInformationBar }) => {
         <Box>
           <LinkRouter to={PAGE_ROUTES.HOME}>
             <Image
-              src={LOGO_URL.imgURL}
-              alt={LOGO_URL.alt}
+              src='src/assets/images/NinjaMailLogo.svg'
+              alt='Ninja Mail Logo'
               w={{ sm: widths.medium, md: widths.medium, lg: widths.large }}
             />
           </LinkRouter>
         </Box>
 
         <Box marginTop='5px' fontFamily='RalewayExtraBold'>
-          <UnorderedList listStyleType='none' display='flex' flexDirection='row' fontSize='12px'>
+          <UnorderedList
+            listStyleType='none'
+            display='flex'
+            flexDirection='row'
+            fontSize='12px'
+            alignItems='center'
+          >
             {isMobile ? (
               ''
             ) : (
@@ -69,7 +70,9 @@ const Header: React.FC<IProps> = ({ onSignUpClick, footerInformationBar }) => {
               </>
             )}
             <ListItem>
-              <Button onClick={onSignUpClick} variant='solid' label='Sign Up Free' />
+              <Button onClick={onSignUpClick} variant='solid'>
+                Sign Up Free
+              </Button>
             </ListItem>
           </UnorderedList>
         </Box>

@@ -1,7 +1,6 @@
 // Libraries
 import { Component, ReactNode } from 'react';
-import { Box, Text } from '@chakra-ui/react';
-import Button from '@components/Button';
+import { Box, Text, Button } from '@chakra-ui/react';
 
 type ErrorBoundaryState = {
   hasError: boolean;

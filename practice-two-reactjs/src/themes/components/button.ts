@@ -1,5 +1,6 @@
 import { widths, heights } from '@themes/metrics';
 import { colors } from '@themes/colors';
+import { fontSizes } from '@themes/typography';
 
 export const Button = {
   baseStyle: {
@@ -31,6 +32,7 @@ export const Button = {
 
   variants: {
     solid: {
+      width: { base: widths.small, md: widths.small, lg: widths.small },
       textTransform: 'uppercase',
       letterSpacing: '1.2px',
       fontFamily: 'RalewayExtraBold',
@@ -38,6 +40,11 @@ export const Button = {
       bg: colors.green[1000],
       color: 'white',
       _hover: { bg: colors.green[950], color: 'black' },
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
     },
 
     outline: {
@@ -49,6 +56,11 @@ export const Button = {
       borderRadius: '0px',
       borderColor: colors.green[1000],
       color: colors.green[1000],
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
       _hover: { bg: colors.green[950], color: 'black' },
     },
 
@@ -58,6 +70,11 @@ export const Button = {
       borderBottom: '3px solid',
       borderColor: colors.green[1000],
       borderRadius: '0px',
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
     },
 
     link: {
@@ -67,15 +84,26 @@ export const Button = {
       _hover: {
         color: colors.green[1000],
       },
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
     },
     unstyled: {
       letterSpacing: '1.2px',
       fontFamily: 'RalewayExtraBold',
       textTransform: 'uppercase',
       borderRadius: '0px',
+      padding: '0px 10px',
       bg: 'white',
       color: colors.green[1000],
       _hover: { bg: colors.green[950], color: 'black' },
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
     },
   },
 };
