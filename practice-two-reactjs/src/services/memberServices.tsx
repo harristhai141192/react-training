@@ -9,6 +9,9 @@ import { ACTIONS } from '@store/actions';
 import { IActionProps } from '@store/reducer';
 import { getMemberHelper, memberActionHelper } from '@helpers/memberHelpers';
 
+import useMember from '../store/userContext';
+const { addMemberRequest, addMemberSuccess, addMemberFailure } = useMember();
+
 /**
  * Get all the item in DB
  * @param url - Init an URL of item
@@ -39,9 +42,10 @@ export const postMember = async (
   data: Member,
   dispatch: (action: IActionProps) => void,
 ) => {
-  dispatch({
-    type: ACTIONS.ADD_MEMBER_REQUEST,
-  });
+  // dispatch({
+  //   type: ACTIONS.ADD_MEMBER_REQUEST,
+  // });
+  addMemberRequest();
   try {
     const response = await fetch(url, {
       method: API.HTTP_METHODS.POST,
@@ -49,10 +53,12 @@ export const postMember = async (
       body: JSON.stringify(data),
     });
     if (response.status == 201) {
-      return memberActionHelper(response, ACTIONS.ADD_MEMBER_SUCCESS, dispatch);
+      // return memberActionHelper(response, ACTIONS.ADD_MEMBER_SUCCESS, dispatch);
+      await addMemberSuccess(response);
     }
   } catch (e) {
-    dispatch({ type: ACTIONS.ADD_MEMBER_FAILURE, data: { error: (e as Error).message } });
+    // dispatch({ type: ACTIONS.ADD_MEMBER_FAILURE, data: { error: (e as Error).message } });
+    addMemberFailure(e as Error);
   }
 };
 
