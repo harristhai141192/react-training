@@ -1,0 +1,40 @@
+{
+  "name": "issues-management-application",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint:fix": "pnpx eslint ./src --fix",
+    "prepare": "cd .. && husky install issues-management-application/_",
+    "coverage": "pnpm test -- --coverage"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@pnpm/eslint-config": "^1.0.1",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "coverage": "^0.4.1",
+    "husky": "^8.0.2",
+    "prettier": "2.8.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  },
+  "lint-staged": {
+    "./**/*.{ts,tsx,json}": [
+      "pnpm lint:fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm lint:fix"
+    }
+  }
+}
