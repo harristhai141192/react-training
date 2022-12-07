@@ -1,0 +1,35 @@
+@font-face {
+  font-family: PlayFairRegular;
+  src: url(assets/fonts/PlayfairDisplay-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: PlayFairBold;
+  src: url(assets/fonts/PlayfairDisplay-Black.ttf);
+}
+
+@font-face {
+  font-family: RalewayExtraBold;
+  src: url(assets/fonts/Raleway-ExtraBold.ttf)
+}
+
+@font-face {
+  font-family: RalewayBold;
+  src: url(assets/fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+  font-family: RalewayLight;
+  src: url(assets/fonts/Raleway-VariableFont_wght.ttf);
+}
+
+:root {
+  font-family: PlayFairRegular;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  margin: 0 auto;
+  max-width: 1280px;
+  --main-color: #4ba87d;
+
+}

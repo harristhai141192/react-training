@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box component Component [Box] should match snapshot 1`] = `
+<div>
+  <div
+    class="css-769vxn"
+  >
+    <img
+      class="chakra-image css-1692r8a"
+    />
+    <div
+      class="css-r4358i"
+    >
+      <div
+        class="css-s71nyk"
+      >
+        <p
+          class="chakra-text css-h3mlpw"
+        />
+      </div>
+      <div
+        class="css-1odky6w"
+      >
+        <b
+          class="chakra-text css-1ulx5am"
+        >
+          Learn more 
+          &gt;
+        </b>
+      </div>
+    </div>
+  </div>
+</div>
+`;
