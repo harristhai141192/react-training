@@ -16,13 +16,12 @@ export const Button = {
         md: widths.small,
         xl: widths.small,
       },
-      height: { base: heights.tiny, md: heights.small, sm: heights.small },
+      height: { base: heights.tiny, md: heights.tiny, sm: heights.tiny },
     },
   },
 
   lg: {
     width: { base: widths.small, md: widths.medium, lg: widths.large },
-    height: '40px',
   },
 
   md: {
@@ -32,68 +31,14 @@ export const Button = {
 
   variants: {
     solid: {
-      width: { base: widths.small, md: widths.small, lg: widths.small },
-      textTransform: 'uppercase',
+      width: { base: widths.extraSmall, md: widths.extraSmall, lg: widths.extraSmall },
       letterSpacing: '1.2px',
-      borderRadius: '0px',
-      bg: colors.green[1000],
+      height: '35px',
+      borderRadius: '10px',
+      border: '1px solid grey',
+      bg: colors.buttonSuccess,
       color: 'white',
-      _hover: { bg: colors.green[950], color: 'black' },
-      fontSize: {
-        sm: fontSizes.text.small,
-        md: fontSizes.text.small,
-        lg: fontSizes.text.small,
-      },
-    },
-
-    outline: {
-      letterSpacing: '1.2px',
-      textTransform: 'uppercase',
-      bg: 'white',
-      border: `1.5px solid`,
-      borderRadius: '0px',
-      borderColor: colors.green[1000],
-      color: colors.green[1000],
-      fontSize: {
-        sm: fontSizes.text.small,
-        md: fontSizes.text.small,
-        lg: fontSizes.text.small,
-      },
-      _hover: { bg: colors.green[950], color: 'black' },
-    },
-
-    ghost: {
-      textTransform: 'uppercase',
-      borderBottom: '3px solid',
-      borderColor: colors.green[1000],
-      borderRadius: '0px',
-      fontSize: {
-        sm: fontSizes.text.small,
-        md: fontSizes.text.small,
-        lg: fontSizes.text.small,
-      },
-    },
-
-    link: {
-      color: 'black',
-      borderRadius: '0px',
-      _hover: {
-        color: colors.green[1000],
-      },
-      fontSize: {
-        sm: fontSizes.text.small,
-        md: fontSizes.text.small,
-        lg: fontSizes.text.small,
-      },
-    },
-    unstyled: {
-      letterSpacing: '1.2px',
-      textTransform: 'uppercase',
-      borderRadius: '0px',
-      padding: '0px 10px',
-      bg: 'white',
-      color: colors.green[1000],
-      _hover: { bg: colors.green[950], color: 'black' },
+      _hover: { bg: 'lightgrey', color: 'black' },
       fontSize: {
         sm: fontSizes.text.small,
         md: fontSizes.text.small,

@@ -5,4 +5,6 @@ export const colors = {
   textDescriptionColor: '#57606a',
   borderBoxComment: '#a3dcff',
   borderCommentBox: 'rgba(84,174,255,0.4)',
+  backgroundGreyBox: '#F7F7F8',
+  buttonSuccess: '#2da44e',
 };
