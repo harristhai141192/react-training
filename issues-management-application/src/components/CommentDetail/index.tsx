@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Text, Image } from '@chakra-ui/react';
+import { Box, Text, Image, theme } from '@chakra-ui/react';
+import themes from '@themes/index';
 
 interface IProps {
   userImage?: string;
@@ -9,7 +10,7 @@ interface IProps {
   userComment?: string;
 }
 
-const CommentDetail: React.FC<IProps> = ({
+const CommentBox: React.FC<IProps> = ({
   userName,
   userCommentTime,
   userComment,
@@ -29,8 +30,16 @@ const CommentDetail: React.FC<IProps> = ({
           border='1px solid lightgrey'
         />
       </Box>
-      <Box border='1px solid #b6e3ff' w={{ sm: '85%', md: '95%' }} borderRadius='7px'>
-        <Box bgColor='#d0edff' borderBottom='1px solid #b6e3ff' borderTopRadius='6px'>
+      <Box
+        border={`1px solid ${themes.colors.titleColor}`}
+        w={{ sm: '85%', md: '95%' }}
+        borderRadius='7px'
+      >
+        <Box
+          bgColor='#d0edff'
+          borderBottom={`1px solid ${themes.colors.titleColor}`}
+          borderTopRadius='6px'
+        >
           <Text
             fontSize={{ sm: 'text.small', md: 'text.medium' }}
             margin='0'
@@ -39,7 +48,7 @@ const CommentDetail: React.FC<IProps> = ({
             flexDirection='row'
           >
             <Text as='b'>{userName}</Text>
-            <Text margin='0' color='#57606a'>
+            <Text margin='0' color={themes.colors.textDescriptionColor}>
               &nbsp; commented {userCommentTime} ago
             </Text>
           </Text>
@@ -52,4 +61,4 @@ const CommentDetail: React.FC<IProps> = ({
   );
 };
 
-export default CommentDetail;
+export default CommentBox;
