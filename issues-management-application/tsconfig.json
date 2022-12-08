@@ -14,8 +14,25 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@pages/*": ["src/pages/*"],
+      "@models/*": ["src/models/*"],
+      "@themes/*": ["src/themes/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@apis/*": ["src/apis/*"],
+      "@layout/*": ["layouts/*"],
+      "@mockData/*": ["src/mockData/*"],
+      "@store/*": ["src/store/*"],
+      "@helpers/*": ["src/helpers/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "layouts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

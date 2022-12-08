@@ -1,11 +1,8 @@
-import './App.css';
+import { ChakraProvider } from '@chakra-ui/react';
+import themes from './themes';
 
 function App() {
-  return (
-    <div className='App'>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-    </div>
-  );
+  return <ChakraProvider theme={themes} resetCSS={true}></ChakraProvider>;
 }
 
 export default App;

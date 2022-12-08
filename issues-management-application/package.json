@@ -2,7 +2,6 @@
   "name": "issues-management-application",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,7 +9,8 @@
     "lint:fix": "pnpx eslint ./src --fix",
     "prepare": "cd .. && husky install issues-management-application/_",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -32,6 +32,7 @@
     "@storybook/builder-vite": "^0.2.5",
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.2.2",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
