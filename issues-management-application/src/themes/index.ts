@@ -6,6 +6,7 @@ import { colors } from './colors';
 import { Button, Container } from '@themes/components';
 
 import { fontSizes, fontWeights, lineHeights } from './typography';
+import { border, borderBottom } from './border';
 
 const themes = extendTheme({
   config: {
@@ -21,6 +22,8 @@ const themes = extendTheme({
       },
     },
   },
+  borderBottom,
+  border,
   colors,
   breakpoints,
   fontWeights,

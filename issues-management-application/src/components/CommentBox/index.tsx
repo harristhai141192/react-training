@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Image, theme } from '@chakra-ui/react';
+import { Box, Text, Image } from '@chakra-ui/react';
 import themes from '@themes/index';
 
 interface IProps {
@@ -31,26 +31,23 @@ const CommentBox: React.FC<IProps> = ({
         />
       </Box>
       <Box
-        border={`1px solid ${themes.colors.titleColor}`}
+        border={`1px solid ${themes.colors.borderCommentBox}`}
         w={{ sm: '85%', md: '95%' }}
         borderRadius='7px'
       >
         <Box
-          bgColor='#d0edff'
-          borderBottom={`1px solid ${themes.colors.titleColor}`}
+          bgColor='boxCommentColor'
+          borderBottom={`1px solid ${themes.colors.borderCommentBox}`}
           borderTopRadius='6px'
+          fontSize={{ sm: 'text.small', md: 'text.medium' }}
+          margin='0'
+          padding='5px 15px'
+          display='flex'
+          flexDirection='row'
         >
-          <Text
-            fontSize={{ sm: 'text.small', md: 'text.medium' }}
-            margin='0'
-            padding='5px 15px'
-            display='flex'
-            flexDirection='row'
-          >
-            <Text as='b'>{userName}</Text>
-            <Text margin='0' color={themes.colors.textDescriptionColor}>
-              &nbsp; commented {userCommentTime} ago
-            </Text>
+          <Text as='b'>{userName}</Text>
+          <Text margin='0' color='textDescriptionColor'>
+            &nbsp; commented {userCommentTime} ago
           </Text>
         </Box>
         <Box padding='10px 15px' fontSize={{ sm: 'text.small', md: 'text.medium' }}>
