@@ -1,4 +1,4 @@
-import { render, getByText } from '@utils/testUtils';
+import { render, getByText, getByTestId } from '@utils/testUtils';
 import Status from '..';
 
 const baseProps = {
@@ -29,5 +29,12 @@ describe('Component [Status] testing: ', () => {
     const { container } = setup({ isOpen: false });
     const getStatusIsOpen = getByText(container, 'Closed');
     expect(getStatusIsOpen).toBeTruthy;
+  });
+
+  test('It should render right color', () => {
+    const { container } = setup();
+    expect(getByTestId(container, 'statusLabel')).toHaveStyle(
+      'background-color: var(--chakra-colors-statusColor-purple)',
+    );
   });
 });

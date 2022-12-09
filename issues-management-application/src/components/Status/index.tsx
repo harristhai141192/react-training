@@ -13,6 +13,7 @@ const Status: React.FC<IProps> = ({ isOpen = false }) => {
       padding='5px 15px'
       borderRadius='55px'
       color='white'
+      data-testid='statusLabel'
     >
       {isOpen ? (
         <Box display='flex' flexDirection='row' alignItems='center'>
