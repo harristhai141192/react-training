@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import AddCommentBox from '@components/AddCommentBox';
+import FeatureBar from '@components/FeatureBar';
 import themes from './themes';
 
 function App() {
@@ -7,10 +7,7 @@ function App() {
 
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
-      <AddCommentBox
-        userImage='https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg'
-        imageAlt='This is member Image'
-      />
+      <FeatureBar />
     </ChakraProvider>
   );
 }
