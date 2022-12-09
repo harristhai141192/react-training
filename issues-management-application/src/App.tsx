@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import Status from '@components/Status';
+import Issue from '@components/Issue';
 import themes from './themes';
 
 function App() {
@@ -7,7 +7,13 @@ function App() {
 
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
-      <Status isOpen={false} />
+      <Issue
+        issueName='Controlling the air plan thru the bad weather!'
+        issueId='1'
+        issueStatus={false}
+        issueCreatedTime='2022/12/12'
+        issueAuthor='BaoThai'
+      />
     </ChakraProvider>
   );
 }
