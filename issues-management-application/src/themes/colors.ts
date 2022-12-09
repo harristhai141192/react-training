@@ -7,4 +7,5 @@ export const colors = {
   borderCommentBox: 'rgba(84,174,255,0.4)',
   backgroundGreyBox: '#F7F7F8',
   buttonSuccess: '#2da44e',
+  statusColor: { purple: '#8250df', green: '#2da44e' },
 };
