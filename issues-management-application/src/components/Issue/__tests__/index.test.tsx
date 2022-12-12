@@ -42,9 +42,7 @@ describe('Component [Issue] testing: ', () => {
     const handleOnCheck = jest.fn();
     const { container } = setup({ onChangeChecked: handleOnCheck });
     const checkbox = getByTestId(container, 'checkIssue');
-    expect(checkbox).toEqual(false);
     fireEvent.click(checkbox);
-    expect;
-    expect(handleOnCheck);
+    expect(handleOnCheck).toBeCalled();
   });
 });

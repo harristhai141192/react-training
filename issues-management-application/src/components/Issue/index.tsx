@@ -21,7 +21,7 @@ const Issue: React.FC<IProps> = ({
 }) => {
   return (
     <Box display='flex' flexDirection='row' h='100px' w='100%'>
-      <Box marginTop='3px' marginRight='10px'>
+      <Box marginTop='3px' marginRight='10px' data-testid='checkBoxTestId'>
         <Checkbox onChange={onChangeChecked} size='sm' data-testid='checkIssue' />
       </Box>
       <Box>
