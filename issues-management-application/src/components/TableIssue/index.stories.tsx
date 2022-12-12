@@ -3,7 +3,7 @@ import { IssueModel } from '@models/index';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import TableIssue from '..';
+import TableIssue from '.';
 
 export default {
   title: 'Components/TableIssue',
