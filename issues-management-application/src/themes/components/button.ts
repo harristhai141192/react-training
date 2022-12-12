@@ -45,5 +45,21 @@ export const Button = {
         lg: fontSizes.text.small,
       },
     },
+    link: {
+      justifyContent: 'flex-start',
+      color: 'black',
+      margin: '10px 5px',
+      border: 'none',
+      width: { base: widths.extraSmall, md: widths.extraSmall, lg: widths.extraSmall },
+      padding: 0,
+      _hover: { bg: 'none', border: 'none', color: '#0969da', textDecoration: 'none' },
+      _focus: { border: 'none', outline: 'none' },
+      _focusVisible: { border: 'none', outline: 'none' },
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
+    },
   },
 };
