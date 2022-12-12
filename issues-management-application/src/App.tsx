@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import FeatureBar from '@components/FeatureBar';
+import Status from '@components/Status';
 import themes from './themes';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
-      <FeatureBar />
+      <Status isOpen={false} />
     </ChakraProvider>
   );
 }
