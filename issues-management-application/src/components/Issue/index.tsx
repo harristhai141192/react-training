@@ -20,12 +20,12 @@ const Issue: React.FC<IProps> = ({
   issueAuthor,
 }) => {
   return (
-    <Box display='flex' flexDirection='row' h='100px' w='100%'>
-      <Box marginTop='3px' marginRight='10px' data-testid='checkBoxTestId'>
+    <Box display='flex' flexDirection='row' h='100%' w='100%' marginLeft='5px'>
+      <Box marginTop='3px' marginRight='10px'>
         <Checkbox onChange={onChangeChecked} size='sm' data-testid='checkIssue' />
       </Box>
       <Box>
-        <Box display='flex' flexDirection='row' alignItems='center'>
+        <Box display='flex' flexDirection='row' alignItems='center' fontSize='text.medium'>
           <FiDisc color={issueStatus ? 'cadetblue' : 'darkviolet'} data-testid='labelIssue' />
           <Text as='b' alignItems='flex-start' marginLeft='8px' fontSize='text.small'>
             {issueName}
