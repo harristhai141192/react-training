@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import TableIssue from '@components/TableIssue';
+import Table from '@components/Table';
 import { IssueModel } from './models';
 import themes from './themes';
 
@@ -13,7 +13,7 @@ function App() {
   };
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
-      <TableIssue issue={[testIssue, testIssue, testIssue]} />
+      <Table issue={[testIssue, testIssue, testIssue]} />
     </ChakraProvider>
   );
 }

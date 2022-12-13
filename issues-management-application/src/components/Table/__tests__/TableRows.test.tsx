@@ -1,4 +1,4 @@
-import TableRow from '..';
+import TableRow from '../TableRows';
 import { render } from '@utils/testUtils';
 import Issue from '@components/Issue';
 import { Table } from '@chakra-ui/react';

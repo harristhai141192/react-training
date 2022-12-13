@@ -1,5 +1,6 @@
-import TableIssue from '..';
+import TableHead from '../TableHead';
 import { render, getByText } from '@utils/testUtils';
+import { Table } from '@chakra-ui/react';
 
 const baseProps = {
   issue: [
@@ -11,6 +12,8 @@ const baseProps = {
       issueStatus: false,
     },
   ],
+  numberOfOpenedIssue: 1,
+  numberOfClosedIssue: 2,
 };
 
 const setup = (overrideProps = {}) => {
@@ -18,10 +21,14 @@ const setup = (overrideProps = {}) => {
     ...baseProps,
     ...overrideProps,
   };
-  return render(<TableIssue {...props} />);
+  return render(
+    <Table>
+      <TableHead {...props} />
+    </Table>,
+  );
 };
 
-describe('Component [Table Issue] testing: ', () => {
+describe('Component [Table Head] testing: ', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -42,9 +49,11 @@ describe('Component [Table Issue] testing: ', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('It should render table right', () => {
+  test('It should render right number ò opened issue and closed issue', () => {
     const { container } = setup();
-    const getIssueName = getByText(container, 'This is sample issue for testing');
-    expect(getIssueName).toBeTruthy;
+    const getOpenedIssue = getByText(container, '1 Opened');
+    expect(getOpenedIssue).toBeTruthy;
+    const getClosedIssue = getByText(container, '2 Closed');
+    expect(getClosedIssue).toBeTruthy;
   });
 });

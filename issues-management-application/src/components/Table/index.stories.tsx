@@ -3,15 +3,15 @@ import { IssueModel } from '@models/index';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import TableIssue from '.';
+import Table from '.';
 
 export default {
-  title: 'Components/TableIssue',
-  component: TableIssue,
+  title: 'Components/Table',
+  component: Table,
   argTypes: {},
-} as ComponentMeta<typeof TableIssue>;
+} as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof TableIssue> = (args) => <TableIssue {...args} />;
+const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 const issueData: IssueModel = {
   issueId: '1',
   issueName: 'This is sample issue for testing',
