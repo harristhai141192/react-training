@@ -33,7 +33,7 @@ export const Button = {
     solid: {
       width: { base: widths.extraSmall, md: widths.extraSmall, lg: widths.extraSmall },
       letterSpacing: '1.2px',
-      height: '35px',
+      height: '30px',
       borderRadius: '10px',
       border: '1px solid grey',
       bg: colors.buttonSuccess,
@@ -55,6 +55,19 @@ export const Button = {
       _hover: { bg: 'none', border: 'none', color: '#0969da', textDecoration: 'none' },
       _focus: { border: 'none', outline: 'none' },
       _focusVisible: { border: 'none', outline: 'none' },
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
+    },
+    ghost: {
+      width: '100%',
+      letterSpacing: '1.2px',
+      height: '30px',
+      borderRadius: '5px',
+      border: '1px solid lightgrey',
+      bgColor: colors.backgroundInputBox,
       fontSize: {
         sm: fontSizes.text.small,
         md: fontSizes.text.small,

@@ -2,11 +2,13 @@ import { render, getByText, getByTestId, fireEvent } from '@utils/testUtils';
 import Issue from '..';
 
 const baseProps = {
-  issueName: 'Controlling the air plan thru the bad weather!',
-  issueId: '1',
-  issueStatus: false,
-  issueCreatedTime: '2022/12/12',
-  issueAuthor: 'BaoThai',
+  issue: {
+    issueName: 'Controlling the air plan thru the bad weather!',
+    issueId: '1',
+    issueStatus: false,
+    issueCreatedTime: '2022/12/12',
+    issueAuthor: 'BaoThai',
+  },
 };
 
 const setup = (overrideProps = {}) => {
