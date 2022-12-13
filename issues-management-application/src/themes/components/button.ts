@@ -61,5 +61,18 @@ export const Button = {
         lg: fontSizes.text.small,
       },
     },
+    ghost: {
+      width: '100%',
+      letterSpacing: '1.2px',
+      height: '30px',
+      borderRadius: '5px',
+      border: '1px solid lightgrey',
+      bgColor: colors.backgroundInputBox,
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
+    },
   },
 };
