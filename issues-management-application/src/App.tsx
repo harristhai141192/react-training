@@ -1,19 +1,19 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import Issue from '@components/Issue';
+import Table from '@components/Table';
+import { IssueModel } from './models';
 import themes from './themes';
 
 function App() {
-  console.log('themes', themes.colors.titleColor);
-
+  const testIssue: IssueModel = {
+    issueId: '1',
+    issueName: 'This is sample issue for testing',
+    issueAuthor: 'Bao Thai',
+    issueCreatedTime: '12/12/2022',
+    issueStatus: false,
+  };
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
-      <Issue
-        issueName='Controlling the air plan thru the bad weather!'
-        issueId='1'
-        issueStatus={false}
-        issueCreatedTime='2022/12/12'
-        issueAuthor='BaoThai'
-      />
+      <Table issue={[testIssue, testIssue, testIssue]} />
     </ChakraProvider>
   );
 }

@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { Box, Image, Text, Textarea, Button, FormControl } from '@chakra-ui/react';
 import themes from '@themes/index';
 

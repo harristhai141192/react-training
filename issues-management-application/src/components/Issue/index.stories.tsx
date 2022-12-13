@@ -14,9 +14,11 @@ const Template: ComponentStory<typeof Issue> = (args) => <Issue {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  issueName: 'Controlling the air plan thru the bad weather!',
-  issueId: '1',
-  issueStatus: false,
-  issueCreatedTime: '2022/12/12',
-  issueAuthor: 'BaoThai',
+  issue: {
+    issueName: 'Controlling the air plan thru the bad weather!',
+    issueId: '1',
+    issueStatus: false,
+    issueCreatedTime: '2022/12/12',
+    issueAuthor: 'BaoThai',
+  },
 };
