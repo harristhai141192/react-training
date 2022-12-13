@@ -21,6 +21,13 @@ describe('Component [Modal Issue] testing: ', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('Closed button modal should be triggered when clicked', () => {
+    const handleClose = jest.fn();
+    const { getByText } = setup({ isOpen: true, onClose: handleClose });
+    fireEvent.click(getByText('X'));
+    expect(handleClose).toBeCalled();
+  });
+
   test('Modal should be open when set open equal true', () => {
     const { getByText } = setup({ isOpen: true });
     expect(getByText('Lock conversation')).toBeTruthy;

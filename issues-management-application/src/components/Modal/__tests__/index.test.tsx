@@ -29,6 +29,13 @@ describe('Component [Modal] testing: ', () => {
     expect(getByText('This is body')).toBeTruthy;
   });
 
+  test('Closed button modal should be triggered when clicked', () => {
+    const handleClose = jest.fn();
+    const { getByText } = setup({ isOpen: true, onClose: handleClose });
+    fireEvent.click(getByText('X'));
+    expect(handleClose).toBeCalled();
+  });
+
   test('Modal button submit should be triggered', () => {
     const handleSubmit = jest.fn();
     const { getByText } = setup({ isOpen: true, onSubmit: handleSubmit });

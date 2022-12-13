@@ -37,7 +37,9 @@ const Modal: React.FC<IProps> = ({ title, children, isOpen = false, onClose, onS
               <Text padding='15px' fontSize='text.medium' as='b'>
                 {title}
               </Text>
-              <ModalCloseButton size='sm' marginTop='5px' />
+              <ModalCloseButton size='sm' marginTop='5px'>
+                X
+              </ModalCloseButton>
             </Box>
           </ModalHeader>
           <ModalBody>{children}</ModalBody>
