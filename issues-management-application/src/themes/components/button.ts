@@ -33,7 +33,7 @@ export const Button = {
     solid: {
       width: { base: widths.extraSmall, md: widths.extraSmall, lg: widths.extraSmall },
       letterSpacing: '1.2px',
-      height: '35px',
+      height: '30px',
       borderRadius: '10px',
       border: '1px solid grey',
       bg: colors.buttonSuccess,

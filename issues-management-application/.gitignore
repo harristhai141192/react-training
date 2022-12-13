@@ -8,9 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+coverage
 dist
 dist-ssr
 *.local
+*.test.tsx.snap
+src/components/*/__tests__/__snapshots__
 
 # Editor directories and files
 .vscode/*
