@@ -28,18 +28,13 @@ describe('Component [Feature Bar] testing: ', () => {
 
   test('Feature buttons should be triggered when onClick', () => {
     const handleOnUnLock = jest.fn();
-    const handleOnLock = jest.fn();
     const handleOnEdit = jest.fn();
     const handleOnDelete = jest.fn();
     const { getByText } = setup({
-      onLockIssue: handleOnLock,
       onUnLockIssue: handleOnUnLock,
       onEditIssue: handleOnEdit,
       onDeleteIssue: handleOnDelete,
     });
-
-    fireEvent.click(getByText('Lock conversation'));
-    expect(handleOnLock).toBeCalled();
 
     fireEvent.click(getByText('Unlock Issue'));
     expect(handleOnUnLock).toBeCalled();

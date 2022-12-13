@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { Box, Image, Text, Textarea, Button, FormControl } from '@chakra-ui/react';
 import themes from '@themes/index';
 
@@ -22,14 +22,10 @@ const AddCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
           border='1px solid lightgrey'
         />
       </Box>
-      <Box
-        border={`1px solid ${themes.colors.borderCommentBox}`}
-        w={{ sm: '85%', md: '95%' }}
-        borderRadius='7px'
-      >
+      <Box border='1px solid lightgrey' w={{ sm: '85%', md: '95%' }} borderRadius='7px'>
         <Box
-          bgColor='boxCommentColor'
-          borderBottom={`1px solid ${themes.colors.borderCommentBox}`}
+          bgColor='white'
+          borderBottom='1px solid lightgrey'
           borderTopRadius='6px'
           fontSize={{ sm: 'text.small', md: 'text.medium' }}
           margin='0'
@@ -41,7 +37,11 @@ const AddCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
         </Box>
         <Box padding='5px' fontSize={{ sm: 'text.small', md: 'text.medium' }}>
           <FormControl display='flex' flexDirection='column' alignItems='end'>
-            <Textarea bgColor='backgroundGreyBox'></Textarea>
+            <Textarea
+              bgColor='backgroundInputBox'
+              border='1px solid lightGrey !important'
+              placeholder='Leave a comment'
+            />
             <Button variant='solid' onClick={onClick} marginTop='15px'>
               Comment
             </Button>
