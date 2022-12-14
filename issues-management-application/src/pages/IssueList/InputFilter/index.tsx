@@ -10,7 +10,12 @@ const inputFilter: React.FC<IProps> = ({ onChange }) => {
     <Box padding='20px 0px' w={{ sm: '100%', md: '60%' }}>
       <InputGroup size='sm'>
         <InputLeftAddon>Filter</InputLeftAddon>
-        <Input type='text' placeholder='Type issue name' onChange={onChange} />
+        <Input
+          aria-label='inputFilter'
+          type='text'
+          placeholder='Type issue name'
+          onChange={onChange}
+        />
       </InputGroup>
     </Box>
   );
