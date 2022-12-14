@@ -9,4 +9,5 @@ export const colors = {
   buttonSuccess: '#2da44e',
   statusColor: { purple: '#8250df', green: '#2da44e' },
   backgroundInputBox: 'whitesmoke',
+  backgroundHeader: '#24292f',
 };
