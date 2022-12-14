@@ -1,11 +1,11 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import ModalIssue from '@components/ModalIssue';
+import Layout from './layout';
 import themes from './themes';
 
 function App() {
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
-      <ModalIssue />
+      <Layout></Layout>
     </ChakraProvider>
   );
 }
