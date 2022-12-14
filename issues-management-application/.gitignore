@@ -14,6 +14,8 @@ dist-ssr
 *.local
 *.test.tsx.snap
 src/components/*/__tests__/__snapshots__
+src/pages/*/__tests__/__snapshots__
+src/pages/*/*/__tests__/__snapshots__
 
 # Editor directories and files
 .vscode/*

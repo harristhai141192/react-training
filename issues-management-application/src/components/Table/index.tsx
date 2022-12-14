@@ -20,8 +20,13 @@ const Table: React.FC<IProps> = ({ issue }) => {
   const numberIssueOpened = issue.length - numberIssueClosed;
 
   return (
-    <TableContainer>
-      <TableChakra variant='simple' w={{ sm: '500px', md: '1000px' }}>
+    <TableContainer
+      border='1px solid lightgrey'
+      bgColor='mainBackground'
+      borderRadius='5px'
+      w='100%'
+    >
+      <TableChakra variant='simple'>
         <Thead>
           <TableHead
             issue={issue}
@@ -30,13 +35,14 @@ const Table: React.FC<IProps> = ({ issue }) => {
           />
         </Thead>
         <Tbody>
-          {issue.map((item) => {
-            return (
-              <TableRows key={generateKey()}>
-                <Issue issue={item} />
-              </TableRows>
-            );
-          })}
+          {issue &&
+            issue.map((item) => {
+              return (
+                <TableRows key={generateKey()}>
+                  <Issue issue={item} />
+                </TableRows>
+              );
+            })}
         </Tbody>
       </TableChakra>
     </TableContainer>
