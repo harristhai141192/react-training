@@ -28,10 +28,4 @@ describe('Page [MenuBar] testing: ', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();
   });
-
-  test('It should render Menu list', () => {
-    const { container } = setup();
-    const getMenu = getByText(container, 'Settings');
-    expect(getMenu).toBeTruthy;
-  });
 });

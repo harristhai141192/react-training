@@ -1,5 +1,5 @@
 import Add from '..';
-import { render, getByText } from '@utils/testUtils';
+import { render } from '@utils/testUtils';
 
 const setup = (overrideProps = {}) => {
   const props = {
