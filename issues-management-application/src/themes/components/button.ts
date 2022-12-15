@@ -74,5 +74,18 @@ export const Button = {
         lg: fontSizes.text.small,
       },
     },
+    unstyled: {
+      width: '100%',
+      letterSpacing: '1.2px',
+      padding: '5px 25px',
+      margin: '5px',
+      borderRadius: '5px',
+      _hover: { bg: 'lightgrey', border: 'none', textDecoration: 'none' },
+      fontSize: {
+        sm: fontSizes.text.small,
+        md: fontSizes.text.small,
+        lg: fontSizes.text.small,
+      },
+    },
   },
 };
