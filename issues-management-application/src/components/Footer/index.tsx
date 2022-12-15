@@ -14,14 +14,14 @@ const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
 
   return (
-    <Container as='footer'>
+    <Container as='footer' maxW='8xl'>
       <Box
         display='flex'
         flexDirection='row'
         alignItems='center'
         borderTop='1px solid black'
-        marginTop='15px'
-        paddingTop='15px'
+        marginTop='30px'
+        padding='15px'
         fontSize='text.small'
         justifyContent='space-between'
       >

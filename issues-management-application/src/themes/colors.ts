@@ -10,4 +10,5 @@ export const colors = {
   statusColor: { purple: '#8250df', green: '#2da44e' },
   backgroundInputBox: 'whitesmoke',
   backgroundHeader: '#24292f',
+  mainBackground: '#f6f8fa',
 };
