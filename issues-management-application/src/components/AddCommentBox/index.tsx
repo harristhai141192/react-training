@@ -9,7 +9,7 @@ interface IProps {
 
 const AddCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
   return (
-    <Box display='flex' flexDirection='row' textAlign='left'>
+    <Box display='flex' flexDirection='row' textAlign='left' marginTop='20px'>
       <Box w={{ sm: '15%', md: '70px' }} paddingRight='5px' display='flex' justifyContent='center'>
         <Image
           w='50px'

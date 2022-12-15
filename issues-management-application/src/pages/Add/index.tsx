@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
 import CreatedIssue from '@components/CreatedIssue';
-import MenuBar from './MenuBar';
-import RightBar from './RightBar';
+import MenuBar from '@components/MenuBar';
+import RightBar from '@components/RightBar';
 
 const Add = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
