@@ -3,7 +3,7 @@ import { Box, Text } from '@chakra-ui/react';
 import { FiDisc, FiCheckCircle } from 'react-icons/fi';
 
 interface IProps {
-  isOpen: boolean;
+  isOpen?: boolean;
 }
 
 const Status: React.FC<IProps> = ({ isOpen = false }) => {
@@ -13,6 +13,7 @@ const Status: React.FC<IProps> = ({ isOpen = false }) => {
       padding='5px 15px'
       borderRadius='55px'
       color='white'
+      width='100px'
       data-testid='statusLabel'
     >
       {isOpen ? (
