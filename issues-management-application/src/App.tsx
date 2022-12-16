@@ -5,6 +5,8 @@ import themes from './themes';
 import IssueList from '@pages/IssueList';
 import Add from '@pages/Add';
 import Detail from '@pages/Detail';
+import { IssueProvider } from './stores/Issue/context';
+import { CommentProvider } from './stores/Comment/context';
 
 const test = {
   issueId: '1',
@@ -33,15 +35,19 @@ function App() {
   return (
     <ChakraProvider theme={themes} resetCSS={true}>
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route>
-              <Route index element={<IssueList />} />
-              <Route path='/add' element={<Add />} />
-              <Route path='/detail' element={<Detail issue={test} />} />
-            </Route>
-          </Routes>
-        </Layout>
+        <IssueProvider>
+          <CommentProvider>
+            <Layout>
+              <Routes>
+                <Route>
+                  <Route index element={<IssueList />} />
+                  <Route path='/add' element={<Add />} />
+                  <Route path='/detail' element={<Detail issue={test} />} />
+                </Route>
+              </Routes>
+            </Layout>
+          </CommentProvider>
+        </IssueProvider>
       </BrowserRouter>
     </ChakraProvider>
   );

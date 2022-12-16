@@ -1,4 +1,4 @@
-interface comment {
+export interface IComment {
   comment?: string;
   commentTime?: string;
 }
@@ -10,7 +10,7 @@ export class IssueModel {
   issueCreatedTime?: string;
   issueAuthor?: string;
   onChangeChecked?: () => void;
-  issueComment?: comment[];
+  issueComment?: IComment[];
 
   constructor(issue: IssueModel) {
     this.issueId = issue.issueId;
