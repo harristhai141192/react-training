@@ -35,18 +35,18 @@ export type ICommentActionProps =
 
 const commentReducer = (state: ICommentStateProps = commentState, actions: ICommentActionProps) => {
   switch (actions.type) {
-    case COMMENT_ACTIONS.COMMENT_GET:
+    case COMMENT_ACTIONS.GET_COMMENT:
       return {
         ...state,
       };
 
-    case COMMENT_ACTIONS.COMMENT_GET_SUCCESS:
+    case COMMENT_ACTIONS.GET_COMMENT_SUCCESS:
       return {
         ...state,
         COMMENT_ACTIONS: actions.data.comment,
       };
 
-    case COMMENT_ACTIONS.COMMENT_GET_FAILURE:
+    case COMMENT_ACTIONS.GET_COMMENT_FAILURE:
       return {
         ...state,
         error: actions.data.error,

@@ -3,16 +3,16 @@ import { COMMENT_ACTIONS } from '@constants/actions';
 import { IComment } from '@models/index';
 
 export interface RequestCommentAction {
-  type: COMMENT_ACTIONS.COMMENT_GET;
+  type: COMMENT_ACTIONS.GET_COMMENT;
 }
 
 export interface SuccessRequestCommentAction {
-  type: COMMENT_ACTIONS.COMMENT_GET_SUCCESS;
+  type: COMMENT_ACTIONS.GET_COMMENT_SUCCESS;
   data: { comment: IComment[] };
 }
 
 export interface FailedRequestCommentAction {
-  type: COMMENT_ACTIONS.COMMENT_GET_FAILURE;
+  type: COMMENT_ACTIONS.GET_COMMENT_FAILURE;
   data: { error: string };
 }
 

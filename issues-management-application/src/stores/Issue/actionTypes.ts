@@ -3,16 +3,16 @@ import { ISSUE_ACTIONS } from '@constants/actions';
 import { IssueModel } from '@models/index';
 
 export interface RequestIssueAction {
-  type: ISSUE_ACTIONS.ISSUE_GET;
+  type: ISSUE_ACTIONS.GET_ISSUE;
 }
 
 export interface SuccessRequestIssueAction {
-  type: ISSUE_ACTIONS.ISSUE_GET_SUCCESS;
+  type: ISSUE_ACTIONS.GET_ISSUE_SUCCESS;
   data: { issue: IssueModel[] };
 }
 
 export interface FailedRequestIssueAction {
-  type: ISSUE_ACTIONS.ISSUE_GET_FAILURE;
+  type: ISSUE_ACTIONS.GET_ISSUE_FAILURE;
   data: { error: string };
 }
 

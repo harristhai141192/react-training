@@ -52,12 +52,12 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
   console.log('actions', actions.type);
 
   switch (actions.type) {
-    case ISSUE_ACTIONS.ISSUE_GET:
+    case ISSUE_ACTIONS.GET_ISSUE:
       return {
         ...state,
         loading: true,
       };
-    case ISSUE_ACTIONS.ISSUE_GET_SUCCESS:
+    case ISSUE_ACTIONS.GET_ISSUE_SUCCESS:
       console.log('issue', state.issue);
 
       return {
@@ -65,7 +65,7 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
         issue: actions.data.issue,
         loading: false,
       };
-    case ISSUE_ACTIONS.ISSUE_GET_FAILURE:
+    case ISSUE_ACTIONS.GET_ISSUE_FAILURE:
       return {
         ...state,
         error: actions.data.error,

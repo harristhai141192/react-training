@@ -12,14 +12,14 @@ import { getAllIssueHelper } from '../helpers/issueHelper';
  */
 export const getIssues = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
   dispatch({
-    type: ISSUE_ACTIONS.ISSUE_GET,
+    type: ISSUE_ACTIONS.GET_ISSUE,
   });
   try {
     const response = await fetch(url);
     if (response.status == 200) {
-      return getAllIssueHelper(response, ISSUE_ACTIONS.ISSUE_GET_SUCCESS, dispatch);
+      return getAllIssueHelper(response, ISSUE_ACTIONS.GET_ISSUE_SUCCESS, dispatch);
     }
   } catch (e) {
-    dispatch({ type: ISSUE_ACTIONS.ISSUE_GET_FAILURE, data: { error: (e as Error).message } });
+    dispatch({ type: ISSUE_ACTIONS.GET_ISSUE_FAILURE, data: { error: (e as Error).message } });
   }
 };
