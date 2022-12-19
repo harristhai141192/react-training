@@ -6,8 +6,8 @@ export namespace API {
   };
 
   export const DELIVERY_CALL = {
-    URL_ISSUES: `${process.env.VITE_API_URL}/${PATHS.ISSUES}`,
-    URL_COMMENTS: `${process.env.VITE_API_URL}/${PATHS.COMMENT}`,
+    URL_ISSUES: `${process.env.VITE_BASE_URL}/${PATHS.ISSUES}`,
+    URL_COMMENTS: `${process.env.VITE_BASE_URL}/${PATHS.COMMENT}`,
   };
 
   export enum HEADERS {

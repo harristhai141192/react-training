@@ -42,7 +42,7 @@ function App() {
                 <Route>
                   <Route index element={<IssueList />} />
                   <Route path='/add' element={<Add />} />
-                  <Route path='/detail' element={<Detail issue={test} />} />
+                  <Route path='/detail/:id' element={<Detail issue={test} />} />
                 </Route>
               </Routes>
             </Layout>

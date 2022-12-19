@@ -2,11 +2,20 @@ import { Box, Container, useMediaQuery, Text } from '@chakra-ui/react';
 import InputFilter from './InputFilter';
 import ButtonLabel from './ButtonLabel';
 import Table from '@components/Table';
-import { issueData } from '@mockData/issueData';
 import { MdOutlineTipsAndUpdates } from 'react-icons/md';
+import { useIssueContext } from '../../stores/Issue/context';
+import { useEffect } from 'react';
+import { getAllIssue } from '../../utils/mainFeaturesUtils';
+import { IIssueStateProps } from '../../stores/Issue/issueReducer';
 
 const IssueList = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
+  const [issueState, issueDispatch] = useIssueContext();
+  const { issue, loading }: IIssueStateProps = issueState;
+
+  useEffect(() => {
+    getAllIssue(issueDispatch);
+  }, []);
 
   return (
     <Container>
@@ -16,7 +25,7 @@ const IssueList = () => {
           <ButtonLabel />
         </Box>
         <Box>
-          <Table issue={issueData} />
+          <Table issue={issue} />
         </Box>
       </Box>
       <Box display='flex' justifyContent='center' alignItems='center'>

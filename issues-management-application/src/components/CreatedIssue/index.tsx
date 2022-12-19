@@ -1,16 +1,20 @@
 import React from 'react';
 import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-ui/react';
-
+import { useForm } from 'react-hook-form';
 import { SiMarkdown } from 'react-icons/si';
 import MarkdownBar from '@components/MarkdownBar';
+import { addIssue } from '@utils/mainFeaturesUtils';
+import { IActionIssueProps } from 'src/stores/Issue/issueReducer';
 
 interface IProps {
   userImage?: string;
   imageAlt?: string;
-  onClick?: () => void;
+  handleOnSubmit?: () => void;
 }
 
-const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
+const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit }) => {
+  const { register, handleSubmit } = useForm();
+
   return (
     <Box display='flex' flexDirection='row' textAlign='left'>
       <Box w={{ sm: '15%', md: '70px' }} paddingRight='5px' display='flex' justifyContent='center'>
@@ -30,80 +34,87 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
         borderRadius='7px'
         fontSize={{ sm: 'text.small', md: 'text.medium' }}
       >
-        <FormControl>
-          <Box
-            bgColor='white'
-            borderBottom='1px solid lightgrey'
-            borderTopRadius='6px'
-            margin='0'
-            padding='5px'
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-          >
-            <Input
-              placeholder='Title'
-              w='97%'
-              bgColor='mainBackground'
-              borderRadius='5px'
-              size='sm'
-              margin='5px'
-              border='1px solid lightGrey !important'
-            />
-          </Box>
-          <Box
-            display='flex'
-            flexDirection='row'
-            padding='5px 10px'
-            marginTop='15px'
-            alignContent='center'
-            justifyContent='space-between'
-          >
-            <Text h='90%'>Comment</Text>
+        <form onSubmit={handleSubmit(handleOnSubmit)}>
+          <FormControl>
+            <Box
+              bgColor='white'
+              borderBottom='1px solid lightgrey'
+              borderTopRadius='6px'
+              margin='0'
+              padding='5px'
+              display='flex'
+              flexDirection='column'
+              alignItems='center'
+            >
+              <Input
+                {...register('title')}
+                id='title'
+                type='text'
+                placeholder='Title'
+                w='97%'
+                bgColor='mainBackground'
+                borderRadius='5px'
+                size='sm'
+                margin='5px'
+                border='1px solid lightGrey !important'
+              />
+            </Box>
             <Box
               display='flex'
               flexDirection='row'
-              fontSize='text.large'
-              w='40%'
-              justifyContent='space-evenly'
-            >
-              <MarkdownBar />
-            </Box>
-          </Box>
-          <Box
-            padding='5px'
-            fontSize={{ sm: 'text.small', md: 'text.medium' }}
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-          >
-            <Textarea
-              w='97%'
-              margin='5px'
-              placeholder='Leave a comment'
-              bgColor='mainBackground'
-              border='1px solid lightGrey !important'
-              h='300px'
-            />
-            <Box
-              display='flex'
-              flexDirection={{ sm: 'column', md: 'row' }}
+              padding='5px 10px'
+              marginTop='15px'
+              alignContent='center'
               justifyContent='space-between'
-              padding='15px'
-              w='100%'
             >
-              <Box display='flex' flexDirection='row' marginBottom='10px'>
-                <SiMarkdown />
-                <Text as='sub' margin='4px 5px'>
-                  Styling with Markdown is not supported
-                </Text>
+              <Text h='90%'>Comment</Text>
+              <Box
+                display='flex'
+                flexDirection='row'
+                fontSize='text.large'
+                w='40%'
+                justifyContent='space-evenly'
+              >
+                <MarkdownBar />
               </Box>
-              <Button variant='solid' onClick={onClick}>
-                Submit
-              </Button>
             </Box>
-          </Box>
-        </FormControl>
+            <Box
+              padding='5px'
+              fontSize={{ sm: 'text.small', md: 'text.medium' }}
+              display='flex'
+              flexDirection='column'
+              alignItems='center'
+            >
+              <Textarea
+                {...register('body')}
+                id='body'
+                w='97%'
+                margin='5px'
+                placeholder='Leave a comment'
+                bgColor='mainBackground'
+                border='1px solid lightGrey !important'
+                h='300px'
+              />
+              <Box
+                display='flex'
+                flexDirection={{ sm: 'column', md: 'row' }}
+                justifyContent='space-between'
+                padding='15px'
+                w='100%'
+              >
+                <Box display='flex' flexDirection='row' marginBottom='10px'>
+                  <SiMarkdown />
+                  <Text as='sub' margin='4px 5px'>
+                    Styling with Markdown is not supported
+                  </Text>
+                </Box>
+                <Button variant='solid' type='submit'>
+                  Submit
+                </Button>
+              </Box>
+            </Box>
+          </FormControl>
+        </form>
       </Box>
     </Box>
   );

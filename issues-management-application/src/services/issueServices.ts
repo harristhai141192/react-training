@@ -3,7 +3,11 @@ import { ISSUE_ACTIONS } from '@constants/actions';
 
 // Models
 import { IActionIssueProps } from '../stores/Issue/issueReducer';
-import { getAllIssueHelper } from '../helpers/issueHelper';
+import { getAllIssueHelper, getIssueHelper } from '../helpers/issueHelper';
+import { IssueModel } from '@models/index';
+import { HTTP_METHODS } from '@constants/httpMethods';
+import { API } from '@constants/apis';
+import { Octokit } from '@octokit/core';
 
 /**
  * Get all the item in DB
@@ -21,5 +25,47 @@ export const getIssues = async (url: string, dispatch: (action: IActionIssueProp
     }
   } catch (e) {
     dispatch({ type: ISSUE_ACTIONS.GET_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
+};
+
+// export const getAnIssue = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
+//   dispatch({
+//     type: ISSUE_ACTIONS.GET_ISSUE,
+//   });
+//   try {
+//     const response = await fetch(url);
+//     if (response.status == 200) {
+//       return getIssueHelper(response, ISSUE_ACTIONS.GET_ISSUE_SUCCESS, dispatch);
+//     }
+//   } catch (e) {
+//     dispatch({ type: ISSUE_ACTIONS.GET_ISSUE_FAILURE, data: { error: (e as Error).message } });
+//   }
+// };
+
+export const postIssue = async (
+  url: string,
+  data: IssueModel,
+  dispatch: (action: IActionIssueProps) => void,
+) => {
+  dispatch({
+    type: ISSUE_ACTIONS.ADD_ISSUE_REQUEST,
+  });
+  try {
+    const response = await fetch(url, {
+      method: HTTP_METHODS.POST,
+      headers: {
+        Authorization: `token ${process.env.VITE_TOKEN}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/vnd.github.v3+json',
+      },
+      body: JSON.stringify(data),
+    });
+    console.log('response', response);
+
+    if (response.status == 201) {
+      return getIssueHelper(response, ISSUE_ACTIONS.ADD_ISSUE_SUCCESS, dispatch);
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.ADD_ISSUE_FAILURE, data: { error: (e as Error).message } });
   }
 };

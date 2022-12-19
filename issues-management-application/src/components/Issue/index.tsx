@@ -16,15 +16,15 @@ const Issue: React.FC<IProps> = ({ onChangeChecked, issue }) => {
       </Box>
       <Box>
         <Box display='flex' flexDirection='row' alignItems='center' fontSize='text.medium'>
-          <FiDisc color={issue.issueStatus ? 'cadetblue' : 'darkviolet'} data-testid='labelIssue' />
+          <FiDisc color={issue.locked ? 'darkviolet' : 'cadetblue'} data-testid='labelIssue' />
           <Text as='b' alignItems='flex-start' marginLeft='8px' fontSize='text.small'>
-            {issue.issueName}
+            {issue.title}
           </Text>
         </Box>
         <Box marginLeft='25px'>
           <Text as='sub'>
-            #{issue.issueId} is {issue.issueStatus ? 'opened at' : 'closed at'}{' '}
-            {issue.issueCreatedTime} by {issue.issueAuthor}
+            #{issue.number} is {!issue.locked ? 'opened at' : 'closed at'}{' '}
+            {issue.created_at?.split('T')[0]} by {issue.user?.login}
           </Text>
         </Box>
       </Box>

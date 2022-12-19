@@ -13,7 +13,7 @@ interface IProps {
 const Table: React.FC<IProps> = ({ issue }) => {
   let numberIssueClosed = 0;
   issue.map((item) => {
-    if (item.issueStatus == false) {
+    if (item.locked == false) {
       return (numberIssueClosed = ++numberIssueClosed);
     }
   });

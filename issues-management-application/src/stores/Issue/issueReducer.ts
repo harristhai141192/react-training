@@ -48,9 +48,6 @@ export type IActionIssueProps =
   | FailedSearchIssueAction;
 
 const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssueProps) => {
-  console.log('actions', actions);
-  console.log('actions', actions.type);
-
   switch (actions.type) {
     case ISSUE_ACTIONS.GET_ISSUE:
       return {

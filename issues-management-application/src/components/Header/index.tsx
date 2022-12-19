@@ -4,14 +4,16 @@ import {
   Button,
   Container,
   Image,
-  Link,
   ListItem,
   UnorderedList,
   useMediaQuery,
   Text,
+  Link as LinkChakra,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { navHeaderData } from '@mockData/navData';
 import { generateKey } from '@utils/mainFeaturesUtils';
+import { PAGE_ROUTES } from '@constants/routes';
 
 const Header = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
@@ -27,18 +29,20 @@ const Header = () => {
         justifyContent='space-between'
       >
         <Box display='flex' flexDirection='row' alignItems='center'>
-          <Image
-            src='src/assets/images/github_icon.svg'
-            w='40px'
-            bgColor='white'
-            borderRadius='100%'
-          />
+          <Link to={PAGE_ROUTES.HOME}>
+            <Image
+              src='src/assets/images/github_icon.svg'
+              w='40px'
+              bgColor='white'
+              borderRadius='100%'
+            />
+          </Link>
           <UnorderedList color='white' listStyleType='none' display='flex' flexDirection='row'>
             {!isMobile ? (
               navHeaderData.map((item) => {
                 return (
-                  <ListItem key={generateKey()}>
-                    <Link padding='15px'>{item}</Link>
+                  <ListItem padding='15px' key={generateKey()}>
+                    <LinkChakra>{item}</LinkChakra>
                   </ListItem>
                 );
               })
@@ -48,9 +52,11 @@ const Header = () => {
           </UnorderedList>
         </Box>
         <Box display='flex' alignItems='center'>
-          <Button variant='solid' padding='20px 80px'>
-            <Link>+ Add new issue</Link>
-          </Button>
+          <Link to={PAGE_ROUTES.ADD}>
+            <Button variant='solid' padding='20px 80px'>
+              + Add new issue
+            </Button>
+          </Link>
         </Box>
       </Box>
     </Container>

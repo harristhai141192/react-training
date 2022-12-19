@@ -1,10 +1,10 @@
 // Store
-import { ACTIONS } from '@constants/actions';
+import { ISSUE_ACTIONS } from '@constants/actions';
 import { IActionIssueProps } from '../stores/Issue/issueReducer';
 
 export const getAllIssueHelper = async (
   response: Response,
-  dispatchActions: ACTIONS,
+  dispatchActions: ISSUE_ACTIONS,
   dispatch: (action: IActionIssueProps) => void,
 ) => {
   const issue = await response.json();
@@ -12,9 +12,9 @@ export const getAllIssueHelper = async (
   dispatch({ type: dispatchActions, data: { issue } });
 };
 
-export const getMemberHelper = async (
+export const getIssueHelper = async (
   response: Response,
-  dispatchActions: ACTIONS,
+  dispatchActions: ISSUE_ACTIONS,
   dispatch: (action: IActionIssueProps) => void,
 ) => {
   const issue = await response.json();
