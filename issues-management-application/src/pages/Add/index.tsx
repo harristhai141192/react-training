@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
 import CreatedIssue from '@components/CreatedIssue';
 import MenuBar from '@components/MenuBar';
