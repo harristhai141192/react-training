@@ -1,40 +1,16 @@
-// // eslint-disable-next-line @typescript-eslint/no-namespace
-// export namespace API {
-//   export enum URL {
-//     BASE_URL = 'https://api.github.com/repos/harristhai141192/bao',
-//   }
-
-//   export enum PATHS {
-//     ISSUES = 'issues',
-//     URL_MEMBER = 'https://635111333e9fa1244e5464ea.mockapi.io/issues',
-//   }
-
-//   export enum HEADERS {
-//     'Content-Type' = 'application/json',
-//   }
-// }
-
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace API {
-  export enum URL {
-    BASE_URL = 'https://api.github.com/repos/harristhai141192/bao',
-  }
+  export const PATHS = {
+    ISSUES: 'issues',
+    COMMENT: 'comments',
+  };
 
-  export enum PATHS {
-    ISSUES = 'issues',
-    URL_ISSUES = 'https://api.github.com/repos/harristhai141192/bao/issues',
-    COMMENT = 'comments',
-    URL_COMMENTS = 'https://api.github.com/repos/harristhai141192/bao/issues/comments',
-  }
+  export const DELIVERY_CALL = {
+    URL_ISSUES: `${process.env.VITE_API_URL}/${PATHS.ISSUES}`,
+    URL_COMMENTS: `${process.env.VITE_API_URL}/${PATHS.COMMENT}`,
+  };
 
   export enum HEADERS {
     'Content-Type' = 'application/json',
-  }
-
-  export enum HTTP_METHODS {
-    GET = 'GET',
-    POST = 'POST',
-    DELETE = 'DELETE',
-    PUT = 'PUT',
   }
 }

@@ -1,45 +1,45 @@
-import { ACTIONS } from '@constants/actions';
+import { COMMENT_ACTIONS } from '@constants/actions';
 
 import { IComment } from '@models/index';
 
 export interface RequestCommentAction {
-  type: ACTIONS.COMMENT_REQUEST;
+  type: COMMENT_ACTIONS.COMMENT_GET;
 }
 
 export interface SuccessRequestCommentAction {
-  type: ACTIONS.COMMENT_REQUEST_SUCCESS;
+  type: COMMENT_ACTIONS.COMMENT_GET_SUCCESS;
   data: { comment: IComment[] };
 }
 
 export interface FailedRequestCommentAction {
-  type: ACTIONS.COMMENT_REQUEST_FAILURE;
+  type: COMMENT_ACTIONS.COMMENT_GET_FAILURE;
   data: { error: string };
 }
 
 export interface RequestAddCommentAction {
-  type: ACTIONS.ADD_COMMENT_REQUEST;
+  type: COMMENT_ACTIONS.ADD_COMMENT_REQUEST;
 }
 
 export interface SuccessAddCommentAction {
-  type: ACTIONS.ADD_COMMENT_SUCCESS;
+  type: COMMENT_ACTIONS.ADD_COMMENT_SUCCESS;
   data: { comment: IComment };
 }
 
 export interface FailedAddCommentAction {
-  type: ACTIONS.ADD_COMMENT_FAILURE;
+  type: COMMENT_ACTIONS.ADD_COMMENT_FAILURE;
   data: { error: string };
 }
 
 export interface RequestDeleteCommentAction {
-  type: ACTIONS.DELETE_COMMENT_REQUEST;
+  type: COMMENT_ACTIONS.DELETE_COMMENT_REQUEST;
 }
 
 export interface SuccessDeleteCommentAction {
-  type: ACTIONS.DELETE_COMMENT_SUCCESS;
+  type: COMMENT_ACTIONS.DELETE_COMMENT_SUCCESS;
   data: { comment: IComment };
 }
 
 export interface FailedDeleteCommentAction {
-  type: ACTIONS.DELETE_COMMENT_FAILURE;
+  type: COMMENT_ACTIONS.DELETE_COMMENT_FAILURE;
   data: { error: string };
 }

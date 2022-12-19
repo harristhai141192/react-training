@@ -1,4 +1,4 @@
-import { ACTIONS } from '@constants/actions';
+import { ISSUE_ACTIONS } from '@constants/actions';
 import { IssueModel } from '@models/index';
 import {
   RequestIssueAction,
@@ -52,12 +52,12 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
   console.log('actions', actions.type);
 
   switch (actions.type) {
-    case ACTIONS.ISSUE_REQUEST:
+    case ISSUE_ACTIONS.ISSUE_GET:
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.ISSUE_REQUEST_SUCCESS:
+    case ISSUE_ACTIONS.ISSUE_GET_SUCCESS:
       console.log('issue', state.issue);
 
       return {
@@ -65,61 +65,61 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
         issue: actions.data.issue,
         loading: false,
       };
-    case ACTIONS.ISSUE_REQUEST_FAILURE:
+    case ISSUE_ACTIONS.ISSUE_GET_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
 
-    case ACTIONS.ADD_ISSUE_REQUEST:
+    case ISSUE_ACTIONS.ADD_ISSUE_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.ADD_ISSUE_SUCCESS:
+    case ISSUE_ACTIONS.ADD_ISSUE_SUCCESS:
       return {
         ...state,
         issue: [...state.issue, actions.data.issue],
       };
-    case ACTIONS.ADD_ISSUE_FAILURE:
+    case ISSUE_ACTIONS.ADD_ISSUE_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
 
-    case ACTIONS.UPDATE_ISSUE_REQUEST:
+    case ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST:
       return {
         ...state,
         loading: true,
       };
     // TODO : THIS IS NOT UPDATED YET, SHOULD BE FIXED
-    case ACTIONS.UPDATE_ISSUE_SUCCESS:
+    case ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS:
       return {
         ...state,
         issue: state.issue,
         loading: false,
       };
-    case ACTIONS.UPDATE_ISSUE_FAILURE:
+    case ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE:
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
 
-    case ACTIONS.DELETE_ISSUE_REQUEST:
+    case ISSUE_ACTIONS.DELETE_ISSUE_REQUEST:
       // TODO : THIS IS NOT DELETED YET, SHOULD BE FIXED
       return {
         ...state,
         loading: true,
       };
-    case ACTIONS.DELETE_ISSUE_SUCCESS:
+    case ISSUE_ACTIONS.DELETE_ISSUE_SUCCESS:
       return {
         ...state,
         loading: false,
       };
-    case ACTIONS.DELETE_ISSUE_FAILURE:
+    case ISSUE_ACTIONS.DELETE_ISSUE_FAILURE:
       return {
         ...state,
         error: actions.data.error,

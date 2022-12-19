@@ -1,4 +1,4 @@
-import { ACTIONS } from '@constants/actions';
+import { COMMENT_ACTIONS } from '@constants/actions';
 import { IComment } from '@models/index';
 import {
   FailedRequestCommentAction,
@@ -35,48 +35,48 @@ export type ICommentActionProps =
 
 const commentReducer = (state: ICommentStateProps = commentState, actions: ICommentActionProps) => {
   switch (actions.type) {
-    case ACTIONS.COMMENT_REQUEST:
+    case COMMENT_ACTIONS.COMMENT_GET:
       return {
         ...state,
       };
 
-    case ACTIONS.COMMENT_REQUEST_SUCCESS:
+    case COMMENT_ACTIONS.COMMENT_GET_SUCCESS:
       return {
         ...state,
-        comment: actions.data.comment,
+        COMMENT_ACTIONS: actions.data.comment,
       };
 
-    case ACTIONS.COMMENT_REQUEST_FAILURE:
+    case COMMENT_ACTIONS.COMMENT_GET_FAILURE:
       return {
         ...state,
         error: actions.data.error,
       };
 
-    case ACTIONS.ADD_COMMENT_REQUEST:
+    case COMMENT_ACTIONS.ADD_COMMENT_REQUEST:
       return {
         ...state,
       };
-    case ACTIONS.ADD_COMMENT_SUCCESS:
+    case COMMENT_ACTIONS.ADD_COMMENT_SUCCESS:
       return {
         ...state,
         comment: actions.data.comment,
       };
-    case ACTIONS.ADD_COMMENT_FAILURE:
+    case COMMENT_ACTIONS.ADD_COMMENT_FAILURE:
       return {
         ...state,
         error: actions.data.error,
       };
 
-    case ACTIONS.DELETE_COMMENT_REQUEST:
+    case COMMENT_ACTIONS.DELETE_COMMENT_REQUEST:
       return {
         ...state,
       };
-    case ACTIONS.DELETE_COMMENT_SUCCESS:
+    case COMMENT_ACTIONS.DELETE_COMMENT_SUCCESS:
       return {
         ...state,
         comment: actions.data.comment,
       };
-    case ACTIONS.DELETE_COMMENT_FAILURE:
+    case COMMENT_ACTIONS.DELETE_COMMENT_FAILURE:
       return {
         ...state,
         error: actions.data.error,
