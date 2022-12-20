@@ -1,6 +1,8 @@
-import { Button, Box, ButtonGroup, Link } from '@chakra-ui/react';
+import { Button, Box, ButtonGroup } from '@chakra-ui/react';
+import { PAGE_ROUTES } from '@constants/routes';
 import { BiPurchaseTagAlt } from 'react-icons/bi';
 import { VscMilestone } from 'react-icons/vsc';
+import { Link } from 'react-router-dom';
 
 const ButtonLabel = () => {
   return (
@@ -32,9 +34,9 @@ const ButtonLabel = () => {
           Milestones
         </Button>
       </ButtonGroup>
-      <Button marginLeft='10px'>
-        <Link>New Issue</Link>
-      </Button>
+      <Link to={PAGE_ROUTES.ADD}>
+        <Button marginLeft='10px'>New Issue</Button>
+      </Link>
     </Box>
   );
 };
