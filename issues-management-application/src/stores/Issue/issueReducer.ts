@@ -55,8 +55,6 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
         loading: true,
       };
     case ISSUE_ACTIONS.GET_ISSUE_SUCCESS:
-      console.log('issue', state.issue);
-
       return {
         ...state,
         issue: actions.data.issue,

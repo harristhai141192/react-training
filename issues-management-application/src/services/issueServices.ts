@@ -60,7 +60,6 @@ export const postIssue = async (
       },
       body: JSON.stringify(data),
     });
-    console.log('response', response);
 
     if (response.status == 201) {
       return getIssueHelper(response, ISSUE_ACTIONS.ADD_ISSUE_SUCCESS, dispatch);

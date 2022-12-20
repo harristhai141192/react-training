@@ -13,8 +13,6 @@ export const addIssue = async (
   dispatch: (action: IActionIssueProps) => void,
   data: { title: string; body: string },
 ) => {
-  console.log('dispatch', dispatch);
-
   const getData = {
     title: data.title,
     body: data.body,
@@ -22,6 +20,7 @@ export const addIssue = async (
   postIssue(`${process.env.VITE_BASE_URL}/${API.PATHS.ISSUES}`, getData, dispatch);
 };
 
-export const getAIssue = async (dispatch: (action: IActionIssueProps) => void) => {
-  getIssue;
-};
+//TODO : GET AN ISSUE
+// export const getAIssue = async (dispatch: (action: IActionIssueProps) => void) => {
+//   getIssue;
+// };
