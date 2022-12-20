@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Table as TableChakra, TableContainer, Tbody, Thead } from '@chakra-ui/react';
 import { IssueModel } from '@models/index';
 import TableRows from '@components/Table/TableRows';
@@ -7,17 +7,20 @@ import Issue from '@components/Issue';
 import TableHead from '@components/Table/TableHead';
 
 interface IProps {
-  issue: IssueModel[];
+  issues: IssueModel[];
 }
 
-const Table: React.FC<IProps> = ({ issue }) => {
+const Table: React.FC<IProps> = ({ issues }) => {
   let numberIssueClosed = 0;
-  issue.map((item) => {
+  console.log('issues', issues);
+
+  issues?.map((item) => {
     if (item.locked == false) {
       return (numberIssueClosed = ++numberIssueClosed);
     }
   });
-  const numberIssueOpened = issue.length - numberIssueClosed;
+
+  const numberIssueOpened = issues.length - numberIssueClosed;
 
   return (
     <TableContainer
@@ -29,24 +32,21 @@ const Table: React.FC<IProps> = ({ issue }) => {
       <TableChakra variant='simple'>
         <Thead>
           <TableHead
-            issue={issue}
+            issue={issues}
             numberOfOpenedIssue={numberIssueOpened}
             numberOfClosedIssue={numberIssueClosed}
           />
         </Thead>
         <Tbody>
-          {issue &&
-            issue.map((item) => {
-              return (
-                <TableRows key={generateKey()}>
-                  <Issue issue={item} />
-                </TableRows>
-              );
-            })}
+          {issues?.map((issue) => (
+            <TableRows key={generateKey()}>
+              <Issue issue={issue} />
+            </TableRows>
+          ))}
         </Tbody>
       </TableChakra>
     </TableContainer>
   );
 };
 
-export default Table;
+export default memo(Table);

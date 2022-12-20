@@ -3,15 +3,17 @@ import InputFilter from './InputFilter';
 import ButtonLabel from './ButtonLabel';
 import Table from '@components/Table';
 import { MdOutlineTipsAndUpdates } from 'react-icons/md';
-import { useIssueContext } from '../../stores/Issue/context';
-import { useEffect } from 'react';
-import { getAllIssue } from '../../utils/mainFeaturesUtils';
-import { IIssueStateProps } from '../../stores/Issue/issueReducer';
+import { useIssueContext } from '@stores/Issue/context';
+import { useEffect, useState } from 'react';
+import { getAllIssue } from '@utils/mainFeaturesUtils';
+import { IIssueStateProps } from '@stores/Issue/issueReducer';
 
 const IssueList = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [issueState, issueDispatch] = useIssueContext();
-  const { issue, loading }: IIssueStateProps = issueState;
+  const { byId, order }: IIssueStateProps = issueState;
+
+  const issues = order.map((id) => byId[id]);
 
   useEffect(() => {
     getAllIssue(issueDispatch);
@@ -25,7 +27,7 @@ const IssueList = () => {
           <ButtonLabel />
         </Box>
         <Box>
-          <Table issue={issue} />
+          <Table issues={issues} />
         </Box>
       </Box>
       <Box display='flex' justifyContent='center' alignItems='center'>

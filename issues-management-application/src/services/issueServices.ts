@@ -62,7 +62,7 @@ export const postIssue = async (
     });
 
     if (response.status == 201) {
-      return getIssueHelper(response, ISSUE_ACTIONS.ADD_ISSUE_SUCCESS, dispatch);
+      getIssueHelper(response, ISSUE_ACTIONS.ADD_ISSUE_SUCCESS, dispatch);
     }
   } catch (e) {
     dispatch({ type: ISSUE_ACTIONS.ADD_ISSUE_FAILURE, data: { error: (e as Error).message } });

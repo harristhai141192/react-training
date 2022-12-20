@@ -9,8 +9,8 @@ export interface IUser {
   node_id?: string;
 }
 export class IssueModel {
-  number?: string; // id
-  title?: string; //issueName
+  number: string; // id
+  title: string; //issueName
   user?: IUser;
   locked?: boolean;
   created_at?: string;
@@ -20,5 +20,6 @@ export class IssueModel {
 
   constructor(issue: IssueModel) {
     this.number = issue.number;
+    this.title = issue.title;
   }
 }

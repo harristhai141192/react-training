@@ -31,7 +31,7 @@ const Header = () => {
         <Box display='flex' flexDirection='row' alignItems='center'>
           <Link to={PAGE_ROUTES.HOME}>
             <Image
-              src='src/assets/images/github_icon.svg'
+              src='/src/assets/images/github_icon.svg'
               w='40px'
               bgColor='white'
               borderRadius='100%'

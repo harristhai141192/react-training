@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Checkbox, Text } from '@chakra-ui/react';
 import { FiDisc } from 'react-icons/fi';
 import { IssueModel } from '@models/index';
+import { Link } from 'react-router-dom';
+import { PAGE_ROUTES } from '@constants/routes';
 
 interface IProps {
   onChangeChecked?: () => void;
@@ -17,9 +19,17 @@ const Issue: React.FC<IProps> = ({ onChangeChecked, issue }) => {
       <Box>
         <Box display='flex' flexDirection='row' alignItems='center' fontSize='text.medium'>
           <FiDisc color={issue.locked ? 'darkviolet' : 'cadetblue'} data-testid='labelIssue' />
-          <Text as='b' alignItems='flex-start' marginLeft='8px' fontSize='text.small'>
-            {issue.title}
-          </Text>
+          <Link to={`${PAGE_ROUTES.DETAIL}/${issue.number}`}>
+            <Text
+              as='b'
+              alignItems='flex-start'
+              marginLeft='8px'
+              fontSize='text.small'
+              _hover={{ color: 'tomato' }}
+            >
+              {issue.title}
+            </Text>
+          </Link>
         </Box>
         <Box marginLeft='25px'>
           <Text as='sub'>

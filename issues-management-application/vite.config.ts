@@ -57,8 +57,8 @@ export default defineConfig({
         replacement: path.resolve(__dirname, 'src/mockData'),
       },
       {
-        find: '@store',
-        replacement: path.resolve(__dirname, 'src/store'),
+        find: '@stores',
+        replacement: path.resolve(__dirname, 'src/stores'),
       },
       {
         find: '@helpers',

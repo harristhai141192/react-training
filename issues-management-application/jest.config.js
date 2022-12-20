@@ -12,7 +12,7 @@ module.exports = {
     '@mockData/(.*)': '<rootDir>/src/mockData/$1',
     '@constants/(.*)': '<rootDir>/src/constants/$1',
     '@services/(.*)': '<rootDir>/src/services/$1',
-    '@store/(.*)': '<rootDir>/src/store/$1',
+    '@stores/(.*)': '<rootDir>/src/stores/$1',
     '@helpers/(.*)': '<rootDir>/src/helpers/$1',
     '@pages/(.*)': '<rootDir>/src/pages/$1',
     '@apis/(.*)': '<rootDir>/src/apis/$1',

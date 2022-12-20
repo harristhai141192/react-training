@@ -29,7 +29,7 @@
       "@apis/*": ["src/apis/*"],
       "@layout/*": ["layouts/*"],
       "@mockData/*": ["src/mockData/*"],
-      "@store/*": ["src/store/*"],
+      "@stores/*": ["src/stores/*"],
       "@helpers/*": ["src/helpers/*"]
     }
   },
