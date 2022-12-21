@@ -1,5 +1,5 @@
 // Libs
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
@@ -18,5 +18,6 @@ Default.args = {
   isOpen: true,
   title: 'Default Modal',
   children: <Box> This is Modal </Box>,
+  buttonGroups: <Button variant='ghost'>Lock conversation on this issue</Button>,
   onClose: () => {},
 };

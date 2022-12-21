@@ -10,19 +10,20 @@ const Status: React.FC<IProps> = ({ isOpen = false }) => {
   return (
     <Box
       bgColor={isOpen ? 'statusColor.green' : 'statusColor.purple'}
-      padding='5px 15px'
+      padding='5px 0px'
       borderRadius='55px'
+      fontSize='text.small'
       color='white'
       width='100px'
       data-testid='statusLabel'
     >
       {isOpen ? (
-        <Box display='flex' flexDirection='row' alignItems='center'>
+        <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
           <FiDisc />
           <Text marginLeft='5px'>Open</Text>
         </Box>
       ) : (
-        <Box display='flex' flexDirection='row' alignItems='center'>
+        <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
           <FiCheckCircle />
           <Text marginLeft='5px'>Closed</Text>
         </Box>

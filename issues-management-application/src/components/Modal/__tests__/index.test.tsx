@@ -1,5 +1,5 @@
 import Modal from '..';
-import { Box } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup } from '@chakra-ui/react';
 import { fireEvent, render } from '@utils/testUtils';
 
 const baseProps = {
@@ -7,7 +7,10 @@ const baseProps = {
   children: <Box>This is body</Box>,
   isOpen: false,
   onClose: () => {},
-  onSubmit: () => {},
+  buttonGroups: <></>,
+  // <Button onSubmit={} variant='ghost'>
+  //   Lock conversation on this issue
+  // </Button>
 };
 
 const setup = (overrideProps = {}) => {
@@ -38,7 +41,14 @@ describe('Component [Modal] testing: ', () => {
 
   test('Modal button submit should be triggered', () => {
     const handleSubmit = jest.fn();
-    const { getByText } = setup({ isOpen: true, onSubmit: handleSubmit });
+    const { getByText } = setup({
+      isOpen: true,
+      ButtonGroup: (
+        <Button onSubmit={handleSubmit} variant='ghost'>
+          Lock conversation on this issue
+        </Button>
+      ),
+    });
     fireEvent.click(getByText('Lock conversation on this issue'));
     expect(handleSubmit).toBeCalled();
   });

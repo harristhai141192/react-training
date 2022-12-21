@@ -17,10 +17,9 @@ interface IProps {
   children: React.ReactNode;
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: () => void;
 }
 
-const Modal: React.FC<IProps> = ({ title, children, isOpen = false, onClose, onSubmit }) => {
+const Modal: React.FC<IProps> = ({ title, children, isOpen = false, onClose }) => {
   return (
     <Box>
       <ModalChakra isOpen={isOpen} onClose={onClose}>
@@ -42,14 +41,7 @@ const Modal: React.FC<IProps> = ({ title, children, isOpen = false, onClose, onS
               </ModalCloseButton>
             </Box>
           </ModalHeader>
-          <ModalBody>{children}</ModalBody>
-          <ModalFooter padding='0' borderTop='1px solid lightgrey'>
-            <Box w='100%' padding='10px 15px' height='50px'>
-              <Button onClick={onSubmit} variant='ghost'>
-                Lock conversation on this issue
-              </Button>
-            </Box>
-          </ModalFooter>
+          {children}
         </ModalContent>
       </ModalChakra>
     </Box>

@@ -2,6 +2,18 @@ import { ISSUE_ACTIONS } from '@constants/actions';
 
 import { IssueModel } from '@models/index';
 
+export interface RequestAnIssueAction {
+  type: ISSUE_ACTIONS.GET_AN_ISSUE;
+}
+export interface SuccessRequestAnIssueAction {
+  type: ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS;
+  data: { issue: IssueModel };
+}
+export interface FailedRequestAnIssueAction {
+  type: ISSUE_ACTIONS.GET_AN_ISSUE_FAILURE;
+  data: { error: string };
+}
+
 export interface RequestIssueAction {
   type: ISSUE_ACTIONS.GET_ISSUE;
 }

@@ -53,7 +53,7 @@ const Header = () => {
         </Box>
         <Box display='flex' alignItems='center'>
           <Link to={PAGE_ROUTES.ADD}>
-            <Button variant='solid' padding='20px 80px'>
+            <Button variant='ghost' padding='12px 70px'>
               + Add new issue
             </Button>
           </Link>

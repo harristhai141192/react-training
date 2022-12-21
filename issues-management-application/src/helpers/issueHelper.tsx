@@ -18,6 +18,7 @@ export const getIssueHelper = async (
   dispatch: (action: IActionIssueProps) => void,
 ) => {
   const issue = await response.json();
+  console.log('ISSUE', issue);
 
   dispatch({ type: dispatchActions, data: { issue } });
 };

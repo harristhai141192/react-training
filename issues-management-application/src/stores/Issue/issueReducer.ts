@@ -1,6 +1,11 @@
 import { ISSUE_ACTIONS } from '@constants/actions';
 // import { IssueModel } from '@models/index';
 import {
+  RequestAnIssueAction,
+  SuccessRequestAnIssueAction,
+  FailedRequestAnIssueAction,
+} from './actionTypes';
+import {
   RequestIssueAction,
   SuccessRequestIssueAction,
   FailedRequestIssueAction,
@@ -47,10 +52,34 @@ export type IActionIssueProps =
   | FailedDeleteIssueAction
   | RequestSearchIssueAction
   | SuccessSearchIssueAction
-  | FailedSearchIssueAction;
+  | FailedSearchIssueAction
+  | RequestAnIssueAction
+  | SuccessRequestAnIssueAction
+  | FailedRequestAnIssueAction;
 
 const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssueProps) => {
   switch (actions.type) {
+    case ISSUE_ACTIONS.GET_AN_ISSUE: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS: {
+      return {
+        ...state,
+        byId: actions.data.issue,
+        order: actions.data.issue.number,
+        loading: false,
+      };
+    }
+    case ISSUE_ACTIONS.GET_AN_ISSUE_FAILURE: {
+      return {
+        ...state,
+        error: actions.data.error,
+        loading: false,
+      };
+    }
     case ISSUE_ACTIONS.GET_ISSUE: {
       return {
         ...state,
@@ -59,10 +88,6 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
     }
 
     case ISSUE_ACTIONS.GET_ISSUE_SUCCESS: {
-      // Lay response issues duoc tra ve tu api
-      // Loop issues tra ve tu api , tao ra byId và Order
-      // Return byId va Order
-
       const currentById = actions.data.issue.reduce(
         (newById, item) => ({
           ...newById,
@@ -80,20 +105,19 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
         loading: false,
       };
     }
-    // TODO: MAKING BLOCK {} for all case
-    case ISSUE_ACTIONS.GET_ISSUE_FAILURE:
+    case ISSUE_ACTIONS.GET_ISSUE_FAILURE: {
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
-
-    case ISSUE_ACTIONS.ADD_ISSUE_REQUEST:
+    }
+    case ISSUE_ACTIONS.ADD_ISSUE_REQUEST: {
       return {
         ...state,
         loading: true,
       };
-
+    }
     case ISSUE_ACTIONS.ADD_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
@@ -108,51 +132,62 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
       };
     }
 
-    case ISSUE_ACTIONS.ADD_ISSUE_FAILURE:
+    case ISSUE_ACTIONS.ADD_ISSUE_FAILURE: {
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
-
-    case ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST:
+    }
+    case ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST: {
       return {
         ...state,
         loading: true,
       };
-
+    }
     // TODO : THIS IS NOT UPDATED YET, SHOULD BE FIXED
-    // case ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS:
-    //   return {
-    //     ...state,
-    //     issue: state.issue,
-    //     loading: false,
-    //   };
+    case ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS: {
+      const currentById = {
+        ...state.byId,
+        [actions.data.issue.number]: actions.data.issue,
+      };
+      console.log('CURRENTBYID', currentById);
+      console.log('SUCCESS UPDATED');
 
-    case ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE:
+      return {
+        ...state,
+        byId: currentById,
+        order: [...state.order],
+        loading: false,
+      };
+    }
+    case ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE: {
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
-
-    case ISSUE_ACTIONS.DELETE_ISSUE_REQUEST:
+    }
+    case ISSUE_ACTIONS.DELETE_ISSUE_REQUEST: {
       // TODO : THIS IS NOT DELETED YET, SHOULD BE FIXED
       return {
         ...state,
         loading: true,
       };
-    case ISSUE_ACTIONS.DELETE_ISSUE_SUCCESS:
+    }
+    case ISSUE_ACTIONS.DELETE_ISSUE_SUCCESS: {
       return {
         ...state,
         loading: false,
       };
-    case ISSUE_ACTIONS.DELETE_ISSUE_FAILURE:
+    }
+    case ISSUE_ACTIONS.DELETE_ISSUE_FAILURE: {
       return {
         ...state,
         error: actions.data.error,
         loading: false,
       };
+    }
   }
 };
 

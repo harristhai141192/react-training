@@ -6,22 +6,37 @@ import { addIssue } from '@utils/mainFeaturesUtils';
 import { useIssueContext } from 'src/stores/Issue/context';
 import { useNavigate } from 'react-router-dom';
 import { PAGE_ROUTES } from '@constants/routes';
+import { ISSUE_ACTIONS } from '../../constants/actions';
+import { useState, useCallback, useEffect } from 'react';
+import { IIssueStateProps } from '@stores/Issue/issueReducer';
 
 const Add = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [issueState, dispatch] = useIssueContext();
+  const [addSuccess, setAddSuccess] = useState(false);
+  const navigate = useNavigate();
   const { byId, order }: IIssueStateProps = issueState;
 
-  const issues = order.map((id) => byId[id]);
-  const currentIssue = issues[issues.length - 1]?.number;
-  console.log('currentIssue', currentIssue);
+  const handleNaviGate = useCallback(
+    (addSuccess: boolean) => {
+      if (addSuccess) {
+        setTimeout(() => {
+          navigate(`${PAGE_ROUTES.DETAIL}/${order[order.length - 1]}`);
+        }, 3000);
+      }
+    },
+    [addSuccess],
+  );
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    handleNaviGate(addSuccess);
+  }, [addSuccess]);
 
   const handleAddIssue = async (data: { title: string; body: string }) => {
     await addIssue(dispatch, data);
-    await navigate(`${PAGE_ROUTES.HOME}`);
+    setAddSuccess(true);
   };
+
   return (
     <>
       <Box padding='5px 25px' bgColor='mainBackground' borderBottom='1px solid lightgrey'>

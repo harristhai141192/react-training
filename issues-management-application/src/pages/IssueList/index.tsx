@@ -1,19 +1,14 @@
-import { Box, Container, useMediaQuery, Text } from '@chakra-ui/react';
+import { Box, Container, Text } from '@chakra-ui/react';
 import InputFilter from './InputFilter';
 import ButtonLabel from './ButtonLabel';
-import Table from '@components/Table';
 import { MdOutlineTipsAndUpdates } from 'react-icons/md';
 import { useIssueContext } from '@stores/Issue/context';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getAllIssue } from '@utils/mainFeaturesUtils';
-import { IIssueStateProps } from '@stores/Issue/issueReducer';
+import IssueTable from './IssueTable';
 
 const IssueList = () => {
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
-  const [issueState, issueDispatch] = useIssueContext();
-  const { byId, order }: IIssueStateProps = issueState;
-
-  const issues = order.map((id) => byId[id]);
+  const [_, issueDispatch] = useIssueContext();
 
   useEffect(() => {
     getAllIssue(issueDispatch);
@@ -22,13 +17,11 @@ const IssueList = () => {
   return (
     <Container>
       <Box marginBottom='20px'>
-        <Box display='flex' flexDirection={isMobile ? 'column' : 'row'}>
+        <Box display='flex' flexDirection={{ sm: 'column', md: 'row' }}>
           <InputFilter />
           <ButtonLabel />
         </Box>
-        <Box>
-          <Table issues={issues} />
-        </Box>
+        <IssueTable />
       </Box>
       <Box display='flex' justifyContent='center' alignItems='center'>
         <MdOutlineTipsAndUpdates />
