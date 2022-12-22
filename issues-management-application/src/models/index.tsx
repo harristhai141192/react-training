@@ -13,6 +13,7 @@ export class IssueModel {
   title: string; //issueName
   user?: IUser;
   locked?: boolean;
+  active_lock_reason?: string;
   created_at?: string;
   onChangeChecked?: () => void;
   body?: string;

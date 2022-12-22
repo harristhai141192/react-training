@@ -90,8 +90,6 @@ export const updateIssueService = async (
       body: JSON.stringify(title),
     });
     if (response.status == 200) {
-      console.log('SERVICE RESPONSE', response);
-
       return getIssueHelper(response, ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS, dispatch);
     }
   } catch (e) {
@@ -99,7 +97,30 @@ export const updateIssueService = async (
   }
 };
 
-export const deleteIssueService = async (
+export const updateLockStatusService = async (
   url: string,
+  data: { active_lock_reason: string },
   dispatch: (action: IActionIssueProps) => void,
-) => {};
+) => {
+  dispatch({
+    type: ISSUE_ACTIONS.LOCK_ISSUE_REQUEST,
+  });
+  try {
+    const response = await fetch(url, {
+      method: HTTP_METHODS.PUT,
+      headers: {
+        Authorization: `token ${process.env.VITE_TOKEN}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/vnd.github.v3+json',
+      },
+
+      body: JSON.stringify(data),
+    });
+
+    if (response.status == 204) {
+      return getIssueHelper(response, ISSUE_ACTIONS.LOCK_ISSUE_SUCCESS, dispatch);
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
+};

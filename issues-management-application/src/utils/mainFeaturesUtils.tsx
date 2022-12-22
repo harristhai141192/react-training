@@ -4,6 +4,7 @@ import {
   postIssueService,
   updateIssueService,
   getIssueService,
+  updateLockStatusService,
 } from '@services/issueServices';
 import { IActionIssueProps } from '../stores/Issue/issueReducer';
 
@@ -41,7 +42,10 @@ export const updateIssue = async (
   updateIssueService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}`, title, dispatch);
 };
 
-export const deleteIssue = async (
+export const lockIssue = async (
   dispatch: (action: IActionIssueProps) => void,
   currentId: string,
-) => {};
+  data: { active_lock_reason: string },
+) => {
+  updateLockStatusService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, data, dispatch);
+};

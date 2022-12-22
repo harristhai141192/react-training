@@ -2,18 +2,10 @@ import { Box, Container, Text } from '@chakra-ui/react';
 import InputFilter from './InputFilter';
 import ButtonLabel from './ButtonLabel';
 import { MdOutlineTipsAndUpdates } from 'react-icons/md';
-import { useIssueContext } from '@stores/Issue/context';
-import { useEffect } from 'react';
-import { getAllIssue } from '@utils/mainFeaturesUtils';
+
 import IssueTable from './IssueTable';
 
 const IssueList = () => {
-  const [_, issueDispatch] = useIssueContext();
-
-  useEffect(() => {
-    getAllIssue(issueDispatch);
-  }, []);
-
   return (
     <Container>
       <Box marginBottom='20px'>

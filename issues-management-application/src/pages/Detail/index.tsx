@@ -7,26 +7,33 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useIssueContext } from '@stores/Issue/context';
 import { IIssueStateProps } from '@stores/Issue/issueReducer';
-import { updateIssue } from '../../utils/mainFeaturesUtils';
+import { lockIssue, updateIssue } from '../../utils/mainFeaturesUtils';
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
+import ModalIssue from '@components/ModalIssue';
 import DeleteModal from './DeleteModal';
 import { getIssue } from '@utils/mainFeaturesUtils';
+import { getIssues } from '../../services/issueServices';
 
 const Detail: React.FC<IProps> = () => {
   const [issueState, issueDispatch] = useIssueContext();
   const { byId }: IIssueStateProps = issueState;
   const [isEditting, setIsEditting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isOpenLockModal, setIsOpenLockModal] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const params = useParams();
+  const currentID = params.id;
 
   useEffect(() => {
-    getIssue(issueDispatch, params.id);
-  }, []);
+    if (currentID) {
+      getIssue(issueDispatch, currentID);
+    }
+  }, [currentID]);
 
-  const getAnIssue = byId[params.id];
+  useEffect(() => {});
+  const getAnIssue = byId;
 
   const handleCancelEdit = () => {
     setIsEditting(false);
@@ -37,8 +44,7 @@ const Detail: React.FC<IProps> = () => {
   };
 
   const handleSaveIssue = async (title: string) => {
-    console.log('title', title);
-    updateIssue(issueDispatch, getAnIssue.number, title);
+    updateIssue(issueDispatch, currentID, title);
     setIsEditting(false);
   };
 
@@ -47,6 +53,17 @@ const Detail: React.FC<IProps> = () => {
   };
 
   const handleDeleteIssue = () => {};
+
+  const handleOpenLockIssueModal = () => {
+    setIsOpenLockModal(true);
+  };
+
+  const handleLockIssue = (data: string) => {
+    lockIssue(issueDispatch, currentID, {
+      lock_reason: data?.lockReason,
+    });
+    setIsOpenLockModal(false);
+  };
 
   return (
     <Container padding='20px 0'>
@@ -58,6 +75,13 @@ const Detail: React.FC<IProps> = () => {
         />
       )}
       <Box>
+        {isOpenLockModal && (
+          <ModalIssue
+            isOpen={true}
+            onClose={() => setIsOpenLockModal(false)}
+            onSubmit={handleLockIssue}
+          />
+        )}
         <Heading
           as='h2'
           display='flex'
@@ -117,7 +141,12 @@ const Detail: React.FC<IProps> = () => {
           </Box>
           <Box w='30%'>
             <RightBar />
-            <FeatureBar onEditIssue={handleOnEditIssue} onDeleteIssue={handleOpenDeleteModal} />
+            <FeatureBar
+              isLock={getAnIssue?.locked}
+              onLockIssue={handleOpenLockIssueModal}
+              onEditIssue={handleOnEditIssue}
+              onDeleteIssue={handleOpenDeleteModal}
+            />
           </Box>
         </Box>
       </Box>

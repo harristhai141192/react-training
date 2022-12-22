@@ -3,8 +3,6 @@ import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-
 import { useForm } from 'react-hook-form';
 import { SiMarkdown } from 'react-icons/si';
 import MarkdownBar from '@components/MarkdownBar';
-import { addIssue } from '@utils/mainFeaturesUtils';
-import { IActionIssueProps } from 'src/stores/Issue/issueReducer';
 
 interface IProps {
   userImage?: string;

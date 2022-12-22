@@ -87,3 +87,17 @@ export interface FailedSearchIssueAction {
   type: ISSUE_ACTIONS.SEARCH_ISSUE_FAILURE;
   data: { error: string };
 }
+
+export interface RequestLockIssueAction {
+  type: ISSUE_ACTIONS.LOCK_ISSUE_REQUEST;
+}
+
+export interface SuccessLockIssueAction {
+  type: ISSUE_ACTIONS.LOCK_ISSUE_SUCCESS;
+  data: { issue: IssueModel };
+}
+
+export interface FailedLockIssueAction {
+  type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE;
+  data: { error: string };
+}

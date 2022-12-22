@@ -19,7 +19,7 @@ const FeatureBar: React.FC<IProps> = ({
 }) => {
   return (
     <Box w={{ sm: '150px', md: '250px' }} display='flex' flexDirection='column'>
-      {isLock ? (
+      {!isLock ? (
         <Button variant='link' leftIcon={<FaLock />} onClick={onLockIssue}>
           Lock conversation
         </Button>
