@@ -21,6 +21,9 @@ import {
   RequestLockIssueAction,
   SuccessLockIssueAction,
   FailedLockIssueAction,
+  RequestUnlockIssueAction,
+  SuccessUnlockIssueAction,
+  FailedUnlockIssueAction,
 } from './actionTypes';
 
 export interface IIssueStateProps {
@@ -58,7 +61,10 @@ export type IActionIssueProps =
   | FailedRequestAnIssueAction
   | RequestLockIssueAction
   | SuccessLockIssueAction
-  | FailedLockIssueAction;
+  | FailedLockIssueAction
+  | RequestUnlockIssueAction
+  | SuccessUnlockIssueAction
+  | FailedUnlockIssueAction;
 
 const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssueProps) => {
   switch (actions.type) {
@@ -81,6 +87,28 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
       return {
         ...state,
         error: actions.data.error,
+        loading: false,
+      };
+    }
+
+    case ISSUE_ACTIONS.UNLOCK_ISSUE_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS: {
+      return {
+        ...state,
+        byId: actions.data.issue,
+        loading: false,
+      };
+    }
+
+    case ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE: {
+      return {
+        ...state,
         loading: false,
       };
     }

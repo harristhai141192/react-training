@@ -7,11 +7,6 @@ import { getAllIssueHelper, getIssueHelper } from '../helpers/issueHelper';
 import { IssueModel } from '@models/index';
 import { HTTP_METHODS } from '@constants/httpMethods';
 
-/**
- * Get all the item in DB
- * @param url - Init an URL of item
- * @returns item List
- */
 export const getIssues = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
   dispatch({
     type: ISSUE_ACTIONS.GET_ISSUE,
@@ -122,5 +117,30 @@ export const updateLockStatusService = async (
     }
   } catch (e) {
     dispatch({ type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
+};
+
+export const updateUnlockStatusService = async (
+  url: string,
+  dispatch: (action: IActionIssueProps) => void,
+) => {
+  dispatch({
+    type: ISSUE_ACTIONS.UNLOCK_ISSUE_REQUEST,
+  });
+  try {
+    const response = await fetch(url, {
+      method: HTTP_METHODS.DELETE,
+      headers: {
+        Authorization: `token ${process.env.VITE_TOKEN}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/vnd.github.v3+json',
+      },
+    });
+
+    if (response.status == 204) {
+      return getIssueHelper(response, ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE, dispatch);
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE, data: { error: (e as Error).message } });
   }
 };

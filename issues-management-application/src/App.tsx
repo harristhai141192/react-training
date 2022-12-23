@@ -17,16 +17,16 @@ const test = {
   issueStatus: false,
   issueComment: [
     {
-      comment: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
-      commentTime: '12/12/2022',
+      body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
+      created_at: '12/12/2022',
     },
     {
-      comment: 'I dont care',
-      commentTime: '11/11/2009',
+      body: 'I dont care',
+      created_at: '11/11/2009',
     },
     {
-      comment: 'I dont care',
-      commentTime: '11/11/2009',
+      body: 'I dont care',
+      created_at: '11/11/2009',
     },
   ],
 };

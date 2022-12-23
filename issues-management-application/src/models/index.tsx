@@ -1,11 +1,12 @@
 export interface IComment {
-  comment?: string;
-  commentTime?: string;
+  body?: string;
+  created_at?: string;
 }
 
 export interface IUser {
   login?: string;
   avatar_url?: string;
+  avatar_alt?: string;
   node_id?: string;
 }
 export class IssueModel {

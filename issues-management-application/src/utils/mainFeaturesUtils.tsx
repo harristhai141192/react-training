@@ -5,12 +5,16 @@ import {
   updateIssueService,
   getIssueService,
   updateLockStatusService,
+  updateUnlockStatusService,
 } from '@services/issueServices';
+import { ICommentActionProps } from '@stores/Comment/commentReducer';
 import { IActionIssueProps } from '../stores/Issue/issueReducer';
+import { getComments } from '@services/commentServices';
 
 // GENERATE KEY
 export const generateKey = () => `${Math.random()}_${new Date().getTime()}_${Math.random()}`;
 
+// ISSUES FEATURES
 export const getAllIssue = async (dispatch: (action: IActionIssueProps) => void) => {
   await getIssues(API.DELIVERY_CALL.URL_ISSUES, dispatch);
 };
@@ -48,4 +52,19 @@ export const lockIssue = async (
   data: { active_lock_reason: string },
 ) => {
   updateLockStatusService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, data, dispatch);
+};
+
+export const unlockIssue = async (
+  dispatch: (action: IActionIssueProps) => void,
+  currentId: string,
+) => {
+  updateUnlockStatusService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, dispatch);
+};
+
+// COMMENT FEATURES
+export const getCommentsById = async (
+  dispatch: (action: ICommentActionProps) => void,
+  currentId: string,
+) => {
+  getComments(`${API.DELIVERY_CALL.URL_COMMENTS}/issues/${currentId}/comments`, dispatch);
 };

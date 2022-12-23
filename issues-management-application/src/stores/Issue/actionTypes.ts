@@ -101,3 +101,17 @@ export interface FailedLockIssueAction {
   type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE;
   data: { error: string };
 }
+
+export interface RequestUnlockIssueAction {
+  type: ISSUE_ACTIONS.UNLOCK_ISSUE_REQUEST;
+}
+
+export interface SuccessUnlockIssueAction {
+  type: ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS;
+  data: { issue: IssueModel };
+}
+
+export interface FailedUnlockIssueAction {
+  type: ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE;
+  data: { error: string };
+}

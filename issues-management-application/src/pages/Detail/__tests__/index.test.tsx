@@ -2,24 +2,23 @@ import { getByText, render } from '@utils/testUtils';
 import Detail from '..';
 
 const baseProps = {
-  issueId: '1',
-  issueName: 'This is sample issue for testing',
-  issueAuthor: 'Bao Thai',
-  issueAuthorImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
-  issueCreatedTime: '12/12/2022',
-  issueStatus: false,
+  number: '1',
+  title: 'This is sample issue for testing',
+  user: {
+    login: 'Bao Thai',
+    avatar_url: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
+    node_id: '',
+  },
+  created_at: '12/12/2022',
+  locked: true,
   issueComment: [
     {
-      comment: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
-      commentTime: '12/12/2022',
+      body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
+      created_at: '12/12/2022',
     },
     {
-      comment: 'I dont care',
-      commentTime: '11/11/2009',
-    },
-    {
-      comment: 'I dont care',
-      commentTime: '11/11/2009',
+      body: 'I dont care',
+      created_at: '11/11/2009',
     },
   ],
 };

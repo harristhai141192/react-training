@@ -2,60 +2,86 @@ import { IssueModel } from '@models/index';
 
 export const issueData: IssueModel[] = [
   {
-    issueId: '1',
-    issueName: 'This is sample issue for testing',
-    issueAuthor: 'Bao Thai',
-    issueAuthorImage: '',
-    issueCreatedTime: '12/12/2022',
-    issueStatus: true,
+    number: '1',
+    title: 'This is sample issue for testing',
+    user: {
+      login: 'Bao Thai',
+      avatar_url: '',
+      node_id: '',
+    },
+    created_at: '12/12/2022',
+    locked: true,
     issueComment: [
       {
-        comment:
-          'A dog that was stucked at the peak of moutain for months has been rescued by a man',
-        commentTime: '12/12/2022',
+        body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
+        created_at: '12/12/2022',
       },
       {
-        comment: 'I dont care',
-        commentTime: '11/11/2009',
-      },
-    ],
-  },
-  {
-    issueId: '2',
-    issueName: 'This is sample issue for testing',
-    issueAuthor: 'Bao Thai',
-    issueCreatedTime: '12/12/2022',
-    issueStatus: true,
-    issueComment: [
-      {
-        comment: 'I dont care',
-        commentTime: '11/11/2009',
+        body: 'I dont care',
+        created_at: '11/11/2009',
       },
     ],
   },
   {
-    issueId: '3',
-    issueName: 'This is sample issue for testing',
-    issueAuthor: 'Bao Thai',
-    issueCreatedTime: '12/12/2022',
-    issueStatus: true,
+    number: '2',
+    title: 'This is sample issue for testing',
+    user: {
+      login: 'Bao Thai',
+      avatar_url: '',
+      node_id: '',
+    },
+    created_at: '12/12/2022',
+    locked: true,
     issueComment: [
       {
-        comment: 'Stuck in my head',
-        commentTime: '05/07/2021',
+        body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
+        created_at: '12/12/2022',
+      },
+      {
+        body: 'I dont care',
+        created_at: '11/11/2009',
       },
     ],
   },
   {
-    issueId: '4',
-    issueName: 'This is sample issue for testing',
-    issueAuthor: 'Bao Thai',
-    issueCreatedTime: '12/12/2022',
-    issueStatus: false,
+    number: '3',
+    title: 'This is sample issue for testing',
+    user: {
+      login: 'Bao Thai',
+      avatar_url: '',
+      node_id: '',
+    },
+    created_at: '12/12/2022',
+    locked: true,
     issueComment: [
       {
-        comment: 'Where is the god?',
-        commentTime: '12/12/1999',
+        body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
+        created_at: '12/12/2022',
+      },
+      {
+        body: 'I dont care',
+        created_at: '11/11/2009',
+      },
+    ],
+  },
+  {
+    number: '4',
+    title: 'This is sample issue for testing',
+    user: {
+      login: 'Bao Thai',
+      avatar_url: '',
+      node_id: '',
+    },
+    created_at: '12/12/2022',
+    locked: true,
+    issueComment: [
+      {
+        body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
+        created_at: '12/12/2022',
+      },
+      {
+        body: 'I dont care',
+        created_at: '11/11/2009',
       },
     ],
   },

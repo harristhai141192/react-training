@@ -7,20 +7,29 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useIssueContext } from '@stores/Issue/context';
 import { IIssueStateProps } from '@stores/Issue/issueReducer';
-import { lockIssue, updateIssue } from '../../utils/mainFeaturesUtils';
+import {
+  getCommentsById,
+  lockIssue,
+  unlockIssue,
+  updateIssue,
+} from '../../utils/mainFeaturesUtils';
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
 import ModalIssue from '@components/ModalIssue';
 import DeleteModal from './DeleteModal';
 import { getIssue } from '@utils/mainFeaturesUtils';
-import { getIssues } from '../../services/issueServices';
+import UnlockModal from './UnlockModal';
+import CommentBox from '@components/CommentBox';
+import { useCommentContext } from '@stores/Comment/context';
 
-const Detail: React.FC<IProps> = () => {
+const Detail = () => {
   const [issueState, issueDispatch] = useIssueContext();
+  const [commentState, commentDispatch] = useCommentContext();
   const { byId }: IIssueStateProps = issueState;
   const [isEditting, setIsEditting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isOpenLockModal, setIsOpenLockModal] = useState(false);
+  const [isOpenUnlockModal, setIsOpenUnlockModal] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const params = useParams();
@@ -29,8 +38,11 @@ const Detail: React.FC<IProps> = () => {
   useEffect(() => {
     if (currentID) {
       getIssue(issueDispatch, currentID);
+      getCommentsById(commentDispatch, currentID);
     }
   }, [currentID]);
+
+  console.log('commentState', commentState);
 
   useEffect(() => {});
   const getAnIssue = byId;
@@ -65,6 +77,14 @@ const Detail: React.FC<IProps> = () => {
     setIsOpenLockModal(false);
   };
 
+  const handleOpenUnlockIssueModal = () => {
+    setIsOpenUnlockModal(true);
+  };
+
+  const handleUnlockIssue = () => {
+    unlockIssue(issueDispatch, currentID);
+  };
+
   return (
     <Container padding='20px 0'>
       {isDeleting && (
@@ -74,14 +94,21 @@ const Detail: React.FC<IProps> = () => {
           onClose={() => setIsDeleting(false)}
         />
       )}
+      {isOpenLockModal && (
+        <ModalIssue
+          isOpen={isOpenLockModal}
+          onClose={() => setIsOpenLockModal(false)}
+          onSubmit={handleLockIssue}
+        />
+      )}
+      {isOpenUnlockModal && (
+        <UnlockModal
+          onUnlock={handleUnlockIssue}
+          isOpen={true}
+          onClose={() => setIsOpenUnlockModal(false)}
+        />
+      )}
       <Box>
-        {isOpenLockModal && (
-          <ModalIssue
-            isOpen={true}
-            onClose={() => setIsOpenLockModal(false)}
-            onSubmit={handleLockIssue}
-          />
-        )}
         <Heading
           as='h2'
           display='flex'
@@ -137,6 +164,7 @@ const Detail: React.FC<IProps> = () => {
         <Box display='flex' flexDirection='row' justifyContent='space-between'>
           <Box w='65%'>
             {/* <ListComments /> */}
+            <CommentBox userName='' />
             <AddCommentBox userImage={getAnIssue?.user?.avatar_url} />
           </Box>
           <Box w='30%'>
@@ -146,6 +174,7 @@ const Detail: React.FC<IProps> = () => {
               onLockIssue={handleOpenLockIssueModal}
               onEditIssue={handleOnEditIssue}
               onDeleteIssue={handleOpenDeleteModal}
+              onUnLockIssue={handleOpenUnlockIssueModal}
             />
           </Box>
         </Box>
