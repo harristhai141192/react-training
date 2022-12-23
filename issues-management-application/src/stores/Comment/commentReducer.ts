@@ -13,12 +13,12 @@ import {
 } from './actionTypes';
 
 export interface ICommentStateProps {
-  comment: IComment[];
+  comments: IComment[];
   error: string;
 }
 
 export const commentState: ICommentStateProps = {
-  comment: [],
+  comments: [],
   error: '',
 };
 
@@ -36,19 +36,14 @@ export type ICommentActionProps =
 const commentReducer = (state: ICommentStateProps = commentState, actions: ICommentActionProps) => {
   switch (actions.type) {
     case COMMENT_ACTIONS.GET_COMMENT:
-      console.log('START GETTING COMMENT');
-
       return {
         ...state,
       };
 
     case COMMENT_ACTIONS.GET_COMMENT_SUCCESS:
-      console.log('actions.data.comment', actions.data.comment);
-      console.log('state', state.comment);
-
       return {
         ...state,
-        comment: actions.data.comment,
+        comments: actions.data.comments,
       };
 
     case COMMENT_ACTIONS.GET_COMMENT_FAILURE:
@@ -64,7 +59,7 @@ const commentReducer = (state: ICommentStateProps = commentState, actions: IComm
     case COMMENT_ACTIONS.ADD_COMMENT_SUCCESS:
       return {
         ...state,
-        comment: actions.data.comment,
+        comment: actions.data.comments,
       };
     case COMMENT_ACTIONS.ADD_COMMENT_FAILURE:
       return {
@@ -79,7 +74,7 @@ const commentReducer = (state: ICommentStateProps = commentState, actions: IComm
     case COMMENT_ACTIONS.DELETE_COMMENT_SUCCESS:
       return {
         ...state,
-        comment: actions.data.comment,
+        comment: actions.data.comments,
       };
     case COMMENT_ACTIONS.DELETE_COMMENT_FAILURE:
       return {

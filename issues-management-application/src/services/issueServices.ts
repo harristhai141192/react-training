@@ -7,12 +7,25 @@ import { getAllIssueHelper, getIssueHelper } from '../helpers/issueHelper';
 import { IssueModel } from '@models/index';
 import { HTTP_METHODS } from '@constants/httpMethods';
 
+const myHeaders = new Headers({
+  Authorization: `token ${process.env.VITE_TOKEN}`,
+  'Content-Type': 'application/json',
+  Accept: 'application/vnd.github.v3+json',
+});
+
 export const getIssues = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
   dispatch({
     type: ISSUE_ACTIONS.GET_ISSUE,
   });
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: HTTP_METHODS.GET,
+      headers: {
+        Authorization: `token ${process.env.VITE_TOKEN}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/vnd.github.v3+json',
+      },
+    });
     if (response.status == 200) {
       return getAllIssueHelper(response, ISSUE_ACTIONS.GET_ISSUE_SUCCESS, dispatch);
     }
@@ -29,7 +42,17 @@ export const getIssueService = async (
     type: ISSUE_ACTIONS.GET_AN_ISSUE,
   });
   try {
-    const response = await fetch(url);
+    const headers = {
+      'Content-Type': 'text/plain',
+      Accept: 'application/vnd.github.v3.raw',
+      Authorization: `Bearer ${process.env.VITE_TOKEN}`,
+    };
+
+    const response = await fetch(url, {
+      method: HTTP_METHODS.GET,
+      headers,
+    });
+
     if (response.status == 200) {
       return getIssueHelper(response, ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS, dispatch);
     }

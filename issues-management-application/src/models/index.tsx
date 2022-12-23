@@ -1,6 +1,7 @@
 export interface IComment {
   body?: string;
   created_at?: string;
+  user?: IUser;
 }
 
 export interface IUser {

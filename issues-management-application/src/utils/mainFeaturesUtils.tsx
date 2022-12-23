@@ -23,7 +23,10 @@ export const getIssue = async (
   dispatch: (action: IActionIssueProps) => void,
   currentId: string,
 ) => {
-  await getIssueService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}`, dispatch);
+  await getIssueService(
+    `${API.DELIVERY_CALL.URL_ISSUES}/${currentId}&timestamp=${new Date().getTime()}`,
+    dispatch,
+  );
 };
 
 export const addIssue = async (

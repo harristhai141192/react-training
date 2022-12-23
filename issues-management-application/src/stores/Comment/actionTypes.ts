@@ -8,7 +8,7 @@ export interface RequestCommentAction {
 
 export interface SuccessRequestCommentAction {
   type: COMMENT_ACTIONS.GET_COMMENT_SUCCESS;
-  data: { comment: IComment[] };
+  data: { comments: IComment[] };
 }
 
 export interface FailedRequestCommentAction {
@@ -22,7 +22,7 @@ export interface RequestAddCommentAction {
 
 export interface SuccessAddCommentAction {
   type: COMMENT_ACTIONS.ADD_COMMENT_SUCCESS;
-  data: { comment: IComment };
+  data: { comments: IComment };
 }
 
 export interface FailedAddCommentAction {
@@ -36,7 +36,7 @@ export interface RequestDeleteCommentAction {
 
 export interface SuccessDeleteCommentAction {
   type: COMMENT_ACTIONS.DELETE_COMMENT_SUCCESS;
-  data: { comment: IComment };
+  data: { comments: IComment };
 }
 
 export interface FailedDeleteCommentAction {

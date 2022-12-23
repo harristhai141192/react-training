@@ -7,7 +7,7 @@ export const getAllCommentHelper = async (
   dispatch: (action: ICommentActionProps) => void,
 ) => {
   const comments = await response.json();
-  console.log('COMMENTS IN HELPER', comments);
+  console.log('COMMENTS', comments);
 
   dispatch({ type: dispatchActions, data: { comments } });
 };

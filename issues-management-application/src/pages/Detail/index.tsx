@@ -3,7 +3,7 @@ import AddCommentBox from '@components/AddCommentBox';
 import FeatureBar from '@components/FeatureBar';
 import RightBar from '@components/RightBar';
 import Status from '@components/Status';
-import React from 'react';
+import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useIssueContext } from '@stores/Issue/context';
 import { IIssueStateProps } from '@stores/Issue/issueReducer';
@@ -21,17 +21,21 @@ import { getIssue } from '@utils/mainFeaturesUtils';
 import UnlockModal from './UnlockModal';
 import CommentBox from '@components/CommentBox';
 import { useCommentContext } from '@stores/Comment/context';
+import { IComment } from '../../models/index';
+import ListComments from './ListComments';
 
 const Detail = () => {
   const [issueState, issueDispatch] = useIssueContext();
   const [commentState, commentDispatch] = useCommentContext();
+
   const { byId }: IIssueStateProps = issueState;
   const [isEditting, setIsEditting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isOpenLockModal, setIsOpenLockModal] = useState(false);
   const [isOpenUnlockModal, setIsOpenUnlockModal] = useState(false);
+  const [isLocked, setIsLocked] = useState(false);
   const { register, handleSubmit } = useForm();
-
+  const getComments = commentState.comments;
   const params = useParams();
   const currentID = params.id;
 
@@ -42,9 +46,6 @@ const Detail = () => {
     }
   }, [currentID]);
 
-  console.log('commentState', commentState);
-
-  useEffect(() => {});
   const getAnIssue = byId;
 
   const handleCancelEdit = () => {
@@ -59,6 +60,21 @@ const Detail = () => {
     updateIssue(issueDispatch, currentID, title);
     setIsEditting(false);
   };
+
+  const handleRefetchIssue = useCallback(
+    (isLocked, currentID) => {
+      if (isLocked && currentID) {
+        setTimeout(() => {
+          getIssue(issueDispatch, currentID);
+        }, 3000);
+      }
+    },
+    [isLocked, currentID],
+  );
+
+  useEffect(() => {
+    handleRefetchIssue(isLocked, currentID);
+  }, [isLocked, currentID]);
 
   const handleOpenDeleteModal = () => {
     setIsDeleting(true);
@@ -75,6 +91,7 @@ const Detail = () => {
       lock_reason: data?.lockReason,
     });
     setIsOpenLockModal(false);
+    setIsLocked((prev) => !prev);
   };
 
   const handleOpenUnlockIssueModal = () => {
@@ -83,6 +100,8 @@ const Detail = () => {
 
   const handleUnlockIssue = () => {
     unlockIssue(issueDispatch, currentID);
+    setIsOpenUnlockModal(false);
+    setIsLocked((prev) => !prev);
   };
 
   return (
@@ -163,8 +182,7 @@ const Detail = () => {
         </Box>
         <Box display='flex' flexDirection='row' justifyContent='space-between'>
           <Box w='65%'>
-            {/* <ListComments /> */}
-            <CommentBox userName='' />
+            <ListComments issue={getAnIssue} comments={getComments} />
             <AddCommentBox userImage={getAnIssue?.user?.avatar_url} />
           </Box>
           <Box w='30%'>
