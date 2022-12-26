@@ -1,5 +1,8 @@
+// Component
 import ModalIssue from '..';
-import { fireEvent, render, getByText, queryAllByText, getByRole } from '@utils/testUtils';
+
+// Utils
+import { fireEvent, render } from '@utils/testUtils';
 
 const baseProps = {
   isOpen: false,

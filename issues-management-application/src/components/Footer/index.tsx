@@ -1,3 +1,4 @@
+// Libraries
 import {
   Container,
   Box,
@@ -7,7 +8,11 @@ import {
   Text,
   useMediaQuery,
 } from '@chakra-ui/react';
+
+// Mocks
 import { navFooterData } from '@mockData/navData';
+
+// Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
 
 const Footer = () => {

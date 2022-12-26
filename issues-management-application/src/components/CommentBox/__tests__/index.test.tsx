@@ -1,4 +1,7 @@
+// Components
 import CommentDetail from '..';
+
+// Utils
 import { getByText, render, getByAltText } from '@utils/testUtils';
 
 const baseProps = {
@@ -26,7 +29,7 @@ describe('Component [CommentDetail] testing: ', () => {
   test('It should render image, name, time, comment and alt values that have been pushed into props', () => {
     const { container } = setup({});
     const userName = getByText(container, 'Bao Thai');
-    const userCommentTime = getByText(container, 'commented 15 minutes ago');
+    const userCommentTime = getByText(container, 'commented on 15 minutes');
     const userComment = getByText(container, 'This is comment sample for storybook!!!!!!!!!!');
     const userImageAlt = getByAltText(container, 'This is member Image');
 

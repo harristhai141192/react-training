@@ -1,5 +1,8 @@
+// Components
 import RightBar from '..';
-import { render, getByText } from '@utils/testUtils';
+
+// Utils
+import { render } from '@utils/testUtils';
 
 const setup = (overrideProps = {}) => {
   const props = {

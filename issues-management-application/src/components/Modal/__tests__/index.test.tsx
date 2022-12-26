@@ -1,5 +1,10 @@
+// Libraries
+import { Box, Button } from '@chakra-ui/react';
+
+// Component
 import Modal from '..';
-import { Box, Button, ButtonGroup } from '@chakra-ui/react';
+
+// Utils
 import { fireEvent, render } from '@utils/testUtils';
 
 const baseProps = {
@@ -8,9 +13,6 @@ const baseProps = {
   isOpen: false,
   onClose: () => {},
   buttonGroups: <></>,
-  // <Button onSubmit={} variant='ghost'>
-  //   Lock conversation on this issue
-  // </Button>
 };
 
 const setup = (overrideProps = {}) => {

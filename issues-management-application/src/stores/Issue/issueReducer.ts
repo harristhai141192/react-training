@@ -1,4 +1,7 @@
+// Constants
 import { ISSUE_ACTIONS } from '@constants/actions';
+
+// ActionTypes
 import {
   RequestIssueAction,
   SuccessRequestIssueAction,

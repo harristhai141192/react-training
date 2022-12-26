@@ -1,8 +1,13 @@
+// Libraries
 import React from 'react';
 import { Box, Checkbox, Text } from '@chakra-ui/react';
 import { FiDisc } from 'react-icons/fi';
-import { IssueModel } from '@models/index';
 import { Link } from 'react-router-dom';
+
+// Models
+import { IssueModel } from '@models/index';
+
+// Routes
 import { PAGE_ROUTES } from '@constants/routes';
 
 interface IProps {

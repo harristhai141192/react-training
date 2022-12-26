@@ -1,8 +1,11 @@
+// Libraries
+import React from 'react';
 import { ThemeProvider } from '@chakra-ui/react';
 import { render } from '@testing-library/react';
-import React from 'react';
-import themes from '@themes/index';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+// Themes
+import themes from '@themes/index';
 
 const customRender = (component: React.ReactNode) => {
   return render(

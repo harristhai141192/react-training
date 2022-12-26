@@ -1,5 +1,10 @@
+// Components
 import IssueList from '..';
+
+// Mock
 import { issueData } from '@mockData/issueData';
+
+// Utils
 import { render, getByText } from '@utils/testUtils';
 
 const baseProps = {

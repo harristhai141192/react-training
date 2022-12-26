@@ -1,13 +1,16 @@
+// Libraries
 import React from 'react';
 import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { SiMarkdown } from 'react-icons/si';
+
+// Components
 import MarkdownBar from '@components/MarkdownBar';
 
 interface IProps {
   userImage?: string;
   imageAlt?: string;
-  handleOnSubmit?: () => void;
+  handleOnSubmit: () => void;
 }
 
 const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit }) => {

@@ -1,5 +1,10 @@
+// Components
 import TableHead from '../TableHead';
+
+// Utils
 import { render, getByText } from '@utils/testUtils';
+
+// Libraries
 import { Table } from '@chakra-ui/react';
 
 const baseProps = {

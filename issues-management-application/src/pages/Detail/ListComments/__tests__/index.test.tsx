@@ -1,4 +1,7 @@
+// Utils
 import { getByText, render } from '@utils/testUtils';
+
+// Components
 import ListComments from '..';
 
 const baseProps = {

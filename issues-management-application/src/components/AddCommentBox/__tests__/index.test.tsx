@@ -1,4 +1,7 @@
+// Components
 import AddCommentBox from '..';
+
+// Utils
 import { render, fireEvent } from '@utils/testUtils';
 
 const baseProps = {

@@ -1,9 +1,13 @@
+// Component
 import CreatedIssue from '..';
+
+// Utils
 import { render, fireEvent, getByPlaceholderText } from '@utils/testUtils';
 
 const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
   imageAlt: 'This is member Image',
+  handleOnSubmit: () => {},
 };
 
 const setup = (overrideProps = {}) => {

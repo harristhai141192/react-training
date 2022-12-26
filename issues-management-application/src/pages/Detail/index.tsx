@@ -1,28 +1,32 @@
+// Libraries
+import { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { Box, Button, Container, FormControl, Heading, Input, Text } from '@chakra-ui/react';
+
+// Components
 import AddCommentBox from '@components/AddCommentBox';
 import FeatureBar from '@components/FeatureBar';
 import RightBar from '@components/RightBar';
 import Status from '@components/Status';
-import { useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import ModalIssue from '@components/ModalIssue';
+import DeleteModal from './DeleteModal';
+import UnlockModal from './UnlockModal';
+import ListComments from './ListComments';
+
+// Stores
 import { useIssueContext } from '@stores/Issue/context';
+import { useCommentContext } from '@stores/Comment/context';
 import { IIssueStateProps } from '@stores/Issue/issueReducer';
+
+// Utils
 import {
   getCommentsById,
   lockIssue,
   unlockIssue,
   updateIssue,
-} from '../../utils/mainFeaturesUtils';
-import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
-import ModalIssue from '@components/ModalIssue';
-import DeleteModal from './DeleteModal';
-import { getIssue } from '@utils/mainFeaturesUtils';
-import UnlockModal from './UnlockModal';
-import CommentBox from '@components/CommentBox';
-import { useCommentContext } from '@stores/Comment/context';
-import { IComment } from '../../models/index';
-import ListComments from './ListComments';
+  getIssue,
+} from '@utils/mainFeaturesUtils';
 
 const Detail = () => {
   const [issueState, issueDispatch] = useIssueContext();
@@ -48,19 +52,23 @@ const Detail = () => {
 
   const getAnIssue = byId;
 
+  // CANCEL INPUT EDITING ISSUE
   const handleCancelEdit = () => {
     setIsEditting(false);
   };
 
+  // OPEN INPUT EDITING ISSUE
   const handleOnEditIssue = () => {
     setIsEditting(true);
   };
 
+  // SAVING ISSUE VALUE EDITED
   const handleSaveIssue = async (title: string) => {
     updateIssue(issueDispatch, currentID, title);
     setIsEditting(false);
   };
 
+  // RE-FETCH ISSUE AFTER ACTION LOCKED
   const handleRefetchIssue = useCallback(
     (isLocked, currentID) => {
       if (isLocked && currentID) {
@@ -76,16 +84,17 @@ const Detail = () => {
     handleRefetchIssue(isLocked, currentID);
   }, [isLocked, currentID]);
 
+  // OPEN DELETE MODAL
   const handleOpenDeleteModal = () => {
     setIsDeleting(true);
   };
 
-  const handleDeleteIssue = () => {};
-
+  // OPEN LOCK ISSUE MODAL
   const handleOpenLockIssueModal = () => {
     setIsOpenLockModal(true);
   };
 
+  // HANDLE LOCK ISSUE FEATURE
   const handleLockIssue = (data: string) => {
     lockIssue(issueDispatch, currentID, {
       lock_reason: data?.lockReason,
@@ -94,10 +103,12 @@ const Detail = () => {
     setIsLocked((prev) => !prev);
   };
 
+  // OPEN UNLOCK ISSUE MODAL
   const handleOpenUnlockIssueModal = () => {
     setIsOpenUnlockModal(true);
   };
 
+  // HANDLE UNLOCK ISSUE MODAL
   const handleUnlockIssue = () => {
     unlockIssue(issueDispatch, currentID);
     setIsOpenUnlockModal(false);

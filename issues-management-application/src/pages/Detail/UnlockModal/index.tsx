@@ -1,14 +1,9 @@
+// Libraries
 import React from 'react';
+import { Button, ModalBody, Box, ModalFooter, UnorderedList, ListItem } from '@chakra-ui/react';
+
+// Components
 import Modal from '@components/Modal';
-import {
-  Text,
-  Button,
-  ModalBody,
-  Box,
-  ModalFooter,
-  UnorderedList,
-  ListItem,
-} from '@chakra-ui/react';
 
 interface IProps {
   onUnlock: () => void;

@@ -1,4 +1,7 @@
+// Components
 import FeatureBar from '..';
+
+// Utils
 import { render, getByText, fireEvent } from '@utils/testUtils';
 
 const setup = (overrideProps = {}) => {

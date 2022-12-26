@@ -1,5 +1,6 @@
-import { Box, Input, InputGroup, InputLeftAddon } from '@chakra-ui/react';
+// Libraries
 import React from 'react';
+import { Box, Input, InputGroup, InputLeftAddon } from '@chakra-ui/react';
 
 interface IProps {
   onChange?: () => void;

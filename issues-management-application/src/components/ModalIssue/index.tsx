@@ -1,5 +1,5 @@
+// Libraries
 import React from 'react';
-import Modal from '@components/Modal';
 import { useForm } from 'react-hook-form';
 import {
   Box,
@@ -11,6 +11,9 @@ import {
   ModalFooter,
   FormControl,
 } from '@chakra-ui/react';
+
+// Components
+import Modal from '@components/Modal';
 
 interface IProps {
   isOpen: boolean;

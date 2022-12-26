@@ -1,3 +1,4 @@
+// TODO: CHANGE ICON BY CHAKRA
 import {
   MdCode,
   MdModeStandby,
@@ -5,7 +6,6 @@ import {
   MdPlayCircleOutline,
   MdAlignVerticalCenter,
   MdMenuBook,
-  MdOutlineSecurity,
   MdOutlineAreaChart,
   MdSettings,
 } from 'react-icons/md';

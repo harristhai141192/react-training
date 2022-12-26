@@ -1,5 +1,8 @@
+// Libraries
 import React from 'react';
 import { Td, Tr } from '@chakra-ui/react';
+
+// Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
 
 interface IProps {

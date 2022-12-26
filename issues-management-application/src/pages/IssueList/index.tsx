@@ -1,8 +1,11 @@
+// Libraries
 import { Box, Container, Text } from '@chakra-ui/react';
-import InputFilter from './InputFilter';
-import ButtonLabel from './ButtonLabel';
+// TODO: CHANGE ICON BY CHAKRA ICON
 import { MdOutlineTipsAndUpdates } from 'react-icons/md';
 
+// Components
+import InputFilter from './InputFilter';
+import ButtonLabel from './ButtonLabel';
 import IssueTable from './IssueTable';
 
 const IssueList = () => {

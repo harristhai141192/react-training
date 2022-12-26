@@ -1,8 +1,15 @@
+// Libraries
 import React, { memo } from 'react';
 import { Table as TableChakra, TableContainer, Tbody, Thead } from '@chakra-ui/react';
+
+// Models
 import { IssueModel } from '@models/index';
-import TableRows from '@components/Table/TableRows';
+
+// Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
+
+// Components
+import TableRows from '@components/Table/TableRows';
 import Issue from '@components/Issue';
 import TableHead from '@components/Table/TableHead';
 

@@ -1,9 +1,16 @@
-import React, { memo } from 'react';
-import CommentBox from '@components/CommentBox';
-import { IComment } from '@models/index';
-import { generateKey } from '@utils/mainFeaturesUtils';
+// Libraries
+import React from 'react';
 import { Box } from '@chakra-ui/react';
-import { IssueModel } from '../../../models/index';
+
+// Components
+import CommentBox from '@components/CommentBox';
+
+// Models
+import { IComment } from '@models/index';
+import { IssueModel } from '@models/index';
+
+// Utils
+import { generateKey } from '@utils/mainFeaturesUtils';
 
 interface IProps {
   issue?: IssueModel;

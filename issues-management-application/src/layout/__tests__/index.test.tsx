@@ -1,5 +1,10 @@
+// Libraries
 import { Box, Text } from '@chakra-ui/layout';
+
+// Utils
 import { getByText, render } from '@utils/testUtils';
+
+// Components
 import Layout from '..';
 
 const baseProps = {

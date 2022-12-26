@@ -1,4 +1,6 @@
+// Libraries
 import { Box, Text } from '@chakra-ui/react';
+// TODO: CHANGE ICON TO CHAKRA ICON
 import { SlSettings } from 'react-icons/sl';
 
 const RightBar = () => {

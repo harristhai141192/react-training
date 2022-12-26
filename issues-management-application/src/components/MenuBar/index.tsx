@@ -1,5 +1,10 @@
+// Libraries
 import { Box, Button } from '@chakra-ui/react';
+
+// Mock
 import { menuBar } from '@mockData/menuBarData';
+
+// Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
 
 const MenuBar = () => {

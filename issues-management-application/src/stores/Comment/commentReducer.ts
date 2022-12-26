@@ -1,5 +1,10 @@
+// Constants
 import { COMMENT_ACTIONS } from '@constants/actions';
+
+// Models
 import { IComment } from '@models/index';
+
+// ActionTypes
 import {
   FailedRequestCommentAction,
   RequestCommentAction,

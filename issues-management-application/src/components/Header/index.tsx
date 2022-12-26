@@ -1,7 +1,6 @@
-import React from 'react';
+// Libraries
 import {
   Box,
-  Button,
   Container,
   Image,
   ListItem,
@@ -11,8 +10,14 @@ import {
   Link as LinkChakra,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+
+// Mocks
 import { navHeaderData } from '@mockData/navData';
+
+// Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
+
+// Routes
 import { PAGE_ROUTES } from '@constants/routes';
 
 const Header = () => {
@@ -50,13 +55,6 @@ const Header = () => {
               <Text>Gitlook Mobile Version</Text>
             )}
           </UnorderedList>
-        </Box>
-        <Box display='flex' alignItems='center'>
-          <Link to={PAGE_ROUTES.ADD}>
-            <Button variant='ghost' padding='12px 70px'>
-              + Add new issue
-            </Button>
-          </Link>
         </Box>
       </Box>
     </Container>

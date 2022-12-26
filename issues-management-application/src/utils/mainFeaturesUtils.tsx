@@ -1,4 +1,7 @@
+// Constants
 import { API } from '@constants/apis';
+
+// Services
 import {
   getIssues,
   postIssueService,
@@ -7,8 +10,12 @@ import {
   updateLockStatusService,
   updateUnlockStatusService,
 } from '@services/issueServices';
+
+// Stores
 import { ICommentActionProps } from '@stores/Comment/commentReducer';
-import { IActionIssueProps } from '../stores/Issue/issueReducer';
+import { IActionIssueProps } from '@stores/Issue/issueReducer';
+
+// Services
 import { getComments } from '@services/commentServices';
 
 // GENERATE KEY

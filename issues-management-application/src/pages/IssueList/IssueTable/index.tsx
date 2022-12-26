@@ -1,9 +1,16 @@
-import Table from '@components/Table';
+// Components
+import { useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
+
+// Stores
 import { useIssueContext } from '@stores/Issue/context';
 import { IIssueStateProps } from '@stores/Issue/issueReducer';
-import { useEffect } from 'react';
+
+// Utils
 import { getAllIssue } from '@utils/mainFeaturesUtils';
+
+// Components
+import Table from '@components/Table';
 
 const IssueTable = () => {
   const [issueState, issueDispatch] = useIssueContext();

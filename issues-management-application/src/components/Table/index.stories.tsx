@@ -1,4 +1,4 @@
-// Libs
+// Libraries
 import { IssueModel } from '@models/index';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 

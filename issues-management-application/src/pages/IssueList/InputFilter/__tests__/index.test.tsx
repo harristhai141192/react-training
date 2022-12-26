@@ -1,5 +1,8 @@
+// Components
 import InputFilter from '..';
-import { render, getByRole, fireEvent } from '@utils/testUtils';
+
+// Utils
+import { render, fireEvent } from '@utils/testUtils';
 
 const setup = (overrideProps = {}) => {
   const props = {

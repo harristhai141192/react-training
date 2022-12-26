@@ -1,4 +1,7 @@
+// Utils
 import { render, getByText, getByTestId } from '@utils/testUtils';
+
+// Components
 import Status from '..';
 
 const baseProps = {

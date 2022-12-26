@@ -1,4 +1,7 @@
+// Constants
 import { COMMENT_ACTIONS } from '@constants/actions';
+
+// Stores
 import { ICommentActionProps } from '@stores/Comment/commentReducer';
 
 export const getAllCommentHelper = async (

@@ -1,5 +1,8 @@
+// Libraries
 import React from 'react';
 import { Box, Text, Image } from '@chakra-ui/react';
+
+// Themes
 import themes from '@themes/index';
 
 interface IProps {
@@ -53,7 +56,7 @@ const CommentBox: React.FC<IProps> = ({
           >
             <Text as='b'>{userName}</Text>
             <Text margin='0' color='textDescriptionColor'>
-              &nbsp; commented {userCommentTime} ago
+              &nbsp; commented on {userCommentTime}
             </Text>
           </Box>
           <Box padding='10px 15px' fontSize={{ sm: 'text.small', md: 'text.medium' }}>

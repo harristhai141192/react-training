@@ -1,4 +1,7 @@
+// Components
 import MenuBar from '..';
+
+// Utils
 import { render, getByText } from '@utils/testUtils';
 
 const setup = (overrideProps = {}) => {

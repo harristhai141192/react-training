@@ -1,17 +1,15 @@
 // Constants
 import { ISSUE_ACTIONS } from '@constants/actions';
-
-// Models
-import { IActionIssueProps } from '../stores/Issue/issueReducer';
-import { getAllIssueHelper, getIssueHelper } from '../helpers/issueHelper';
-import { IssueModel } from '@models/index';
 import { HTTP_METHODS } from '@constants/httpMethods';
 
-const myHeaders = new Headers({
-  Authorization: `token ${process.env.VITE_TOKEN}`,
-  'Content-Type': 'application/json',
-  Accept: 'application/vnd.github.v3+json',
-});
+// Models
+import { IssueModel } from '@models/index';
+
+// Stores
+import { IActionIssueProps } from '@stores/Issue/issueReducer';
+
+// Helpers
+import { getAllIssueHelper, getIssueHelper } from '@helpers/issueHelper';
 
 export const getIssues = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
   dispatch({
@@ -20,6 +18,7 @@ export const getIssues = async (url: string, dispatch: (action: IActionIssueProp
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.GET,
+      // TODO: CHANGE HEADER BY DEFINED HEADER IN HTTPMETHODS
       headers: {
         Authorization: `token ${process.env.VITE_TOKEN}`,
         'Content-Type': 'application/json',

@@ -1,21 +1,29 @@
+// Libraries
+import { useState, useCallback, useEffect } from 'react';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+
+// Components
 import CreatedIssue from '@components/CreatedIssue';
 import MenuBar from '@components/MenuBar';
 import RightBar from '@components/RightBar';
+
+// Utils
 import { addIssue } from '@utils/mainFeaturesUtils';
-import { useIssueContext } from 'src/stores/Issue/context';
-import { useNavigate } from 'react-router-dom';
-import { PAGE_ROUTES } from '@constants/routes';
-import { ISSUE_ACTIONS } from '../../constants/actions';
-import { useState, useCallback, useEffect } from 'react';
+
+// Stores
+import { useIssueContext } from '@stores/Issue/context';
 import { IIssueStateProps } from '@stores/Issue/issueReducer';
+
+// Constants
+import { PAGE_ROUTES } from '@constants/routes';
 
 const Add = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [issueState, dispatch] = useIssueContext();
   const [addSuccess, setAddSuccess] = useState(false);
   const navigate = useNavigate();
-  const { byId, order }: IIssueStateProps = issueState;
+  const { order }: IIssueStateProps = issueState;
 
   const handleNaviGate = useCallback(
     (addSuccess: boolean) => {
@@ -51,7 +59,6 @@ const Add = () => {
         >
           <Box w={{ sm: '90%', md: '73%' }}>
             <CreatedIssue handleOnSubmit={handleAddIssue} />
-            {/* onSubmit = handleOnSubmit  */}
           </Box>
           <Box w={{ sm: '0', md: '20%' }}>{!isMobile && <RightBar />}</Box>
         </Box>

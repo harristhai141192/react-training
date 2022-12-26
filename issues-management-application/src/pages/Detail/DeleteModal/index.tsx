@@ -1,6 +1,9 @@
+// Libraries
 import React from 'react';
-import Modal from '@components/Modal';
 import { Text, Button, ModalBody, Box, ModalFooter } from '@chakra-ui/react';
+
+// Components
+import Modal from '@components/Modal';
 
 interface IProps {
   isOpen: boolean;

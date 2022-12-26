@@ -1,5 +1,7 @@
+// Constants
 import { ISSUE_ACTIONS } from '@constants/actions';
 
+// Models
 import { IssueModel } from '@models/index';
 
 export interface RequestAnIssueAction {

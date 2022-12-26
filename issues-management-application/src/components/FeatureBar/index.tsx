@@ -1,5 +1,7 @@
+// Libraries
 import React from 'react';
 import { Button, Box } from '@chakra-ui/react';
+//TODO: CHANGE ICON BY CHAKRA ICON
 import { FaLock, FaLockOpen, FaEdit, FaTrashAlt } from 'react-icons/fa';
 
 interface IProps {

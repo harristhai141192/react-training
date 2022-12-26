@@ -1,13 +1,18 @@
+// Utils
 import { render, getByText, getByTestId, fireEvent } from '@utils/testUtils';
+
+// Components
 import Issue from '..';
 
 const baseProps = {
   issue: {
-    issueName: 'Controlling the air plan thru the bad weather!',
-    issueId: '1',
-    issueStatus: false,
-    issueCreatedTime: '2022/12/12',
-    issueAuthor: 'BaoThai',
+    title: 'Controlling the air plan thru the bad weather!',
+    number: '1',
+    locked: false,
+    created_at: '2022/12/12',
+    user: {
+      login: 'Bao Thai',
+    },
   },
 };
 
@@ -31,13 +36,13 @@ describe('Component [Issue] testing: ', () => {
     const getIssueName = getByText(container, 'Controlling the air plan thru the bad weather!');
     expect(getIssueName).toBeTruthy;
 
-    const getInformation = getByText(container, '#1 is closed at 2022/12/12 by BaoThai');
+    const getInformation = getByText(container, '#1 is opened at 2022/12/12 by Bao Thai');
     expect(getInformation).toBeTruthy;
   });
 
   test('The label color should be changed if the issue is not open', () => {
     const { container } = setup();
-    expect(getByTestId(container, 'labelIssue')).toHaveStyle('color: darkviolet');
+    expect(getByTestId(container, 'labelIssue')).toHaveStyle('color: cadetblue');
   });
 
   test('The checkbox should be triggred when onClick', () => {

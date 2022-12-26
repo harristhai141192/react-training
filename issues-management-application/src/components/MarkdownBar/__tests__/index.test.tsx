@@ -1,4 +1,7 @@
+// Components
 import MarkdownBar from '..';
+
+// Utils
 import { render } from '@utils/testUtils';
 
 const setup = (overrideProps = {}) => {

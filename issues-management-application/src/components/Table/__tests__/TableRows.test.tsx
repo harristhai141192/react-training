@@ -1,6 +1,11 @@
+// Components
 import TableRow from '../TableRows';
-import { render } from '@utils/testUtils';
 import Issue from '@components/Issue';
+
+// Utils
+import { render } from '@utils/testUtils';
+
+// Libraries
 import { Table } from '@chakra-ui/react';
 
 const issue = {

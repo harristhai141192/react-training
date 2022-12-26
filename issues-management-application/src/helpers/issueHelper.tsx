@@ -1,5 +1,7 @@
-// Store
+// Constants
 import { ISSUE_ACTIONS } from '@constants/actions';
+
+// Store
 import { IActionIssueProps } from '../stores/Issue/issueReducer';
 
 export const getAllIssueHelper = async (

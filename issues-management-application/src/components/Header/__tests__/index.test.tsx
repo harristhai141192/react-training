@@ -1,4 +1,7 @@
+// Utils
 import { render } from '@utils/testUtils';
+
+// Components
 import Header from '..';
 
 const setup = (overrideProps = {}) => {

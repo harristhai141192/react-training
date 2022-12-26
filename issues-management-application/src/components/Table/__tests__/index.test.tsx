@@ -1,4 +1,7 @@
+// Libraries
 import Table from '..';
+
+// Utils
 import { render, getByText } from '@utils/testUtils';
 
 const baseProps = {
