@@ -32,12 +32,11 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
           <Box borderLeft='4px solid lightgrey' h='50px' marginLeft={{ sm: '70px', md: '100px' }} />
         </Box>
       )}
-      {comments?.length &&
+      {comments &&
         comments?.map((item: IComment) => {
           return (
-            <>
+            <Box key={generateKey()}>
               <CommentBox
-                key={generateKey()}
                 userName={item.user?.login}
                 userCommentTime={item.created_at?.split('T')[0]}
                 userComment={item.body}
@@ -50,7 +49,7 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
                 h='50px'
                 marginLeft={{ sm: '70px', md: '100px' }}
               />
-            </>
+            </Box>
           );
         })}
     </Box>

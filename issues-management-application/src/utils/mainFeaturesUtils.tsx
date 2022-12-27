@@ -3,7 +3,7 @@ import { API } from '@constants/apis';
 
 // Services
 import {
-  getIssues,
+  fetchIssues,
   postIssueService,
   updateIssueService,
   getIssueService,
@@ -23,7 +23,7 @@ export const generateKey = () => `${Math.random()}_${new Date().getTime()}_${Mat
 
 // ISSUES FEATURES
 export const getAllIssue = async (dispatch: (action: IActionIssueProps) => void) => {
-  await getIssues(API.DELIVERY_CALL.URL_ISSUES, dispatch);
+  await fetchIssues(API.DELIVERY_CALL.URL_ISSUES, dispatch);
 };
 
 export const getIssue = async (

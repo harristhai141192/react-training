@@ -44,12 +44,4 @@ describe('Component [Issue] testing: ', () => {
     const { container } = setup();
     expect(getByTestId(container, 'labelIssue')).toHaveStyle('color: cadetblue');
   });
-
-  test('The checkbox should be triggred when onClick', () => {
-    const handleOnCheck = jest.fn();
-    const { container } = setup({ onChangeChecked: handleOnCheck });
-    const checkbox = getByTestId(container, 'checkIssue');
-    fireEvent.click(checkbox);
-    expect(handleOnCheck).toBeCalled();
-  });
 });

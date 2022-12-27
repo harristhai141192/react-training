@@ -26,3 +26,7 @@ export class IssueModel {
     this.title = issue.title;
   }
 }
+
+export interface ILockReason {
+  lockReason: string;
+}

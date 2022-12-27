@@ -1,50 +1,51 @@
-// TODO: CHANGE ICON BY CHAKRA
+// Libraries
 import {
-  MdCode,
-  MdModeStandby,
-  MdOutlineAccountTree,
-  MdPlayCircleOutline,
-  MdAlignVerticalCenter,
-  MdMenuBook,
-  MdOutlineAreaChart,
-  MdSettings,
-} from 'react-icons/md';
+  UpDownIcon,
+  SunIcon,
+  HamburgerIcon,
+  ArrowBackIcon,
+  DragHandleIcon,
+  InfoIcon,
+  SettingsIcon,
+  MinusIcon,
+  LockIcon,
+} from '@chakra-ui/icons';
 
 export const menuBar = [
   {
     name: 'Code',
-    icon: <MdCode />,
+    icon: <UpDownIcon />,
   },
   {
     name: 'Issues',
-    icon: <MdModeStandby />,
+    icon: <SunIcon />,
   },
   {
     name: 'Pull Requests',
-    icon: <MdOutlineAccountTree />,
+    icon: <HamburgerIcon />,
   },
   {
     name: 'Actions',
-    icon: <MdPlayCircleOutline />,
+    icon: <ArrowBackIcon />,
   },
   {
     name: 'Projects',
-    icon: <MdAlignVerticalCenter />,
+    icon: <DragHandleIcon />,
   },
   {
     name: 'Wiki',
-    icon: <MdMenuBook />,
+    icon: <InfoIcon />,
   },
   {
     name: 'Security',
-    icon: <MdSettings />,
+    icon: <LockIcon />,
   },
   {
     name: 'Insights',
-    icon: <MdOutlineAreaChart />,
+    icon: <MinusIcon />,
   },
   {
     name: 'Settings',
-    icon: <MdMenuBook />,
+    icon: <SettingsIcon />,
   },
 ];

@@ -4,7 +4,7 @@ import { COMMENT_ACTIONS } from '@constants/actions';
 // Stores
 import { ICommentActionProps } from '@stores/Comment/commentReducer';
 
-export const getAllCommentHelper = async (
+export const pushCommentsToStore = async (
   response: Response,
   dispatchActions: COMMENT_ACTIONS,
   dispatch: (action: ICommentActionProps) => void,

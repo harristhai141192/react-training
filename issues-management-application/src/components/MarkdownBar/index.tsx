@@ -1,35 +1,28 @@
 // Libraries
-// TODO: CHANGE ICON BY CHAKRA UI
 import {
-  BiBold,
-  BiItalic,
-  BiHeading,
-  BiListMinus,
-  BiCode,
-  BiLinkAlt,
-  BiListUl,
-  BiListOl,
-  BiListCheck,
-  BiAt,
-  BiShekel,
-  BiReply,
-} from 'react-icons/bi';
+  AtSignIcon,
+  AttachmentIcon,
+  LinkIcon,
+  ViewIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
+  CopyIcon,
+  ChatIcon,
+  UpDownIcon,
+} from '@chakra-ui/icons';
 
 const MarkdownBar = () => {
   return (
     <>
-      <BiBold />
-      <BiItalic />
-      <BiHeading />
-      <BiListMinus />
-      <BiCode />
-      <BiLinkAlt />
-      <BiListUl />
-      <BiListOl />
-      <BiListCheck />
-      <BiAt />
-      <BiShekel />
-      <BiReply />
+      <AtSignIcon />
+      <LinkIcon />
+      <AttachmentIcon />
+      <ViewIcon />
+      <ArrowRightIcon />
+      <ArrowLeftIcon />
+      <CopyIcon />
+      <ChatIcon />
+      <UpDownIcon />
     </>
   );
 };

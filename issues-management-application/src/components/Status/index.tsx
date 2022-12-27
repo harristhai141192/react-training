@@ -1,13 +1,13 @@
 // Libraries
 import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
-import { FiDisc, FiCheckCircle } from 'react-icons/fi';
 
 interface IProps {
   isOpen?: boolean;
+  children: React.ReactNode;
 }
 
-const Status: React.FC<IProps> = ({ isOpen = false }) => {
+const Status: React.FC<IProps> = ({ isOpen = false, children }) => {
   return (
     <Box
       bgColor={isOpen ? 'statusColor.green' : 'statusColor.purple'}
@@ -16,19 +16,14 @@ const Status: React.FC<IProps> = ({ isOpen = false }) => {
       fontSize='text.small'
       color='white'
       width='100px'
+      display='flex'
+      flexDirection='row'
+      alignItems='center'
+      justifyContent='center'
       data-testid='statusLabel'
     >
-      {isOpen ? (
-        <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
-          <FiDisc />
-          <Text marginLeft='5px'>Open</Text>
-        </Box>
-      ) : (
-        <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
-          <FiCheckCircle />
-          <Text marginLeft='5px'>Closed</Text>
-        </Box>
-      )}
+      {children}
+      <Text marginLeft='5px'>{isOpen ? 'Open' : 'Closed'}</Text>
     </Box>
   );
 };

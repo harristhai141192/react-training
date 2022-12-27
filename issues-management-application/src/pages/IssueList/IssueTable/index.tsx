@@ -1,5 +1,5 @@
 // Components
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 
 // Stores
@@ -29,4 +29,4 @@ const IssueTable = () => {
   );
 };
 
-export default IssueTable;
+export default memo(IssueTable);

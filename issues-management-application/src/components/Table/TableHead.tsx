@@ -1,14 +1,13 @@
 // Libraries
-import React from 'react';
-import { Box, Checkbox, Th, Tr, Text } from '@chakra-ui/react';
-// TODO: CHANGE ICON BY CHAKRA
-import { FiDisc } from 'react-icons/fi';
+import React, { memo } from 'react';
+import { Box, Th, Tr, Text } from '@chakra-ui/react';
+import { StarIcon } from '@chakra-ui/icons';
 
 // Models
 import { IssueModel } from '@models/index';
 
 // Mocks
-import { labelData } from '@mockData/labelData';
+import { tableHeadData } from '@mockData/tableHeadData';
 
 // Utils
 import { generateKey } from '@utils/mainFeaturesUtils';
@@ -27,10 +26,10 @@ const TableHead: React.FC<IProps> = ({ issue, numberOfClosedIssue, numberOfOpene
           display='flex'
           flexDirection={{ sm: 'column', md: 'row' }}
           justifyContent='space-between'
+          alignItems='end'
         >
           <Box display='flex' flexDirection='row' alignItems='center' marginLeft='5px'>
-            <Checkbox size='sm' marginRight='10px' />
-            <FiDisc color='black' />
+            <StarIcon />
             <Text marginLeft='5px'>
               {issue.length > 1 ? `${issue.length} Issues` : `${issue.length} Issue`}
             </Text>
@@ -38,7 +37,7 @@ const TableHead: React.FC<IProps> = ({ issue, numberOfClosedIssue, numberOfOpene
             <Text marginLeft='5px'>{numberOfOpenedIssue} Closed</Text>
           </Box>
           <Box display='flex' flexDirection='row' marginTop={{ sm: '10px', md: '' }}>
-            {labelData.map((item) => {
+            {tableHeadData.map((item: string) => {
               return (
                 <Text key={generateKey()} marginLeft='10px'>
                   {item}
@@ -52,4 +51,4 @@ const TableHead: React.FC<IProps> = ({ issue, numberOfClosedIssue, numberOfOpene
   );
 };
 
-export default TableHead;
+export default memo(TableHead);

@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { memo } from 'react';
 import { Td, Tr } from '@chakra-ui/react';
 
 // Utils
@@ -19,4 +19,4 @@ const TableRows: React.FC<IProps> = ({ children }) => {
   );
 };
 
-export default TableRows;
+export default memo(TableRows);

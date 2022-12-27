@@ -1,7 +1,6 @@
 // Libraries
 import { Box, Container, Text } from '@chakra-ui/react';
-// TODO: CHANGE ICON BY CHAKRA ICON
-import { MdOutlineTipsAndUpdates } from 'react-icons/md';
+import { ChatIcon } from '@chakra-ui/icons';
 
 // Components
 import InputFilter from './InputFilter';
@@ -19,7 +18,7 @@ const IssueList = () => {
         <IssueTable />
       </Box>
       <Box display='flex' justifyContent='center' alignItems='center'>
-        <MdOutlineTipsAndUpdates />
+        <ChatIcon />
         <Text marginLeft='5px' fontSize='text.small'>
           ProTip! Find all open issues with in progress development work with linked.
         </Text>

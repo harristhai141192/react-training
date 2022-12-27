@@ -1,13 +1,13 @@
 // Libraries
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Box, Button, Container, FormControl, Heading, Input, Text } from '@chakra-ui/react';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 
 // Components
 import AddCommentBox from '@components/AddCommentBox';
-import FeatureBar from '@components/FeatureBar';
-import RightBar from '@components/RightBar';
+import DiscussionSideBar from '@components/DiscussionSideBar';
 import Status from '@components/Status';
 import ModalIssue from '@components/ModalIssue';
 import DeleteModal from './DeleteModal';
@@ -27,8 +27,9 @@ import {
   updateIssue,
   getIssue,
 } from '@utils/mainFeaturesUtils';
+import { ILockReason } from '@models/index';
 
-const Detail = () => {
+const IssueDetail = () => {
   const [issueState, issueDispatch] = useIssueContext();
   const [commentState, commentDispatch] = useCommentContext();
 
@@ -50,8 +51,6 @@ const Detail = () => {
     }
   }, [currentID]);
 
-  const getAnIssue = byId;
-
   // CANCEL INPUT EDITING ISSUE
   const handleCancelEdit = () => {
     setIsEditting(false);
@@ -70,7 +69,7 @@ const Detail = () => {
 
   // RE-FETCH ISSUE AFTER ACTION LOCKED
   const handleRefetchIssue = useCallback(
-    (isLocked, currentID) => {
+    (isLocked: boolean, currentID: string) => {
       if (isLocked && currentID) {
         setTimeout(() => {
           getIssue(issueDispatch, currentID);
@@ -81,7 +80,7 @@ const Detail = () => {
   );
 
   useEffect(() => {
-    handleRefetchIssue(isLocked, currentID);
+    return handleRefetchIssue(isLocked, currentID);
   }, [isLocked, currentID]);
 
   // OPEN DELETE MODAL
@@ -95,7 +94,7 @@ const Detail = () => {
   };
 
   // HANDLE LOCK ISSUE FEATURE
-  const handleLockIssue = (data: string) => {
+  const handleLockIssue = (data: ILockReason) => {
     lockIssue(issueDispatch, currentID, {
       lock_reason: data?.lockReason,
     });
@@ -113,6 +112,10 @@ const Detail = () => {
     unlockIssue(issueDispatch, currentID);
     setIsOpenUnlockModal(false);
     setIsLocked((prev) => !prev);
+  };
+
+  const handleDeleteIssue = () => {
+    setIsDeleting(true);
   };
 
   return (
@@ -150,7 +153,7 @@ const Detail = () => {
               <FormControl display='flex' flexDirection='row' alignItems='center'>
                 <Input
                   placeholder='Please enter new title'
-                  defaultValue={getAnIssue?.title}
+                  defaultValue={byId?.title}
                   {...register('title')}
                 />
                 <Box display='flex' flexDirection='row' alignContent='center' margin='10px'>
@@ -172,9 +175,9 @@ const Detail = () => {
               </FormControl>
             </form>
           ) : (
-            getAnIssue?.title
+            byId?.title
           )}
-          {isEditting ? '' : `#${getAnIssue?.number}`}
+          {isEditting ? '' : `#${byId?.number}`}
         </Heading>
         <Box
           display='flex'
@@ -184,22 +187,21 @@ const Detail = () => {
           paddingBottom='15px'
           marginTop='10px'
         >
-          <Status isOpen={!getAnIssue?.locked} />
+          <Status isOpen={!byId?.locked}>{!byId?.locked ? <SunIcon /> : <MoonIcon />}</Status>
           <Text marginLeft='10px'>
-            <Text as='b'>{getAnIssue?.user?.login}&nbsp;</Text>
-            {!getAnIssue?.locked ? 'opened this issue on' : 'closed this issue on'}&nbsp;
-            {getAnIssue?.created_at?.split('T')[0]}
+            <Text as='b'>{byId?.user?.login}&nbsp;</Text>
+            {!byId?.locked ? 'opened this issue on' : 'closed this issue on'}&nbsp;
+            {byId?.created_at?.split('T')[0]}
           </Text>
         </Box>
         <Box display='flex' flexDirection='row' justifyContent='space-between'>
           <Box w='65%'>
-            <ListComments issue={getAnIssue} comments={getComments} />
-            <AddCommentBox userImage={getAnIssue?.user?.avatar_url} />
+            <ListComments issue={byId} comments={getComments} />
+            <AddCommentBox userImage={byId?.user?.avatar_url} />
           </Box>
           <Box w='30%'>
-            <RightBar />
-            <FeatureBar
-              isLock={getAnIssue?.locked}
+            <DiscussionSideBar
+              isLock={byId?.locked}
               onLockIssue={handleOpenLockIssueModal}
               onEditIssue={handleOnEditIssue}
               onDeleteIssue={handleOpenDeleteModal}
@@ -212,4 +214,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default memo(IssueDetail);

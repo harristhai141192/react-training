@@ -1,5 +1,6 @@
 // Libraries
 import { Box, Button } from '@chakra-ui/react';
+import { memo } from 'react';
 
 // Mock
 import { menuBar } from '@mockData/menuBarData';
@@ -26,4 +27,4 @@ const MenuBar = () => {
   );
 };
 
-export default MenuBar;
+export default memo(MenuBar);

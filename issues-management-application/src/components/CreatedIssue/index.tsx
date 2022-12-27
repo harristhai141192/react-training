@@ -1,8 +1,8 @@
 // Libraries
 import React from 'react';
 import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-ui/react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { SiMarkdown } from 'react-icons/si';
+import { useForm } from 'react-hook-form';
+import { MoonIcon } from '@chakra-ui/icons';
 
 // Components
 import MarkdownBar from '@components/MarkdownBar';
@@ -10,7 +10,7 @@ import MarkdownBar from '@components/MarkdownBar';
 interface IProps {
   userImage?: string;
   imageAlt?: string;
-  handleOnSubmit: SubmitHandler<FieldValues>;
+  handleOnSubmit: () => void;
   handleOnClick?: () => void;
 }
 
@@ -105,7 +105,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit, h
                 w='100%'
               >
                 <Box display='flex' flexDirection='row' marginBottom='10px'>
-                  <SiMarkdown />
+                  <MoonIcon />
                   <Text as='sub' margin='4px 5px'>
                     Styling with Markdown is not supported
                   </Text>

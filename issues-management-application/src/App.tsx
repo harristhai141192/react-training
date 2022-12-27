@@ -10,12 +10,12 @@ import themes from './themes';
 
 // Pages
 import IssueList from '@pages/IssueList';
-import Add from '@pages/Add';
-import Detail from '@pages/Detail';
+import IssueDetail from '@pages/Detail';
 
 // Stores
 import { IssueProvider } from '@stores/Issue/context';
 import { CommentProvider } from '@stores/Comment/context';
+import AddIssue from '@pages/Add';
 
 function App() {
   return (
@@ -27,8 +27,8 @@ function App() {
               <Routes>
                 <Route>
                   <Route index element={<IssueList />} />
-                  <Route path='/add' element={<Add />} />
-                  <Route path='/detail/:id' element={<Detail />} />
+                  <Route path='/add' element={<AddIssue />} />
+                  <Route path='/detail/:id' element={<IssueDetail />} />
                 </Route>
               </Routes>
             </Layout>

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 // Components
 import CreatedIssue from '@components/CreatedIssue';
 import MenuBar from '@components/MenuBar';
-import RightBar from '@components/RightBar';
+import DiscussionSideBar from '@components/DiscussionSideBar';
 
 // Utils
 import { addIssue } from '@utils/mainFeaturesUtils';
@@ -18,7 +18,10 @@ import { IIssueStateProps } from '@stores/Issue/issueReducer';
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
 
-const Add = () => {
+// Mock
+import { rightSideBarData } from '@mockData/barData';
+
+const AddIssue = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [issueState, dispatch] = useIssueContext();
   const [addSuccess, setAddSuccess] = useState(false);
@@ -60,11 +63,11 @@ const Add = () => {
           <Box w={{ sm: '90%', md: '73%' }}>
             <CreatedIssue handleOnSubmit={handleAddIssue} />
           </Box>
-          <Box w={{ sm: '0', md: '20%' }}>{!isMobile && <RightBar />}</Box>
+          <Box w={{ sm: '0', md: '20%' }}>{!isMobile && <DiscussionSideBar />}</Box>
         </Box>
       </Container>
     </>
   );
 };
 
-export default Add;
+export default AddIssue;

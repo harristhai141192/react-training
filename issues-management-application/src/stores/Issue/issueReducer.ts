@@ -28,16 +28,27 @@ import {
   SuccessUnlockIssueAction,
   FailedUnlockIssueAction,
 } from './actionTypes';
+import { IssueModel } from '@models/index';
 
 export interface IIssueStateProps {
-  byId: object;
+  byId: IssueModel;
   order: number[];
   loading: boolean;
   error: string;
 }
 
+const defaultIssue = {
+  number: '',
+  title: '',
+  user: {
+    login: '',
+    create_at: '',
+  },
+  locked: false,
+};
+
 export const issueState: IIssueStateProps = {
-  byId: {},
+  byId: defaultIssue,
   order: [],
   loading: false,
   error: '',

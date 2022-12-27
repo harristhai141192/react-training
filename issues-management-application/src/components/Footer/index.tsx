@@ -32,7 +32,7 @@ const Footer = () => {
       >
         <Box display='flex' flexDirection='row' alignItems='center'>
           <Image
-            src='src/assets/images/github_icon.svg'
+            src='/src/assets/images/github_icon.svg'
             w='40px'
             bgColor='white'
             borderRadius='100%'
