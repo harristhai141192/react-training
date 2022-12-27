@@ -1,8 +1,7 @@
 // Libraries
 import React from 'react';
 import { Button, Box } from '@chakra-ui/react';
-//TODO: CHANGE ICON BY CHAKRA ICON
-import { FaLock, FaLockOpen, FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { LockIcon, UnlockIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons';
 
 interface IProps {
   isLock?: boolean;
@@ -22,18 +21,18 @@ const FeatureBar: React.FC<IProps> = ({
   return (
     <Box w={{ sm: '150px', md: '250px' }} display='flex' flexDirection='column'>
       {!isLock ? (
-        <Button variant='link' leftIcon={<FaLock />} onClick={onLockIssue}>
+        <Button variant='link' leftIcon={<LockIcon />} onClick={onLockIssue}>
           Lock conversation
         </Button>
       ) : (
-        <Button variant='link' leftIcon={<FaLockOpen />} onClick={onUnLockIssue}>
+        <Button variant='link' leftIcon={<UnlockIcon />} onClick={onUnLockIssue}>
           Unlock Issue
         </Button>
       )}
-      <Button variant='link' leftIcon={<FaEdit />} onClick={onEditIssue}>
+      <Button variant='link' leftIcon={<EditIcon />} onClick={onEditIssue}>
         Edit Issue
       </Button>
-      <Button variant='link' leftIcon={<FaTrashAlt />} onClick={onDeleteIssue}>
+      <Button variant='link' leftIcon={<DeleteIcon />} onClick={onDeleteIssue}>
         Delete Issue
       </Button>
     </Box>

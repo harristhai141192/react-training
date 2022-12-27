@@ -13,7 +13,7 @@ export interface SuccessRequestAnIssueAction {
 }
 export interface FailedRequestAnIssueAction {
   type: ISSUE_ACTIONS.GET_AN_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 export interface RequestIssueAction {
@@ -27,7 +27,7 @@ export interface SuccessRequestIssueAction {
 
 export interface FailedRequestIssueAction {
   type: ISSUE_ACTIONS.GET_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 // ADD TYPES
@@ -42,7 +42,7 @@ export interface SuccessAddIssueAction {
 
 export interface FailedAddIssueAction {
   type: ISSUE_ACTIONS.ADD_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 // UPDATE TYPES
@@ -57,7 +57,7 @@ export interface SuccessUpdateIssueAction {
 
 export interface FailedUpdateIssueAction {
   type: ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 // DELETE TYPES
@@ -72,7 +72,7 @@ export interface SuccessDeleteIssueAction {
 
 export interface FailedDeleteIssueAction {
   type: ISSUE_ACTIONS.DELETE_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 // SEARCH TYPES
@@ -87,7 +87,7 @@ export interface SuccessSearchIssueAction {
 
 export interface FailedSearchIssueAction {
   type: ISSUE_ACTIONS.SEARCH_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 export interface RequestLockIssueAction {
@@ -101,7 +101,7 @@ export interface SuccessLockIssueAction {
 
 export interface FailedLockIssueAction {
   type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }
 
 export interface RequestUnlockIssueAction {
@@ -115,5 +115,5 @@ export interface SuccessUnlockIssueAction {
 
 export interface FailedUnlockIssueAction {
   type: ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE;
-  data: { error: string };
+  data: { error: string } | { issue: string };
 }

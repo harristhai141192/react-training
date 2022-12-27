@@ -9,8 +9,10 @@ export namespace API {
     URL_ISSUES: `${process.env.VITE_BASE_URL}/${PATHS.ISSUES}`,
     URL_COMMENTS: `${process.env.VITE_BASE_URL}`,
   };
-
-  export enum HEADERS {
-    'Content-Type' = 'application/json',
-  }
 }
+
+export const HEADERS = {
+  Authorization: `token ${process.env.VITE_TOKEN}`,
+  'Content-Type': 'application/json',
+  Accept: 'application/vnd.github.v3+json',
+};

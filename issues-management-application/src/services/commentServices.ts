@@ -7,6 +7,7 @@ import { getAllCommentHelper } from '@helpers/commentHelper';
 
 // Stores
 import { ICommentActionProps } from '@stores/Comment/commentReducer';
+import { HEADERS } from '../constants/apis';
 
 export const getComments = async (url: string, dispatch: (action: ICommentActionProps) => void) => {
   dispatch({
@@ -15,12 +16,7 @@ export const getComments = async (url: string, dispatch: (action: ICommentAction
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.GET,
-      //TODO: CHANGE HEADER BY DEFINED HTTPMETHODS
-      headers: {
-        Authorization: `token ${process.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github.v3+json',
-      },
+      headers: HEADERS,
     });
     console.log('RESPONSE IN SERVICE', response);
 

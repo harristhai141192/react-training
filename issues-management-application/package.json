@@ -10,7 +10,8 @@
     "prepare": "cd .. && husky install issues-management-application/_",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "pnpm test -- --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

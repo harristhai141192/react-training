@@ -17,30 +17,30 @@ describe('Component [Feature Bar] testing: ', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('It should render unlock when the issue is locked', () => {
+  test('It should render Lock when the issue is not locked', () => {
     const { container } = setup();
-    const unLock = getByText(container, 'Unlock Issue');
+    const unLock = getByText(container, 'Lock conversation');
     expect(unLock).toBeTruthy;
   });
 
-  test('It should render lock when the issue is unlocked', () => {
+  test('It should render unlock when the issue is locked', () => {
     const { container } = setup({ isLock: true });
-    const isLocked = getByText(container, 'Lock conversation');
+    const isLocked = getByText(container, 'Unlock Issue');
     expect(isLocked).toBeTruthy;
   });
 
   test('Feature buttons should be triggered when onClick', () => {
-    const handleOnUnLock = jest.fn();
+    const handleOnLock = jest.fn();
     const handleOnEdit = jest.fn();
     const handleOnDelete = jest.fn();
     const { getByText } = setup({
-      onUnLockIssue: handleOnUnLock,
+      onLockIssue: handleOnLock,
       onEditIssue: handleOnEdit,
       onDeleteIssue: handleOnDelete,
     });
 
-    fireEvent.click(getByText('Unlock Issue'));
-    expect(handleOnUnLock).toBeCalled();
+    fireEvent.click(getByText('Lock conversation'));
+    expect(handleOnLock).toBeCalled();
 
     fireEvent.click(getByText('Edit Issue'));
     expect(handleOnEdit).toBeCalled();

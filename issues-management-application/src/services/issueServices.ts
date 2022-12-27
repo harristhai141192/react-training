@@ -2,14 +2,12 @@
 import { ISSUE_ACTIONS } from '@constants/actions';
 import { HTTP_METHODS } from '@constants/httpMethods';
 
-// Models
-import { IssueModel } from '@models/index';
-
 // Stores
 import { IActionIssueProps } from '@stores/Issue/issueReducer';
 
 // Helpers
 import { getAllIssueHelper, getIssueHelper } from '@helpers/issueHelper';
+import { HEADERS } from '@constants/apis';
 
 export const getIssues = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
   dispatch({
@@ -18,12 +16,7 @@ export const getIssues = async (url: string, dispatch: (action: IActionIssueProp
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.GET,
-      // TODO: CHANGE HEADER BY DEFINED HEADER IN HTTPMETHODS
-      headers: {
-        Authorization: `token ${process.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github.v3+json',
-      },
+      headers: HEADERS,
     });
     if (response.status == 200) {
       return getAllIssueHelper(response, ISSUE_ACTIONS.GET_ISSUE_SUCCESS, dispatch);
@@ -62,7 +55,10 @@ export const getIssueService = async (
 
 export const postIssueService = async (
   url: string,
-  data: IssueModel,
+  data: {
+    title: string;
+    body: string;
+  },
   dispatch: (action: IActionIssueProps) => void,
 ) => {
   dispatch({

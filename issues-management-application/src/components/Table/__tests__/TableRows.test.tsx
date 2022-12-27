@@ -9,11 +9,11 @@ import { render } from '@utils/testUtils';
 import { Table } from '@chakra-ui/react';
 
 const issue = {
-  issueId: '1',
-  issueName: 'This is sample issue for testing',
-  issueAuthor: 'Bao Thai',
-  issueCreatedTime: '12/12/2022',
-  issueStatus: false,
+  number: '1',
+  title: 'This is sample issue for testing',
+  user: { login: 'Bao Thai' },
+  created_at: '12/12/2022',
+  locked: false,
 };
 
 const baseProps = {

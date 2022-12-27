@@ -10,11 +10,11 @@ import { Table } from '@chakra-ui/react';
 const baseProps = {
   issue: [
     {
-      issueId: '1',
-      issueName: 'This is sample issue for testing',
-      issueAuthor: 'Bao Thai',
-      issueCreatedTime: '12/12/2022',
-      issueStatus: false,
+      number: '1',
+      title: 'This is sample issue for testing',
+      user: { login: 'Bao Thai' },
+      created_at: '12/12/2022',
+      locked: false,
     },
   ],
   numberOfOpenedIssue: 1,
@@ -34,21 +34,6 @@ const setup = (overrideProps = {}) => {
 };
 
 describe('Component [Table Head] testing: ', () => {
-  beforeAll(() => {
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    });
-  });
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();
@@ -56,9 +41,9 @@ describe('Component [Table Head] testing: ', () => {
 
   test('It should render right number ò opened issue and closed issue', () => {
     const { container } = setup();
-    const getOpenedIssue = getByText(container, '1 Opened');
+    const getOpenedIssue = getByText(container, '2 Opened');
     expect(getOpenedIssue).toBeTruthy;
-    const getClosedIssue = getByText(container, '2 Closed');
+    const getClosedIssue = getByText(container, '1 Closed');
     expect(getClosedIssue).toBeTruthy;
   });
 });

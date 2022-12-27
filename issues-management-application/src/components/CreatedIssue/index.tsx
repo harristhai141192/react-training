@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SiMarkdown } from 'react-icons/si';
 
 // Components
@@ -10,10 +10,11 @@ import MarkdownBar from '@components/MarkdownBar';
 interface IProps {
   userImage?: string;
   imageAlt?: string;
-  handleOnSubmit: () => void;
+  handleOnSubmit: SubmitHandler<FieldValues>;
+  handleOnClick?: () => void;
 }
 
-const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit }) => {
+const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit, handleOnClick }) => {
   const { register, handleSubmit } = useForm();
 
   return (
@@ -109,7 +110,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
                     Styling with Markdown is not supported
                   </Text>
                 </Box>
-                <Button variant='solid' type='submit'>
+                <Button onClick={handleOnClick} variant='solid' type='submit'>
                   Submit
                 </Button>
               </Box>

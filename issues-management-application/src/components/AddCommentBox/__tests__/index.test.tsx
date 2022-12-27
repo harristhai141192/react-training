@@ -2,7 +2,7 @@
 import AddCommentBox from '..';
 
 // Utils
-import { render, fireEvent } from '@utils/testUtils';
+import { render, fireEvent, getByDisplayValue } from '@utils/testUtils';
 
 const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
@@ -14,7 +14,13 @@ const setup = (overrideProps = {}) => {
     ...baseProps,
     ...overrideProps,
   };
-  return render(<AddCommentBox {...props} />);
+  const utils = render(<AddCommentBox {...props} />);
+  const input = utils.getByLabelText('commentArea');
+
+  return {
+    input,
+    ...utils,
+  };
 };
 
 describe('Component [AddCommentBox] testing:', () => {
@@ -28,5 +34,11 @@ describe('Component [AddCommentBox] testing:', () => {
     const { getByText } = setup({ onClick: handleOnClick });
     fireEvent.click(getByText('Comment'));
     expect(handleOnClick).toBeCalled();
+  });
+
+  test('Get value when user input on text area', () => {
+    const { input } = setup();
+    fireEvent.change(input, { target: { value: '23' } });
+    expect(input).toHaveValue('23');
   });
 });

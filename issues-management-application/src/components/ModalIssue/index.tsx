@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import {
   Box,
   UnorderedList,
@@ -18,7 +18,7 @@ import Modal from '@components/Modal';
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit?: () => void;
+  onSubmit: SubmitHandler<FieldValues>;
 }
 
 const ModalIssue: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {

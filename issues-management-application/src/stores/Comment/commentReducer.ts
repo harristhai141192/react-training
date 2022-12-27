@@ -56,36 +56,6 @@ const commentReducer = (state: ICommentStateProps = commentState, actions: IComm
         ...state,
         error: actions.data.error,
       };
-
-    case COMMENT_ACTIONS.ADD_COMMENT_REQUEST:
-      return {
-        ...state,
-      };
-    case COMMENT_ACTIONS.ADD_COMMENT_SUCCESS:
-      return {
-        ...state,
-        comment: actions.data.comments,
-      };
-    case COMMENT_ACTIONS.ADD_COMMENT_FAILURE:
-      return {
-        ...state,
-        error: actions.data.error,
-      };
-
-    case COMMENT_ACTIONS.DELETE_COMMENT_REQUEST:
-      return {
-        ...state,
-      };
-    case COMMENT_ACTIONS.DELETE_COMMENT_SUCCESS:
-      return {
-        ...state,
-        comment: actions.data.comments,
-      };
-    case COMMENT_ACTIONS.DELETE_COMMENT_FAILURE:
-      return {
-        ...state,
-        error: actions.data.error,
-      };
   }
 };
 

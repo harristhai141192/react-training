@@ -8,6 +8,7 @@ const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
   imageAlt: 'This is member Image',
   handleOnSubmit: () => {},
+  handleOnClick: () => {},
 };
 
 const setup = (overrideProps = {}) => {
@@ -25,10 +26,10 @@ describe('Component [CreatedIssue] testing:', () => {
   });
 
   test('Submit button should be worked', () => {
-    const handleOnClick = jest.fn();
-    const { getByText } = setup({ onClick: handleOnClick });
-    fireEvent.click(getByText('Submit'));
-    expect(handleOnClick).toBeCalled();
+    const handleClickButton = jest.fn();
+    const { getByText } = setup({ handleOnClick: handleClickButton });
+    fireEvent.click(getByText(/Submit/i));
+    expect(handleClickButton).toBeCalled();
   });
 
   test('Input must be rendered to UI', () => {

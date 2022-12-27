@@ -5,13 +5,13 @@ import Table from '..';
 import { render, getByText } from '@utils/testUtils';
 
 const baseProps = {
-  issue: [
+  issues: [
     {
-      issueId: '1',
-      issueName: 'This is sample issue for testing',
-      issueAuthor: 'Bao Thai',
-      issueCreatedTime: '12/12/2022',
-      issueStatus: false,
+      number: '1',
+      title: 'This is sample issue for testing',
+      user: { login: 'Bao Thai' },
+      created_at: '12/12/2022',
+      locked: false,
     },
   ],
 };
@@ -25,21 +25,6 @@ const setup = (overrideProps = {}) => {
 };
 
 describe('Component [Table Issue] testing: ', () => {
-  beforeAll(() => {
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    });
-  });
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();

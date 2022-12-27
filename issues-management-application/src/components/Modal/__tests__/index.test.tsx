@@ -12,7 +12,6 @@ const baseProps = {
   children: <Box>This is body</Box>,
   isOpen: false,
   onClose: () => {},
-  buttonGroups: <></>,
 };
 
 const setup = (overrideProps = {}) => {
@@ -45,13 +44,13 @@ describe('Component [Modal] testing: ', () => {
     const handleSubmit = jest.fn();
     const { getByText } = setup({
       isOpen: true,
-      ButtonGroup: (
+      children: (
         <Button onSubmit={handleSubmit} variant='ghost'>
-          Lock conversation on this issue
+          Unlock conversation on this issue
         </Button>
       ),
     });
-    fireEvent.click(getByText('Lock conversation on this issue'));
+    fireEvent.click(getByText('Unlock conversation on this issue'));
     expect(handleSubmit).toBeCalled();
   });
 });

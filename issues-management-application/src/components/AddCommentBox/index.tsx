@@ -41,6 +41,7 @@ const AddCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
               bgColor='backgroundInputBox'
               border='1px solid lightGrey !important'
               placeholder='Leave a comment'
+              aria-label='commentArea'
             />
             <Button variant='solid' onClick={onClick} marginTop='15px'>
               Comment
