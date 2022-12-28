@@ -3,9 +3,9 @@ import { Box, Container, Text } from '@chakra-ui/react';
 import { ChatIcon } from '@chakra-ui/icons';
 
 // Components
-import InputFilter from './InputFilter';
-import ButtonLabel from './ButtonLabel';
-import IssueTable from './IssueTable';
+import InputFilter from '@components/InputFilter';
+import ButtonLabel from '@components/ButtonLabel';
+import IssueTable from '@components/IssueTable';
 
 const IssueList = () => {
   return (

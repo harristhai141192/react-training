@@ -1,5 +1,5 @@
 // Libraries
-import React, { memo } from 'react';
+import React from 'react';
 import { Table as TableChakra, TableContainer, Tbody, Thead } from '@chakra-ui/react';
 
 // Models
@@ -54,4 +54,4 @@ const Table: React.FC<IProps> = ({ issues }) => {
   );
 };
 
-export default memo(Table);
+export default Table;

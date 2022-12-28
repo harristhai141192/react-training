@@ -11,7 +11,7 @@ import { HEADERS } from '@constants/apis';
 
 export const fetchIssues = async (url: string, dispatch: (action: IActionIssueProps) => void) => {
   dispatch({
-    type: ISSUE_ACTIONS.GET_ISSUE,
+    type: ISSUE_ACTIONS.GET_ISSUES,
   });
   try {
     const response = await fetch(url, {
@@ -19,10 +19,10 @@ export const fetchIssues = async (url: string, dispatch: (action: IActionIssuePr
       headers: HEADERS,
     });
     if (response.status == 200) {
-      return pushIssuesToStore(response, ISSUE_ACTIONS.GET_ISSUE_SUCCESS, dispatch);
+      return pushIssuesToStore(response, ISSUE_ACTIONS.GET_ISSUES_SUCCESS, dispatch);
     }
   } catch (e) {
-    dispatch({ type: ISSUE_ACTIONS.GET_ISSUE_FAILURE, data: { error: (e as Error).message } });
+    dispatch({ type: ISSUE_ACTIONS.GET_ISSUES_FAILURE, data: { error: (e as Error).message } });
   }
 };
 
@@ -85,12 +85,13 @@ export const postIssueService = async (
 
 export const updateIssueService = async (
   url: string,
-  title: string,
-  dispatch: (action: IActionIssueProps) => void,
+  title?: string,
+  dispatch?: (action: IActionIssueProps) => void,
 ) => {
-  dispatch({
-    type: ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST,
-  });
+  dispatch &&
+    dispatch({
+      type: ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST,
+    });
 
   try {
     const response = await fetch(url, {
@@ -102,22 +103,24 @@ export const updateIssueService = async (
       },
       body: JSON.stringify(title),
     });
-    if (response.status == 200) {
+    if (response.status == 200 && dispatch) {
       return pushAnIssueToStore(response, ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS, dispatch);
     }
   } catch (e) {
-    dispatch({ type: ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE, data: { error: (e as Error).message } });
+    dispatch &&
+      dispatch({ type: ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE, data: { error: (e as Error).message } });
   }
 };
 
 export const updateLockStatusService = async (
   url: string,
-  data: { active_lock_reason: string },
-  dispatch: (action: IActionIssueProps) => void,
+  data?: { active_lock_reason: string },
+  dispatch?: (action: IActionIssueProps) => void,
 ) => {
-  dispatch({
-    type: ISSUE_ACTIONS.LOCK_ISSUE_REQUEST,
-  });
+  dispatch &&
+    dispatch({
+      type: ISSUE_ACTIONS.LOCK_ISSUE_REQUEST,
+    });
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.PUT,
@@ -130,11 +133,12 @@ export const updateLockStatusService = async (
       body: JSON.stringify(data),
     });
 
-    if (response.status == 204) {
+    if (response.status == 204 && dispatch) {
       return pushAnIssueToStore(response, ISSUE_ACTIONS.LOCK_ISSUE_SUCCESS, dispatch);
     }
   } catch (e) {
-    dispatch({ type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE, data: { error: (e as Error).message } });
+    dispatch &&
+      dispatch({ type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE, data: { error: (e as Error).message } });
   }
 };
 

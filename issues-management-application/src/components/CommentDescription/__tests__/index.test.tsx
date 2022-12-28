@@ -1,5 +1,5 @@
 // Components
-import CommentDetail from '..';
+import CommentDescription from '..';
 
 // Utils
 import { getByText, render, getByAltText } from '@utils/testUtils';
@@ -17,10 +17,10 @@ const setup = (overrideProps = {}) => {
     ...baseProps,
     ...overrideProps,
   };
-  return render(<CommentDetail {...props} />);
+  return render(<CommentDescription {...props} />);
 };
 
-describe('Component [CommentDetail] testing: ', () => {
+describe('Component [CommentDescription] testing: ', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();

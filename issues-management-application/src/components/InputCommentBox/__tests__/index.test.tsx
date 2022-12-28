@@ -1,5 +1,5 @@
 // Components
-import AddCommentBox from '..';
+import InputCommentBox from '..';
 
 // Utils
 import { render, fireEvent, getByDisplayValue } from '@utils/testUtils';
@@ -14,7 +14,7 @@ const setup = (overrideProps = {}) => {
     ...baseProps,
     ...overrideProps,
   };
-  const utils = render(<AddCommentBox {...props} />);
+  const utils = render(<InputCommentBox {...props} />);
   const input = utils.getByLabelText('commentArea');
 
   return {
@@ -23,7 +23,7 @@ const setup = (overrideProps = {}) => {
   };
 };
 
-describe('Component [AddCommentBox] testing:', () => {
+describe('Component [InputCommentBox] testing:', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();

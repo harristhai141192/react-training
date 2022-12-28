@@ -2,15 +2,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // Component
-import CommentBox from '.';
+import CommentDescription from '.';
 
 export default {
-  title: 'Components/CommentBox',
-  component: CommentBox,
+  title: 'Components/CommentDescription',
+  component: CommentDescription,
   argTypes: {},
-} as ComponentMeta<typeof CommentBox>;
+} as ComponentMeta<typeof CommentDescription>;
 
-const Template: ComponentStory<typeof CommentBox> = (args) => <CommentBox {...args} />;
+const Template: ComponentStory<typeof CommentDescription> = (args) => (
+  <CommentDescription {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

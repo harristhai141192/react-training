@@ -6,7 +6,7 @@ interface IProps {
   onChange?: () => void;
 }
 
-const inputFilter: React.FC<IProps> = ({ onChange }) => {
+const InputFilter: React.FC<IProps> = ({ onChange }) => {
   return (
     <Box padding='20px 0px' w={{ sm: '100%', md: '60%' }}>
       <InputGroup size='sm'>
@@ -21,4 +21,4 @@ const inputFilter: React.FC<IProps> = ({ onChange }) => {
     </Box>
   );
 };
-export default inputFilter;
+export default InputFilter;

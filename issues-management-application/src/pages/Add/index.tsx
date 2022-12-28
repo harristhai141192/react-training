@@ -18,9 +18,6 @@ import { IIssueStateProps } from '@stores/Issue/issueReducer';
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
 
-// Mock
-import { rightSideBarData } from '@mockData/barData';
-
 const AddIssue = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [issueState, dispatch] = useIssueContext();
@@ -28,6 +25,7 @@ const AddIssue = () => {
   const navigate = useNavigate();
   const { order }: IIssueStateProps = issueState;
 
+  // Navigate after successfully added
   const handleNaviGate = useCallback(
     (addSuccess: boolean) => {
       if (addSuccess) {
@@ -39,10 +37,12 @@ const AddIssue = () => {
     [addSuccess],
   );
 
+  // Calling navigation in case addSuccess changing
   useEffect(() => {
     handleNaviGate(addSuccess);
   }, [addSuccess]);
 
+  // Add issue function, calling and dispatch data
   const handleAddIssue = async (data: { title: string; body: string }) => {
     await addIssue(dispatch, data);
     setAddSuccess(true);
@@ -61,7 +61,10 @@ const AddIssue = () => {
           justifyContent={{ sm: 'center', md: 'space-between' }}
         >
           <Box w={{ sm: '90%', md: '73%' }}>
-            <CreatedIssue handleOnSubmit={handleAddIssue} />
+            <CreatedIssue
+              userImage='https://avatars.githubusercontent.com/u/70429146?v=4'
+              handleOnSubmit={handleAddIssue}
+            />
           </Box>
           <Box w={{ sm: '0', md: '20%' }}>{!isMobile && <DiscussionSideBar />}</Box>
         </Box>

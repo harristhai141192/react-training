@@ -1,19 +1,18 @@
 // Libraries
-import { useState, useEffect, useCallback, memo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Box, Button, Container, FormControl, Heading, Input, Text } from '@chakra-ui/react';
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 
 // Components
-import AddCommentBox from '@components/AddCommentBox';
+import InputCommentBox from '@components/InputCommentBox';
 import DiscussionSideBar from '@components/DiscussionSideBar';
 import Status from '@components/Status';
 import ModalIssue from '@components/ModalIssue';
-import DeleteModal from './DeleteModal';
-import UnlockModal from './UnlockModal';
-import ListComments from './ListComments';
-
+import DeleteModal from '@components/DeleteModal';
+import UnlockModal from '@components/UnlockModal';
+import ListComments from '@components/ListComments';
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
 import { useCommentContext } from '@stores/Comment/context';
@@ -44,6 +43,7 @@ const IssueDetail = () => {
   const params = useParams();
   const currentID = params.id;
 
+  // Calling data issue and get the comments when received the ID
   useEffect(() => {
     if (currentID) {
       getIssue(issueDispatch, currentID);
@@ -69,19 +69,13 @@ const IssueDetail = () => {
 
   // RE-FETCH ISSUE AFTER ACTION LOCKED
   const handleRefetchIssue = useCallback(
-    (isLocked: boolean, currentID: string) => {
-      if (isLocked && currentID) {
-        setTimeout(() => {
-          getIssue(issueDispatch, currentID);
-        }, 3000);
-      }
+    (isLocked: boolean, currentID?: string) => {
+      setTimeout(() => {
+        getIssue(issueDispatch, currentID);
+      }, 1000);
     },
     [isLocked, currentID],
   );
-
-  useEffect(() => {
-    return handleRefetchIssue(isLocked, currentID);
-  }, [isLocked, currentID]);
 
   // OPEN DELETE MODAL
   const handleOpenDeleteModal = () => {
@@ -96,7 +90,7 @@ const IssueDetail = () => {
   // HANDLE LOCK ISSUE FEATURE
   const handleLockIssue = (data: ILockReason) => {
     lockIssue(issueDispatch, currentID, {
-      lock_reason: data?.lockReason,
+      active_lock_reason: data?.lockReason,
     });
     setIsOpenLockModal(false);
     setIsLocked((prev) => !prev);
@@ -111,12 +105,17 @@ const IssueDetail = () => {
   const handleUnlockIssue = () => {
     unlockIssue(issueDispatch, currentID);
     setIsOpenUnlockModal(false);
-    setIsLocked((prev) => !prev);
+    setIsLocked(false);
   };
 
+  // OPEN DELETE FORM
   const handleDeleteIssue = () => {
     setIsDeleting(true);
   };
+
+  useEffect(() => {
+    return handleRefetchIssue(isLocked, currentID);
+  }, [isLocked, currentID]);
 
   return (
     <Container padding='20px 0'>
@@ -197,7 +196,9 @@ const IssueDetail = () => {
         <Box display='flex' flexDirection='row' justifyContent='space-between'>
           <Box w='65%'>
             <ListComments issue={byId} comments={getComments} />
-            <AddCommentBox userImage={byId?.user?.avatar_url} />
+            <Box marginTop='20px'>
+              <InputCommentBox userImage={byId?.user?.avatar_url} />
+            </Box>
           </Box>
           <Box w='30%'>
             <DiscussionSideBar
@@ -214,4 +215,4 @@ const IssueDetail = () => {
   );
 };
 
-export default memo(IssueDetail);
+export default IssueDetail;

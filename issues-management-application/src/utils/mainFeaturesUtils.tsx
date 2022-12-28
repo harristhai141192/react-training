@@ -28,7 +28,7 @@ export const getAllIssue = async (dispatch: (action: IActionIssueProps) => void)
 
 export const getIssue = async (
   dispatch: (action: IActionIssueProps) => void,
-  currentId: string,
+  currentId?: string,
 ) => {
   await getIssueService(
     `${API.DELIVERY_CALL.URL_ISSUES}/${currentId}&timestamp=${new Date().getTime()}`,
@@ -50,23 +50,23 @@ export const addIssue = async (
 
 export const updateIssue = async (
   dispatch: (action: IActionIssueProps) => void,
-  currentId: string,
-  title: string,
+  currentId?: string,
+  title?: string,
 ) => {
   updateIssueService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}`, title, dispatch);
 };
 
 export const lockIssue = async (
   dispatch: (action: IActionIssueProps) => void,
-  currentId: string,
-  data: { active_lock_reason: string },
+  currentId?: string,
+  data?: { active_lock_reason: string },
 ) => {
   updateLockStatusService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, data, dispatch);
 };
 
 export const unlockIssue = async (
   dispatch: (action: IActionIssueProps) => void,
-  currentId: string,
+  currentId?: string,
 ) => {
   updateUnlockStatusService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, dispatch);
 };

@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { memo } from 'react';
 import { Button, ModalBody, Box, ModalFooter, UnorderedList, ListItem } from '@chakra-ui/react';
 
 // Components
@@ -31,4 +31,4 @@ const UnlockModal: React.FC<IProps> = ({ onUnlock = () => {}, isOpen, onClose = 
   );
 };
 
-export default UnlockModal;
+export default memo(UnlockModal);

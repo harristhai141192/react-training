@@ -4,7 +4,7 @@ import { Box, Text } from '@chakra-ui/react';
 
 interface IProps {
   isOpen?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Status: React.FC<IProps> = ({ isOpen = false, children }) => {

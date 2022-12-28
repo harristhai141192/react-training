@@ -1,4 +1,4 @@
-// Libraries
+// Component
 import Table from '..';
 
 // Utils
