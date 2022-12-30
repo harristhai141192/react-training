@@ -8,8 +8,7 @@ import commentReducer, {
   commentState,
 } from './commentReducer';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const CommentContext: any = createContext([]);
+export const CommentContext = createContext([]);
 
 export const useCommentContext = () => useContext(CommentContext);
 

@@ -11,22 +11,18 @@ import { getAllIssue } from '@utils/mainFeaturesUtils';
 
 // Components
 import Table from '@components/Table';
+import LoadingSpinner from '@components/LoadingSpinner';
 
 const IssueTable = () => {
   const [issueState, issueDispatch] = useIssueContext();
-  const { byId, order }: IIssueStateProps = issueState;
-
+  const { byId, loading, order }: IIssueStateProps = issueState;
   const issues = order?.length ? order?.map((id) => byId[id]) : [];
 
   useEffect(() => {
     getAllIssue(issueDispatch);
   }, [issueDispatch]);
 
-  return (
-    <Box>
-      <Table issues={issues} />
-    </Box>
-  );
+  return <Box>{loading ? <LoadingSpinner /> : <Table issues={issues} />}</Box>;
 };
 
 export default memo(IssueTable);

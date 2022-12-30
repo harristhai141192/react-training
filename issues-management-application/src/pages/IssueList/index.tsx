@@ -6,6 +6,7 @@ import { ChatIcon } from '@chakra-ui/icons';
 import InputFilter from '@components/InputFilter';
 import ButtonLabel from '@components/ButtonLabel';
 import IssueTable from '@components/IssueTable';
+import ErrorBoundary from '../../components/ErrorBoundary/index';
 
 const IssueList = () => {
   return (
@@ -15,7 +16,9 @@ const IssueList = () => {
           <InputFilter />
           <ButtonLabel />
         </Box>
-        <IssueTable />
+        <ErrorBoundary>
+          <IssueTable />
+        </ErrorBoundary>
       </Box>
       <Box display='flex' justifyContent='center' alignItems='center'>
         <ChatIcon />

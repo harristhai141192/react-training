@@ -11,7 +11,7 @@ interface sideBarProps {
   icon?: React.ReactNode;
   name: string;
   description?: string;
-  isSetting?: boolean;
+  setting?: boolean;
 }
 
 interface IProps {
@@ -36,7 +36,7 @@ const SideBar: React.FC<IProps> = ({ children, data }) => {
                 <Text as='b' marginLeft='10px'>
                   {item.name}
                 </Text>
-                {item.isSetting && <SettingsIcon />}
+                {item.setting && <SettingsIcon />}
               </Box>
               <Box marginLeft='10px' paddingBottom='15px'>
                 {item.description}

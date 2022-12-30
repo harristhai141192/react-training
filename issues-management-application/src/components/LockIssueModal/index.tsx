@@ -15,13 +15,16 @@ import {
 // Components
 import Modal from '@components/Modal';
 
+// Models
+import { ILockReason } from '@models/index';
+
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit: (data: ILockReason) => void;
 }
 
-const ModalIssue: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
+const LockIssueModal: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
   const { register, handleSubmit } = useForm();
 
   return (
@@ -77,4 +80,4 @@ const ModalIssue: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
   );
 };
 
-export default ModalIssue;
+export default LockIssueModal;

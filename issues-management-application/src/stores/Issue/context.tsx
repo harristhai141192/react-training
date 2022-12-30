@@ -4,8 +4,7 @@ import { useContext, createContext, useReducer, ReactNode } from 'react';
 // Reducer and Types
 import issueReducer, { issueState } from './issueReducer';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const IssueContext: any = createContext([]);
+export const IssueContext = createContext([]);
 
 export const useIssueContext = () => useContext(IssueContext);
 

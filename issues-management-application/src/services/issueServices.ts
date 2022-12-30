@@ -34,17 +34,10 @@ export const getIssueService = async (
     type: ISSUE_ACTIONS.GET_AN_ISSUE,
   });
   try {
-    const headers = {
-      'Content-Type': 'text/plain',
-      Accept: 'application/vnd.github.v3.raw',
-      Authorization: `Bearer ${process.env.VITE_TOKEN}`,
-    };
-
     const response = await fetch(url, {
       method: HTTP_METHODS.GET,
-      headers,
+      headers: HEADERS,
     });
-
     if (response.status == 200) {
       return pushAnIssueToStore(response, ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS, dispatch);
     }
@@ -67,11 +60,7 @@ export const postIssueService = async (
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.POST,
-      headers: {
-        Authorization: `token ${process.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github.v3+json',
-      },
+      headers: HEADERS,
       body: JSON.stringify(data),
     });
 
@@ -96,11 +85,7 @@ export const updateIssueService = async (
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.PATCH,
-      headers: {
-        Authorization: `token ${process.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github.v3+json',
-      },
+      headers: HEADERS,
       body: JSON.stringify(title),
     });
     if (response.status == 200 && dispatch) {
@@ -124,12 +109,7 @@ export const updateLockStatusService = async (
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.PUT,
-      headers: {
-        Authorization: `token ${process.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github.v3+json',
-      },
-
+      headers: HEADERS,
       body: JSON.stringify(data),
     });
 
@@ -152,11 +132,7 @@ export const updateUnlockStatusService = async (
   try {
     const response = await fetch(url, {
       method: HTTP_METHODS.DELETE,
-      headers: {
-        Authorization: `token ${process.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github.v3+json',
-      },
+      headers: HEADERS,
     });
 
     if (response.status == 204) {

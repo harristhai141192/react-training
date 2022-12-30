@@ -74,7 +74,7 @@ export const unlockIssue = async (
 // COMMENT FEATURES
 export const getCommentsById = async (
   dispatch: (action: ICommentActionProps) => void,
-  currentId: string,
+  currentId?: string,
 ) => {
   getComments(`${API.DELIVERY_CALL.URL_COMMENTS}/issues/${currentId}/comments`, dispatch);
 };

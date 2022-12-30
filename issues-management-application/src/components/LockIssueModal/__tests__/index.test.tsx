@@ -1,5 +1,5 @@
 // Component
-import ModalIssue from '..';
+import LockIssueModal from '..';
 
 // Utils
 import { fireEvent, render } from '@utils/testUtils';
@@ -15,7 +15,7 @@ const setup = (overrideProps = {}) => {
     ...baseProps,
     ...overrideProps,
   };
-  return render(<ModalIssue {...props} />);
+  return render(<LockIssueModal {...props} />);
 };
 
 describe('Component [Modal Issue] testing: ', () => {

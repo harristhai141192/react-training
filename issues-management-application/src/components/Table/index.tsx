@@ -43,11 +43,12 @@ const Table: React.FC<IProps> = ({ issues }) => {
           />
         </Thead>
         <Tbody>
-          {issues?.map((issue) => (
-            <TableRows key={generateKey()}>
-              <Issue issue={issue} />
-            </TableRows>
-          ))}
+          {issues.length > 0 &&
+            issues?.map((item) => (
+              <TableRows key={generateKey()}>
+                <Issue issue={item} />
+              </TableRows>
+            ))}
         </Tbody>
       </TableChakra>
     </TableContainer>

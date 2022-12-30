@@ -13,14 +13,14 @@ export default {
 
 const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 const issueData: IssueModel = {
-  issueId: '1',
-  issueName: 'This is sample issue for testing',
-  issueAuthor: 'Bao Thai',
-  issueCreatedTime: '12/12/2022',
-  issueStatus: true,
+  number: '1',
+  title: 'This is sample issue for testing',
+  user: { login: 'Bao Thai' },
+  created_at: '12/12/2022',
+  locked: true,
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  issue: [issueData, issueData, issueData, issueData],
+  issues: [issueData, issueData, issueData, issueData],
 };

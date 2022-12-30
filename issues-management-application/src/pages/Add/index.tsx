@@ -29,9 +29,7 @@ const AddIssue = () => {
   const handleNaviGate = useCallback(
     (addSuccess: boolean) => {
       if (addSuccess) {
-        setTimeout(() => {
-          navigate(`${PAGE_ROUTES.DETAIL}/${order[order.length - 1]}`);
-        }, 3000);
+        navigate(`${PAGE_ROUTES.DETAIL}/${order[order.length - 1]}`);
       }
     },
     [addSuccess],
