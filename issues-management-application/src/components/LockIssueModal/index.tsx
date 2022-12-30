@@ -56,7 +56,7 @@ const LockIssueModal: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
                 placeholder='Choose a reason'
                 marginTop='10px'
                 size='sm'
-                {...register('lockReason')}
+                {...(register('lockReason'), { required: true })}
                 id='lockReason'
               >
                 <option value='off-topic'>Off-topic</option>

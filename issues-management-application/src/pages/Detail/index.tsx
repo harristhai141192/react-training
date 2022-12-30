@@ -41,7 +41,6 @@ import { ILockReason } from '@models/index';
 
 // Constants
 import { STATUS_VARIANT } from '@constants/statusVariant';
-import { PAGE_ROUTES } from '@constants/routes';
 
 const IssueDetail = () => {
   const [issueState, issueDispatch] = useIssueContext();
@@ -175,7 +174,7 @@ const IssueDetail = () => {
                   <Input
                     placeholder='Please enter new title'
                     defaultValue={byId?.title}
-                    {...register('title')}
+                    {...(register('title'), { required: true })}
                   />
                   <Box display='flex' flexDirection='row' alignContent='center' margin='10px'>
                     <Button

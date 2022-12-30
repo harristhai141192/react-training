@@ -49,7 +49,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit, h
               alignItems='center'
             >
               <Input
-                {...register('title')}
+                {...(register('title'), { required: true })}
                 id='title'
                 type='text'
                 placeholder='Title'
@@ -88,7 +88,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit, h
               alignItems='center'
             >
               <Textarea
-                {...register('body')}
+                {...(register('body'), { required: true })}
                 id='body'
                 w='97%'
                 margin='5px'
