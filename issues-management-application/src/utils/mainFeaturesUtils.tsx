@@ -1,18 +1,15 @@
 // Constants
 import { HTTP_METHODS } from '@constants/httpMethods';
 import { ISSUE_ACTIONS } from '@constants/actions';
+import { COMMENT_ACTIONS } from '@constants/actions';
 import { HEADERS } from '@constants/apis';
 import { API } from '@constants/apis';
-
-// Services
-import { fetchIssues, getIssueService } from '@services/issueServices';
 
 // Stores
 import { CommentActions } from '@stores/Comment/commentReducer';
 import { IssueAction } from '@stores/Issue/issueReducer';
 
 // Services
-import { getComments } from '@services/commentServices';
 import { IssueModel } from '@models/index';
 
 // GENERATE KEY
@@ -20,14 +17,43 @@ export const generateKey = () => `${Math.random()}_${new Date().getTime()}_${Mat
 
 // ISSUES FEATURES
 export const getAllIssue = async (dispatch: (action: IssueAction) => void) => {
-  await fetchIssues(API.DELIVERY_CALL.URL_ISSUES, dispatch);
+  dispatch({
+    type: ISSUE_ACTIONS.GET_ISSUES,
+  });
+  try {
+    const response = await fetch(API.DELIVERY_CALL.URL_ISSUES, {
+      method: HTTP_METHODS.GET,
+      headers: HEADERS,
+    });
+
+    if (response.status == 200) {
+      const issue = await response.json();
+      dispatch({ type: ISSUE_ACTIONS.GET_ISSUES_SUCCESS, data: { issue } });
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.GET_ISSUES_FAILURE, data: { error: (e as Error).message } });
+  }
 };
 
 export const getIssue = async (dispatch: (action: IssueAction) => void, currentId?: string) => {
-  await getIssueService(
-    `${API.DELIVERY_CALL.URL_ISSUES}/${currentId}&timestamp=${new Date().getTime()}`,
-    dispatch,
-  );
+  dispatch({
+    type: ISSUE_ACTIONS.GET_AN_ISSUE,
+  });
+  try {
+    const response = await fetch(
+      `${API.DELIVERY_CALL.URL_ISSUES}/${currentId}&timestamp=${new Date().getTime()}`,
+      {
+        method: HTTP_METHODS.GET,
+        headers: HEADERS,
+      },
+    );
+    if (response.status == 200) {
+      const issue = await response.json();
+      dispatch({ type: ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS, data: { issue } });
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.GET_AN_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
 };
 
 export const addIssue = async (
@@ -143,5 +169,19 @@ export const getCommentsById = async (
   dispatch: (action: CommentActions) => void,
   currentId?: string,
 ) => {
-  getComments(`${API.DELIVERY_CALL.URL_COMMENTS}/issues/${currentId}/comments`, dispatch);
+  dispatch({
+    type: COMMENT_ACTIONS.GET_COMMENT,
+  });
+  try {
+    const response = await fetch(`${API.DELIVERY_CALL.URL_COMMENTS}/issues/${currentId}/comments`, {
+      method: HTTP_METHODS.GET,
+      headers: HEADERS,
+    });
+    if (response.status == 200) {
+      const comments = await response.json();
+      dispatch({ type: COMMENT_ACTIONS.GET_COMMENT_SUCCESS, data: { comments } });
+    }
+  } catch (e) {
+    dispatch({ type: COMMENT_ACTIONS.GET_COMMENT_FAILURE, data: { error: (e as Error).message } });
+  }
 };
