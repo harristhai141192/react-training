@@ -118,9 +118,17 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
     }
 
     case ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS: {
+      const currentById = {
+        ...state.byId,
+        [actions.data?.currentId]: {
+          ...state.byId[actions.data.currentId],
+          locked: actions.data.locked,
+        },
+      };
+
       return {
         ...state,
-        byId: actions.data?.issue,
+        byId: currentById,
         loading: false,
       };
     }
@@ -229,18 +237,24 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
     }
 
     case ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS: {
-      // const currentById = actions?.data?.issue;
+      const currentById = {
+        ...state.byId,
+        [actions.data?.currentId]: {
+          ...state.byId[actions.data.currentId],
+          title: actions.data.title,
+        },
+      };
 
       return {
         ...state,
-        // byId: currentById,
+        byId: currentById,
         loading: false,
       };
     }
     case ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE: {
       return {
         ...state,
-        error: actions?.data?.error,
+        error: actions.data.error,
         loading: false,
       };
     }

@@ -52,7 +52,7 @@ export interface RequestUpdateIssueAction {
 
 export interface SuccessUpdateIssueAction {
   type: ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS;
-  data: { issue: IssueModel };
+  data: { currentId: string; title: string };
 }
 
 export interface FailedUpdateIssueAction {
@@ -110,7 +110,7 @@ export interface RequestUnlockIssueAction {
 
 export interface SuccessUnlockIssueAction {
   type: ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS;
-  data: { issue: IssueModel };
+  data: { currentId: string; locked: boolean };
 }
 
 export interface FailedUnlockIssueAction {

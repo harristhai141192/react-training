@@ -1,5 +1,5 @@
 // Libraries
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Box,
@@ -54,9 +54,10 @@ const IssueDetail = () => {
   const [isOpenLockModal, setIsOpenLockModal] = useState(false);
   const [isOpenUnlockModal, setIsOpenUnlockModal] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
-  // const { register, handleSubmit } = useForm();
 
   const { byId, loading }: IssueState = issueState;
+
+  const inputEl = React.useRef<HTMLInputElement | null>(null);
 
   const currentIssue: IssueModel = currentID && byId[currentID];
 
@@ -71,18 +72,23 @@ const IssueDetail = () => {
   };
 
   // SAVING ISSUE VALUE EDITED
-  const handleSaveIssue = async (title: string) => {
-    updateIssue(issueDispatch, currentID, title);
-    setIsEditing(false);
-    handleToastedEditSuccess(STATUS_VARIANT.SUCCESS, 'Successfully Edited');
-  };
+  const handleSaveIssue = React.useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      if (inputEl?.current?.value) {
+        updateIssue(issueDispatch, currentID, { title: inputEl.current.value });
+      }
+      setIsEditing(false);
+      handleToastedEditSuccess(STATUS_VARIANT.SUCCESS, 'Successfully Edited');
+    },
+    [inputEl],
+  );
 
   // RE-FETCH ISSUE AFTER ACTION LOCKED
   const handleRefetchIssue = useCallback(
     (isLocked: boolean, currentID?: string) => {
-      setTimeout(() => {
-        getIssue(issueDispatch, currentID);
-      }, 1000);
+      getIssue(issueDispatch, currentID);
     },
     [isLocked, currentID],
   );
@@ -171,12 +177,12 @@ const IssueDetail = () => {
             fontSize={{ sm: 'text.medium', md: 'text.large' }}
           >
             {isEditing ? (
-              <form onSubmit={handleSubmit(handleSaveIssue)}>
+              <form onSubmit={handleSaveIssue}>
                 <FormControl display='flex' flexDirection='row' alignItems='center'>
                   <Input
+                    ref={inputEl}
                     placeholder='Please enter new title'
                     defaultValue={currentIssue?.title}
-                    {...(register('title'), { required: true })}
                   />
                   <Box display='flex' flexDirection='row' alignContent='center' margin='10px'>
                     <Button

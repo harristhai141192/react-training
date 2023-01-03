@@ -5,13 +5,7 @@ import { HEADERS } from '@constants/apis';
 import { API } from '@constants/apis';
 
 // Services
-import {
-  fetchIssues,
-  postIssueService,
-  updateIssueService,
-  getIssueService,
-  updateUnlockStatusService,
-} from '@services/issueServices';
+import { fetchIssues, getIssueService } from '@services/issueServices';
 
 // Stores
 import { CommentActions } from '@stores/Comment/commentReducer';
@@ -19,6 +13,7 @@ import { IssueAction } from '@stores/Issue/issueReducer';
 
 // Services
 import { getComments } from '@services/commentServices';
+import { IssueModel } from '@models/index';
 
 // GENERATE KEY
 export const generateKey = () => `${Math.random()}_${new Date().getTime()}_${Math.random()}`;
@@ -39,20 +34,61 @@ export const addIssue = async (
   dispatch: (action: IssueAction) => void,
   data: { title: string; body: string },
 ) => {
-  const getData = {
+  dispatch({
+    type: ISSUE_ACTIONS.ADD_ISSUE_REQUEST,
+  });
+  const getData: IssueModel = {
     title: data.title,
     body: data.body,
+    number: 0,
+    user: {},
+    locked: false,
+    active_lock_reason: '',
+    created_at: '',
   };
+  try {
+    const response = await fetch(`${process.env.VITE_BASE_URL}/${API.PATHS.ISSUES}`, {
+      method: HTTP_METHODS.POST,
+      headers: HEADERS,
+      body: JSON.stringify(data),
+    });
 
-  await postIssueService(`${process.env.VITE_BASE_URL}/${API.PATHS.ISSUES}`, getData, dispatch);
+    if (response.status == 201) {
+      dispatch({
+        type: ISSUE_ACTIONS.ADD_ISSUE_SUCCESS,
+        data: { issue: getData },
+      });
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.ADD_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
 };
 
 export const updateIssue = async (
   dispatch: (action: IssueAction) => void,
-  currentId?: string,
-  title?: string,
+  currentId: string,
+  data: { title: string },
 ) => {
-  updateIssueService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}`, title, dispatch);
+  dispatch({
+    type: ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST,
+  });
+
+  try {
+    const response = await fetch(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}`, {
+      method: HTTP_METHODS.PATCH,
+      headers: HEADERS,
+      body: JSON.stringify(data),
+    });
+
+    if (response.status == 200) {
+      dispatch({
+        type: ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS,
+        data: { currentId: currentId, title: data.title },
+      });
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
 };
 
 export const lockIssue = async (
@@ -81,8 +117,25 @@ export const lockIssue = async (
   }
 };
 
-export const unlockIssue = async (dispatch: (action: IssueAction) => void, currentId?: string) => {
-  updateUnlockStatusService(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, dispatch);
+export const unlockIssue = async (dispatch: (action: IssueAction) => void, currentId: string) => {
+  dispatch({
+    type: ISSUE_ACTIONS.UNLOCK_ISSUE_REQUEST,
+  });
+  try {
+    const response = await fetch(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, {
+      method: HTTP_METHODS.DELETE,
+      headers: HEADERS,
+    });
+
+    if (response.status == 204) {
+      dispatch({
+        type: ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS,
+        data: { currentId: currentId, locked: false },
+      });
+    }
+  } catch (e) {
+    dispatch({ type: ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE, data: { error: (e as Error).message } });
+  }
 };
 
 // COMMENT FEATURES
