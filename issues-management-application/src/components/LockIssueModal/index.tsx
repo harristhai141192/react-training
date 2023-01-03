@@ -1,6 +1,5 @@
 // Libraries
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import {
   Box,
   UnorderedList,
@@ -25,11 +24,22 @@ interface IProps {
 }
 
 const LockIssueModal: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
-  const { register, handleSubmit } = useForm();
+  const selectEl = React.useRef<HTMLSelectElement | null>(null);
+
+  const handleSubmit = React.useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      if (selectEl?.current?.value) {
+        onSubmit({ lockReason: selectEl.current.value });
+      }
+    },
+    [selectEl],
+  );
 
   return (
     <Modal title='Lock conversation' isOpen={isOpen} onClose={onClose}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit}>
         <FormControl>
           <Box marginBottom='15px' padding='10px 30px'>
             <UnorderedList fontSize='text.medium' marginTop='10px'>
@@ -53,10 +63,10 @@ const LockIssueModal: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
             <Box marginTop='20px' w='50%' fontSize='text.medium'>
               <Text as='b'>Reason for locking</Text>
               <Select
+                ref={selectEl}
                 placeholder='Choose a reason'
                 marginTop='10px'
                 size='sm'
-                {...(register('lockReason'), { required: true })}
                 id='lockReason'
               >
                 <option value='off-topic'>Off-topic</option>

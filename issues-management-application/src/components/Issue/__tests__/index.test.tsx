@@ -1,5 +1,5 @@
 // Utils
-import { render, getByText, getByTestId, fireEvent } from '@utils/testUtils';
+import { render, getByText, getByTestId } from '@utils/testUtils';
 
 // Components
 import Issue from '..';
@@ -7,7 +7,7 @@ import Issue from '..';
 const baseProps = {
   issue: {
     title: 'Controlling the air plan thru the bad weather!',
-    number: '1',
+    number: 1,
     locked: false,
     created_at: '2022/12/12',
     user: {

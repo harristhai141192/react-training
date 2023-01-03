@@ -2,18 +2,18 @@
 import { ISSUE_ACTIONS } from '@constants/actions';
 
 // Models
-import { IssueModel } from '@models/index';
+import { IssueModel, ILockReason } from '@models/index';
 
 export interface RequestAnIssueAction {
   type: ISSUE_ACTIONS.GET_AN_ISSUE;
 }
 export interface SuccessRequestAnIssueAction {
   type: ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel };
+  data: { issue: IssueModel };
 }
 export interface FailedRequestAnIssueAction {
   type: ISSUE_ACTIONS.GET_AN_ISSUE_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }
 
 export interface RequestIssueAction {
@@ -22,12 +22,12 @@ export interface RequestIssueAction {
 
 export interface SuccessRequestIssueAction {
   type: ISSUE_ACTIONS.GET_ISSUES_SUCCESS;
-  data?: { issue?: IssueModel[] };
+  data: { issue: IssueModel[] };
 }
 
 export interface FailedRequestIssueAction {
   type: ISSUE_ACTIONS.GET_ISSUES_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }
 
 // ADD TYPES
@@ -37,12 +37,12 @@ export interface RequestAddIssueAction {
 
 export interface SuccessAddIssueAction {
   type: ISSUE_ACTIONS.ADD_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel };
+  data: { issue: IssueModel };
 }
 
 export interface FailedAddIssueAction {
   type: ISSUE_ACTIONS.ADD_ISSUE_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }
 
 // UPDATE TYPES
@@ -52,12 +52,12 @@ export interface RequestUpdateIssueAction {
 
 export interface SuccessUpdateIssueAction {
   type: ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel };
+  data: { issue: IssueModel };
 }
 
 export interface FailedUpdateIssueAction {
   type: ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE;
-  data?: { error: string };
+  data: { error: string };
 }
 
 // DELETE TYPES
@@ -67,12 +67,12 @@ export interface RequestDeleteIssueAction {
 
 export interface SuccessDeleteIssueAction {
   type: ISSUE_ACTIONS.DELETE_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel };
+  data: { issue: IssueModel };
 }
 
 export interface FailedDeleteIssueAction {
   type: ISSUE_ACTIONS.DELETE_ISSUE_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }
 
 // SEARCH TYPES
@@ -82,12 +82,12 @@ export interface RequestSearchIssueAction {
 
 export interface SuccessSearchIssueAction {
   type: ISSUE_ACTIONS.SEARCH_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel[] };
+  data: { issue: IssueModel[] };
 }
 
 export interface FailedSearchIssueAction {
   type: ISSUE_ACTIONS.SEARCH_ISSUE_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }
 
 export interface RequestLockIssueAction {
@@ -96,12 +96,12 @@ export interface RequestLockIssueAction {
 
 export interface SuccessLockIssueAction {
   type: ISSUE_ACTIONS.LOCK_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel };
+  data: { currentId: string } & ILockReason;
 }
 
 export interface FailedLockIssueAction {
   type: ISSUE_ACTIONS.LOCK_ISSUE_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }
 
 export interface RequestUnlockIssueAction {
@@ -110,10 +110,10 @@ export interface RequestUnlockIssueAction {
 
 export interface SuccessUnlockIssueAction {
   type: ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS;
-  data?: { issue?: IssueModel };
+  data: { issue: IssueModel };
 }
 
 export interface FailedUnlockIssueAction {
   type: ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE;
-  data?: { error?: string };
+  data: { error: string };
 }

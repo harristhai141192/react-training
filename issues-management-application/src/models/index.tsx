@@ -11,7 +11,7 @@ export interface IUser {
   node_id?: string;
 }
 export class IssueModel {
-  number: string; // id
+  number: number; // id
   title: string; //issueName
   user?: IUser;
   locked?: boolean;
@@ -24,6 +24,13 @@ export class IssueModel {
   constructor(issue: IssueModel) {
     this.number = issue.number;
     this.title = issue.title;
+    this.user = issue.user;
+    this.locked = issue.locked;
+    this.active_lock_reason = issue.active_lock_reason;
+    this.created_at = issue.created_at;
+    this.onChangeChecked = issue.onChangeChecked;
+    this.body = issue.body;
+    this.issueComment = issue.issueComment;
   }
 }
 

@@ -5,7 +5,7 @@ import { getByText, render } from '@utils/testUtils';
 import ListComments from '..';
 
 const baseProps = {
-  number: '1',
+  number: 1,
   title: 'This is sample issue for testing',
   user: {
     login: 'Bao Thai',

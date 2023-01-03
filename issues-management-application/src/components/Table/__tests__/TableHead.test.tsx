@@ -10,7 +10,7 @@ import { Table } from '@chakra-ui/react';
 const baseProps = {
   issue: [
     {
-      number: '1',
+      number: 1,
       title: 'This is sample issue for testing',
       user: { login: 'Bao Thai' },
       created_at: '12/12/2022',

@@ -14,7 +14,7 @@ import { generateKey } from '@utils/mainFeaturesUtils';
 
 interface IProps {
   issue?: IssueModel;
-  comments?: [];
+  comments?: IComment[];
 }
 
 const ListComments: React.FC<IProps> = ({ issue, comments }) => {

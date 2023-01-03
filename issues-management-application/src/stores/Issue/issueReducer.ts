@@ -4,46 +4,79 @@ import { ISSUE_ACTIONS } from '@constants/actions';
 // Models
 import { IssueModel } from '@models/index';
 
-export interface IIssueStateProps {
-  byId: IssueModel;
+// ActionTypes
+import {
+  RequestIssueAction,
+  SuccessRequestIssueAction,
+  FailedRequestIssueAction,
+  RequestAddIssueAction,
+  SuccessAddIssueAction,
+  FailedAddIssueAction,
+  RequestUpdateIssueAction,
+  SuccessUpdateIssueAction,
+  FailedUpdateIssueAction,
+  RequestDeleteIssueAction,
+  SuccessDeleteIssueAction,
+  FailedDeleteIssueAction,
+  RequestSearchIssueAction,
+  SuccessSearchIssueAction,
+  FailedSearchIssueAction,
+  RequestAnIssueAction,
+  SuccessRequestAnIssueAction,
+  FailedRequestAnIssueAction,
+  RequestLockIssueAction,
+  SuccessLockIssueAction,
+  FailedLockIssueAction,
+  RequestUnlockIssueAction,
+  SuccessUnlockIssueAction,
+  FailedUnlockIssueAction,
+} from './actionTypes';
+
+interface IById {
+  [key: string]: IssueModel;
+}
+
+export interface IssueState {
+  byId: IById;
   order: number[];
   loading: boolean;
   error: string;
 }
 
-const defaultIssue = {
-  number: '',
-  title: '',
-  user: {
-    login: '',
-    create_at: '',
-  },
-  locked: false,
-};
+export type IssueAction =
+  | RequestIssueAction
+  | SuccessRequestIssueAction
+  | FailedRequestIssueAction
+  | RequestAddIssueAction
+  | SuccessAddIssueAction
+  | FailedAddIssueAction
+  | RequestUpdateIssueAction
+  | SuccessUpdateIssueAction
+  | FailedUpdateIssueAction
+  | RequestDeleteIssueAction
+  | SuccessDeleteIssueAction
+  | FailedDeleteIssueAction
+  | RequestSearchIssueAction
+  | SuccessSearchIssueAction
+  | FailedSearchIssueAction
+  | RequestAnIssueAction
+  | SuccessRequestAnIssueAction
+  | FailedRequestAnIssueAction
+  | RequestLockIssueAction
+  | SuccessLockIssueAction
+  | FailedLockIssueAction
+  | RequestUnlockIssueAction
+  | SuccessUnlockIssueAction
+  | FailedUnlockIssueAction;
 
-export const issueState: IIssueStateProps = {
-  byId: defaultIssue,
+export const initialIssueState: IssueState = {
+  byId: {},
   order: [],
   loading: false,
   error: '',
 };
 
-type dataTypes = {
-  issue?: IssueModel;
-  error?: string;
-};
-
-export type IActionIssueProps = {
-  type: ISSUE_ACTIONS;
-  data?: dataTypes;
-};
-
-// type reducerTypes = {
-//   state: IIssueStateProps;
-//   actions: IActionIssueProps;
-// };
-
-const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssueProps) => {
+const issueReducer = (state: IssueState = initialIssueState, actions: IssueAction): IssueState => {
   switch (actions.type) {
     case ISSUE_ACTIONS.LOCK_ISSUE_REQUEST: {
       return {
@@ -53,9 +86,18 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
     }
 
     case ISSUE_ACTIONS.LOCK_ISSUE_SUCCESS: {
+      const currentById = {
+        ...state.byId,
+        [actions.data.currentId]: {
+          ...state.byId[actions.data.currentId],
+          active_lock_reason: actions.data.lockReason,
+          locked: true,
+        },
+      };
+
       return {
         ...state,
-        byId: actions.data?.issue,
+        byId: currentById,
         loading: false,
       };
     }
@@ -96,10 +138,19 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
       };
     }
     case ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS: {
+      const currentById = {
+        ...state.byId,
+        [actions.data?.issue.number]: actions.data.issue,
+      };
+
+      const currentOrder = [...state.order, actions.data.issue.number].filter(
+        (element, index) => [...state.order, actions.data.issue.number].indexOf(element) === index,
+      );
+
       return {
         ...state,
-        byId: actions.data?.issue,
-        order: actions.data?.issue?.number,
+        byId: currentById,
+        order: currentOrder,
         loading: false,
       };
     }
@@ -153,6 +204,7 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
         ...state.byId,
         [actions.data.issue.number]: actions.data?.issue,
       };
+
       const currentOrder = [...state.order, actions?.data?.issue?.number];
 
       return {
@@ -177,11 +229,11 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
     }
 
     case ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS: {
-      const currentById = actions?.data?.issue;
+      // const currentById = actions?.data?.issue;
 
       return {
         ...state,
-        byId: currentById,
+        // byId: currentById,
         loading: false,
       };
     }
@@ -210,6 +262,9 @@ const issueReducer = (state: IIssueStateProps = issueState, actions: IActionIssu
         error: actions?.data?.error,
         loading: false,
       };
+    }
+    default: {
+      return state;
     }
   }
 };

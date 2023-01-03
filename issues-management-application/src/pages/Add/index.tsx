@@ -13,17 +13,17 @@ import { addIssue } from '@utils/mainFeaturesUtils';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
-import { IIssueStateProps } from '@stores/Issue/issueReducer';
+import { IssueState } from '@stores/Issue/issueReducer';
 
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';
 
 const AddIssue = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
-  const [issueState, dispatch] = useIssueContext();
+  const { state, dispatch } = useIssueContext();
   const [addSuccess, setAddSuccess] = useState(false);
   const navigate = useNavigate();
-  const { order }: IIssueStateProps = issueState;
+  const { order }: IssueState = state;
 
   // Navigate after successfully added
   const handleNaviGate = useCallback(
