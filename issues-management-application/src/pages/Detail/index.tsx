@@ -44,7 +44,7 @@ import { STATUS_VARIANT } from '@constants/statusVariant';
 
 const IssueDetail = () => {
   const [issueState, issueDispatch] = useIssueContext();
-  const [commentState, commentDispatch] = useCommentContext();
+  const { state: commentState, dispatch: commentDispatch } = useCommentContext();
   const toast = useToast();
   const { byId, loading }: IIssueStateProps = issueState;
   const [isEditing, setIsEditing] = useState(false);

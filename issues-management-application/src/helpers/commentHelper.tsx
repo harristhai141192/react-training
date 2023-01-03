@@ -2,12 +2,12 @@
 import { COMMENT_ACTIONS } from '@constants/actions';
 
 // Stores
-import { ICommentActionProps } from '@stores/Comment/commentReducer';
+import { CommentActions } from '@stores/Comment/commentReducer';
 
 export const pushCommentsToStore = async (
   response: Response,
   dispatchActions: COMMENT_ACTIONS,
-  dispatch: (action: ICommentActionProps) => void,
+  dispatch: (action: CommentActions) => void,
 ) => {
   const comments = await response.json();
 

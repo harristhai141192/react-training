@@ -6,10 +6,10 @@ import { HTTP_METHODS } from '@constants/httpMethods';
 import { pushCommentsToStore } from '@helpers/commentHelper';
 
 // Stores
-import { ICommentActionProps } from '@stores/Comment/commentReducer';
+import { CommentActions } from '@stores/Comment/commentReducer';
 import { HEADERS } from '@constants/apis';
 
-export const getComments = async (url: string, dispatch: (action: ICommentActionProps) => void) => {
+export const getComments = async (url: string, dispatch: (action: CommentActions) => void) => {
   dispatch({
     type: COMMENT_ACTIONS.GET_COMMENT,
   });

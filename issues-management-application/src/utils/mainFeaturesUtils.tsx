@@ -12,7 +12,7 @@ import {
 } from '@services/issueServices';
 
 // Stores
-import { ICommentActionProps } from '@stores/Comment/commentReducer';
+import { CommentActions } from '@stores/Comment/commentReducer';
 import { IActionIssueProps } from '@stores/Issue/issueReducer';
 
 // Services
@@ -73,7 +73,7 @@ export const unlockIssue = async (
 
 // COMMENT FEATURES
 export const getCommentsById = async (
-  dispatch: (action: ICommentActionProps) => void,
+  dispatch: (action: CommentActions) => void,
   currentId?: string,
 ) => {
   getComments(`${API.DELIVERY_CALL.URL_COMMENTS}/issues/${currentId}/comments`, dispatch);
