@@ -13,7 +13,7 @@ export default {
 
 const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 const issueData: IssueModel = {
-  number: '1',
+  number: 1,
   title: 'This is sample issue for testing',
   user: { login: 'Bao Thai' },
   created_at: '12/12/2022',

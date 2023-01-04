@@ -18,7 +18,10 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
   const handleOnClick = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleInputEl?.current?.value && descriptionInputEl?.current?.value) {
-      handleOnSubmit({ title: titleInputEl.current.value, body: descriptionInputEl.current.value });
+      handleOnSubmit({
+        title: titleInputEl.current.value,
+        body: descriptionInputEl.current.value,
+      });
     }
   }, []);
   return (

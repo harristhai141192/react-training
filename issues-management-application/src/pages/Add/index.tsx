@@ -32,7 +32,7 @@ const AddIssue = () => {
         navigate(`${PAGE_ROUTES.DETAIL}/${order[order.length - 1]}`);
       }
     },
-    [addSuccess],
+    [addSuccess, order],
   );
 
   // Calling navigation in case addSuccess changing
@@ -41,8 +41,8 @@ const AddIssue = () => {
   }, [addSuccess]);
 
   // Add issue function, calling and dispatch data
-  const handleAddIssue = (data: { title: string; body: string }) => {
-    addIssue(dispatch, data);
+  const handleAddIssue = async (data: { title: string; body: string }) => {
+    await addIssue(dispatch, data);
     setAddSuccess(true);
   };
 

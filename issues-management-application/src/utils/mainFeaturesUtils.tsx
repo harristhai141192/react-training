@@ -21,9 +21,10 @@ export const getAllIssue = async (dispatch: (action: IssueAction) => void) => {
     type: ISSUE_ACTIONS.GET_ISSUES,
   });
   try {
-    const response = await fetch(API.DELIVERY_CALL.URL_ISSUES, {
+    const response = await fetch(`${API.DELIVERY_CALL.URL_ISSUES}?page=1&per_page=50`, {
       method: HTTP_METHODS.GET,
       headers: HEADERS,
+      cache: 'no-cache',
     });
 
     if (response.status == 200) {
@@ -63,15 +64,7 @@ export const addIssue = async (
   dispatch({
     type: ISSUE_ACTIONS.ADD_ISSUE_REQUEST,
   });
-  const getData: IssueModel = {
-    title: data.title,
-    body: data.body,
-    number: 0,
-    user: {},
-    locked: false,
-    active_lock_reason: '',
-    created_at: '',
-  };
+
   try {
     const response = await fetch(`${process.env.VITE_BASE_URL}/${API.PATHS.ISSUES}`, {
       method: HTTP_METHODS.POST,
@@ -80,6 +73,12 @@ export const addIssue = async (
     });
 
     if (response.status == 201) {
+      const res = await response.json();
+      const getData: IssueModel = {
+        title: data.title,
+        body: data.body,
+        number: res.number,
+      };
       dispatch({
         type: ISSUE_ACTIONS.ADD_ISSUE_SUCCESS,
         data: { issue: getData },

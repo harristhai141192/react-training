@@ -1,5 +1,6 @@
 // Libraries
 import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {
   Box,
@@ -11,7 +12,7 @@ import {
   Text,
   useToast,
 } from '@chakra-ui/react';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { SunIcon, MoonIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 // Components
 import InputCommentBox from '@components/InputCommentBox';
@@ -40,13 +41,15 @@ import { ILockReason, IssueModel } from '@models/index';
 
 // Constants
 import { STATUS_VARIANT } from '@constants/statusVariant';
+import { PAGE_ROUTES } from '@constants/routes';
 
 const IssueDetail = () => {
+  const navigate = useNavigate();
   const { state: issueState, dispatch: issueDispatch } = useIssueContext();
   const { state: commentState, dispatch: commentDispatch } = useCommentContext();
 
   const params = useParams();
-  const currentID = params.id;
+  const currentID = params?.id || '';
 
   const toast = useToast();
   const [isEditing, setIsEditing] = useState(false);
@@ -59,7 +62,7 @@ const IssueDetail = () => {
 
   const inputEl = React.useRef<HTMLInputElement | null>(null);
 
-  const currentIssue: IssueModel = currentID && byId[currentID];
+  const currentIssue: IssueModel = byId[currentID];
 
   // CANCEL INPUT EDITING ISSUE
   const handleCancelEdit = () => {
@@ -73,11 +76,11 @@ const IssueDetail = () => {
 
   // SAVING ISSUE VALUE EDITED
   const handleSaveIssue = React.useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
+    async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       if (inputEl?.current?.value) {
-        updateIssue(issueDispatch, currentID, { title: inputEl.current.value });
+        await updateIssue(issueDispatch, currentID, { title: inputEl.current.value });
       }
       setIsEditing(false);
       handleToastedEditSuccess(STATUS_VARIANT.SUCCESS, 'Successfully Edited');
@@ -142,6 +145,10 @@ const IssueDetail = () => {
     handleRefetchIssue(isLocked, currentID);
     getCommentsById(commentDispatch, currentID);
   }, [isLocked, currentID]);
+
+  const handleBackTohome = () => {
+    navigate(`${PAGE_ROUTES.HOME}`);
+  };
 
   return (
     <Container padding='20px 0'>
@@ -239,6 +246,9 @@ const IssueDetail = () => {
                 onDeleteIssue={handleOpenDeleteModal}
                 onUnLockIssue={handleOpenUnlockIssueModal}
               />
+              <Button variant='ghost' leftIcon={<ArrowLeftIcon />} onClick={handleBackTohome}>
+                Back to home
+              </Button>
             </Box>
           </Box>
         </Box>

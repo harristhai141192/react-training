@@ -210,7 +210,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
     case ISSUE_ACTIONS.ADD_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
-        [actions.data.issue.number]: actions.data?.issue,
+        [actions.data.issue?.number]: actions.data?.issue,
       };
 
       const currentOrder = [...state.order, actions?.data?.issue?.number];

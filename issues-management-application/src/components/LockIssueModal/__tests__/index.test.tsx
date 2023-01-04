@@ -1,4 +1,5 @@
 // Component
+import React from 'react';
 import LockIssueModal from '..';
 
 // Utils
