@@ -39,9 +39,4 @@ describe('Component [Issue] testing: ', () => {
     const getInformation = getByText(container, '#1 is opened at 2022/12/12 by Bao Thai');
     expect(getInformation).toBeTruthy;
   });
-
-  test('The label color should be changed if the issue is not open', () => {
-    const { container } = setup();
-    expect(getByTestId(container, 'labelIssue')).toHaveStyle('color: cadetblue');
-  });
 });

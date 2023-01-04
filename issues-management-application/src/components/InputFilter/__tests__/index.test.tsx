@@ -22,6 +22,6 @@ describe('Component [InputFilter Issue] testing: ', () => {
   test('It should capture value on input', () => {
     const { input } = setup();
     fireEvent.change(input, { target: { value: 'Test' } });
-    expect(input).toHaveValue('Test');
+    expect(input.closest('input')?.value).toEqual('Test');
   });
 });

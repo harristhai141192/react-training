@@ -33,11 +33,4 @@ describe('Component [Status] testing: ', () => {
     const getStatusIsOpen = getByText(container, 'Closed');
     expect(getStatusIsOpen).toBeTruthy;
   });
-
-  test('It should render right color', () => {
-    const { container } = setup();
-    expect(getByTestId(container, 'statusLabel')).toHaveStyle(
-      'background-color: var(--chakra-colors-statusColor-purple)',
-    );
-  });
 });

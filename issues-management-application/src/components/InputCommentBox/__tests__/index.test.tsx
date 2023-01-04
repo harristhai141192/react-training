@@ -2,7 +2,7 @@
 import InputCommentBox from '..';
 
 // Utils
-import { render, fireEvent, getByDisplayValue } from '@utils/testUtils';
+import { render, fireEvent } from '@utils/testUtils';
 
 const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
@@ -38,7 +38,7 @@ describe('Component [InputCommentBox] testing:', () => {
 
   test('Get value when user input on text area', () => {
     const { input } = setup();
-    fireEvent.change(input, { target: { value: '23' } });
-    expect(input).toHaveValue('23');
+    fireEvent.change(input, { target: { value: '23' } }).valueOf;
+    expect(input.closest('textarea')?.value).toEqual('23');
   });
 });

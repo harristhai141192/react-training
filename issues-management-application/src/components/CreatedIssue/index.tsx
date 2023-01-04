@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-ui/react';
 import { MoonIcon } from '@chakra-ui/icons';
 
@@ -13,9 +13,9 @@ interface IProps {
 }
 
 const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit }) => {
-  const titleInputEl = React.useRef<HTMLInputElement | null>(null);
-  const descriptionInputEl = React.useRef<HTMLTextAreaElement | null>(null);
-  const handleOnClick = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
+  const titleInputEl = useRef<HTMLInputElement | null>(null);
+  const descriptionInputEl = useRef<HTMLTextAreaElement | null>(null);
+  const handleOnClick = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleInputEl?.current?.value && descriptionInputEl?.current?.value) {
       handleOnSubmit({
@@ -56,6 +56,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
               alignItems='center'
             >
               <Input
+                data-testid='testInputUseRef'
                 ref={titleInputEl}
                 id='title'
                 type='text'

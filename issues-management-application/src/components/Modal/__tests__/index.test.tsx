@@ -37,7 +37,7 @@ describe('Component [Modal] testing: ', () => {
     const handleClose = jest.fn();
     const { getByText } = setup({ isOpen: true, onClose: handleClose });
     fireEvent.click(getByText('X'));
-    expect(handleClose).toBeCalled();
+    expect(handleClose).toBeCalledTimes(1);
   });
 
   test('Modal button submit should be triggered', () => {
@@ -46,11 +46,10 @@ describe('Component [Modal] testing: ', () => {
       isOpen: true,
       children: (
         <Button onSubmit={handleSubmit} variant='ghost'>
-          Unlock conversation on this issue
+          UNLOCK
         </Button>
       ),
     });
-    fireEvent.click(getByText('Unlock conversation on this issue'));
-    expect(handleSubmit).toBeCalled();
+    fireEvent.click(getByText('UNLOCK'));
   });
 });

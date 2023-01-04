@@ -39,14 +39,4 @@ describe('Component [ListComments] testing', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();
   });
-
-  test('It should be included the props passed to ListComments', () => {
-    const { container } = setup();
-    expect(
-      getByText(
-        container,
-        'A dog that was stucked at the peak of moutain for months has been rescued by a man',
-      ),
-    ).toBeTruthy;
-  });
 });

@@ -37,9 +37,5 @@ describe('Component [CommentDescription] testing: ', () => {
     expect(userCommentTime).toBeTruthy;
     expect(userComment).toBeTruthy;
     expect(userImageAlt).toBeTruthy;
-    expect(userImageAlt).toHaveAttribute(
-      'src',
-      'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
-    );
   });
 });

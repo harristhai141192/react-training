@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import {
   Box,
   UnorderedList,
@@ -24,9 +24,9 @@ interface IProps {
 }
 
 const LockIssueModal: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
-  const selectEl = React.useRef<HTMLSelectElement | null>(null);
+  const selectEl = useRef<HTMLSelectElement | null>(null);
 
-  const handleSubmit = React.useCallback(
+  const handleSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 

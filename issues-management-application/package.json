@@ -32,7 +32,7 @@
     "@storybook/builder-vite": "^0.2.5",
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.2.2",
     "@types/react": "^18.0.24",
