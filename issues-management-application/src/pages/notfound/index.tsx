@@ -14,7 +14,7 @@ const NotFound = () => (
     justifyContent='center'
     alignItems='center'
   >
-    <Image src='/src/assets/images/github_icon.svg' w='150px' h='150px' />
+    <Image src='/images/github_icon.svg' w='150px' h='150px' />
     <Text fontSize='6xl'>SORRY!</Text>
     <Text fontSize='heading.extraLarge'>We could not find what you are looking for!</Text>
     <Box

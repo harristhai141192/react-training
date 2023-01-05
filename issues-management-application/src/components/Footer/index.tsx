@@ -31,12 +31,7 @@ const Footer = () => {
         justifyContent='space-between'
       >
         <Box display='flex' flexDirection='row' alignItems='center'>
-          <Image
-            src='/src/assets/images/github_icon.svg'
-            w='40px'
-            bgColor='white'
-            borderRadius='100%'
-          />
+          <Image src='/images/github_icon.svg' w='40px' bgColor='white' borderRadius='100%' />
           <Text marginLeft='15px'> &#169; 2022 GitHub, Inc.</Text>
         </Box>
         <Box>
