@@ -15,6 +15,7 @@ interface IProps {
 const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit }) => {
   const titleInputEl = useRef<HTMLInputElement | null>(null);
   const descriptionInputEl = useRef<HTMLTextAreaElement | null>(null);
+
   const handleOnClick = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleInputEl?.current?.value && descriptionInputEl?.current?.value) {
@@ -24,6 +25,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
       });
     }
   }, []);
+
   return (
     <Box display='flex' flexDirection='row' textAlign='left'>
       <Box w={{ sm: '15%', md: '70px' }} paddingRight='5px' display='flex' justifyContent='center'>

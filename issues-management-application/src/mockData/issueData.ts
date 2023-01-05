@@ -24,7 +24,7 @@ export const issueData: IssueModel[] = [
     ],
   },
   {
-    number: '2',
+    number: 2,
     title: 'This is sample issue for testing',
     user: {
       login: 'Bao Thai',

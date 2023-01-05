@@ -8,7 +8,7 @@ This document provides a detailed estimate of the React practice. This practice 
 ### Timeline ###
 
 - Estimate time:  9 days (07 Dec - 19 Dec)
-- Actual time: 
+- Actual time: 13 days (07 Dec - 25 Dec)
 
 ### Technical Stack ###
 
@@ -17,15 +17,16 @@ This document provides a detailed estimate of the React practice. This practice 
 - TypeScript
 - ViteJS
 - ChakraUI
-- Mock API
 - React Router 6
 - Storybook
 - React Testing Library
-- SWR
-- Husky
+- Github API
+
+### DevTools ###
 - Eslint
 - Prettier
-- Github API
+- Husky
+- Commitlint
 
 ### Teamsize ###
 
@@ -40,6 +41,7 @@ This document provides a detailed estimate of the React practice. This practice 
 - Apply React hooks
 - Apply react testing library
 - Apply storybook
+- Apply github API
 
 ### Requirement ###
 
@@ -47,6 +49,7 @@ This document provides a detailed estimate of the React practice. This practice 
 - Get a single issue
 - Add, edit and delete an issue
 - Lock and Unlock an issue
+- Get comments of an issue
 
 ### UI Reference ###
 
@@ -58,7 +61,7 @@ Design: [GO TO DOCS FOR DETAIL](https://docs.google.com/document/d/1O_Pb3FCuSPDr
 | Command                 | Action                                             |
 | :---------------------  | :------------------------------------------------- |
 | `pnpm install`          | Installs dependencies                              |
-| `pnpm run dev`          | Build your production site to `./dist/`            |
+| `pnpm run dev`          | Build your production site                         |
 | `pnpm run storybook`    | Run the storybook to review all the components     |
 | `pnpm run lint:fix    ` | Check warning & error following ESLint             |
 
@@ -76,7 +79,7 @@ Design: [GO TO DOCS FOR DETAIL](https://docs.google.com/document/d/1O_Pb3FCuSPDr
 
 - Direct to practice folder
 
-`cd feature/issues-management-application`
+`cd issues-management-application`
 
 - Install package dependencies
 
