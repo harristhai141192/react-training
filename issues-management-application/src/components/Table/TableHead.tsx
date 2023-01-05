@@ -10,7 +10,7 @@ import { IssueModel } from '@models/index';
 import { tableHeadData } from '@mockData/tableHeadData';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 interface IProps {
   issue: IssueModel[];
@@ -26,7 +26,7 @@ const TableHead: React.FC<IProps> = ({ issue, numberOfClosedIssue, numberOfOpene
           display='flex'
           flexDirection={{ sm: 'column', md: 'row' }}
           justifyContent='space-between'
-          alignItems='end'
+          alignItems={{ sm: 'baseline', md: 'end' }}
         >
           <Box display='flex' flexDirection='row' alignItems='center' marginLeft='5px'>
             <StarIcon />
@@ -39,7 +39,11 @@ const TableHead: React.FC<IProps> = ({ issue, numberOfClosedIssue, numberOfOpene
           <Box display='flex' flexDirection='row' marginTop={{ sm: '10px', md: '' }}>
             {tableHeadData.map((item: string) => {
               return (
-                <Text key={generateKey()} marginLeft='10px'>
+                <Text
+                  key={generateKey()}
+                  marginLeft='10px'
+                  fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+                >
                   {item}
                 </Text>
               );

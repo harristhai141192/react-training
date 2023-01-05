@@ -1,9 +1,9 @@
 // Models
 import { IssueModel } from '@models/index';
 
-export const issueData: IssueModel[] = [
+export const issuesData: IssueModel[] = [
   {
-    number: '1',
+    number: 1,
     title: 'This is sample issue for testing',
     user: {
       login: 'Bao Thai',
@@ -45,7 +45,7 @@ export const issueData: IssueModel[] = [
     ],
   },
   {
-    number: '3',
+    number: 3,
     title: 'This is sample issue for testing',
     user: {
       login: 'Bao Thai',
@@ -66,7 +66,7 @@ export const issueData: IssueModel[] = [
     ],
   },
   {
-    number: '4',
+    number: 4,
     title: 'This is sample issue for testing',
     user: {
       login: 'Bao Thai',

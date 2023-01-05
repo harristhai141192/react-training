@@ -12,10 +12,10 @@ import {
 import { Link } from 'react-router-dom';
 
 // Mocks
-import { navHeaderData } from '@mockData/navData';
+import { navHeaderData } from '@mockData/navFooterData';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 // Routes
 import { PAGE_ROUTES } from '@constants/routes';

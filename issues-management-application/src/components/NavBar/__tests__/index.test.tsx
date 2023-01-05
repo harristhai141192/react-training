@@ -1,17 +1,17 @@
 // Components
-import MenuBar from '..';
+import NavBar from '..';
 
 // Utils
-import { render, getByText } from '@utils/testUtils';
+import { render, getByText } from '@utils/testing';
 
 const setup = (overrideProps = {}) => {
   const props = {
     ...overrideProps,
   };
-  return render(<MenuBar {...props} />);
+  return render(<NavBar {...props} />);
 };
 
-describe('Page [MenuBar] testing: ', () => {
+describe('Page [NavBar] testing: ', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();

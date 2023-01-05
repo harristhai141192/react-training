@@ -2,7 +2,7 @@
 import InputCommentBox from '..';
 
 // Utils
-import { render, fireEvent } from '@utils/testUtils';
+import { render, fireEvent } from '@utils/testing';
 
 const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',

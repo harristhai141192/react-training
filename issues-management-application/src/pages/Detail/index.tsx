@@ -30,13 +30,7 @@ import { useCommentContext } from '@stores/Comment/context';
 import { IssueState } from '@stores/Issue/issueReducer';
 
 // Utils
-import {
-  getCommentsById,
-  lockIssue,
-  unlockIssue,
-  updateIssue,
-  getIssue,
-} from '@utils/mainFeaturesUtils';
+import { getCommentsById, lockIssue, unlockIssue, updateIssue, getIssue } from '@utils/index';
 import { ILockReason, IssueModel } from '@models/index';
 
 // Constants
@@ -225,7 +219,7 @@ const IssueDetail = () => {
             <Status isOpen={!currentIssue?.locked}>
               {!currentIssue?.locked ? <SunIcon /> : <MoonIcon />}
             </Status>
-            <Text marginLeft='10px'>
+            <Text marginLeft='10px' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
               <Text as='b'>{currentIssue?.user?.login}&nbsp;</Text>
               {!currentIssue?.locked ? 'opened this issue on' : 'closed this issue on'}&nbsp;
               {currentIssue?.created_at?.split('T')[0]}
@@ -246,7 +240,12 @@ const IssueDetail = () => {
                 onDeleteIssue={handleOpenDeleteModal}
                 onUnLockIssue={handleOpenUnlockIssueModal}
               />
-              <Button variant='ghost' leftIcon={<ArrowLeftIcon />} onClick={handleBackTohome}>
+              <Button
+                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+                variant='ghost'
+                leftIcon={<ArrowLeftIcon />}
+                onClick={handleBackTohome}
+              >
                 Back to home
               </Button>
             </Box>

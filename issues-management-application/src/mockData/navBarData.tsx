@@ -11,7 +11,7 @@ import {
   LockIcon,
 } from '@chakra-ui/icons';
 
-export const menuBar = [
+export const navBarData = [
   {
     name: 'Code',
     icon: <UpDownIcon />,

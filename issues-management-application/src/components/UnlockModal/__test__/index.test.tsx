@@ -2,7 +2,7 @@
 import UnlockModal from '..';
 
 // Utils
-import { render, fireEvent, findAllByText } from '@utils/testUtils';
+import { render, fireEvent, findAllByText } from '@utils/testing';
 
 const baseProps = {
   onUnlock: () => {},

@@ -1,4 +1,4 @@
-export const rightSideBarData = [
+export const discussionSideBarData = [
   {
     name: 'Assignee',
     description: 'No one',

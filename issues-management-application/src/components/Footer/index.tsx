@@ -10,10 +10,10 @@ import {
 } from '@chakra-ui/react';
 
 // Mocks
-import { navFooterData } from '@mockData/navData';
+import { navFooterData } from '@mockData/navFooterData';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');

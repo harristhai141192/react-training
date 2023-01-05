@@ -1,5 +1,5 @@
 // Utils
-import { render } from '@utils/testUtils';
+import { render } from '@utils/testing';
 
 // Components
 import Header from '..';

@@ -3,7 +3,7 @@ import React from 'react';
 import LockIssueModal from '..';
 
 // Utils
-import { fireEvent, render } from '@utils/testUtils';
+import { fireEvent, render } from '@utils/testing';
 
 const baseProps = {
   isOpen: false,

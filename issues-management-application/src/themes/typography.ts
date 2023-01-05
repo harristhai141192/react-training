@@ -8,6 +8,7 @@ export const fontSizes = {
   text: {
     tiny: '4px',
     extraSmall: '8px',
+    lightSmall: '10px',
     small: '12px',
     medium: '14px',
     large: '16px',

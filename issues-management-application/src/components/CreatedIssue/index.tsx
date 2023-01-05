@@ -10,9 +10,15 @@ interface IProps {
   userImage?: string;
   imageAlt?: string;
   handleOnSubmit: (data: { title: string; body: string }) => void;
+  handleSubmitButton?: () => void;
 }
 
-const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit }) => {
+const CreatedIssue: React.FC<IProps> = ({
+  userImage,
+  imageAlt,
+  handleOnSubmit,
+  handleSubmitButton,
+}) => {
   const titleInputEl = useRef<HTMLInputElement | null>(null);
   const descriptionInputEl = useRef<HTMLTextAreaElement | null>(null);
 
@@ -30,8 +36,8 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
     <Box display='flex' flexDirection='row' textAlign='left'>
       <Box w={{ sm: '15%', md: '70px' }} paddingRight='5px' display='flex' justifyContent='center'>
         <Image
-          w='50px'
-          h='50px'
+          width='50px'
+          height='50px'
           objectFit='cover'
           src={userImage}
           alt={imageAlt}
@@ -69,6 +75,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
                 size='sm'
                 margin='5px'
                 border='1px solid lightGrey !important'
+                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
               />
             </Box>
             <Box
@@ -78,25 +85,14 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
               marginTop='15px'
               alignContent='center'
               justifyContent='space-between'
+              fontSize='text.small'
             >
               <Text h='90%'>Comment</Text>
-              <Box
-                display='flex'
-                flexDirection='row'
-                fontSize='text.large'
-                w='40%'
-                justifyContent='space-evenly'
-              >
+              <Box display='flex' flexDirection='row' fontSize='text.large' w='40%'>
                 <MarkdownBar />
               </Box>
             </Box>
-            <Box
-              padding='5px'
-              fontSize={{ sm: 'text.small', md: 'text.medium' }}
-              display='flex'
-              flexDirection='column'
-              alignItems='center'
-            >
+            <Box padding='5px' display='flex' flexDirection='column' alignItems='center'>
               <Textarea
                 ref={descriptionInputEl}
                 id='body'
@@ -106,10 +102,11 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
                 bgColor='mainBackground'
                 border='1px solid lightGrey !important'
                 h='300px'
+                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
               />
               <Box
                 display='flex'
-                flexDirection={{ sm: 'column', md: 'row' }}
+                flexDirection={{ sm: 'row', md: 'row' }}
                 justifyContent='space-between'
                 padding='15px'
                 w='100%'
@@ -120,7 +117,7 @@ const CreatedIssue: React.FC<IProps> = ({ userImage, imageAlt, handleOnSubmit })
                     Styling with Markdown is not supported
                   </Text>
                 </Box>
-                <Button variant='solid' type='submit'>
+                <Button variant='solid' type='submit' onClick={handleSubmitButton}>
                   Submit
                 </Button>
               </Box>

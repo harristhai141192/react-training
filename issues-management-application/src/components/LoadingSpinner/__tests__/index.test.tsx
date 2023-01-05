@@ -1,5 +1,5 @@
 // libraries
-import { render } from '@utils/testUtils';
+import { render } from '@utils/testing';
 // components
 import LoadingSpinner from '../index';
 import '@testing-library/jest-dom';

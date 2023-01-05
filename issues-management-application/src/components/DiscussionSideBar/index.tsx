@@ -4,7 +4,7 @@ import { Box, Button } from '@chakra-ui/react';
 import { LockIcon, UnlockIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons';
 
 // Mock
-import { rightSideBarData } from '@mockData/barData';
+import { discussionSideBarData } from '@mockData/discussionSideBarData';
 
 // Components
 import SideBar from '@components/SideBar';
@@ -26,22 +26,42 @@ const DiscussionSideBar: React.FC<IProps> = ({
 }) => {
   return (
     <Box>
-      <SideBar data={rightSideBarData} />
+      <SideBar data={discussionSideBarData} />
       <SideBar>
         <Box w={{ sm: '150px', md: '250px' }} display='flex' flexDirection='column'>
           {!isLock ? (
-            <Button variant='link' leftIcon={<LockIcon />} onClick={onLockIssue}>
+            <Button
+              fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+              variant='link'
+              leftIcon={<LockIcon />}
+              onClick={onLockIssue}
+            >
               Lock conversation
             </Button>
           ) : (
-            <Button variant='link' leftIcon={<UnlockIcon />} onClick={onUnLockIssue}>
+            <Button
+              fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+              variant='link'
+              leftIcon={<UnlockIcon />}
+              onClick={onUnLockIssue}
+            >
               Unlock Issue
             </Button>
           )}
-          <Button variant='link' leftIcon={<EditIcon />} onClick={onEditIssue}>
+          <Button
+            fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+            variant='link'
+            leftIcon={<EditIcon />}
+            onClick={onEditIssue}
+          >
             Edit Issue
           </Button>
-          <Button variant='link' leftIcon={<DeleteIcon />} onClick={onDeleteIssue}>
+          <Button
+            fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+            variant='link'
+            leftIcon={<DeleteIcon />}
+            onClick={onDeleteIssue}
+          >
             Delete Issue
           </Button>
         </Box>

@@ -5,7 +5,7 @@ import { memo } from 'react';
 import { SettingsIcon } from '@chakra-ui/icons';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 interface sideBarProps {
   icon?: React.ReactNode;
@@ -31,6 +31,7 @@ const SideBar: React.FC<IProps> = ({ children, data }) => {
                 flexDirection='row'
                 justifyContent='space-between'
                 padding='15px 0px'
+                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
               >
                 {item.icon}
                 <Text as='b' marginLeft='10px'>
@@ -38,7 +39,11 @@ const SideBar: React.FC<IProps> = ({ children, data }) => {
                 </Text>
                 {item.setting && <SettingsIcon />}
               </Box>
-              <Box marginLeft='10px' paddingBottom='15px'>
+              <Box
+                marginLeft='10px'
+                paddingBottom='15px'
+                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+              >
                 {item.description}
               </Box>
             </Box>

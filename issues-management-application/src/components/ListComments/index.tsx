@@ -10,7 +10,7 @@ import { IComment } from '@models/index';
 import { IssueModel } from '@models/index';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 interface IProps {
   issue?: IssueModel;
@@ -19,7 +19,7 @@ interface IProps {
 
 const ListComments: React.FC<IProps> = ({ issue, comments }) => {
   return (
-    <Box borderBottom='3px solid lightgrey' marginTop='20px'>
+    <Box borderBottom='1px solid lightgrey' marginTop='20px'>
       {issue?.body && (
         <Box>
           <CommentDescription
@@ -29,7 +29,7 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
             userImage={issue?.user?.avatar_url}
             imageAlt={issue?.user?.avatar_url}
           />
-          <Box borderLeft='4px solid lightgrey' h='50px' marginLeft={{ sm: '70px', md: '100px' }} />
+          <Box borderLeft='1px solid lightgrey' h='50px' marginLeft={{ sm: '70px', md: '100px' }} />
         </Box>
       )}
       {comments &&
@@ -45,7 +45,7 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
               />
 
               <Box
-                borderLeft='4px solid lightgrey'
+                borderLeft='1px solid lightgrey'
                 h='50px'
                 marginLeft={{ sm: '70px', md: '100px' }}
               />

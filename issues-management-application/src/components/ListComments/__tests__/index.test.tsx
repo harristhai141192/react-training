@@ -1,5 +1,5 @@
 // Utils
-import { getByText, render } from '@utils/testUtils';
+import { getByText, render } from '@utils/testing';
 
 // Components
 import ListComments from '..';

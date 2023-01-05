@@ -2,7 +2,7 @@
 import InputFilter from '..';
 
 // Utils
-import { render, fireEvent } from '@utils/testUtils';
+import { render, fireEvent } from '@utils/testing';
 
 const setup = (overrideProps = {}) => {
   const props = {

@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { Td, Tr } from '@chakra-ui/react';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 interface IProps {
   children: React.ReactNode;

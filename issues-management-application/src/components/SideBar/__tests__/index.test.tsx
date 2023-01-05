@@ -2,7 +2,7 @@
 import RightBar from '..';
 
 // Utils
-import { render } from '@utils/testUtils';
+import { render } from '@utils/testing';
 
 const setup = (overrideProps = {}) => {
   const props = {
@@ -11,7 +11,7 @@ const setup = (overrideProps = {}) => {
   return render(<RightBar {...props} />);
 };
 
-describe('Page [MenuBar] testing: ', () => {
+describe('Page [NavBar] testing: ', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();

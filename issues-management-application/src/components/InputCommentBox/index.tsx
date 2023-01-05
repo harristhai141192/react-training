@@ -22,15 +22,18 @@ const InputCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => 
         display='flex'
         flexDirection='row'
       >
-        <Text h='90%'>Write</Text>
+        <Text h='90%' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
+          Write
+        </Text>
       </Box>
-      <Box padding='5px' fontSize={{ sm: 'text.small', md: 'text.medium' }}>
+      <Box padding='5px' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
         <FormControl display='flex' flexDirection='column' alignItems='end'>
           <Textarea
             bgColor='backgroundInputBox'
             border='1px solid lightGrey !important'
             placeholder='Leave a comment'
             aria-label='commentArea'
+            fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
           />
           <Button variant='solid' onClick={onClick} marginTop='15px'>
             Comment

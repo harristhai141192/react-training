@@ -2,12 +2,13 @@
 import CreatedIssue from '..';
 
 // Utils
-import { render, fireEvent, getByPlaceholderText, screen } from '@utils/testUtils';
+import { render, fireEvent, getByPlaceholderText } from '@utils/testing';
 
 const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
   imageAlt: 'This is member Image',
   handleOnSubmit: () => jest.fn(),
+  handleSubmitButton: () => {},
 };
 
 const setup = (overrideProps = {}) => {
@@ -25,8 +26,10 @@ describe('Component [CreatedIssue] testing:', () => {
   });
 
   test('Submit button should be worked', () => {
-    const { getByText } = setup();
-    fireEvent.click(getByText('Submit'));
+    const handleSubmit = jest.fn();
+    const { getByText } = setup({ handleSubmitButton: handleSubmit });
+    fireEvent.click(getByText(/Submit/i));
+    expect(handleSubmit).toHaveBeenCalled();
   });
 
   test('Input must be rendered to UI', () => {

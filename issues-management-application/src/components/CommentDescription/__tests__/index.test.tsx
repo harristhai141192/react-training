@@ -2,7 +2,7 @@
 import CommentDescription from '..';
 
 // Utils
-import { getByText, render, getByAltText } from '@utils/testUtils';
+import { getByText, render, getByAltText } from '@utils/testing';
 
 const baseProps = {
   userName: 'Bao Thai',
@@ -26,16 +26,35 @@ describe('Component [CommentDescription] testing: ', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('It should render image, name, time, comment and alt values that have been pushed into props', () => {
+  test('It should render image alt', () => {
+    const { container } = setup({});
+    const userImageAlt = getByAltText(container, 'This is member Image');
+    expect(userImageAlt).toBeTruthy;
+  });
+
+  test('It should render image ', () => {
+    const { getByAltText } = setup({});
+    const userImage = getByAltText('This is member Image');
+    expect(userImage).toHaveAttribute(
+      'src',
+      'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
+    );
+  });
+
+  test('It should render name', () => {
     const { container } = setup({});
     const userName = getByText(container, 'Bao Thai');
-    const userCommentTime = getByText(container, 'commented on 15 minutes');
-    const userComment = getByText(container, 'This is comment sample for storybook!!!!!!!!!!');
-    const userImageAlt = getByAltText(container, 'This is member Image');
-
     expect(userName).toBeTruthy;
+  });
+  test('It should render time', () => {
+    const { container } = setup({});
+    const userCommentTime = getByText(container, 'commented on 15 minutes');
     expect(userCommentTime).toBeTruthy;
+  });
+
+  test('It should render comment', () => {
+    const { container } = setup({});
+    const userComment = getByText(container, 'This is comment sample for storybook!!!!!!!!!!');
     expect(userComment).toBeTruthy;
-    expect(userImageAlt).toBeTruthy;
   });
 });

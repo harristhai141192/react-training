@@ -3,15 +3,15 @@ import { Box, Button } from '@chakra-ui/react';
 import { memo } from 'react';
 
 // Mock
-import { menuBar } from '@mockData/menuBarData';
+import { navBarData } from '@mockData/navBarData';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
-const MenuBar = () => {
+const NavBar = () => {
   return (
     <Box display='flex' flexDirection='row' flexWrap='wrap' w='100%'>
-      {menuBar.map((item) => {
+      {navBarData.map((item) => {
         return (
           <Button
             w={{ sm: '30%', md: '10%' }}
@@ -27,4 +27,4 @@ const MenuBar = () => {
   );
 };
 
-export default memo(MenuBar);
+export default memo(NavBar);

@@ -27,18 +27,22 @@ const CommentDescription: React.FC<IProps> = ({
         bgColor='boxCommentColor'
         borderBottom={`1px solid ${themes.colors.borderCommentBox}`}
         borderTopRadius='6px'
-        fontSize={{ sm: 'text.small', md: 'text.medium' }}
+        fontSize={{ sm: 'text.extraSmall', md: 'text.small' }}
         margin='0'
         padding='5px 15px'
         display='flex'
         flexDirection='row'
       >
         <Text as='b'>{userName}</Text>
-        <Text margin='0' color='textDescriptionColor'>
+        <Text
+          margin='0'
+          color='textDescriptionColor'
+          fontSize={{ sm: 'text.extraSmall', md: 'text.small' }}
+        >
           &nbsp; commented on {userCommentTime}
         </Text>
       </Box>
-      <Box padding='10px 15px' fontSize={{ sm: 'text.small', md: 'text.medium' }}>
+      <Box padding='10px 15px' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
         {userComment}
       </Box>
     </CommentBox>
