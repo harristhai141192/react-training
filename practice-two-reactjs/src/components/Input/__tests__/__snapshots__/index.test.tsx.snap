@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component [Input] should match snapshot It should match snapshot 1`] = `
+<div>
+  <input
+    class="chakra-input css-10eaxd9"
+    placeholder=""
+    value=""
+  />
+</div>
+`;

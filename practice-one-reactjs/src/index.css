@@ -1,0 +1,36 @@
+@font-face {
+  font-family: DMSansMedium;
+  src: url(../src/assets/fonts/DMSans-Medium.woff);
+}
+
+:root {
+  --header-background-color: rgb(209,68,68);
+  --header-font-color: rgb(230,138,126);
+  --primary-button-background-color: rgb(209,68,68);
+  --secondary-button-background-color: rgb(108,117,125);
+  --tertiary-button-background-color: rgb(255,255,255);
+  --default-button-font-color: rgb(255,255,255);
+  --primary-button-font-color: rgb(144,172,212);
+  --secondary-button-font-color: rgb(36,123,255);
+  --font-small: 12px;
+  --font-medium: 14px;
+  --font-large: 16px;
+  --footer-background-color: rgb(209,68,68);
+  --footer-font-color: #ffffff;
+  --font-size-label: 22px;
+  --body-background-color: rgb(170,48,48);
+  font-family: DMSansMedium;
+}
+
+html, body {
+  margin: 0px;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
