@@ -1,5 +1,5 @@
 // Components
-import InputCommentBox from '..';
+import AddComment from '..';
 
 // Utils
 import { render, fireEvent } from '@utils/testing';
@@ -14,7 +14,7 @@ const setup = (overrideProps = {}) => {
     ...baseProps,
     ...overrideProps,
   };
-  const utils = render(<InputCommentBox {...props} />);
+  const utils = render(<AddComment {...props} />);
   const input = utils.getByLabelText('commentArea');
 
   return {
@@ -23,7 +23,7 @@ const setup = (overrideProps = {}) => {
   };
 };
 
-describe('Component [InputCommentBox] testing:', () => {
+describe('Component [AddComment] testing:', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('Component [InputCommentBox] testing:', () => {
   test('Submit comment button should be worked', () => {
     const handleOnClick = jest.fn();
     const { getByText } = setup({ onClick: handleOnClick });
-    fireEvent.click(getByText('Comment'));
+    fireEvent.click(getByText('Submit'));
     expect(handleOnClick).toBeCalled();
   });
 

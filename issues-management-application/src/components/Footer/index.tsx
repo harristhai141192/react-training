@@ -7,6 +7,7 @@ import {
   ListItem,
   Text,
   useMediaQuery,
+  Link,
 } from '@chakra-ui/react';
 
 // Mocks
@@ -40,7 +41,9 @@ const Footer = () => {
               ? navFooterData.map((item) => {
                   return (
                     <ListItem key={generateKey()}>
-                      <Text padding={{ md: '10px', lg: '15px' }}>{item}</Text>
+                      <Link href='#' padding={{ md: '10px', lg: '15px' }}>
+                        {item}
+                      </Link>
                     </ListItem>
                   );
                 })

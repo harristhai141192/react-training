@@ -42,7 +42,7 @@ const Header = () => {
               navHeaderData.map((item) => {
                 return (
                   <ListItem padding='15px' key={generateKey()}>
-                    <LinkChakra>{item}</LinkChakra>
+                    <LinkChakra href='#'>{item}</LinkChakra>
                   </ListItem>
                 );
               })

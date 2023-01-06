@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react';
-import { Box, Text, Image } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 // Themes
 import themes from '@themes/index';
@@ -14,7 +14,7 @@ interface IProps {
   userComment?: string;
 }
 
-const CommentDescription: React.FC<IProps> = ({
+const Comment: React.FC<IProps> = ({
   userName,
   userCommentTime,
   userComment,
@@ -49,4 +49,4 @@ const CommentDescription: React.FC<IProps> = ({
   );
 };
 
-export default CommentDescription;
+export default Comment;

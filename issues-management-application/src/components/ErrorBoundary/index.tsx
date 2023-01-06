@@ -31,8 +31,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render() {
     if (this.state.hasError) {
       return (
-        <Box>
-          <Text size='xl'>An error has been occurred!! </Text>
+        <Box data-testid='errorBoundary'>
+          <Text size='xl'>An error has been occurred!!</Text>
           <Text as='sub' style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error?.message}
           </Text>

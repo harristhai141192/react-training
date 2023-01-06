@@ -64,7 +64,9 @@ const AddIssue = () => {
               handleOnSubmit={handleAddIssue}
             />
           </Box>
-          <Box w={{ sm: '0', md: '20%' }}>{!isMobile && <DiscussionSideBar />}</Box>
+          <Box w={{ sm: '0', md: '20%' }}>
+            {!isMobile && <DiscussionSideBar isAddPage={true} />}
+          </Box>
         </Box>
       </Container>
     </>

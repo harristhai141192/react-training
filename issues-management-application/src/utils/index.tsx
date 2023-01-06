@@ -128,7 +128,7 @@ export const lockIssue = async (
     const response = await fetch(`${API.DELIVERY_CALL.URL_ISSUES}/${currentId}/lock`, {
       method: HTTP_METHODS.PUT,
       headers: HEADERS,
-      body: JSON.stringify({ active_lock_reason: data.lockReason }),
+      body: JSON.stringify({ lock_reason: data.lockReason }),
     });
 
     if (response.status == 204) {

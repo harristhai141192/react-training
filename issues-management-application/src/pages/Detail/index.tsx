@@ -15,7 +15,7 @@ import {
 import { SunIcon, MoonIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 // Components
-import InputCommentBox from '@components/InputCommentBox';
+import AddComment from '@components/AddComment';
 import DiscussionSideBar from '@components/DiscussionSideBar';
 import Status from '@components/Status';
 import LockIssueModal from '@components/LockIssueModal';
@@ -121,11 +121,6 @@ const IssueDetail = () => {
     setIsLocked(false);
   };
 
-  // OPEN DELETE FORM
-  const handleDeleteIssue = () => {
-    setIsDeleting(true);
-  };
-
   // HANDLE SUCCESSFUL TOASTED ON EDIT
   const handleToastedEditSuccess = (status: STATUS_VARIANT, title: string) => {
     toast({
@@ -146,13 +141,7 @@ const IssueDetail = () => {
 
   return (
     <Container padding='20px 0'>
-      {isDeleting && (
-        <DeleteModal
-          onDelete={handleDeleteIssue}
-          isOpen={true}
-          onClose={() => setIsDeleting(false)}
-        />
-      )}
+      {isDeleting && <DeleteModal isOpen={true} onClose={() => setIsDeleting(false)} />}
       {isOpenLockModal && (
         <LockIssueModal
           isOpen={isOpenLockModal}
@@ -229,7 +218,7 @@ const IssueDetail = () => {
             <Box w='65%'>
               <ListComments issue={currentIssue} comments={commentState.comments} />
               <Box marginTop='20px'>
-                <InputCommentBox userImage={currentIssue?.user?.avatar_url} />
+                <AddComment userImage={currentIssue?.user?.avatar_url} />
               </Box>
             </Box>
             <Box w='30%'>

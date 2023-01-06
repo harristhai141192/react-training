@@ -21,6 +21,7 @@ const MarkdownBar = () => {
       alignContent='center'
       justifyContent='space-evenly'
       w='100%'
+      data-testid='markDownData'
     >
       <AtSignIcon />
       <LinkIcon />

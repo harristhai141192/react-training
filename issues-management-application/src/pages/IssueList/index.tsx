@@ -4,7 +4,7 @@ import { ChatIcon, BellIcon, InfoOutlineIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
 // Components
-import InputFilter from '@components/InputFilter';
+import Filter from '@components/Filter';
 import IssueTable from '@components/IssueTable';
 import ErrorBoundary from '@components/ErrorBoundary/index';
 
@@ -16,7 +16,7 @@ const IssueList = () => {
     <Container>
       <Box marginBottom='20px'>
         <Box display='flex' flexDirection={{ sm: 'column', md: 'row' }}>
-          <InputFilter />
+          <Filter />
           <Box
             padding='20px 0px'
             display='flex'

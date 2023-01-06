@@ -1,5 +1,5 @@
 // Utils
-import { render, getByText, getByTestId } from '@utils/testing';
+import { render, getByText } from '@utils/testing';
 
 // Components
 import Status from '..';

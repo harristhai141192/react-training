@@ -1,7 +1,8 @@
 // Libraries
 import React from 'react';
-import { Box, Text, Textarea, Button, FormControl } from '@chakra-ui/react';
+import { Box, Text, FormControl } from '@chakra-ui/react';
 import CommentBox from '@components/CommentBox';
+import TextArea from '@components/TextArea';
 
 interface IProps {
   userImage?: string;
@@ -9,7 +10,7 @@ interface IProps {
   onClick?: () => void;
 }
 
-const InputCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
+const AddComment: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
   return (
     <CommentBox isAddedComment={true} userImage={userImage} imageAlt={imageAlt}>
       <Box
@@ -27,21 +28,17 @@ const InputCommentBox: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => 
         </Text>
       </Box>
       <Box padding='5px' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
-        <FormControl display='flex' flexDirection='column' alignItems='end'>
-          <Textarea
-            bgColor='backgroundInputBox'
-            border='1px solid lightGrey !important'
-            placeholder='Leave a comment'
-            aria-label='commentArea'
-            fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+        <FormControl display='flex' flexDirection='column'>
+          <TextArea
+            title={'Comment'}
+            isMarkdown={false}
+            valueInput={null}
+            handleSubmitButton={onClick}
           />
-          <Button variant='solid' onClick={onClick} marginTop='15px'>
-            Comment
-          </Button>
         </FormControl>
       </Box>
     </CommentBox>
   );
 };
 
-export default InputCommentBox;
+export default AddComment;

@@ -1,10 +1,9 @@
 // Libraries
 import React, { useRef, useCallback } from 'react';
-import { Box, FormControl, Input, Textarea, Text, Image, Button } from '@chakra-ui/react';
-import { MoonIcon } from '@chakra-ui/icons';
+import { Box, FormControl, Input, Image } from '@chakra-ui/react';
 
 // Components
-import MarkdownBar from '@components/MarkdownBar';
+import TextArea from '../TextArea/index';
 
 interface IProps {
   userImage?: string;
@@ -19,9 +18,11 @@ const CreatedIssue: React.FC<IProps> = ({
   handleOnSubmit,
   handleSubmitButton,
 }) => {
+  // Get ref from input of title and description textarea
   const titleInputEl = useRef<HTMLInputElement | null>(null);
   const descriptionInputEl = useRef<HTMLTextAreaElement | null>(null);
 
+  // Handle Click submit form
   const handleOnClick = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (titleInputEl?.current?.value && descriptionInputEl?.current?.value) {
@@ -78,50 +79,12 @@ const CreatedIssue: React.FC<IProps> = ({
                 fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
               />
             </Box>
-            <Box
-              display='flex'
-              flexDirection='row'
-              padding='5px 10px'
-              marginTop='15px'
-              alignContent='center'
-              justifyContent='space-between'
-              fontSize='text.small'
-            >
-              <Text h='90%'>Comment</Text>
-              <Box display='flex' flexDirection='row' fontSize='text.large' w='40%'>
-                <MarkdownBar />
-              </Box>
-            </Box>
-            <Box padding='5px' display='flex' flexDirection='column' alignItems='center'>
-              <Textarea
-                ref={descriptionInputEl}
-                id='body'
-                w='97%'
-                margin='5px'
-                placeholder='Leave a comment'
-                bgColor='mainBackground'
-                border='1px solid lightGrey !important'
-                h='300px'
-                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
-              />
-              <Box
-                display='flex'
-                flexDirection={{ sm: 'row', md: 'row' }}
-                justifyContent='space-between'
-                padding='15px'
-                w='100%'
-              >
-                <Box display='flex' flexDirection='row' marginBottom='10px'>
-                  <MoonIcon />
-                  <Text as='sub' margin='4px 5px'>
-                    Styling with Markdown is not supported
-                  </Text>
-                </Box>
-                <Button variant='solid' type='submit' onClick={handleSubmitButton}>
-                  Submit
-                </Button>
-              </Box>
-            </Box>
+            <TextArea
+              title='Comment'
+              isMarkdown={true}
+              valueInput={descriptionInputEl}
+              handleSubmitButton={handleSubmitButton}
+            />
           </FormControl>
         </form>
       </Box>

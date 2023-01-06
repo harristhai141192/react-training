@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 
 // Components
-import CommentDescription from '@components/CommentDescription';
+import Comment from '@components/Comment';
 
 // Models
 import { IComment } from '@models/index';
@@ -22,7 +22,7 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
     <Box borderBottom='1px solid lightgrey' marginTop='20px'>
       {issue?.body && (
         <Box>
-          <CommentDescription
+          <Comment
             userName={issue?.user?.login}
             userCommentTime={issue?.created_at?.split('T')[0]}
             userComment={issue?.body}
@@ -36,7 +36,7 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
         comments?.map((item: IComment) => {
           return (
             <Box key={generateKey()}>
-              <CommentDescription
+              <Comment
                 userName={item.user?.login}
                 userCommentTime={item.created_at?.split('T')[0]}
                 userComment={item.body}

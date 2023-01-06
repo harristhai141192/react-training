@@ -1,5 +1,5 @@
 // Components
-import InputFilter from '..';
+import Filter from '..';
 
 // Utils
 import { render, fireEvent } from '@utils/testing';
@@ -8,12 +8,12 @@ const setup = (overrideProps = {}) => {
   const props = {
     ...overrideProps,
   };
-  const utils = render(<InputFilter {...props} />);
+  const utils = render(<Filter {...props} />);
   const input = utils.getByLabelText('inputFilter');
   return { input, ...utils };
 };
 
-describe('Component [InputFilter Issue] testing: ', () => {
+describe('Component [Filter Issue] testing: ', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();

@@ -10,7 +10,7 @@ const setup = (overrideProps = {}) => {
   };
   return render(<RightBar {...props} />);
 };
-
+// TODO: TEST MORE
 describe('Page [NavBar] testing: ', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
