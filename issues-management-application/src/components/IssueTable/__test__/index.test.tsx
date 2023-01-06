@@ -3,8 +3,8 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { act, render, waitFor } from '@utils/testing';
 
-describe('It should rendered', () => {
-  it('should pass', async () => {
+describe('Component [IssueTable] testing,', () => {
+  it('It should render mocked data', async () => {
     const fakeResponse = { title: 'Test' };
     const mRes = { json: jest.fn().mockResolvedValueOnce(fakeResponse) };
     const mockedFetch = jest.fn().mockResolvedValueOnce(mRes);
