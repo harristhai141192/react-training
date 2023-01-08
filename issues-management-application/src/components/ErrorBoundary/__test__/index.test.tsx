@@ -1,12 +1,15 @@
 // Utils
-import { render, getByText } from '@utils/testing';
+import { render, fireEvent, screen, waitFor } from '@utils/testing';
 
 // Components
 import ErrorBoundary from '..';
 
+const ChildError = () => {
+  throw new Error();
+};
+
 const baseProps = {
-  children: <></>,
-  state: { hasError: true, error: null },
+  children: <ChildError />,
 };
 
 const setup = (overrideProps = {}) => {
@@ -18,15 +21,16 @@ const setup = (overrideProps = {}) => {
 };
 
 describe('Component [ErrorBoundary] testing', () => {
-  test('It should match snapshot', () => {
-    const { container } = setup();
-    expect(container).toMatchSnapshot();
-  });
+  test('should update State', async () => {
+    const { container, getByText, queryByTestId, rerender } = setup();
+    screen.debug(container);
+    fireEvent.click(getByText('Try again?'));
 
-  test('It should throw error', () => {
-    const { container } = setup();
-    const getErrorBoundary = getByText(container, 'errorBoundary');
+    rerender(<ErrorBoundary>success</ErrorBoundary>);
 
-    expect(getErrorBoundary).toContain('An error has been occurred!!');
+    await waitFor(() => {
+      expect(queryByTestId('errorBoundary')).toBeFalsy();
+    });
+    screen.debug(container);
   });
 });

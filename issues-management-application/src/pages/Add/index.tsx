@@ -9,7 +9,7 @@ import NavBar from '@components/NavBar';
 import DiscussionSideBar from '@components/DiscussionSideBar';
 
 // Utils
-import { addIssue } from '@utils/index';
+import { addIssue } from '@services/index';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';

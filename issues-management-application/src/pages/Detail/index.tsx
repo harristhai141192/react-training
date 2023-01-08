@@ -30,7 +30,7 @@ import { useCommentContext } from '@stores/Comment/context';
 import { IssueState } from '@stores/Issue/issueReducer';
 
 // Utils
-import { getCommentsById, lockIssue, unlockIssue, updateIssue, getIssue } from '@utils/index';
+import { getCommentsById, lockIssue, unlockIssue, updateIssue, getIssue } from '@services/index';
 import { ILockReason, IssueModel } from '@models/index';
 
 // Constants
