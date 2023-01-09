@@ -27,7 +27,6 @@ const LockIssueModal: React.FC<IProps> = ({ isOpen, onClose, onSubmit }) => {
     },
     [selectEl],
   );
-  console.log('selectEl', selectEl);
 
   return (
     <Modal
