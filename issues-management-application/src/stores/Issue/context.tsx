@@ -2,7 +2,7 @@
 import { useContext, createContext, useReducer, ReactNode, Dispatch } from 'react';
 
 // Reducer and Types
-import issueReducer, { IssueState, IssueAction, initialIssueState } from './issueReducer';
+import issueReducer, { IssueState, IssueAction, initialIssueState } from './reducer';
 
 export const IssueContext = createContext<{
   state: IssueState;

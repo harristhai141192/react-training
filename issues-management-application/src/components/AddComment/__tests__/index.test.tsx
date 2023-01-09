@@ -7,6 +7,7 @@ import { render, fireEvent } from '@utils/testing';
 const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
   imageAlt: 'This is member Image',
+  handleSubmitButton: () => {},
 };
 
 const setup = (overrideProps = {}) => {
@@ -31,7 +32,7 @@ describe('Component [AddComment] testing:', () => {
 
   test('Submit comment button should be worked', () => {
     const handleOnClick = jest.fn();
-    const { getByText } = setup({ onClick: handleOnClick });
+    const { getByText } = setup({ handleSubmitButton: handleOnClick });
     fireEvent.click(getByText('Submit'));
     expect(handleOnClick).toBeCalled();
   });

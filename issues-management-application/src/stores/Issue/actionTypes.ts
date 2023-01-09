@@ -60,36 +60,6 @@ export interface FailedUpdateIssueAction {
   data: { error: string };
 }
 
-// DELETE TYPES
-export interface RequestDeleteIssueAction {
-  type: ISSUE_ACTIONS.DELETE_ISSUE_REQUEST;
-}
-
-export interface SuccessDeleteIssueAction {
-  type: ISSUE_ACTIONS.DELETE_ISSUE_SUCCESS;
-  data: { issue: IssueModel };
-}
-
-export interface FailedDeleteIssueAction {
-  type: ISSUE_ACTIONS.DELETE_ISSUE_FAILURE;
-  data: { error: string };
-}
-
-// SEARCH TYPES
-export interface RequestSearchIssueAction {
-  type: ISSUE_ACTIONS.SEARCH_ISSUE_REQUEST;
-}
-
-export interface SuccessSearchIssueAction {
-  type: ISSUE_ACTIONS.SEARCH_ISSUE_SUCCESS;
-  data: { issue: IssueModel[] };
-}
-
-export interface FailedSearchIssueAction {
-  type: ISSUE_ACTIONS.SEARCH_ISSUE_FAILURE;
-  data: { error: string };
-}
-
 export interface RequestLockIssueAction {
   type: ISSUE_ACTIONS.LOCK_ISSUE_REQUEST;
 }

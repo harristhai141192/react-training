@@ -13,7 +13,7 @@ import { addIssue } from '@services/index';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
-import { IssueState } from '@stores/Issue/issueReducer';
+import { IssueState } from '@stores/Issue/reducer';
 
 // Constants
 import { PAGE_ROUTES } from '@constants/routes';

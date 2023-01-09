@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Box, Text, FormControl } from '@chakra-ui/react';
 import CommentBox from '@components/CommentBox';
 import TextArea from '@components/TextArea';
@@ -7,10 +7,28 @@ import TextArea from '@components/TextArea';
 interface IProps {
   userImage?: string;
   imageAlt?: string;
-  onClick?: () => void;
+  handleSubmitButton?: () => void;
+  handleSubmitForm: (data: { body: string }) => void;
 }
 
-const AddComment: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
+const AddComment: React.FC<IProps> = ({
+  userImage,
+  imageAlt,
+  handleSubmitButton,
+  handleSubmitForm,
+}) => {
+  // Get ref from input of comment
+  const commentInputEl = useRef<HTMLTextAreaElement | null>(null);
+
+  // Handle submit form
+  const handleOnClick = useCallback((event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (commentInputEl?.current?.value) {
+      handleSubmitForm({
+        body: commentInputEl.current.value,
+      });
+    }
+  }, []);
   return (
     <CommentBox isAddedComment={true} userImage={userImage} imageAlt={imageAlt}>
       <Box
@@ -28,14 +46,16 @@ const AddComment: React.FC<IProps> = ({ userImage, imageAlt, onClick }) => {
         </Text>
       </Box>
       <Box padding='5px' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
-        <FormControl display='flex' flexDirection='column'>
-          <TextArea
-            title={'Comment'}
-            isMarkdown={false}
-            valueInput={null}
-            handleSubmitButton={onClick}
-          />
-        </FormControl>
+        <form onSubmit={handleOnClick}>
+          <FormControl display='flex' flexDirection='column'>
+            <TextArea
+              title={'Comment'}
+              isMarkdown={false}
+              valueInput={commentInputEl}
+              handleSubmitButton={handleSubmitButton}
+            />
+          </FormControl>
+        </form>
       </Box>
     </CommentBox>
   );
