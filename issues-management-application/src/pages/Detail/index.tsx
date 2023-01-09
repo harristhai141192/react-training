@@ -27,10 +27,18 @@ import LoadingSpinner from '@components/LoadingSpinner';
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
 import { useCommentContext } from '@stores/Comment/context';
-import { IssueState } from '@stores/Issue/issueReducer';
+import { IssueState } from '@stores/Issue/reducer';
+import { CommentState } from '@stores/Comment/reducer';
 
 // Utils
-import { getCommentsById, lockIssue, unlockIssue, updateIssue, getIssue } from '@services/index';
+import {
+  getCommentsById,
+  lockIssue,
+  unlockIssue,
+  updateIssue,
+  getIssue,
+  addComment,
+} from '@services/index';
 import { ILockReason, IssueModel } from '@models/index';
 
 // Constants
@@ -39,13 +47,13 @@ import { PAGE_ROUTES } from '@constants/routes';
 
 const IssueDetail = () => {
   const navigate = useNavigate();
+  const toast = useToast();
   const { state: issueState, dispatch: issueDispatch } = useIssueContext();
   const { state: commentState, dispatch: commentDispatch } = useCommentContext();
 
   const params = useParams();
   const currentID = params?.id || '';
 
-  const toast = useToast();
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isOpenLockModal, setIsOpenLockModal] = useState(false);
@@ -53,6 +61,8 @@ const IssueDetail = () => {
   const [isLocked, setIsLocked] = useState(false);
 
   const { byId, loading }: IssueState = issueState;
+  const { commentById, order }: CommentState = commentState;
+  const comments = order.length ? order.map((id) => commentById[id]) : [];
 
   const inputEl = React.useRef<HTMLInputElement | null>(null);
 
@@ -77,7 +87,7 @@ const IssueDetail = () => {
         await updateIssue(issueDispatch, currentID, { title: inputEl.current.value });
       }
       setIsEditing(false);
-      handleToastedEditSuccess(STATUS_VARIANT.SUCCESS, 'Successfully Edited');
+      handleToastSuccess(STATUS_VARIANT.SUCCESS, 'Successfully Edited');
     },
     [inputEl],
   );
@@ -122,12 +132,18 @@ const IssueDetail = () => {
   };
 
   // HANDLE SUCCESSFUL TOASTED ON EDIT
-  const handleToastedEditSuccess = (status: STATUS_VARIANT, title: string) => {
+  const handleToastSuccess = (status: STATUS_VARIANT, title: string) => {
     toast({
       title: `${title}`,
       status: status,
       isClosable: true,
     });
+  };
+
+  // HANDLE ADD COMMENT
+  const handleAddComment = async (data: { body: string }) => {
+    await addComment(commentDispatch, currentID, data);
+    handleToastSuccess(STATUS_VARIANT.SUCCESS, 'Successfully Added Comment!');
   };
 
   useEffect(() => {
@@ -216,9 +232,12 @@ const IssueDetail = () => {
           </Box>
           <Box display='flex' flexDirection='row' justifyContent='space-between'>
             <Box w='65%'>
-              <ListComments issue={currentIssue} comments={commentState.comments} />
+              <ListComments issue={currentIssue} comments={comments} />
               <Box marginTop='20px'>
-                <AddComment userImage={currentIssue?.user?.avatar_url} />
+                <AddComment
+                  userImage={currentIssue?.user?.avatar_url}
+                  handleSubmitForm={handleAddComment}
+                />
               </Box>
             </Box>
             <Box w='30%'>

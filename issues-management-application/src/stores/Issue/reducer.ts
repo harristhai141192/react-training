@@ -15,12 +15,6 @@ import {
   RequestUpdateIssueAction,
   SuccessUpdateIssueAction,
   FailedUpdateIssueAction,
-  RequestDeleteIssueAction,
-  SuccessDeleteIssueAction,
-  FailedDeleteIssueAction,
-  RequestSearchIssueAction,
-  SuccessSearchIssueAction,
-  FailedSearchIssueAction,
   RequestAnIssueAction,
   SuccessRequestAnIssueAction,
   FailedRequestAnIssueAction,
@@ -53,12 +47,6 @@ export type IssueAction =
   | RequestUpdateIssueAction
   | SuccessUpdateIssueAction
   | FailedUpdateIssueAction
-  | RequestDeleteIssueAction
-  | SuccessDeleteIssueAction
-  | FailedDeleteIssueAction
-  | RequestSearchIssueAction
-  | SuccessSearchIssueAction
-  | FailedSearchIssueAction
   | RequestAnIssueAction
   | SuccessRequestAnIssueAction
   | FailedRequestAnIssueAction
@@ -78,6 +66,7 @@ export const initialIssueState: IssueState = {
 
 const issueReducer = (state: IssueState = initialIssueState, actions: IssueAction): IssueState => {
   switch (actions.type) {
+    // Request lock issue
     case ISSUE_ACTIONS.LOCK_ISSUE_REQUEST: {
       return {
         ...state,
@@ -85,6 +74,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Lock issue successful
     case ISSUE_ACTIONS.LOCK_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
@@ -102,6 +92,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Fail to lock an issue
     case ISSUE_ACTIONS.LOCK_ISSUE_FAILURE: {
       return {
         ...state,
@@ -110,6 +101,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Request unlock issue
     case ISSUE_ACTIONS.UNLOCK_ISSUE_REQUEST: {
       return {
         ...state,
@@ -117,6 +109,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Unlock an issue successful
     case ISSUE_ACTIONS.UNLOCK_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
@@ -133,18 +126,23 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Fail to unlock an issue
     case ISSUE_ACTIONS.UNLOCK_ISSUE_FAILURE: {
       return {
         ...state,
         loading: false,
       };
     }
+
+    // Get an issue
     case ISSUE_ACTIONS.GET_AN_ISSUE: {
       return {
         ...state,
         loading: true,
       };
     }
+
+    // Success get an issue
     case ISSUE_ACTIONS.GET_AN_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
@@ -162,6 +160,8 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
+
+    // Fail to get an issue
     case ISSUE_ACTIONS.GET_AN_ISSUE_FAILURE: {
       return {
         ...state,
@@ -169,6 +169,8 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
+
+    // Get issues
     case ISSUE_ACTIONS.GET_ISSUES: {
       return {
         ...state,
@@ -176,6 +178,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Success get issues
     case ISSUE_ACTIONS.GET_ISSUES_SUCCESS: {
       const currentById = actions?.data?.issue?.reduce(
         (newById: object, item: IssueModel) => ({
@@ -194,6 +197,8 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
+
+    // Fail to get issues
     case ISSUE_ACTIONS.GET_ISSUES_FAILURE: {
       return {
         ...state,
@@ -201,12 +206,16 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
+
+    // Request add an issue
     case ISSUE_ACTIONS.ADD_ISSUE_REQUEST: {
       return {
         ...state,
         loading: true,
       };
     }
+
+    // Success add an issue
     case ISSUE_ACTIONS.ADD_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
@@ -222,6 +231,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Fail to add an issue
     case ISSUE_ACTIONS.ADD_ISSUE_FAILURE: {
       return {
         ...state,
@@ -229,6 +239,8 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
+
+    // Request update an issue
     case ISSUE_ACTIONS.UPDATE_ISSUE_REQUEST: {
       return {
         ...state,
@@ -236,6 +248,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
       };
     }
 
+    // Success updated an issue
     case ISSUE_ACTIONS.UPDATE_ISSUE_SUCCESS: {
       const currentById = {
         ...state.byId,
@@ -251,6 +264,8 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
+
+    // Fail to update an issue
     case ISSUE_ACTIONS.UPDATE_ISSUE_FAILURE: {
       return {
         ...state,
@@ -258,25 +273,7 @@ const issueReducer = (state: IssueState = initialIssueState, actions: IssueActio
         loading: false,
       };
     }
-    case ISSUE_ACTIONS.DELETE_ISSUE_REQUEST: {
-      return {
-        ...state,
-        loading: true,
-      };
-    }
-    case ISSUE_ACTIONS.DELETE_ISSUE_SUCCESS: {
-      return {
-        ...state,
-        loading: false,
-      };
-    }
-    case ISSUE_ACTIONS.DELETE_ISSUE_FAILURE: {
-      return {
-        ...state,
-        error: actions?.data?.error,
-        loading: false,
-      };
-    }
+
     default: {
       return state;
     }

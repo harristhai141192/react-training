@@ -6,11 +6,11 @@ import { HEADERS } from '@constants/apis';
 import { API } from '@constants/apis';
 
 // Stores
-import { CommentActions } from '@stores/Comment/commentReducer';
-import { IssueAction } from '@stores/Issue/issueReducer';
+import { CommentActions } from '@stores/Comment/reducer';
+import { IssueAction } from '@stores/Issue/reducer';
 
 // Services
-import { IssueModel } from '@models/index';
+import { IComment, IssueModel } from '@models/index';
 
 // ISSUES FEATURES
 // GET ALL ISSUE
@@ -176,15 +176,60 @@ export const getCommentsById = async (
     type: COMMENT_ACTIONS.GET_COMMENT,
   });
   try {
-    const response = await fetch(`${API.DELIVERY_CALL.URL_COMMENTS}/issues/${currentId}/comments`, {
-      method: HTTP_METHODS.GET,
-      headers: HEADERS,
-    });
+    const response = await fetch(
+      `${API.DELIVERY_CALL.URL_COMMENTS}/${API.PATHS.ISSUES}/${currentId}/comments`,
+      {
+        method: HTTP_METHODS.GET,
+        headers: HEADERS,
+      },
+    );
     if (response.status == 200) {
       const comments = await response.json();
       dispatch({ type: COMMENT_ACTIONS.GET_COMMENT_SUCCESS, data: { comments } });
     }
   } catch (e) {
     dispatch({ type: COMMENT_ACTIONS.GET_COMMENT_FAILURE, data: { error: (e as Error).message } });
+  }
+};
+
+// ADD COMMENT
+export const addComment = async (
+  dispatch: (action: CommentActions) => void,
+  currentId: string,
+  data: {
+    body: string;
+  },
+) => {
+  dispatch({
+    type: COMMENT_ACTIONS.ADD_COMMENT_REQUEST,
+  });
+
+  try {
+    const response = await fetch(
+      `${process.env.VITE_BASE_URL}/${API.PATHS.ISSUES}/${currentId}/${API.PATHS.COMMENT}`,
+      {
+        method: HTTP_METHODS.POST,
+        headers: HEADERS,
+        body: JSON.stringify(data),
+      },
+    );
+
+    if (response.status == 201) {
+      const res = await response.json();
+      const getData: IComment = {
+        id: res.id,
+        body: data.body,
+        created_at: res.created_at,
+        user: res.user,
+      };
+      dispatch({
+        type: COMMENT_ACTIONS.ADD_COMMENT_SUCCESS,
+        data: {
+          comment: getData,
+        },
+      });
+    }
+  } catch (e) {
+    dispatch({ type: COMMENT_ACTIONS.ADD_COMMENT_FAILURE, data: { error: (e as Error).message } });
   }
 };

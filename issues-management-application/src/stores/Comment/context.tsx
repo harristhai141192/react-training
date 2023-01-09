@@ -2,12 +2,7 @@
 import { useContext, createContext, useReducer, ReactNode, Dispatch } from 'react';
 
 // Reducer & Types
-import {
-  CommentState,
-  CommentActions,
-  initialCommentState,
-  commentReducer,
-} from './commentReducer';
+import { CommentState, CommentActions, initialCommentState, commentReducer } from './reducer';
 
 export const CommentContext = createContext<{
   state: CommentState;

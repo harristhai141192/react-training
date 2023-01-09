@@ -1,4 +1,5 @@
 export interface IComment {
+  id: number;
   body?: string;
   created_at?: string;
   user?: IUser;
@@ -8,7 +9,6 @@ export interface IUser {
   login?: string;
   avatar_url?: string;
   avatar_alt?: string;
-  node_id?: string;
 }
 export class IssueModel {
   number: number; // id

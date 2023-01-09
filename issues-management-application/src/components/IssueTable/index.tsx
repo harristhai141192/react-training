@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
-import { IssueState } from '@stores/Issue/issueReducer';
+import { IssueState } from '@stores/Issue/reducer';
 
 // Utils
 import { getAllIssue } from '@services/index';
