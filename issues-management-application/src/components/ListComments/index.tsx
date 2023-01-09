@@ -34,8 +34,6 @@ const ListComments: React.FC<IProps> = ({ issue, comments }) => {
       )}
       {comments &&
         comments?.map((item: IComment) => {
-          console.log('item', item);
-
           return (
             <Box key={generateKey()}>
               <Comment

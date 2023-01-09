@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
-import { IssueState } from '@stores/Issue/reducer';
+import issueSelector from '@stores/Issue/selector';
 
 // Utils
 import { getAllIssue } from '@services/index';
@@ -14,15 +14,15 @@ import Table from '@components/Table';
 import LoadingSpinner from '@components/LoadingSpinner';
 
 const IssueTable = () => {
-  const { state, dispatch } = useIssueContext();
-  const { byId, loading, order }: IssueState = state;
-  const issues = order?.length ? order?.map((id) => byId[id]) : [];
+  const { dispatch } = useIssueContext();
+  const issues = issueSelector.getAllIssues();
+  const isLoading = issueSelector.isIssueLoading();
 
   useEffect(() => {
     getAllIssue(dispatch);
   }, [dispatch]);
 
-  return <Box>{loading ? <LoadingSpinner /> : <Table issues={issues} />}</Box>;
+  return <Box>{isLoading ? <LoadingSpinner /> : <Table issues={issues} />}</Box>;
 };
 
 export default memo(IssueTable);
