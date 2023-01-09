@@ -36,12 +36,11 @@ export const Button = {
       letterSpacing: '1.2px',
       height: '30px',
       borderRadius: '10px',
-      border: '1px solid grey',
       bg: colors.buttonSuccess,
       color: 'white',
       _hover: { bg: 'lightgrey', color: 'black' },
       fontSize: {
-        sm: fontSizes.text.small,
+        sm: fontSizes.text.lightSmall,
         md: fontSizes.text.small,
         lg: fontSizes.text.small,
       },

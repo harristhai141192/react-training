@@ -28,8 +28,8 @@ const CommentBox: React.FC<IProps> = ({
           justifyContent='center'
         >
           <Image
-            w='50px'
-            h='50px'
+            w={{ sm: '30px', md: '50px' }}
+            h={{ sm: '30px', md: '50px' }}
             objectFit='cover'
             src={userImage}
             alt={imageAlt}

@@ -1,16 +1,17 @@
 // Libraries
 import React, { memo } from 'react';
-import { Box, Button } from '@chakra-ui/react';
-import { LockIcon, UnlockIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons';
+import { Box } from '@chakra-ui/react';
 
 // Mock
-import { rightSideBarData } from '@mockData/barData';
+import { discussionSideBarData } from '@mockData/discussionSideBarData';
 
 // Components
-import SideBar from '@components/SideBar';
+import TaskBar from '@components/TaskBar';
+import IssueManagement from '@components/IssueManagement';
 
 interface IProps {
   isLock?: boolean;
+  isAddPage?: boolean;
   onLockIssue?: React.MouseEventHandler<HTMLButtonElement>;
   onUnLockIssue?: React.MouseEventHandler<HTMLButtonElement>;
   onEditIssue?: React.MouseEventHandler<HTMLButtonElement>;
@@ -19,6 +20,7 @@ interface IProps {
 
 const DiscussionSideBar: React.FC<IProps> = ({
   isLock = false,
+  isAddPage = false,
   onLockIssue,
   onUnLockIssue,
   onEditIssue,
@@ -26,26 +28,18 @@ const DiscussionSideBar: React.FC<IProps> = ({
 }) => {
   return (
     <Box>
-      <SideBar data={rightSideBarData} />
-      <SideBar>
-        <Box w={{ sm: '150px', md: '250px' }} display='flex' flexDirection='column'>
-          {!isLock ? (
-            <Button variant='link' leftIcon={<LockIcon />} onClick={onLockIssue}>
-              Lock conversation
-            </Button>
-          ) : (
-            <Button variant='link' leftIcon={<UnlockIcon />} onClick={onUnLockIssue}>
-              Unlock Issue
-            </Button>
-          )}
-          <Button variant='link' leftIcon={<EditIcon />} onClick={onEditIssue}>
-            Edit Issue
-          </Button>
-          <Button variant='link' leftIcon={<DeleteIcon />} onClick={onDeleteIssue}>
-            Delete Issue
-          </Button>
-        </Box>
-      </SideBar>
+      <TaskBar data={discussionSideBarData} />
+      {isAddPage ? (
+        ''
+      ) : (
+        <IssueManagement
+          isLock={isLock}
+          onLockIssue={onLockIssue}
+          onUnLockIssue={onUnLockIssue}
+          onEditIssue={onEditIssue}
+          onDeleteIssue={onDeleteIssue}
+        />
+      )}
     </Box>
   );
 };

@@ -2,7 +2,7 @@
 import { Box, Text } from '@chakra-ui/layout';
 
 // Utils
-import { getByText, render } from '@utils/testUtils';
+import { getByText, render } from '@utils/testing';
 
 // Components
 import Layout from '..';

@@ -5,7 +5,7 @@ import { Box, Button } from '@chakra-ui/react';
 import Modal from '..';
 
 // Utils
-import { fireEvent, render } from '@utils/testUtils';
+import { fireEvent, render } from '@utils/testing';
 
 const baseProps = {
   title: 'This is title',

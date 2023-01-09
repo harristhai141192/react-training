@@ -7,7 +7,7 @@ import { useIssueContext } from '@stores/Issue/context';
 import { IssueState } from '@stores/Issue/issueReducer';
 
 // Utils
-import { getAllIssue } from '@utils/mainFeaturesUtils';
+import { getAllIssue } from '@services/index';
 
 // Components
 import Table from '@components/Table';

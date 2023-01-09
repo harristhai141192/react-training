@@ -3,7 +3,7 @@ import TableRow from '../TableRows';
 import Issue from '@components/Issue';
 
 // Utils
-import { render } from '@utils/testUtils';
+import { render } from '@utils/testing';
 
 // Libraries
 import { Table } from '@chakra-ui/react';

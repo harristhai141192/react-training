@@ -15,7 +15,7 @@ import {
 import { SunIcon, MoonIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 // Components
-import InputCommentBox from '@components/InputCommentBox';
+import AddComment from '@components/AddComment';
 import DiscussionSideBar from '@components/DiscussionSideBar';
 import Status from '@components/Status';
 import LockIssueModal from '@components/LockIssueModal';
@@ -30,13 +30,7 @@ import { useCommentContext } from '@stores/Comment/context';
 import { IssueState } from '@stores/Issue/issueReducer';
 
 // Utils
-import {
-  getCommentsById,
-  lockIssue,
-  unlockIssue,
-  updateIssue,
-  getIssue,
-} from '@utils/mainFeaturesUtils';
+import { getCommentsById, lockIssue, unlockIssue, updateIssue, getIssue } from '@services/index';
 import { ILockReason, IssueModel } from '@models/index';
 
 // Constants
@@ -127,11 +121,6 @@ const IssueDetail = () => {
     setIsLocked(false);
   };
 
-  // OPEN DELETE FORM
-  const handleDeleteIssue = () => {
-    setIsDeleting(true);
-  };
-
   // HANDLE SUCCESSFUL TOASTED ON EDIT
   const handleToastedEditSuccess = (status: STATUS_VARIANT, title: string) => {
     toast({
@@ -152,13 +141,7 @@ const IssueDetail = () => {
 
   return (
     <Container padding='20px 0'>
-      {isDeleting && (
-        <DeleteModal
-          onDelete={handleDeleteIssue}
-          isOpen={true}
-          onClose={() => setIsDeleting(false)}
-        />
-      )}
+      {isDeleting && <DeleteModal isOpen={true} onClose={() => setIsDeleting(false)} />}
       {isOpenLockModal && (
         <LockIssueModal
           isOpen={isOpenLockModal}
@@ -225,7 +208,7 @@ const IssueDetail = () => {
             <Status isOpen={!currentIssue?.locked}>
               {!currentIssue?.locked ? <SunIcon /> : <MoonIcon />}
             </Status>
-            <Text marginLeft='10px'>
+            <Text marginLeft='10px' fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}>
               <Text as='b'>{currentIssue?.user?.login}&nbsp;</Text>
               {!currentIssue?.locked ? 'opened this issue on' : 'closed this issue on'}&nbsp;
               {currentIssue?.created_at?.split('T')[0]}
@@ -235,7 +218,7 @@ const IssueDetail = () => {
             <Box w='65%'>
               <ListComments issue={currentIssue} comments={commentState.comments} />
               <Box marginTop='20px'>
-                <InputCommentBox userImage={currentIssue?.user?.avatar_url} />
+                <AddComment userImage={currentIssue?.user?.avatar_url} />
               </Box>
             </Box>
             <Box w='30%'>
@@ -246,7 +229,12 @@ const IssueDetail = () => {
                 onDeleteIssue={handleOpenDeleteModal}
                 onUnLockIssue={handleOpenUnlockIssueModal}
               />
-              <Button variant='ghost' leftIcon={<ArrowLeftIcon />} onClick={handleBackTohome}>
+              <Button
+                fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
+                variant='ghost'
+                leftIcon={<ArrowLeftIcon />}
+                onClick={handleBackTohome}
+              >
                 Back to home
               </Button>
             </Box>

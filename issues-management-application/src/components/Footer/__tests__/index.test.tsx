@@ -1,5 +1,5 @@
 // Utils
-import { render } from '@utils/testUtils';
+import { render, getByText } from '@utils/testing';
 
 // Components
 import Footer from '..';
@@ -15,5 +15,11 @@ describe('Component [Footer] testing', () => {
   test('It should match snapshot', () => {
     const { container } = setup();
     expect(container).toMatchSnapshot();
+  });
+
+  test('It should render Href for link', () => {
+    const { container } = setup();
+    const getLink = getByText(container, 'Terms');
+    expect(getLink).toHaveAttribute('href', '#');
   });
 });

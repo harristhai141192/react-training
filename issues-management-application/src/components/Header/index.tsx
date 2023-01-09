@@ -12,10 +12,10 @@ import {
 import { Link } from 'react-router-dom';
 
 // Mocks
-import { navHeaderData } from '@mockData/navData';
+import { navHeaderData } from '@mockData/navFooterData';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 // Routes
 import { PAGE_ROUTES } from '@constants/routes';
@@ -42,7 +42,7 @@ const Header = () => {
               navHeaderData.map((item) => {
                 return (
                   <ListItem padding='15px' key={generateKey()}>
-                    <LinkChakra>{item}</LinkChakra>
+                    <LinkChakra href='#'>{item}</LinkChakra>
                   </ListItem>
                 );
               })

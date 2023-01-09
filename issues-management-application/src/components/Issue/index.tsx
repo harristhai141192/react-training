@@ -19,8 +19,8 @@ const Issue: React.FC<IProps> = ({ issue }) => {
     <Box display='flex' flexDirection='row' h='100%' w='100%' marginLeft='5px'>
       <Box>
         <Box display='flex' flexDirection='row' alignItems='center' fontSize='text.medium'>
-          <SunIcon color={issue.locked ? 'darkviolet' : 'cadetblue'} data-testid='labelIssue' />
-          <Link to={`${PAGE_ROUTES.DETAIL}/${issue.number}`}>
+          <SunIcon color={issue.locked ? 'darkviolet' : 'cadetblue'} />
+          <Link data-testid='labelIssue' to={`${PAGE_ROUTES.DETAIL}/${issue.number}`}>
             <Text
               as='b'
               alignItems='flex-start'

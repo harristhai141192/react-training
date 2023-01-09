@@ -2,7 +2,7 @@
 import TableHead from '../TableHead';
 
 // Utils
-import { render, getByText } from '@utils/testUtils';
+import { render, getByText } from '@utils/testing';
 
 // Libraries
 import { Table } from '@chakra-ui/react';

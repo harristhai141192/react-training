@@ -7,13 +7,14 @@ import {
   ListItem,
   Text,
   useMediaQuery,
+  Link,
 } from '@chakra-ui/react';
 
 // Mocks
-import { navFooterData } from '@mockData/navData';
+import { navFooterData } from '@mockData/navFooterData';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 const Footer = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
@@ -40,7 +41,9 @@ const Footer = () => {
               ? navFooterData.map((item) => {
                   return (
                     <ListItem key={generateKey()}>
-                      <Text padding={{ md: '10px', lg: '15px' }}>{item}</Text>
+                      <Link href='#' padding={{ md: '10px', lg: '15px' }}>
+                        {item}
+                      </Link>
                     </ListItem>
                   );
                 })

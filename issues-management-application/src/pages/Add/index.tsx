@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 // Components
 import CreatedIssue from '@components/CreatedIssue';
-import MenuBar from '@components/MenuBar';
+import NavBar from '@components/NavBar';
 import DiscussionSideBar from '@components/DiscussionSideBar';
 
 // Utils
-import { addIssue } from '@utils/mainFeaturesUtils';
+import { addIssue } from '@services/index';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
@@ -49,7 +49,7 @@ const AddIssue = () => {
   return (
     <>
       <Box padding='5px 25px' bgColor='mainBackground' borderBottom='1px solid lightgrey'>
-        <MenuBar />
+        <NavBar />
       </Box>
       <Container maxW='8xl'>
         <Box
@@ -64,7 +64,9 @@ const AddIssue = () => {
               handleOnSubmit={handleAddIssue}
             />
           </Box>
-          <Box w={{ sm: '0', md: '20%' }}>{!isMobile && <DiscussionSideBar />}</Box>
+          <Box w={{ sm: '0', md: '20%' }}>
+            {!isMobile && <DiscussionSideBar isAddPage={true} />}
+          </Box>
         </Box>
       </Container>
     </>

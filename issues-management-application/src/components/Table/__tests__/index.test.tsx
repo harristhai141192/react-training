@@ -2,7 +2,7 @@
 import Table from '..';
 
 // Utils
-import { render, getByText } from '@utils/testUtils';
+import { render, getByText } from '@utils/testing';
 
 const baseProps = {
   issues: [

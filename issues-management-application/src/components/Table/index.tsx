@@ -6,7 +6,7 @@ import { Table as TableChakra, TableContainer, Tbody, Thead } from '@chakra-ui/r
 import { IssueModel } from '@models/index';
 
 // Utils
-import { generateKey } from '@utils/mainFeaturesUtils';
+import { generateKey } from '@utils/index';
 
 // Components
 import TableRows from '@components/Table/TableRows';
