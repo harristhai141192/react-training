@@ -45,11 +45,6 @@ import { PAGE_ROUTES } from '@constants/routes';
 import issueSelector from '../../stores/Issue/selector';
 import { getAllComments } from '../../stores/Comment/selector';
 
-// const connect = <P,>(WrappedComponent: React.ComponentType<P>): React.ComponentType<P extends {}> => {
-//   const extendProps = {};
-//   return <WrappedComponent {...extendProps} />;
-// };
-
 const IssueDetail = () => {
   const navigate = useNavigate();
   const toast = useToast();
@@ -267,4 +262,4 @@ const IssueDetail = () => {
   );
 };
 
-export default connect(IssueDetail);
+export default IssueDetail;
