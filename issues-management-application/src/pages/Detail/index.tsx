@@ -21,14 +21,12 @@ import Status from '@components/Status';
 import LockIssueModal from '@components/LockIssueModal';
 import DeleteModal from '@components/DeleteModal';
 import UnlockModal from '@components/UnlockModal';
-import ListComments from '@components/ListComments';
+import ListComments from '@pages/Detail/ListComments';
 import LoadingSpinner from '@components/LoadingSpinner';
 
 // Stores
 import { useIssueContext } from '@stores/Issue/context';
 import { useCommentContext } from '@stores/Comment/context';
-import { IssueState } from '@stores/Issue/reducer';
-import { CommentState } from '@stores/Comment/reducer';
 
 // Utils
 import {
@@ -44,12 +42,14 @@ import { ILockReason, IssueModel } from '@models/index';
 // Constants
 import { STATUS_VARIANT } from '@constants/statusVariant';
 import { PAGE_ROUTES } from '@constants/routes';
+import issueSelector from '../../stores/Issue/selector';
+import { getAllComments } from '../../stores/Comment/selector';
 
 const IssueDetail = () => {
   const navigate = useNavigate();
   const toast = useToast();
-  const { state: issueState, dispatch: issueDispatch } = useIssueContext();
-  const { state: commentState, dispatch: commentDispatch } = useCommentContext();
+  const { dispatch: issueDispatch } = useIssueContext();
+  const { dispatch: commentDispatch } = useCommentContext();
 
   const params = useParams();
   const currentID = params?.id || '';
@@ -60,13 +60,11 @@ const IssueDetail = () => {
   const [isOpenUnlockModal, setIsOpenUnlockModal] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
 
-  const { byId, loading }: IssueState = issueState;
-  const { commentById, order }: CommentState = commentState;
-  const comments = order.length ? order.map((id) => commentById[id]) : [];
-
   const inputEl = React.useRef<HTMLInputElement | null>(null);
 
-  const currentIssue: IssueModel = byId[currentID];
+  const comments = getAllComments();
+  const currentIssue: IssueModel = issueSelector.getIssueById(currentID);
+  const isLoading = issueSelector.isIssueLoading();
 
   // CANCEL INPUT EDITING ISSUE
   const handleCancelEdit = () => {
@@ -172,7 +170,7 @@ const IssueDetail = () => {
           onClose={() => setIsOpenUnlockModal(false)}
         />
       )}
-      {loading ? (
+      {isLoading ? (
         <LoadingSpinner />
       ) : (
         <Box>

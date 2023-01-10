@@ -45,7 +45,7 @@ const TextArea: React.FC<IProps> = ({ title, isMarkdown, valueInput, handleSubmi
           placeholder='Leave a comment'
           bgColor='mainBackground'
           border='1px solid lightGrey !important'
-          h='300px'
+          h={{ sm: '100px', md: '150px' }}
           fontSize={{ sm: 'text.lightSmall', md: 'text.small' }}
         />
         <Box
@@ -55,7 +55,7 @@ const TextArea: React.FC<IProps> = ({ title, isMarkdown, valueInput, handleSubmi
           padding='15px'
           w='100%'
         >
-          <Box display='flex' flexDirection='row' marginBottom='10px'>
+          <Box display={{ sm: 'none', md: 'flex' }} flexDirection='row' marginBottom='10px'>
             <MoonIcon />
             <Text as='sub' margin='4px 5px'>
               Styling with Markdown is not supported

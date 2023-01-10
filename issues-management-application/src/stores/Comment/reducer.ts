@@ -26,13 +26,13 @@ interface IById {
 }
 
 export interface CommentState {
-  commentById: IById;
+  byId: IById;
   order: number[];
   error: string;
 }
 
 export const initialCommentState: CommentState = {
-  commentById: {},
+  byId: {},
   order: [],
   error: '',
 };
@@ -63,7 +63,7 @@ export const commentReducer = (
 
       return {
         ...state,
-        commentById: currentById,
+        byId: currentById,
         order: currentOrder,
       };
     }
@@ -86,7 +86,7 @@ export const commentReducer = (
     // Success adding a comment
     case COMMENT_ACTIONS.ADD_COMMENT_SUCCESS: {
       const currentById = {
-        ...state.commentById,
+        ...state.byId,
         [actions.data.comment.id]: actions.data.comment,
       };
 
@@ -94,7 +94,7 @@ export const commentReducer = (
 
       return {
         ...state,
-        commentById: currentById,
+        byId: currentById,
         order: currentOrder,
       };
     }
