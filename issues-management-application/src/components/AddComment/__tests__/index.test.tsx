@@ -8,6 +8,7 @@ const baseProps = {
   userImage: 'https://genk.mediacdn.vn/2018/6/28/photo-5-1530178537559354148061.jpg',
   imageAlt: 'This is member Image',
   handleSubmitButton: () => {},
+  handleSubmitForm: () => {},
 };
 
 const setup = (overrideProps = {}) => {

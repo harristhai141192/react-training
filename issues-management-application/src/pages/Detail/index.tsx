@@ -21,7 +21,7 @@ import Status from '@components/Status';
 import LockIssueModal from '@components/LockIssueModal';
 import DeleteModal from '@components/DeleteModal';
 import UnlockModal from '@components/UnlockModal';
-import ListComments from '@components/ListComments';
+import ListComments from '@pages/Detail/ListComments';
 import LoadingSpinner from '@components/LoadingSpinner';
 
 // Stores

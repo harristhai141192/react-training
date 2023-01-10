@@ -16,10 +16,12 @@ const baseProps = {
   locked: true,
   issueComment: [
     {
+      id: 1,
       body: 'A dog that was stucked at the peak of moutain for months has been rescued by a man',
       created_at: '12/12/2022',
     },
     {
+      id: 2,
       body: 'I dont care',
       created_at: '11/11/2009',
     },
