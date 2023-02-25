@@ -27,6 +27,7 @@ const CommentBox: React.FC<IProps> = ({
           display='flex'
           justifyContent='center'
         >
+          <Box></Box>
           <Image
             w={{ sm: '30px', md: '50px' }}
             h={{ sm: '30px', md: '50px' }}
